@@ -35,7 +35,7 @@ namespace DoAnLTTQ
         {
             InitializeComponent();
             this.DataContext = this;
-            ButtonName.UserControlButtonClicked += new EventHandler<data>(MyUserControl_UserControlButtonClicked);
+            //ButtonName.UserControlButtonClicked += new EventHandler<data>(MyUserControl_UserControlButtonClicked);
 
         }
         private void MyUserControl_UserControlButtonClicked(object sender, data e)
@@ -56,6 +56,7 @@ namespace DoAnLTTQ
         {
             this.ViewContext = new MessageView();
         }
+        
         protected virtual void OnPropertyChanged(string newName)
         {
             if (PropertyChanged != null)
