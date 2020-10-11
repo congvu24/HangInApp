@@ -9,9 +9,8 @@
              d:DesignHeight="793" d:DesignWidth="320" FontFamily="Seoge UI">
 
     <UserControl.Resources>
-
         <Style x:Key="BackBtnWarper" TargetType="Grid">
-            <Setter Property="Background" Value="#F0F6F6"/>
+            <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
         <Style x:Key="backBtnIcon" TargetType="Button">
             <Setter Property="Width" Value="58"/>
@@ -19,18 +18,24 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="backBtnTitle" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="29"/>
-            <Setter Property="Foreground" Value="#0568A4"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="#ffff"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="FontSize" Value="50"/>
             <Setter Property="Width" Value="237"/>
             <Setter Property="Height" Value="84"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontFamily" Value="Comic Sans MS" />
         </Style>
         <Style x:Key="textBox" TargetType="TextBox">
             <Setter Property="Width" Value="194"/>
@@ -42,14 +47,15 @@
         <Style x:Key="updateBtn" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="136"/>
-            <Setter Property="Height" Value="44"/>
+            <Setter Property="Height" Value="38"/>
             <Setter Property="Canvas.Top" Value="31"/>
             <Setter Property="Canvas.Left" Value="92"/>
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#707070"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="FontWeight" Value="Medium" />
         </Style>
 
         <!--placeholder for textbox-->
@@ -104,29 +110,38 @@
     </UserControl.Resources>
 
     <!--main content-->
+    <Border BorderBrush="#D1DDE3" BorderThickness="0 0 1 0">
     <Grid>
-        <Grid Style="{StaticResource BackBtnWarper}" Height="793" VerticalAlignment="Bottom">
-            <Grid.RowDefinitions>
+          
+        
+            <Grid Style="{StaticResource BackBtnWarper}" Height="793" VerticalAlignment="Bottom">
+                
+                <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border BorderBrush="#D1DDE3" BorderThickness="2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Name="backBtnIcon" Style="{StaticResource backBtnIcon}" Height="Auto">
-                        <materialDesign:PackIcon  Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#0568A4"/>
-                    </Button>
-                    <Label Style="{StaticResource backBtnTitle}"  Content="PROFILE" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
-                </Grid>
-            </Border>
-            <Grid Grid.Row="1">
+                <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.0" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <Button Name="backBtnIcon" Style="{StaticResource backBtnIcon}" Height="Auto">
+                            <materialDesign:PackIcon  Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" />
+                        </Button>
+                        <Label Style="{StaticResource backBtnTitle}"  Content="My Profile" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1">
                 <Label HorizontalAlignment="Center"   Margin="0,41,0,41">
                     <Canvas Height="160" Width="160">
                         <Border Height="160" Width="160">
@@ -170,15 +185,22 @@
             </StackPanel>
 
             <Canvas Grid.Row="3">
-                <Button Style="{StaticResource updateBtn}" Click="Button_Click">
+                <Button Style="{StaticResource updateBtn}" Click="Button_Click" >
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="20"/>
                         </Style>
                     </Button.Resources>
-                    UPDATE
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.0" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        Update
                 </Button>
             </Canvas>
         </Grid>
     </Grid>
+    </Border>
 </UserControl>

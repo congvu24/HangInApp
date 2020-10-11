@@ -5,7 +5,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        x:Class="DoAnLTTQ.MainWindow" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="HangInApp - Connect with your Lover" Height="793" Width="1280"
+        x:Class="DoAnLTTQ.MainWindow" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="HangInApp - Connect with your Lover" Height="821" Width="1280"
         xmlns:component="clr-namespace:DoAnLTTQ.Components"
         xmlns:view="clr-namespace:DoAnLTTQ.Views" Icon="Logo.png" ResizeMode="CanMinimize"
         >
@@ -16,7 +16,15 @@
             <ColumnDefinition Width="9* "/>
             <!-- main-->
         </Grid.ColumnDefinitions>
-        <component:NavBarSetting Grid.Column="0"  x:Name="NavbarSetting"/>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <component:NavBarSetting Grid.Column="0" Grid.Row="0"  x:Name="NavbarSetting"/>
+        </Grid>
 
 
         <component:MainSetting Grid.Column="1"  x:Name="MainSetting"/>
