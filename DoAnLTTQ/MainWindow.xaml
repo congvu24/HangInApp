@@ -16,9 +16,9 @@
             <ColumnDefinition Width="9* "/>
             <!-- main-->
         </Grid.ColumnDefinitions>
-        <materialDesign:PackIcon Kind="ChevronLeft" />
         <component:NavBarSetting Grid.Column="0"  x:Name="NavbarSetting"/>
-        
+
+
         <component:MainSetting Grid.Column="1"  x:Name="MainSetting"/>
 
         <!--<StackPanel Grid.Column="0">

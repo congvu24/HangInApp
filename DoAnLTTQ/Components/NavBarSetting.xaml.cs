@@ -24,5 +24,26 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //private void profilePicture_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // disable click on this button
+           
+        //}
     }
 }

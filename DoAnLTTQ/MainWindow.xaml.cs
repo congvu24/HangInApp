@@ -64,6 +64,11 @@ namespace DoAnLTTQ
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
+
+        private void NavbarSetting_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
     public class data
     {
