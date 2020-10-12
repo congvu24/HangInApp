@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             d:DesignHeight="793" d:DesignWidth="320" FontFamily="Seoge UI">
+             d:DesignHeight="720" d:DesignWidth="320" FontFamily="Seoge UI">
 
     <UserControl.Resources>
         <Style x:Key="BackBtnWarper" TargetType="Grid">
@@ -17,12 +17,18 @@
             <Setter Property="Height" Value="80"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Red"/>
-                </Trigger>
-            </Style.Triggers>
+            <!--tat hover cua btn-->
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" Height="auto">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!--end-->
         </Style>
         <Style x:Key="backBtnTitle" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold"/>
@@ -59,7 +65,7 @@
         </Style>
 
         <!--placeholder for textbox-->
-        <!--this style is base on textBox style at line 48-->
+        <!--this style is base on textBox style at line 38 definition for that at line 46-->
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource textBox}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -114,7 +120,7 @@
     <Grid>
           
         
-            <Grid Style="{StaticResource BackBtnWarper}" Height="793" VerticalAlignment="Bottom">
+            <Grid Style="{StaticResource BackBtnWarper}" Height="720" VerticalAlignment="Bottom">
                 
                 <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -135,8 +141,8 @@
                                 <GradientStop Color="#fd267d" Offset="1.0" />
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <Button Name="backBtnIcon" Style="{StaticResource backBtnIcon}" Height="Auto">
-                            <materialDesign:PackIcon  Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" />
+                        <Button Name="backBtnIcon" Click="backBtnIcon_Click" Style="{StaticResource backBtnIcon}" Height="Auto" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon VerticalAlignment="Center" Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" />
                         </Button>
                         <Label Style="{StaticResource backBtnTitle}"  Content="My Profile" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
                     </Grid>
@@ -146,26 +152,23 @@
                     <Canvas Height="160" Width="160">
                         <Border Height="160" Width="160">
                             <!--shadow effect here-->
-                            <Border.Effect>
-                                <!--<DropShadowEffect Color="Black" ShadowDepth="10" Opacity="0.5" />-->
-                                <DropShadowEffect BlurRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth5" Opacity="0.5"/>
-                            </Border.Effect>
-
-                            <Image Stretch="Fill" Source="/Resources/Images/heocute.jpg">
+                                <Border.Effect>
+                                    <!--<DropShadowEffect Color="Black" ShadowDepth="10" Opacity="0.5" />-->
+                                    <DropShadowEffect BlurRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth5" Opacity="0.5"/>
+                                </Border.Effect>
+                                <Image Stretch="Fill" Source="/Resources/Images/heocute.jpg">
                                 <Image.Clip>
                                     <EllipseGeometry Center="80,80" RadiusX="80" RadiusY="80" />
                                 </Image.Clip>
                             </Image>
                         </Border>
-
-                        <Button Style="{StaticResource changProfilePicture}" >
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="20"/>
-                                </Style>
-                            </Button.Resources>
-
-                            <Border Style="{StaticResource changeProFilePicture_border}" >
+                            <Button Style="{StaticResource changProfilePicture}" >
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="20"/>
+                                    </Style>
+                                </Button.Resources>
+                                <Border Style="{StaticResource changeProFilePicture_border}" >
                                 <materialDesign:PackIcon Kind="Plus"
                                     Width="32"
                                     Height="32"
@@ -199,6 +202,8 @@
                         </Button.Background>
                         Update
                 </Button>
+                    
+                
             </Canvas>
         </Grid>
     </Grid>

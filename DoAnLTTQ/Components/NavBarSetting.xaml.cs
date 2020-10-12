@@ -40,10 +40,15 @@ namespace DoAnLTTQ.Components
 
         }
 
+        private void backBtnIcon_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hello");
+        }
+
         //private void profilePicture_Click(object sender, RoutedEventArgs e)
         //{
         //    // disable click on this button
-           
+
         //}
     }
 }
