@@ -5,23 +5,38 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        x:Class="DoAnLTTQ.MainWindow" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="MainWindow" Height="720" Width="1080"
+        x:Class="DoAnLTTQ.MainWindow" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}" mc:Ignorable="d" Title="HangInApp - Connect with your Lover" Height="720" Width="1280"
         xmlns:component="clr-namespace:DoAnLTTQ.Components"
-        xmlns:view="clr-namespace:DoAnLTTQ.Views"
+        xmlns:view="clr-namespace:DoAnLTTQ.Views" Icon="Logo.png" ResizeMode="CanMinimize"
         >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="3*"/>
+            <!-- nav bar -->
+            <ColumnDefinition Width="9* "/>
+            <!-- main-->
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <component:NavBarSetting Grid.Column="0" Grid.Row="0"  x:Name="NavbarSetting"/>
+        </Grid>
+
+
+        <component:MainSetting Grid.Column="1"  x:Name="MainSetting"/>
+
+        <!--<StackPanel Grid.Column="0">
             <component:BackButton  x:Name="ButtonName"/>
             <component:HeaderTitle Title="Xin chao" />
             <Button Content="Setting" Click="Button_Click"/>
             <Button Content="Home" Click="Home_Click"/>
             <Button Content="Message" Click="Message_Click"/>
         </StackPanel>
-        <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>
+        <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>-->
         
     </Grid>
 </Window>
