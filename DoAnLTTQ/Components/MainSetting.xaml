@@ -5,8 +5,222 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="720" d:DesignWidth="960">
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="myImageSlot">
+            <Setter Property="Width" Value="102"/>
+            <Setter Property="Height" Value="144"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            
+        </Style>
+
+        <Style TargetType="Button" x:Key="myImageSlotContent">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="70"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Content" Value="+"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="myConfirmButton">
+            <Setter Property="Width" Value="136"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+
+
+        <Style TargetType="Image" x:Key="myImag">
+            <Setter Property="Source" Value="/Resources/Images/ImageSlot.png"/>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
-        <TextBlock>kiet</TextBlock>
+        <Border BorderThickness="0.5" Width="468" Height="660" BorderBrush="Gray">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="468" Height="660">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!--<Button Grid.Row="0" Style="{StaticResource myImageSlot}">
+                    -->
+                    <!--<Button.Background>
+                        <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                    </Button.Background>-->
+                    <!--
+                </Button>-->
+
+                    <Button Grid.Row="0" Width="102" Height="144" 
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+                    <Button Grid.Row="1" Width="102" Height="144"
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+                        
+                        
+
+                    </Button>
+
+                    <!--<Button Grid.Row="2" Width="102" Height="144"
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>-->
+
+                    <Button Grid.Row="2" Style="{StaticResource myImageSlot}" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Width="102" Height="144" 
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+                    <Button Grid.Row="1" Width="102" Height="144"
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+                    <Button Grid.Row="2" Width="102" Height="144" 
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+                    <Button Grid.Row="3" Width="136" Height="44" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Top" 
+                            BorderThickness="0"
+                            Content="Xác Nhận" FontSize="17" Foreground="Gray"
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ConfirmButton.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Width="102" Height="144"
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+                    <Button Grid.Row="1" Width="102" Height="144"
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png" ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+                    <Button Grid.Row="2" Width="102" Height="144"
+                            BorderThickness="0" Content="+" 
+                            FontSize="70" Foreground="LightGray" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Images/ImageSlot.png    " ></ImageBrush>
+                        </Button.Background>
+
+                    </Button>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
     </Grid>
+
 </UserControl>
