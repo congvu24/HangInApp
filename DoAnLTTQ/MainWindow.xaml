@@ -25,9 +25,16 @@
             </Grid.ColumnDefinitions>
             <component:NavBarSetting Grid.Column="0" Grid.Row="0"  x:Name="NavbarSetting"/>
         </Grid>
+        <Grid Grid.Column="1" Background="#f5f7fa">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <component:MainSetting Grid.Column="1"  x:Name="MainSetting"/>
+        </Grid>
 
-
-        <component:MainSetting Grid.Column="1"  x:Name="MainSetting"/>
 
         <!--<StackPanel Grid.Column="0">
             <component:BackButton  x:Name="ButtonName"/>

@@ -23,6 +23,21 @@ namespace DoAnLTTQ.Components
         public MainSetting()
         {
             InitializeComponent();
+            List<imageSlot> data = new List<imageSlot>();
+            data.Add(new imageSlot() { imgUri = "/Resources/Images/IMG_9715.png" });
+            data.Add(new imageSlot() { imgUri = "" });
+            data.Add(new imageSlot() { imgUri = "" });
+            data.Add(new imageSlot() { imgUri = "" });
+            data.Add(new imageSlot() { imgUri = "" });
+            data.Add(new imageSlot() { imgUri = "" });
+            data.Add(new imageSlot() { imgUri = "" });
+            data.Add(new imageSlot() { imgUri = "" });
+            data.Add(new imageSlot() { imgUri = "" });
+            listImage.DataContext = data;
         }
+    }
+    class imageSlot
+    {
+        public string imgUri { get; set; }
     }
 }
