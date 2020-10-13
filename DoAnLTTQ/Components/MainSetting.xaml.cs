@@ -24,15 +24,19 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
             List<imageSlot> data = new List<imageSlot>();
-            data.Add(new imageSlot() { imgUri = "/Resources/Images/IMG_9715.png" });
-            data.Add(new imageSlot() { imgUri = "" });
-            data.Add(new imageSlot() { imgUri = "" });
-            data.Add(new imageSlot() { imgUri = "" });
-            data.Add(new imageSlot() { imgUri = "" });
-            data.Add(new imageSlot() { imgUri = "" });
-            data.Add(new imageSlot() { imgUri = "" });
-            data.Add(new imageSlot() { imgUri = "" });
-            data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "/Resources/Images/IMG_9715.png" });
+            for (int i = 0; i < 9; i++)
+            {
+                data.Add(new imageSlot() { imgUri = "/Resources/Images/IMG_9715.png" });
+            }
+            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new imageSlot() { imgUri = "" });
             listImage.DataContext = data;
         }
     }

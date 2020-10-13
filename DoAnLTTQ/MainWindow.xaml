@@ -30,9 +30,10 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition Width="271*" />
+                <ColumnDefinition Width="207*"/>
             </Grid.ColumnDefinitions>
-            <component:MainSetting Grid.Column="1"  x:Name="MainSetting"/>
+            <component:MainSetting  x:Name="MainSetting" Grid.ColumnSpan="2"/>
         </Grid>
 
 
@@ -44,6 +45,6 @@
             <Button Content="Message" Click="Message_Click"/>
         </StackPanel>
         <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>-->
-        
+
     </Grid>
 </Window>

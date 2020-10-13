@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             d:DesignHeight="720" d:DesignWidth="320" FontFamily="Seoge UI">
+             d:DesignHeight="680" d:DesignWidth="320" FontFamily="Seoge UI">
 
     <UserControl.Resources>
         <Style x:Key="BackBtnWarper" TargetType="Grid">
@@ -53,9 +53,10 @@
         <Style x:Key="updateBtn" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="136"/>
-            <Setter Property="Height" Value="38"/>
-            <Setter Property="Canvas.Top" Value="31"/>
-            <Setter Property="Canvas.Left" Value="92"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <!--<Setter Property="Canvas.Top" Value="31"/>
+            <Setter Property="Canvas.Left" Value="92"/>-->
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -119,9 +120,8 @@
     <Border BorderBrush="#D1DDE3" BorderThickness="0 0 1 0">
     <Grid>
           
-        
-            <Grid Style="{StaticResource BackBtnWarper}" Height="720" VerticalAlignment="Bottom">
-                
+        <!--change height here-->
+            <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680">
                 <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="auto"/>
@@ -148,7 +148,7 @@
                     </Grid>
                 </Border>
                 <Grid Grid.Row="1">
-                <Label HorizontalAlignment="Center"   Margin="0,41,0,41">
+                <Label HorizontalAlignment="Center"  Margin="0,41,0,41">
                     <Canvas Height="160" Width="160">
                         <Border Height="160" Width="160">
                             <!--shadow effect here-->
@@ -181,13 +181,14 @@
             </Grid>
 
             <StackPanel Grid.Row="2">
+                
                 <TextBox Style="{StaticResource placeHolder}" Tag="Name"/>
                 <TextBox Style="{StaticResource placeHolder}" Tag="Age" TextChanged="TextBox_TextChanged"/>
                 <TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>
-                <TextBox Style="{StaticResource placeHolder}" Tag="Hobby"/>
+                <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Margin="0"/>
             </StackPanel>
 
-            <Canvas Grid.Row="3">
+            <Grid Grid.Row="3">
                 <Button Style="{StaticResource updateBtn}" Click="Button_Click" >
                     <Button.Resources>
                         <Style TargetType="Border">
@@ -204,7 +205,7 @@
                 </Button>
                     
                 
-            </Canvas>
+            </Grid>
         </Grid>
     </Grid>
     </Border>
