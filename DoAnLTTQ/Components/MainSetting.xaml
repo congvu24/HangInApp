@@ -99,7 +99,7 @@
                             <GradientStop Color="#fd267d" Offset="1.0" />
                         </LinearGradientBrush>
                     </Button.Background>
-                    Update
+                    Save
                 </Button>
             </Grid>
         </StackPanel>

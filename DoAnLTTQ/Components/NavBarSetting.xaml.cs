@@ -45,6 +45,11 @@ namespace DoAnLTTQ.Components
             MessageBox.Show("hello");
         }
 
+        private void LocaleCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
         //private void profilePicture_Click(object sender, RoutedEventArgs e)
         //{
         //    // disable click on this button

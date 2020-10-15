@@ -48,7 +48,7 @@
             <Setter Property="Height" Value="28.5"/>
             <Setter Property="Margin" Value="0,0,0,37"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Background" Value="#F0F6F6"/>
+            <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
         <Style x:Key="updateBtn" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
@@ -118,16 +118,16 @@
 
     <!--main content-->
     <Border BorderBrush="#D1DDE3" BorderThickness="0 0 1 0">
-    <Grid>
-          
-        <!--change height here-->
+        <Grid>
+
+            <!--change height here-->
             <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680">
                 <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
                 <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2">
                     <Grid>
@@ -148,20 +148,20 @@
                     </Grid>
                 </Border>
                 <Grid Grid.Row="1">
-                <Label HorizontalAlignment="Center"  Margin="0,41,0,41">
-                    <Canvas Height="160" Width="160">
-                        <Border Height="160" Width="160">
-                            <!--shadow effect here-->
+                    <Label HorizontalAlignment="Center"  Margin="0,41,0,41">
+                        <Canvas Height="160" Width="160">
+                            <Border Height="160" Width="160">
+                                <!--shadow effect here-->
                                 <Border.Effect>
                                     <!--<DropShadowEffect Color="Black" ShadowDepth="10" Opacity="0.5" />-->
                                     <DropShadowEffect BlurRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth5" Opacity="0.5"/>
                                 </Border.Effect>
                                 <Image Stretch="Fill" Source="/Resources/Images/heocute.jpg">
-                                <Image.Clip>
-                                    <EllipseGeometry Center="80,80" RadiusX="80" RadiusY="80" />
-                                </Image.Clip>
-                            </Image>
-                        </Border>
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="80,80" RadiusX="80" RadiusY="80" />
+                                    </Image.Clip>
+                                </Image>
+                            </Border>
                             <Button Style="{StaticResource changProfilePicture}" >
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -169,32 +169,41 @@
                                     </Style>
                                 </Button.Resources>
                                 <Border Style="{StaticResource changeProFilePicture_border}" >
-                                <materialDesign:PackIcon Kind="Plus"
+                                    <materialDesign:PackIcon Kind="Plus"
                                     Width="32"
                                     Height="32"
                                     Foreground="red">
-                                </materialDesign:PackIcon>
-                            </Border>
-                        </Button>
-                    </Canvas>
-                </Label>
-            </Grid>
+                                    </materialDesign:PackIcon>
+                                </Border>
+                            </Button>
+                        </Canvas>
+                    </Label>
+                </Grid>
 
-            <StackPanel Grid.Row="2">
-                
-                <TextBox Style="{StaticResource placeHolder}" Tag="Name"/>
-                <TextBox Style="{StaticResource placeHolder}" Tag="Age" TextChanged="TextBox_TextChanged"/>
-                <TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>
-                <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Margin="0"/>
-            </StackPanel>
+                <StackPanel Grid.Row="2">
 
-            <Grid Grid.Row="3">
-                <Button Style="{StaticResource updateBtn}" Click="Button_Click" >
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"/>
-                        </Style>
-                    </Button.Resources>
+                    <TextBox Style="{StaticResource placeHolder}" Tag="Name"/>
+                    <TextBox Style="{StaticResource placeHolder}" Tag="Age" TextChanged="TextBox_TextChanged"/>
+                    <!--<TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>-->
+                    <ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
+                        Name="LocaleCombo" Width="194" Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,37">
+                        <ComboBoxItem>Male</ComboBoxItem>
+                        <ComboBoxItem>Female</ComboBoxItem>
+                        <ComboBoxItem>I don't want to tell</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Margin="0"/>
+
+
+
+                </StackPanel>
+
+                <Grid Grid.Row="3">
+                    <Button Style="{StaticResource updateBtn}" Click="Button_Click" >
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Color="#ff7854" Offset="0.0" />
@@ -202,11 +211,11 @@
                             </LinearGradientBrush>
                         </Button.Background>
                         Update
-                </Button>
-                    
-                
+                    </Button>
+
+
+                </Grid>
             </Grid>
         </Grid>
-    </Grid>
     </Border>
 </UserControl>
