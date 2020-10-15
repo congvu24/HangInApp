@@ -69,8 +69,17 @@
     <Compile Include="Components\MainSetting.xaml.cs">
       <DependentUpon>MainSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\NavBarMain.xaml.cs">
+      <DependentUpon>NavBarMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\NavBarSetting.xaml.cs">
       <DependentUpon>NavBarSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TestGit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TestGit.Designer.cs">
+      <DependentUpon>TestGit.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -90,6 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\MainSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\NavBarMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
