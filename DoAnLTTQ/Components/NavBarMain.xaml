@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:component ="clr-namespace:DoAnLTTQ.Components" 
              mc:Ignorable="d"
-             d:DesignHeight="680" d:DesignWidth="320" FontFamily="Seoge UI">
+             d:DesignHeight="720" d:DesignWidth="320" FontFamily="Seoge UI">
     <UserControl.Resources>
+        
         <Style x:Key="BackBtnWarper" TargetType="Grid">
             <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
+        
         <Style x:Key="backBtnIcon" TargetType="Button">
             <Setter Property="Width" Value="58"/>
             <Setter Property="Height" Value="80"/>
@@ -29,6 +32,7 @@
             </Setter>
             <!--end-->
         </Style>
+        
         <Style x:Key="backBtnTitle" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="30"/>
@@ -43,13 +47,6 @@
             <Setter Property="FontFamily" Value="Comic Sans MS" />
         </Style>
 
-        <Style x:Key="textBox" TargetType="TextBox">
-            <Setter Property="Width" Value="194"/>
-            <Setter Property="Height" Value="28.5"/>
-            <Setter Property="Margin" Value="0,0,0,37"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Background" Value="#f5f7fa"/>
-        </Style>
         <Style x:Key="updateBtn" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="136"/>
@@ -66,45 +63,24 @@
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
 
-        <!--placeholder for textbox-->
-        <!--this style is base on textBox style at line 38 definition for that at line 46-->
-        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource textBox}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Grid>
-                            <TextBox Text="{Binding Path=Text,
-                                                RelativeSource={RelativeSource TemplatedParent}, 
-                                                Mode=TwoWay,
-                                                UpdateSourceTrigger=PropertyChanged}"
-                                 x:Name="textSource" 
-                                 Background="Transparent"
-                                 Panel.ZIndex="2" />
-                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
-                                <TextBox.Style>
-                                    <Style TargetType="{x:Type TextBox}">
-                                        <Setter Property="Foreground" Value="Transparent"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Style.Triggers>
-                                            <!--style for text in placeholder here-->
-                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-                                                <Setter Property="Foreground" Value="#707070"/>
-                                                <!--them thuoc tinh-->
-                                                <Setter Property="BorderThickness" Value="0"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        <Style x:Key="changingbutton" TargetType="Button">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <!--<Setter Property="Canvas.Top" Value="31"/>
+            <Setter Property="Canvas.Left" Value="92"/>-->
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontStretch" Value="Expanded"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontWeight" Value="Medium" />
+          
         </Style>
 
-        <Style x:Key="HeadButton" TargetType="Button">
-
-        </Style>
 
         <Style x:Key="changProfilePicture" TargetType="Button">
             <Setter Property="Background" Value="White"/>
@@ -116,9 +92,17 @@
                 <Setter Property="BorderThickness" Value="0"/>
             </Style>-->
         </Style>
+        
         <Style x:Key="changeProFilePicture_border" TargetType="Border">
             <Setter Property="CornerRadius" Value="25"/>
         </Style>
+
+        <Style x:Key="UnderLineButtonStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0 0 0 2"/>
+            <Setter Property="Margin" Value="20, 35, 20, 20"/>
+        </Style>
+        
     </UserControl.Resources>
 
     <!--main content-->
@@ -129,15 +113,15 @@
             <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="86"/>
-                    <RowDefinition Height="470"/>
+                    <RowDefinition Height="490"/>
                     <RowDefinition Height="*"/>
-                
+
                 </Grid.RowDefinitions>
 
                 <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2" Height="84">
                     <Grid>
                         <Button Height="86" Padding="0">
-                            
+
                             <Grid Width="320">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
@@ -166,15 +150,35 @@
                                 </Grid>
 
                             </Grid>
-                        </Button> 
+                        </Button>
 
                     </Grid>
                 </Border>
-                
-                <Grid Grid.Row="1">
-                    
-                    
-                </Grid>
+
+                <StackPanel Grid.Row="1" Background="White">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
+                            <Button  Style="{StaticResource changingbutton}" Content="Quanh đây">
+                               
+                            </Button>
+                        </Border>
+
+                        <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}">
+                            <Button  Style="{StaticResource changingbutton}" Content="Tin nhắn">
+
+                            </Button>
+                        </Border>
+
+
+                    </Grid>
+                    <component:GridProfile></component:GridProfile>
+
+                </StackPanel>
 
                 <Grid Grid.Row="2">
                     <Button Style="{StaticResource updateBtn}"  >

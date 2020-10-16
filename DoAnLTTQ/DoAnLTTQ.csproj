@@ -66,6 +66,12 @@
     <Compile Include="Backend\Client.cs" />
     <Compile Include="Backend\Message.cs" />
     <Compile Include="Backend\Server.cs" />
+    <Compile Include="Components\GridMessage.xaml.cs">
+      <DependentUpon>GridMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GridProfile.xaml.cs">
+      <DependentUpon>GridProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\MainSetting.xaml.cs">
       <DependentUpon>MainSetting.xaml</DependentUpon>
     </Compile>
@@ -91,6 +97,14 @@
       <DependentUpon>SettingView.xaml</DependentUpon>
     </Compile>
     <Page Include="Components\BackButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\GridMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\GridProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
