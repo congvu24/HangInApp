@@ -118,10 +118,9 @@
 
     <!--main content-->
     <Border BorderBrush="#D1DDE3" BorderThickness="0 0 1 0">
-        <Grid>
-
+        <Grid x:Name="LayoutRoot">
             <!--change height here-->
-            <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680">
+            <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="auto"/>
@@ -129,8 +128,8 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2">
-                    <Grid>
+                <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2" >
+                    <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*"/>
@@ -141,10 +140,10 @@
                                 <GradientStop Color="#fd267d" Offset="1.0" />
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <Button Name="backBtnIcon" Click="backBtnIcon_Click" Style="{StaticResource backBtnIcon}" Height="Auto" HorizontalAlignment="Left">
+                        <Button Name="backBtnIcon" Click="Button_Click" Style="{StaticResource backBtnIcon}" Height="Auto" HorizontalAlignment="Left">
                             <materialDesign:PackIcon VerticalAlignment="Center" Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" />
                         </Button>
-                        <Label Style="{StaticResource backBtnTitle}"  Content="My Profile" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
+                        <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
                     </Grid>
                 </Border>
                 <Grid Grid.Row="1">
@@ -156,13 +155,13 @@
                                     <!--<DropShadowEffect Color="Black" ShadowDepth="10" Opacity="0.5" />-->
                                     <DropShadowEffect BlurRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth5" Opacity="0.5"/>
                                 </Border.Effect>
-                                <Image Stretch="Fill" Source="/Resources/Images/heocute.jpg">
+                                <Image Stretch="Fill" Source="{Binding Path=myProfile.avatar.url}" x:Name="avatarControl">
                                     <Image.Clip>
                                         <EllipseGeometry Center="80,80" RadiusX="80" RadiusY="80" />
                                     </Image.Clip>
                                 </Image>
                             </Border>
-                            <Button Style="{StaticResource changProfilePicture}" >
+                            <Button Style="{StaticResource changProfilePicture}" Click="Avatar_Click">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="20"/>
@@ -182,23 +181,26 @@
 
                 <StackPanel Grid.Row="2">
 
-                    <TextBox Style="{StaticResource placeHolder}" Tag="Name"/>
-                    <TextBox Style="{StaticResource placeHolder}" Tag="Age" TextChanged="TextBox_TextChanged"/>
+                    <TextBox Style="{StaticResource placeHolder}" Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="nameInput"/>
+                    <TextBox Style="{StaticResource placeHolder}" Tag="Age" Text="{Binding Path=myProfile.age}" TextChanged="TextBox_TextChanged" x:Name="ageInput"/>
                     <!--<TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>-->
                     <ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
-                        Name="LocaleCombo" Width="194" Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,37">
+                              SelectedIndex="{Binding Path=myProfile.sex}"
+                              x:Name="sexSelect"
+                              Width="194"
+                              Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,37">
                         <ComboBoxItem>Male</ComboBoxItem>
                         <ComboBoxItem>Female</ComboBoxItem>
                         <ComboBoxItem>I don't want to tell</ComboBoxItem>
                     </ComboBox>
-                    <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Margin="0"/>
+                    <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="hobbyInput"/>
 
 
 
                 </StackPanel>
 
                 <Grid Grid.Row="3">
-                    <Button Style="{StaticResource updateBtn}" Click="Button_Click" >
+                    <Button Style="{StaticResource updateBtn}" Click="Update_Click" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20"/>
