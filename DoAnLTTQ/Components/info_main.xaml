@@ -18,189 +18,21 @@
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="Focusable" Value="True"/>
         </Style>
-        <Style x:Key="navButton" TargetType="Button" >
-            <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="Width" Value="44"/>
-            <Setter Property="Height" Value="44"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-           
 
-            <!--tat hover effect mac dinh-->
-            <!--<Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid  Height="auto">
-                            <ContentPresenter />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>-->
-
-            <Style.Triggers>
-                <Trigger Property="IsPressed" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.075" To="46" 
-                                                            Storyboard.TargetProperty="Height" />
-                                <DoubleAnimation Duration="0:0:0.075" To="46" 
-                                                            Storyboard.TargetProperty="Width" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.075" To="44" 
-                                                            Storyboard.TargetProperty="Height" />
-                                <DoubleAnimation Duration="0:0:0.075" To="44" 
-                                                            Storyboard.TargetProperty="Width" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </Style.Triggers>
-
-
-            <!--set background for rounded border--><!--
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        
-            <Border Name="border" 
-        				BorderThickness="0"
-                                Padding="1"
-        				BorderBrush="DarkGray" 
-        				CornerRadius="30">
-                            <Border.Background>
-                                <ImageBrush ImageSource="/Resources/Images/favicon.ico"/>
-                            </Border.Background>
-                            
-            <Grid >
-            --><!--gắn background vào dây là xong--><!--
-            <Image Stretch="Fill" Source="/Resources/Images/favicon.ico" Width="46" Height="46">
-                                    <Image.Clip>
-                                        <EllipseGeometry Center="23,23" RadiusX="23" RadiusY="23" />
-                                    </Image.Clip>
-                                </Image>
-            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            --><!--end test code-->
-            
-            
-
-            <!--<Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid Background="{TemplateBinding Background}">
-                            <ContentPresenter />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>-->
-
-            <!--<Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="30"/>-->
-                    
-                    
-            <!--<Setter Property="Effect">
-                        <Setter.Value>
-                            <BlurEffect Radius="3"/>
-                        </Setter.Value>
-                    </Setter>-->
-            
-                <!--</Style>
-            </Style.Resources>-->
-
-            <!--hover effect-->
-            <!--<Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ThicknessAnimation Duration="0:0:0.250" To="0" 
-                                                            Storyboard.TargetProperty="BorderThickness" />
-                                <DoubleAnimation Duration="0:0:0.075" To="55" 
-                                                            Storyboard.TargetProperty="Height" />
-                                <DoubleAnimation Duration="0:0:0.075" To="55" 
-                                                            Storyboard.TargetProperty="Width" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ThicknessAnimation Duration="0:0:0.250" To="0" 
-                                                            Storyboard.TargetProperty="BorderThickness" />
-                                <DoubleAnimation Duration="0:0:0.075" To="50" 
-                                                            Storyboard.TargetProperty="Height" />
-                                <DoubleAnimation Duration="0:0:0.075" To="50" 
-                                                            Storyboard.TargetProperty="Width" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </Style.Triggers>-->
-            <!--end hover effect-->
-
-            <!--<Setter Property="Effect">
-                <Setter.Value>
-                            <BlurEffect Radius="3" RenderingBias="Quality"/>
-                </Setter.Value>
-            </Setter>-->
-
-            <!--<Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    -->
-            <!--<Setter Property="Effect">
-                        <Setter.Value>
-                            <BlurEffect Radius="0" RenderingBias="Quality"/>
-
-                        </Setter.Value>
-                    </Setter>-->
-            <!--
-                </Trigger>
-            </Style.Triggers>-->
-
-           
-        </Style>
-
-        <!--button hover efffect-->
-        <Style x:Key="hover" TargetType="Image">
-            <!--<Setter Property="Width" Value="44"/>-->
-            <Setter Property="Height" Value="44"/>
+        <Style x:Key="defaultImageSize" TargetType="Image">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
             <Setter Property="Stretch" Value="Fill"/>
-           
-            
-            
         </Style>
 
-        <Style x:Key="test" TargetType="Border">
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="CornerRadius" Value="30"/>
-         
-
-        </Style>
-
-        <Style x:Key="navButton1" TargetType="{x:Type Button}" >
+        <Style x:Key="navButton" TargetType="{x:Type Button}" >
             <Setter Property="SnapsToDevicePixels" Value="true"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="Width" Value="44"/>
-            <Setter Property="Height" Value="44"/>
-            <Setter Property="Background" Value="Purple"/>
+            <Setter Property="Width" Value="46"/>
+            <Setter Property="Height" Value="46"/>
+            <!--<Setter Property="Background" Value="Purple"/>-->
             <Setter Property="BorderThickness" Value="0"/>
-            
-            
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -209,8 +41,8 @@
            CornerRadius="30" 
            BorderThickness="1"
            Margin="0"
-            Background="{Binding image, RelativeSource={RelativeSource Self}}"
-           BorderBrush="#404040">
+           Background="{Binding image, RelativeSource={RelativeSource Self}}"
+           BorderBrush="#d9dbde" Padding="1">
                             <ContentPresenter 
              Margin="0"
              HorizontalAlignment="Center"
@@ -231,9 +63,9 @@
                                 <Trigger.EnterActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Duration="0:0:0.075" To="42" 
+                                            <DoubleAnimation Duration="0:0:0.075" To="44" 
                                                             Storyboard.TargetProperty="Height" />
-                                            <DoubleAnimation Duration="0:0:0.075" To="42" 
+                                            <DoubleAnimation Duration="0:0:0.075" To="44" 
                                                             Storyboard.TargetProperty="Width" />
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -241,9 +73,9 @@
                                 <Trigger.ExitActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Duration="0:0:0.075" To="44" 
+                                            <DoubleAnimation Duration="0:0:0.075" To="46" 
                                                             Storyboard.TargetProperty="Height" />
-                                            <DoubleAnimation Duration="0:0:0.075" To="44" 
+                                            <DoubleAnimation Duration="0:0:0.075" To="46" 
                                                             Storyboard.TargetProperty="Width" />
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -260,6 +92,44 @@
             </Setter>
         </Style>
 
+        <Style x:Key="embeddedNavButton" TargetType="Button">
+            <Setter Property="BorderThickness" Value="1,0,0,0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="4"/>
+            <!--override element default template with nothing to disable hover effect-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter />
+                        <ControlTemplate.Triggers>
+                            <!--<Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="red" />
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+            <!--style child element-->
+            <Style.Resources> 
+                <Style TargetType="Grid">
+                    <Setter Property="Width" Value="auto"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    
+                    <Style.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Width" Value="20"/>
+                            <Setter Property="Height" Value="20"/>
+                        </Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Width" Value="auto"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </Style.Resources>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid Background="#f5f7fa" Margin="0">
@@ -272,7 +142,7 @@
                             </Border.Background>
                         </Border>
                         <StackPanel Orientation="Vertical" Panel.ZIndex="10" Canvas.Bottom="50">
-                            <TextBox Name="name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy</TextBox>
+                            <TextBox Name="name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
                             <TextBox Name="age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
                             <TextBox Name ="hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
                         </StackPanel>
@@ -283,20 +153,87 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions> 
+                    </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Style="{StaticResource navButton1}" >
-                            <Image Source="/Resources/icon/reload.png" Style="{StaticResource hover}"/>
+                    <Button Grid.Column="0" Style="{StaticResource navButton}" >
+                        <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
 
-                    <Button Grid.Column="1" Style="{StaticResource navButton1}"  >
-                        <Image Source="/Resources/icon/heart.png" Style="{StaticResource hover}"/>
+                    <Button Grid.Column="1" Style="{StaticResource navButton}"  >
+                        <Image Source="/Resources/icon/heart.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
-                    <Button Grid.Column="2" Style="{StaticResource navButton1}" >
-                        <Image Source="/Resources/icon/reject.png" Style="{StaticResource hover}"/>
+                    <Button Grid.Column="2" Style="{StaticResource navButton}" >
+                        <Image Source="/Resources/icon/reject.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
-
                 </Grid>
+
+                <!--disable tab navigation on stackpanel's child element with KeyboardNavigation.TabNavigation="None"-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" KeyboardNavigation.TabNavigation="None">
+                    <Button Style="{StaticResource embeddedNavButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="17*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/Resources/icon/enter.png" Grid.RowSpan="2" />
+                                <TextBlock Text="Open profile " Grid.Column="1" Grid.RowSpan="2"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource embeddedNavButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/Resources/icon/left.png" />
+                                <TextBlock Text="Back " Grid.Column="1"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource embeddedNavButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/Resources/icon/right.png" />
+                                <TextBlock Text="Next " Grid.Column="1"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource embeddedNavButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/Resources/icon/up.png" />
+                                <TextBlock Text="Like" Grid.Column="1"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource embeddedNavButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/Resources/icon/down.png" />
+                                <TextBlock Text="Chào cậu, hihi" Grid.Column="1"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
