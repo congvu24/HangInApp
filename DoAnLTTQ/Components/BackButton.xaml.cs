@@ -20,13 +20,13 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class BackButton : UserControl
     {
-        public event EventHandler<data> UserControlButtonClicked;
+        public event EventHandler<String> UserControlButtonClicked;
 
 
         public delegate void ClickDelegate();
         public ClickDelegate Click { get; set; }
         public string Title = "cac";
-        public data dl = new data() { name = "vu", title="hello"};
+        //public data dl = new data() { name = "vu", title="hello"};
 
         public BackButton()
         {
@@ -36,13 +36,13 @@ namespace DoAnLTTQ.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Click();
+            OnUserControlButtonClick();
         }
         private void OnUserControlButtonClick()
         {
             if (UserControlButtonClicked != null)
             {
-                UserControlButtonClicked(this, this.dl);
+                UserControlButtonClicked(this, "vcl");
             }
         }
 
