@@ -6,7 +6,8 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="680" d:DesignWidth="960">
+             d:DesignHeight="680" d:DesignWidth="960"
+             UseLayoutRounding="True">
 
     <UserControl.Resources>
         <Style x:Key="infoTextBox" TargetType="TextBox">
@@ -36,6 +37,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
+                        <!--auto binding to image-child element at line 45-->
                         <Border 
            x:Name="Border"  
            CornerRadius="30" 
@@ -50,9 +52,9 @@
              RecognizesAccessKey="True"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
+                            <!--<Trigger Property="IsKeyboardFocused" Value="true">
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#202020" />
-                            </Trigger>
+                            </Trigger>-->
                             <Trigger Property="IsDefaulted" Value="true">
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#202020" />
                             </Trigger>
@@ -115,11 +117,13 @@
                 <Style TargetType="Grid">
                     <Setter Property="Width" Value="auto"/>
                     <Setter Property="Background" Value="Transparent"/>
-                    
+
                     <Style.Resources>
                         <Style TargetType="Image">
                             <Setter Property="Width" Value="20"/>
                             <Setter Property="Height" Value="20"/>
+                            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+                         
                         </Style>
                         <Style TargetType="TextBlock">
                             <Setter Property="Width" Value="auto"/>
@@ -141,7 +145,7 @@
                                 <ImageBrush ImageSource="/Resources/Images/hinh-anh-heo-cute-va-de-thuong_030601765.jpg"></ImageBrush>
                             </Border.Background>
                         </Border>
-                        <StackPanel Orientation="Vertical" Panel.ZIndex="10" Canvas.Bottom="50">
+                        <StackPanel Orientation="Vertical" Panel.ZIndex="10" Canvas.Bottom="50" KeyboardNavigation.TabNavigation="None">
                             <TextBox Name="name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
                             <TextBox Name="age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
                             <TextBox Name ="hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
