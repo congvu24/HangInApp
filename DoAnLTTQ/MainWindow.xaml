@@ -10,11 +10,11 @@
         xmlns:view="clr-namespace:DoAnLTTQ.Views" Icon="Logo.png" ResizeMode="CanMinimize"
         >
     <Grid>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <!-- nav bar -->
+            --><!-- nav bar --><!--
             <ColumnDefinition Width="9* "/>
-            <!-- main-->
+            --><!-- main--><!--
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -23,7 +23,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <!--<component:NavBarSetting Grid.Column="0" Grid.Row="0"  x:Name="NavbarSetting"/>-->
+            --><!--<component:NavBarSetting Grid.Column="0" Grid.Row="0"  x:Name="NavbarSetting"/>--><!--
         </Grid>
         <Grid Grid.Column="1" Background="#f5f7fa">
             <Grid.RowDefinitions>
@@ -33,9 +33,9 @@
                 <ColumnDefinition Width="271*" />
                 <ColumnDefinition Width="207*"/>
             </Grid.ColumnDefinitions>
-            <!--<component:MainSetting  x:Name="MainSetting" Grid.ColumnSpan="2"/>-->
+            --><!--<component:MainSetting  x:Name="MainSetting" Grid.ColumnSpan="2"/>--><!--
             <component:info_main x:Name="info_main" Grid.ColumnSpan="2"/>
-        </Grid>
+        </Grid>-->
 
 
         <!--<StackPanel Grid.Column="0">
@@ -44,8 +44,8 @@
             <Button Content="Setting" Click="Button_Click"/>
             <Button Content="Home" Click="Home_Click"/>
             <Button Content="Message" Click="Message_Click"/>
-        </StackPanel>
-        <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>-->
+        </StackPanel> -->
+        <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>
 
     </Grid>
 </Window>
