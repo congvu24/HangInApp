@@ -54,6 +54,8 @@ namespace DoAnLTTQ
             this.picture = user.myProfile.picture;
 
             this.DataContext = this;
+            this.ViewContext = new SettingView();
+            //ButtonName.UserControlButtonClicked += new EventHandler<data>(MyUserControl_UserControlButtonClicked);
 
             
         }

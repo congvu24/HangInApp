@@ -10,55 +10,8 @@
         xmlns:view="clr-namespace:DoAnLTTQ.Views" Icon="Logo.png" ResizeMode="CanMinimize"
         >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <!-- nav bar -->
-            <ColumnDefinition Width="9* "/>
-            <!-- main-->
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" >
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <component:NavBarSetting 
-                Grid.Column="0" 
-                Grid.Row="0"  
-                x:Name="navbarsetting"
-                myProfile="{Binding profile}"
-                />
-            <!--<StackPanel>
-            <Button Click="Button_Click_1">Send</Button>
-            <Button Click="Button_Click_2">Start server</Button>
-            <Button Click="Button_Click_3">Stop server</Button>
-            </StackPanel>-->
-        </Grid>
-        <Grid Grid.Column="1" Background="#f5f7fa">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="271*" />
-                <ColumnDefinition Width="207*"/>
-            </Grid.ColumnDefinitions>
-            <component:MainSetting  
-                x:Name="mainsetting"
-                Grid.ColumnSpan="2"
-                picture="{Binding picture}"
-                />
-        </Grid>
 
-
-        <!--<StackPanel Grid.Column="0">
-            <component:BackButton  x:Name="ButtonName"/>
-            <component:HeaderTitle Title="Xin chao" />
-            <Button Content="Setting" Click="Button_Click"/>
-            <Button Content="Home" Click="Home_Click"/>
-            <Button Content="Message" Click="Message_Click"/>
-        </StackPanel>
-        <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>-->
+        <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>
 
     </Grid>
 </Window>
