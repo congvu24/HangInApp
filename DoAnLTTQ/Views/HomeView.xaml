@@ -33,7 +33,5 @@
             </Grid.ColumnDefinitions>
             <component:info_main x:Name="info_main" Grid.ColumnSpan="2"/>
         </Grid>
-
-
     </Grid>
 </UserControl>

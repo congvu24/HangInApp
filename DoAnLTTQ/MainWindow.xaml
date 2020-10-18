@@ -10,8 +10,6 @@
         xmlns:view="clr-namespace:DoAnLTTQ.Views" Icon="Logo.png" ResizeMode="CanMinimize"
         >
     <Grid>
-
         <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>
-
     </Grid>
 </Window>

@@ -80,7 +80,6 @@ namespace DoAnLTTQ.Components
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                MessageBox.Show(openFileDialog.FileName);
             this.avatarControl.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             this.avatarLink = openFileDialog.FileName;
         }
