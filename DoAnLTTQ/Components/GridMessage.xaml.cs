@@ -20,9 +20,27 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class GridMessage : UserControl
     {
+        
         public GridMessage()
         {
+
             InitializeComponent();
+
+            List<ChatList> chatLists = new List<ChatList>();
+            for (int i = 0; i < 4; i++)
+            {
+                chatLists.Add(new ChatList() { imgUri = "/Resources/Images/IMG_9715.png", personName = "Công Vũ", message = "Ua la sao" });
+            }
+
+            ChatList.DataContext = chatLists; 
         }
+
+    }
+    class ChatList
+    {
+        public string imgUri { get; set; }
+        public string personName { get; set; }
+        public string message { get; set; }
+
     }
 }

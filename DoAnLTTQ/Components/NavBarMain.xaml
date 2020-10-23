@@ -9,11 +9,11 @@
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="320" FontFamily="Seoge UI">
     <UserControl.Resources>
-        
+
         <Style x:Key="BackBtnWarper" TargetType="Grid">
             <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
-        
+
         <Style x:Key="backBtnIcon" TargetType="Button">
             <Setter Property="Width" Value="58"/>
             <Setter Property="Height" Value="80"/>
@@ -30,9 +30,23 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter />
+                        <ControlTemplate.Triggers>
+                            <!--<Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="red" />
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
             <!--end-->
         </Style>
-        
+
         <Style x:Key="backBtnTitle" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="30"/>
@@ -78,7 +92,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontWeight" Value="Medium" />
-          
+
         </Style>
 
 
@@ -92,7 +106,7 @@
                 <Setter Property="BorderThickness" Value="0"/>
             </Style>-->
         </Style>
-        
+
         <Style x:Key="changeProFilePicture_border" TargetType="Border">
             <Setter Property="CornerRadius" Value="25"/>
         </Style>
@@ -102,7 +116,7 @@
             <Setter Property="BorderThickness" Value="0 0 0 2"/>
             <Setter Property="Margin" Value="20, 35, 20, 20"/>
         </Style>
-        
+
     </UserControl.Resources>
 
     <!--main content-->
@@ -164,7 +178,7 @@
 
                         <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
                             <Button  Style="{StaticResource changingbutton}" Content="Quanh đây">
-                               
+
                             </Button>
                         </Border>
 
@@ -176,8 +190,8 @@
 
 
                     </Grid>
-                    <component:GridProfile></component:GridProfile>
-
+                    <!--<component:GridProfile></component:GridProfile>-->
+                    <component:GridMessage VerticalAlignment="Top"></component:GridMessage>
                 </StackPanel>
 
                 <Grid Grid.Row="2">

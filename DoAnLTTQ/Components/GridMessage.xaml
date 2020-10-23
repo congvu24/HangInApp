@@ -5,8 +5,87 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignWidth="320">
+    <UserControl.Resources>
+        
+        <Style TargetType="TextBlock" x:Key="myMessageName">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+
+        <Style x:Key="myChatButton" TargetType="Button">
+            <Setter Property="Margin" Value="20 10 20 10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+
+        <Style x:Key="myProfilePicture" TargetType="Image">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+
+    </UserControl.Resources>
+
     <Grid>
-            
+
+        <ItemsControl x:Name="ChatList" ItemsSource="{Binding}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Style="{StaticResource myChatButton}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="25"/>
+                            </Style>
+                        </Button.Resources>
+                        <Grid Width="320" Height="50">
+                            
+                            <Grid.ColumnDefinitions>
+                                <!--Profile picture-->
+                                <ColumnDefinition Width="auto"/>
+                                <!--Main content-->
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Profile picture-->
+                            <Border Grid.Column="0" CornerRadius="20">
+                                <Image Source="{Binding imgUri}" 
+                                                  Style="{StaticResource myProfilePicture}">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="25,25" RadiusX="20" RadiusY="20" />
+                                    </Image.Clip>
+                                </Image>
+                            </Border>
+
+                            <!--Main content-->
+                            <Border Grid.Column="1" Padding="4">
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding personName}"
+                          Style="{StaticResource myMessageName}"/>
+
+                                    <TextBlock Text="{Binding message}" 
+                           TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+
+                            </Border>
+                        </Grid>
+
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+
     </Grid>
+
 </UserControl>
