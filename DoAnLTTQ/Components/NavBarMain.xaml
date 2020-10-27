@@ -92,7 +92,20 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontWeight" Value="Medium" />
-
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#8d918a"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
 
@@ -113,7 +126,7 @@
 
         <Style x:Key="UnderLineButtonStyle" TargetType="Border">
             <Setter Property="BorderBrush" Value="LightGray"/>
-            <Setter Property="BorderThickness" Value="0 0 0 2"/>
+            <Setter Property="BorderThickness" Value="0 0 0 1.5"/>
             <Setter Property="Margin" Value="20, 35, 20, 20"/>
         </Style>
 
@@ -169,32 +182,32 @@
                     </Grid>
                 </Border>
 
-                <StackPanel Grid.Row="1" Background="White">
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                <Border Grid.Row="1" BorderBrush="#D1DDE3" BorderThickness="0 0 0.5 0">
+                    <StackPanel  >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
-                            <Button  Style="{StaticResource changingbutton}" Content="Quanh đây">
+                            <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
+                                <Button  Style="{StaticResource changingbutton}" Content="Quanh đây">
 
-                            </Button>
-                        </Border>
+                                </Button>
+                            </Border>
 
-                        <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}">
-                            <Button  Style="{StaticResource changingbutton}" Content="Tin nhắn">
+                            <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}">
+                                <Button  Style="{StaticResource changingbutton}" Content="Tin nhắn">
 
-                            </Button>
-                        </Border>
+                                </Button>
+                            </Border>
+                        </Grid>
+                        <!--<component:GridProfile></component:GridProfile>-->
+                        <component:GridMessage VerticalAlignment="Top"></component:GridMessage>
+                    </StackPanel>
+                </Border>
 
-
-                    </Grid>
-                    <!--<component:GridProfile></component:GridProfile>-->
-                    <component:GridMessage VerticalAlignment="Top"></component:GridMessage>
-                </StackPanel>
-
-                <Grid Grid.Row="2">
+                <Border Grid.Row="2" BorderBrush="#D1DDE3" BorderThickness="0 2 1 0">
                     <Button Style="{StaticResource updateBtn}"  >
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -209,9 +222,7 @@
                         </Button.Background>
                         Reload
                     </Button>
-
-
-                </Grid>
+                </Border>
             </Grid>
         </Grid>
     </Border>
