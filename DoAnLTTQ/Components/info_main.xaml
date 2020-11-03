@@ -147,7 +147,7 @@
                                 <ImageBrush ImageSource="/Resources/Images/hinh-anh-heo-cute-va-de-thuong_030601765.jpg"></ImageBrush>
                             </Border.Background>
                         </Border>
-                        <StackPanel>
+                        <StackPanel Style="{StaticResource infoParagraph}">
                             <TextBox Name="name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
                             <TextBox Name="age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
                             <TextBox Name ="hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
