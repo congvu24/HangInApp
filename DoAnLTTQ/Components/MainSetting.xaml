@@ -8,7 +8,6 @@
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              d:DesignHeight="680" d:DesignWidth="960">
     <UserControl.Resources>
-
         <Style TargetType="Button" x:Key="myImageSlotContent">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -57,12 +56,11 @@
         <Border.Effect>
             <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
         </Border.Effect>
-        <StackPanel >
-            <ItemsControl ItemsSource="{Binding}" x:Name="listImage" >
+        <StackPanel x:Name="LayoutRoot" >
+            <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage" >
                 <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-
-                        <WrapPanel />
+                    <ItemsPanelTemplate >
+                        <WrapPanel x:Name="vcl"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
@@ -71,23 +69,25 @@
                             <Button  
                             Style="{StaticResource myImageSlotContent}"
                             HorizontalContentAlignment="Center" 
-                            VerticalContentAlignment="Center">
+                            VerticalContentAlignment="Center"
+                            Content="+"
+                                Click="Slot_Click"
+                                >
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="15"/>
                                     </Style>
                                 </Button.Resources>
-                                +
-                                <!--<Button.Background>
-                                <ImageBrush ImageSource="{Binding imgUri}" Stretch="Fill" />
-                            </Button.Background>-->
+                                <Button.Background>
+                                <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
+                            </Button.Background>
                             </Button>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
             <Grid >
-                <Button Height="44"  Style="{StaticResource updateBtn}"  >
+                <Button Height="44"  Style="{StaticResource updateBtn}" Content="Save" Click="Save_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="20"/>
@@ -99,7 +99,7 @@
                             <GradientStop Color="#fd267d" Offset="1.0" />
                         </LinearGradientBrush>
                     </Button.Background>
-                    Save
+                    
                 </Button>
             </Grid>
         </StackPanel>

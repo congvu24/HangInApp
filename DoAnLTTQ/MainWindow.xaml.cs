@@ -1,9 +1,11 @@
-﻿using DoAnLTTQ.Components;
+﻿using DoAnLTTQ.Backend;
+using DoAnLTTQ.Components;
 using DoAnLTTQ.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +17,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace DoAnLTTQ
 {
@@ -23,8 +28,8 @@ namespace DoAnLTTQ
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-         
         public UserControl _ViewContext;
+
         public UserControl ViewContext { get { return this._ViewContext; } set {
 
                 _ViewContext = value;
@@ -34,29 +39,13 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
+            this.ViewContext = new HomeView();
             this.DataContext = this;
-            //ButtonName.UserControlButtonClicked += new EventHandler<data>(MyUserControl_UserControlButtonClicked);
+           
+        }
 
-        }
-        private void MyUserControl_UserControlButtonClicked(object sender, data e)
-        {
-            MessageBox.Show(e.name);
-        }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.ViewContext = new SettingView();
-        }
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            this.ViewContext = new HomeView();
-        }
-        private void Message_Click(object sender, RoutedEventArgs e)
-        {
-            this.ViewContext = new MessageView();
-        }
-        
         protected virtual void OnPropertyChanged(string newName)
         {
             if (PropertyChanged != null)
@@ -64,15 +53,6 @@ namespace DoAnLTTQ
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-
-        private void NavbarSetting_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
-    public class data
-    {
-        public string title { get; set; }
-        public string name { get; set; }
-    }
+
 }
