@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DoAnLTTQ.Backend;
 
 namespace DoAnLTTQ.Components
 {
@@ -24,20 +25,20 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
 
-            List<imageSlot> data = new List<imageSlot>();
-            //data.Add(new imageSlot() { imgUri = "/Resources/Images/IMG_9715.png" });
+            List<Picture> data = new List<Picture>();
+            //data.Add(new Picture() { imgUri = "/Resources/Images/IMG_9715.png" });
             for (int i = 0; i < 9; i++)
             {
-                data.Add(new imageSlot() { imgUri = "/Resources/Images/IMG_9715.png" });
+                data.Add(new Picture() { url = "/Resources/Images/IMG_9715.png" });
             }
-            //data.Add(new imageSlot() { imgUri = "" });
-            //data.Add(new imageSlot() { imgUri = "" });
-            //data.Add(new imageSlot() { imgUri = "" });
-            //data.Add(new imageSlot() { imgUri = "" });
-            //data.Add(new imageSlot() { imgUri = "" });
-            //data.Add(new imageSlot() { imgUri = "" });
-            //data.Add(new imageSlot() { imgUri = "" });
-            //data.Add(new imageSlot() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
             listImage.DataContext = data;
         }
     }

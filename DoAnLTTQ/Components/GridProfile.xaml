@@ -60,7 +60,7 @@
                                 </Button.Resources>
 
                                 <Button.Background>
-                                    <ImageBrush ImageSource="{Binding imgUri}" Stretch="Fill" />
+                                    <ImageBrush ImageSource="{Binding url}" Stretch="Fill" />
                                 </Button.Background>
                             </Button>
                         </Border>
