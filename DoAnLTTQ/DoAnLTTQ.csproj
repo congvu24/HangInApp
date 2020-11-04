@@ -73,8 +73,9 @@
     <Compile Include="Components\GridMessage.xaml.cs">
       <DependentUpon>GridMessage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\GridProfile.xaml.cs">
-      <DependentUpon>GridProfile.xaml</DependentUpon>
+	  <Compile Include="Components\GridProfile.xaml.cs">
+		  <DependentUpon>GridProfile.xaml</DependentUpon>
+	  </Compile>
     <Compile Include="Components\info_main.xaml.cs">
       <DependentUpon>info_main.xaml</DependentUpon>
     </Compile>
