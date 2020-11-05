@@ -40,5 +40,5 @@
                 Grid.ColumnSpan="2"
                 picture="{Binding picture}"/>
         </Grid>
-        </Grid>
+    </Grid>
 </UserControl>
