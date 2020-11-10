@@ -85,6 +85,9 @@
     <Compile Include="Components\MainSetting.xaml.cs">
       <DependentUpon>MainSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\MessageView_MessageDetails.xaml.cs">
+      <DependentUpon>MessageView_MessageDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\NavBarMain.xaml.cs">
       <DependentUpon>NavBarMain.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\MainSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\MessageView_MessageDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
