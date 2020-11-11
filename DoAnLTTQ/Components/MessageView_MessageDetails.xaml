@@ -33,43 +33,53 @@
         </Style>
 
         <Style TargetType="Border" x:Key="MyMessageBorder">
-            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="CornerRadius" Value="25"/>
             <Setter Property="Margin" Value="30,10,30,10"/>
             <Setter Property="Padding" Value="10"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="MessageContent">
+        <Style TargetType="TextBlock" x:Key="myMessageContent">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Comic Sans ms"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="partnerMessageContent">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Comic Sans ms"/>
         </Style>
 
         <Style TargetType="TextBox" x:Key="TextToSendMessage">
-            
-        </Style>
-
-        <Style x:Key="MyFocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="-2" StrokeThickness="1" Stroke="Red" StrokeDashArray="1 2"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Comic sans ms"/>
         </Style>
 
         <Style x:Key="SendButton" TargetType="Button">
-            <Setter Property="Margin" Value="4, 2, 6, 2"/>
+            <Setter Property="Margin" Value="4, 4, 2, 4"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Content" Value="Send"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="70"/>
-            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="38"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style x:Key="emojiPicture" TargetType="Image">
+            <Setter Property="Margin" Value="15, 10 ,10 ,10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Stretch" Value="Fill"/>
         </Style>
 
     </UserControl.Resources>
@@ -81,7 +91,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--Avatar va ten partnerday--> 
+        <!--Avatar va ten partnerday-->
         <Grid Grid.Row="0" Background="White" >
             <!--<ItemsControl x:Name="messageNameTitle" ItemsSource="{Binding}">
                 <ItemsControl.ItemsPanel>
@@ -122,21 +132,27 @@
                 <TextBlock Text="Công vũ" Style="{StaticResource myMessageName}"/>
             </WrapPanel>
         </Grid>
-        
-         <!--Tin nhan nam day ne--> 
+
+        <!--Tin nhan nam day ne-->
         <Border Grid.Row="1" Background="White" BorderThickness="0, 1, 1, 1" BorderBrush="DarkGray">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical" >
                     <Border x:Name="PartnerMessage" Style="{StaticResource PartnerMessageBorder}">
-                        <TextBlock x:Name="PartnerMessageContent" Style="{StaticResource MessageContent}" Text="Baby Shark dududu">
-                          
+                        <TextBlock x:Name="PartnerMessageContent" Style="{StaticResource partnerMessageContent}" Text="Baby Shark dududu">
+
                         </TextBlock>
                     </Border>
 
                     <Border x:Name="MyMessage" Style="{StaticResource MyMessageBorder}">
-                        <TextBlock x:Name="MyMessageContent" Style="{StaticResource MessageContent}" Text="aaaaaaaaaaaaaaaadudu" />
+                        <TextBlock x:Name="MyMessageContent" Style="{StaticResource myMessageContent}" Text="aaaaaaaaaaaaaaaadudu">
+                        </TextBlock>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.2" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
                     </Border>
-                   
                 </StackPanel>
             </ScrollViewer>
         </Border>
@@ -149,17 +165,22 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <!--Icon nam day ne-->
                 <WrapPanel Grid.Column="0">
-                    
+                    <Image Source="/Resources/icon/emoji tin nhan.png"  Style="{StaticResource emojiPicture}">
+                        
+                    </Image>
                 </WrapPanel>
 
-                <TextBox Grid.Column="1" x:Name="TextToSend" BorderThickness="0" VerticalAlignment="Center" Padding="2"/>
+                <!--Nhap tin nhan vao day ne-->
+                <TextBox Grid.Column="1" x:Name="TextToSend" Style="{DynamicResource TextToSendMessage}"/>
 
+                <!--Nut gui tin nhan day ne-->
                 <Border Grid.Column="2">
                     <Button x:Name="SendButton" Style="{StaticResource SendButton}" >
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="20"/>
+                                <Setter Property="CornerRadius" Value="25"/>
 
                             </Style>
                         </Button.Resources>
@@ -172,7 +193,7 @@
                         </Button.Background>
                     </Button>
                 </Border>
-                
+
             </Grid>
         </Border>
     </Grid>
