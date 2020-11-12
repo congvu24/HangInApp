@@ -33,8 +33,8 @@ namespace DoAnLTTQ.Views
         public User user { get { return this._user; } set { this._user = value; this.OnPropertyChanged("user"); } }
         public Profile profile { get { return this._profile; } set { this._profile = value; this.OnPropertyChanged("profile"); } }
         public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
-        private client cl;
-        private server sv = new server();
+        //private client cl;
+        //private server sv = new server();
 
         public SettingView()
         {
@@ -48,49 +48,49 @@ namespace DoAnLTTQ.Views
             this.DataContext = this;
         }
 
-        class client
-        {
-            public void sendToServer()
-            {
-                var ip = IPAddress.Parse("127.0.0.1");
-                var client = new UdpClient();
-                client.Connect(ip, 6969);
-                var buffer = Encoding.UTF8.GetBytes("vcl");
-                client.Send(buffer, buffer.Length);
-            }
-        }
-        class server
-        {
-            private UdpClient listner;
-            private bool isRunning;
-            public server()
-            {
+        //class client
+        //{
+        //    public void sendToServer()
+        //    {
+        //        var ip = IPAddress.Parse("127.0.0.1");
+        //        var client = new UdpClient();
+        //        client.Connect(ip, 6969);
+        //        var buffer = Encoding.UTF8.GetBytes("vcl");
+        //        client.Send(buffer, buffer.Length);
+        //    }
+        //}
+        //class server
+        //{
+        //    private UdpClient listner;
+        //    private bool isRunning;
+        //    public server()
+        //    {
 
-                isRunning = false;
-            }
-            public void run()
-            {
-                listner = new UdpClient(6969);
-                Thread listnerThread = new Thread(this.start);
-                listnerThread.Start();
-            }
-            public void start()
-            {
-                this.isRunning = true;
-                while (isRunning)
-                {
-                    var remoteEp = new IPEndPoint(0, 0);
-                    var buffer = listner.Receive(ref remoteEp);
-                    var text = Encoding.ASCII.GetString(buffer);
-                    MessageBox.Show(text);
-                }
-            }
-            public void stop()
-            {
-                this.isRunning = false;
-            }
+        //        isRunning = false;
+        //    }
+        //    public void run()
+        //    {
+        //        listner = new UdpClient(6969);
+        //        Thread listnerThread = new Thread(this.start);
+        //        listnerThread.Start();
+        //    }
+        //    public void start()
+        //    {
+        //        this.isRunning = true;
+        //        while (isRunning)
+        //        {
+        //            var remoteEp = new IPEndPoint(0, 0);
+        //            var buffer = listner.Receive(ref remoteEp);
+        //            var text = Encoding.ASCII.GetString(buffer);
+        //            MessageBox.Show(text);
+        //        }
+        //    }
+        //    public void stop()
+        //    {
+        //        this.isRunning = false;
+        //    }
 
-        }
+        //}
 
         private void Update_User(object sender, Profile newProfile)
         {
@@ -135,20 +135,20 @@ namespace DoAnLTTQ.Views
         {
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.cl = new client();
-            cl.sendToServer();
-        }
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    this.cl = new client();
+        //    cl.sendToServer();
+        //}
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            this.sv.run();
-        }
+        //private void Button_Click_2(object sender, RoutedEventArgs e)
+        //{
+        //    this.sv.run();
+        //}
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.sv.stop();
-        }
+        //private void Button_Click_3(object sender, RoutedEventArgs e)
+        //{
+        //    this.sv.stop();
+        //}
     }
 }

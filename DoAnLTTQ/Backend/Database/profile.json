@@ -1,1 +1,48 @@
-{"picture":[{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh5.jpg"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh5.jpg"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh5.jpg"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/heocute.jpg"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/ms-icon-310x310.png"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Logo.png"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh4.jpg"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh5.jpg"},{"name":"hinh","url":"file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh4.jpg"}],"name":"sAS","age":"19","sex":"0","hobby":"Sở thích mớiasd","avatar":{"name":"avatar","url":"C:\\Users\\vuong\\Downloads\\IMG_9715.JPG"}}
+{
+    "picture": [
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh1.jpg"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh2.jpg"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh3.jpg"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/heocute.jpg"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/ms-icon-310x310.png"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Logo.png"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh4.jpg"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh5.jpg"
+        },
+        {
+            "name": "hinh",
+            "url": "file:///D:/WPF/DoAnLTTQ/DoAnLTTQ/Resources/Images/Profile/hinh4.jpg"
+        }
+    ],
+    "name": "duy",
+    "age": "19",
+    "sex": "0",
+    "hobby": "Sở thích mớiasd",
+    "avatar": {
+        "name": "avatar",
+        "url": "C:\\Users\\Vuggy\\OneDrive\\Desktop\\Google-app-icon-small.png"
+    }
+}

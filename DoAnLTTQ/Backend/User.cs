@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Controls;
 
 namespace DoAnLTTQ.Backend
 {
+    [Serializable]
     public class User
     {
         private readonly string myProfileData = "\\Backend\\Database\\profile.json";
@@ -26,7 +28,7 @@ namespace DoAnLTTQ.Backend
                 {
                     for (int i = 0; i < 9 - count; i++)
                     {
-                        this.myProfile.picture.Add(new Picture() { name = "placeholer", url = "" });
+                        this.myProfile.picture.Add(new Picture() { name = "placeholer" + i, url = "" });
                     }
                 }
             }
@@ -39,9 +41,12 @@ namespace DoAnLTTQ.Backend
             string json = JsonConvert.SerializeObject(profile);
             System.IO.File.WriteAllText(_source, json);
         }
-        
-        
+
+        public List<Profile> userList = new List<Profile>();
+
     }
+
+    [Serializable]
     public class Profile
     {
         public string name { get; set; }
@@ -51,7 +56,8 @@ namespace DoAnLTTQ.Backend
         public Picture avatar { get; set; }
         public List<Picture> picture = new List<Picture>();
         public Profile() { }
-        public Profile(Profile profile) {
+        public Profile(Profile profile)
+        {
             name = profile.name;
             age = profile.age;
             sex = profile.sex;
@@ -60,9 +66,11 @@ namespace DoAnLTTQ.Backend
             picture = profile.picture;
         }
     }
+    [Serializable]
     public class Picture
     {
         public string name { get; set; }
         public string url { get; set; }
     }
+
 }

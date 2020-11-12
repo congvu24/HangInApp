@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnLTTQ.Backend;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,19 @@ namespace DoAnLTTQ.Views
         {
             InitializeComponent();
         }
+
+        private void NavBarMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            Server s = new Server();
+            s.run();
+            
+            var o = s.getResult() as string;
+            MessageBox.Show(o);
+            //Client c = new Client();
+            //var u = new User();
+            //c.sendToServer(u);
+           
+        }
+        
     }
 }

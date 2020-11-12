@@ -203,7 +203,7 @@
                             </Border>
                         </Grid>
                         <!--<component:GridProfile></component:GridProfile>-->
-                        <component:GridMessage VerticalAlignment="Top"></component:GridMessage>
+                        <component:GridProfile VerticalAlignment="Top"></component:GridProfile>
                     </StackPanel>
                 </Border>
 
@@ -222,7 +222,13 @@
                         </Button.Background>
                         Reload
                     </Button>
+
                 </Border>
+                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
+                    <Button Click="startser">start server</Button>
+                    <Button Click="Button_Click_2">close server</Button>
+                    <Button Click="Button_Click_1">send message</Button>
+                </StackPanel>
             </Grid>
         </Grid>
     </Border>

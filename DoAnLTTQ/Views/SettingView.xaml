@@ -38,7 +38,7 @@
             <component:MainSetting  
                 x:Name="mainsetting"
                 Grid.ColumnSpan="2"
-                picture="{Binding picture}"/>
+                picture="{Binding picture}" Loaded="mainsetting_Loaded"/>
         </Grid>
     </Grid>
 </UserControl>
