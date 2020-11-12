@@ -92,8 +92,6 @@
     <Compile Include="Components\MessageView_MessageDetails.xaml.cs">
       <DependentUpon>MessageView_MessageDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\NavBarMain.xaml.cs">
-      <DependentUpon>NavBarMain.xaml</DependentUpon>
     <Compile Include="Components\TAB.xaml.cs">
       <DependentUpon>TAB.xaml</DependentUpon>
     </Compile>
@@ -147,7 +145,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\NavBarMain.xaml">
     <Page Include="Components\TAB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
