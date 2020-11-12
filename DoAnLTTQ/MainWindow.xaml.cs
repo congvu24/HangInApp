@@ -29,6 +29,8 @@ namespace DoAnLTTQ
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public UserControl _ViewContext;
+        public List<Profile> friends = new List<Profile>(); 
+        //==>Home view 
 
         public UserControl ViewContext { get { return this._ViewContext; } set {
 
