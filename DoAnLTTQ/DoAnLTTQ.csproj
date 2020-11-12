@@ -70,26 +70,26 @@
     <Compile Include="Backend\Message.cs" />
     <Compile Include="Backend\User.cs" />
     <Compile Include="Backend\Server.cs" />
-    <Compile Include="Components\details.xaml.cs">
-      <DependentUpon>details.xaml</DependentUpon>
+    <Compile Include="Components\MS_Right.xaml.cs">
+      <DependentUpon>MS_Right.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\GridMessage.xaml.cs">
-      <DependentUpon>GridMessage.xaml</DependentUpon>
+    <Compile Include="Components\TAB_GridMessage.xaml.cs">
+      <DependentUpon>TAB_GridMessage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\GridProfile.xaml.cs">
-      <DependentUpon>GridProfile.xaml</DependentUpon>
+    <Compile Include="Components\TAB_GridProfile.xaml.cs">
+      <DependentUpon>TAB_GridProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\info_main.xaml.cs">
-      <DependentUpon>info_main.xaml</DependentUpon>
+    <Compile Include="Components\HM_Right.xaml.cs">
+      <DependentUpon>HM_Right.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\MainSetting.xaml.cs">
-      <DependentUpon>MainSetting.xaml</DependentUpon>
+    <Compile Include="Components\ST_Right.xaml.cs">
+      <DependentUpon>ST_Right.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\NavBarMain.xaml.cs">
-      <DependentUpon>NavBarMain.xaml</DependentUpon>
+    <Compile Include="Components\TAB.xaml.cs">
+      <DependentUpon>TAB.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\NavBarSetting.xaml.cs">
-      <DependentUpon>NavBarSetting.xaml</DependentUpon>
+    <Compile Include="Components\ST_Left.xaml.cs">
+      <DependentUpon>ST_Left.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\TestGit.cs">
       <SubType>Component</SubType>
@@ -110,15 +110,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\details.xaml">
+    <Page Include="Components\MS_Right.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\GridMessage.xaml">
+    <Page Include="Components\TAB_GridMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\GridProfile.xaml">
+    <Page Include="Components\TAB_GridProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,19 +126,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\info_main.xaml">
+    <Page Include="Components\HM_Right.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\MainSetting.xaml">
+    <Page Include="Components\ST_Right.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\NavBarMain.xaml">
+    <Page Include="Components\TAB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\NavBarSetting.xaml">
+    <Page Include="Components\ST_Left.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
