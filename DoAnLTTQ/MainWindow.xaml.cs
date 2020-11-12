@@ -41,7 +41,7 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = new SettingView();
+            this.ViewContext = new HomeView();
             this.DataContext = this;
            
         }
