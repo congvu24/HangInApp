@@ -37,7 +37,7 @@ namespace DoAnLTTQ.Components
 
         private void Button_Click_1(object sender, RoutedEventArgs e) // button send message
         {
-            sendMessage();
+            //sendMessage();
         }
         private void sendMessage()
         {

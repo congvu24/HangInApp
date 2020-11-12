@@ -25,6 +25,26 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
 
+
+            //User u = new User();
+            string u = "concac";
+            Server s = new Server();
+            s.run();
+
+            Client c = new Client();
+            c.sendToServer(u);
+
+            s.stop();
+            s.close();
+            System.Threading.Thread.Sleep(1000);
+            var userURL = s.getResult() as string;
+            //User user = s.getResult() as User;
+            //var userURL = user.myProfile.avatar.url.ToString();
+
+            MessageBox.Show(userURL);
+
+
+
             List<Picture> data = new List<Picture>();
             //data.Add(new Picture() { imgUri = "/Resources/Images/IMG_9715.png" });
             for (int i = 0; i < 9; i++)

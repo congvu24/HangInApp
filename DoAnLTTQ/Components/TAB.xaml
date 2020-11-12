@@ -225,7 +225,7 @@
 
                 </Border>
                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
-                    <Button Click="startser">start server</Button>
+                    <Button Click="Button_Click">start server</Button>
                     <Button Click="Button_Click_2">close server</Button>
                     <Button Click="Button_Click_1">send message</Button>
                 </StackPanel>

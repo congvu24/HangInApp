@@ -67,6 +67,10 @@ namespace DoAnLTTQ.Backend
             isRunning = false;
 
         }
+        public void close()
+        {
+            socket.Close();
+        }
         public object getResult() { return objReceived; }
 
 
