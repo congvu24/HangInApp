@@ -182,7 +182,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" BorderBrush="#D1DDE3" BorderThickness="0 0 0.5 0">
+                <Border Grid.Row="1" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                     <StackPanel  >
                         <Grid >
                             <Grid.ColumnDefinitions>
@@ -207,7 +207,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" BorderBrush="#D1DDE3" BorderThickness="0 2 1 0">
+                <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                     <Button Style="{StaticResource updateBtn}"  >
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -224,11 +224,11 @@
                     </Button>
 
                 </Border>
-                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
-                    <Button Click="startser">start server</Button>
+                <!--<StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
+                    <Button >start server</Button>
                     <Button Click="Button_Click_2">close server</Button>
                     <Button Click="Button_Click_1">send message</Button>
-                </StackPanel>
+                </StackPanel>-->
             </Grid>
         </Grid>
     </Border>

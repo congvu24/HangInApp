@@ -135,6 +135,16 @@ namespace DoAnLTTQ.Views
         {
         }
 
+        private void navbarsetting_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void mainsetting_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
         //    this.cl = new client();

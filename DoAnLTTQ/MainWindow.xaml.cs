@@ -32,8 +32,9 @@ namespace DoAnLTTQ
         public List<Profile> friends = new List<Profile>(); 
         //==>Home view 
 
-        public UserControl ViewContext { get { return this._ViewContext; } set {
-
+        public UserControl ViewContext { 
+            get { return this._ViewContext; } 
+            set {
                 _ViewContext = value;
                 OnPropertyChanged("ViewContext");
             }
@@ -41,9 +42,8 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = new SettingView();
+            this.ViewContext = new MessageView();
             this.DataContext = this;
-           
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

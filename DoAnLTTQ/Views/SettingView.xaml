@@ -25,7 +25,7 @@
                 Grid.Column="0" 
                 Grid.Row="0"  
                 x:Name="navbarsetting"
-                myProfile="{Binding profile}"/>
+                myProfile="{Binding profile}" Loaded="navbarsetting_Loaded_1"/>
         </Grid>
         <Grid Grid.Column="1" Background="#f5f7fa">
             <Grid.RowDefinitions>
