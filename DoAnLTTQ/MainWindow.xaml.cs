@@ -42,7 +42,7 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = new MessageView();
+            this.ViewContext = new HomeView();
             this.DataContext = this;
         }
 
