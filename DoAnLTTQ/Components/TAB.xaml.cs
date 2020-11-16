@@ -14,14 +14,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace DoAnLTTQ.Components
 {
     /// <summary>
     /// Interaction logic for NavBarMain.xaml
     /// </summary>
-    public partial class NavBarMain : UserControl
+    public partial class NavBarMain : UserControl, INotifyPropertyChanged
     {
+        public List<Picture> _picture = new List<Picture>();
+      
         public NavBarMain()
         {
             InitializeComponent();
@@ -44,11 +47,11 @@ namespace DoAnLTTQ.Components
             Client c = new Client();
 
             //var u = new User();
-            var u = "vcl";
+
             //var u = "check server";
             //Message m = new Message(u, 2);
 
-            c.sendToServer(u);
+            //c.sendToServer(u);
             //MessageBox.Show(m.reverse() as string);
         }
 
@@ -67,6 +70,16 @@ namespace DoAnLTTQ.Components
         private void receiveInfo()
         {
 
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged(string newName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(newName));
+            }
         }
     }
 }

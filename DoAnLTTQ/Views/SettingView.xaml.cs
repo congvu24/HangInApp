@@ -18,6 +18,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using DoAnLTTQ.Backend;
+using System.Runtime.CompilerServices;
 
 namespace DoAnLTTQ.Views
 {
@@ -33,8 +34,6 @@ namespace DoAnLTTQ.Views
         public User user { get { return this._user; } set { this._user = value; this.OnPropertyChanged("user"); } }
         public Profile profile { get { return this._profile; } set { this._profile = value; this.OnPropertyChanged("profile"); } }
         public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
-        //private client cl;
-        //private server sv = new server();
 
         public SettingView()
         {
@@ -44,7 +43,6 @@ namespace DoAnLTTQ.Views
             navbarsetting.UserUpdateProfile += new EventHandler<Profile>(Update_User);
             mainsetting.UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
             this.picture = user.myProfile.picture;
-
             this.DataContext = this;
         }
 
@@ -120,8 +118,8 @@ namespace DoAnLTTQ.Views
             };
             user.saveData(this.profile);
         }
-        public event PropertyChangedEventHandler PropertyChanged;
 
+        public event PropertyChangedEventHandler PropertyChanged;
       
         protected virtual void OnPropertyChanged(string newName)
         {

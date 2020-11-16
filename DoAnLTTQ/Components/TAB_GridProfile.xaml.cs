@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,47 +20,49 @@ namespace DoAnLTTQ.Components
     /// <summary>
     /// Interaction logic for GridProfile.xaml
     /// </summary>
-    public partial class GridProfile : UserControl
+    public partial class GridProfile : UserControl, INotifyPropertyChanged
     {
+        public List<Picture> _picture = new List<Picture>();
+        public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
+
         public GridProfile()
         {
             InitializeComponent();
 
+            this.DataContext = this;
 
-            //User u = new User();
-            string u = "concac";
-            Server s = new Server();
-            s.run();
-
-            Client c = new Client();
-            c.sendToServer(u);
-
-            s.stop();
-            s.close();
-            System.Threading.Thread.Sleep(1000);
-            var userURL = s.getResult() as string;
-            //User user = s.getResult() as User;
-            //var userURL = user.myProfile.avatar.url.ToString();
-
-            MessageBox.Show(userURL);
-
-
-
-            List<Picture> data = new List<Picture>();
-            //data.Add(new Picture() { imgUri = "/Resources/Images/IMG_9715.png" });
-            for (int i = 0; i < 9; i++)
-            {
-                data.Add(new Picture() { url = "/Resources/Images/IMG_9715.png" });
-            }
-            //data.Add(new Picture() { imgUri = "" });
-            //data.Add(new Picture() { imgUri = "" });
-            //data.Add(new Picture() { imgUri = "" });
-            //data.Add(new Picture() { imgUri = "" });
-            //data.Add(new Picture() { imgUri = "" });
-            //data.Add(new Picture() { imgUri = "" });
-            //data.Add(new Picture() { imgUri = "" });
-            //data.Add(new Picture() { imgUri = "" });
-            listImage.DataContext = data;
+            //MessageBox.Show(userURL);
         }
+
+
+        //List<Picture> data = new List<Picture>();
+        //    //data.Add(new Picture() { imgUri = "/Resources/Images/IMG_9715.png" });
+        //    //data.Add(new Picture() { url = userURL } );
+        //    for (int i = 0; i < 8; i++)
+        //    {
+        //        data.Add(new Picture() { url = "/Resources/Images/IMG_9715.png" });
+        //    }
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    //data.Add(new Picture() { imgUri = "" });
+        //    listImage.DataContext = data;
+        //}
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged(string newName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(newName));
+            }
+        }
+
     }
 }

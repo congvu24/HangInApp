@@ -1,11 +1,1 @@
-{
-    "picture": [],
-    "name": "duy",
-    "age": "19",
-    "sex": "0",
-    "hobby": "Sở thích mớiasd",
-    "avatar": {
-        "name": "avatar",
-        "url": "C:\\Users\\Vuggy\\OneDrive\\Desktop\\cáp gắn hdd.bmp"
-    }
-}
+{"picture":[{"name":"hinh","url":"file:///C:/Users/Vuggy/OneDrive/Desktop/Google-app-icon-small.png"}],"name":"duy","age":"19","sex":"0","hobby":"Sở thích mớiasd","avatar":{"name":"avatar","url":"C:\\Users\\Vuggy\\OneDrive\\Desktop\\cáp gắn hdd.bmp"}}

@@ -21,22 +21,32 @@ namespace DoAnLTTQ.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
+        public List<Picture> userAvatar = new List<Picture>();
         public HomeView()
         {
             InitializeComponent();
+            //User u = new User();
+            //Server s = new Server();
+            //s.run();
+
+            //Client c = new Client();
+            //c.sendToServer(u);
+
+            //s.stop();
+            //s.close();
+            //System.Threading.Thread.Sleep(1000);
+            ////var userURL = s.getResult() as string;
+            //User userGet = s.getResult() as User;
+            //var userURL = userGet.myProfile.avatar.url.ToString();
+            //userAvatar.Add(new Picture() { url = userGet.myProfile.avatar.url });
+
+            this.DataContext = this;
         }
 
         private void NavBarMain_Loaded(object sender, RoutedEventArgs e)
         {
-            Server s = new Server();
-            s.run();
-            
-            var o = s.getResult() as string;
-            MessageBox.Show(o);
-            //Client c = new Client();
-            //var u = new User();
-            //c.sendToServer(u);
            
+
         }
         
     }
