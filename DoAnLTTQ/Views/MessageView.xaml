@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             
-            <component:NavBarMain x:Name="Navbarmain" />
+            <component:NavBarMain x:Name="TabMain" />
         </Grid>
         <Grid Grid.Column="1">
             

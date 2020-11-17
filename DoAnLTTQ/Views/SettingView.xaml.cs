@@ -36,6 +36,9 @@ namespace DoAnLTTQ.Views
         //private client cl;
         //private server sv = new server();
 
+        //Delegate nhan Click tu ST_Left, sau do truyen den MainWindow
+        public event SwitchViewHandler OnSwitchView;
+
         public SettingView()
         {
             InitializeComponent();
@@ -46,6 +49,13 @@ namespace DoAnLTTQ.Views
             this.picture = user.myProfile.picture;
 
             this.DataContext = this;
+
+            navbarsetting.OnClickBackButton += Navbarsetting_BackToHomeView;
+        }
+
+        private void Navbarsetting_BackToHomeView()
+        {
+            OnSwitchView(); 
         }
 
         //class client

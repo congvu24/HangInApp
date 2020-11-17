@@ -20,9 +20,16 @@ namespace DoAnLTTQ.Views
     /// </summary>
     public partial class MessageView : UserControl
     {
+        public event SwitchViewHandler OnSwitchView;
         public MessageView()
         {
             InitializeComponent();
+            TabMain.ButtonSwitchViewByGridOnClick += TabMain_ButtonSwitchViewByGridOnClick;
+        }
+
+        private void TabMain_ButtonSwitchViewByGridOnClick()
+        {
+            OnSwitchView(); 
         }
     }
 }

@@ -21,9 +21,16 @@ namespace DoAnLTTQ.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
+        public event SwitchViewHandler OnSwitchView; 
         public HomeView()
         {
             InitializeComponent();
+            TabMain.ButtonSwitchViewOnClick += TabMain_ButtonSwitchViewOnClick;
+        }
+
+        private void TabMain_ButtonSwitchViewOnClick()
+        {
+            OnSwitchView();
         }
 
         private void NavBarMain_Loaded(object sender, RoutedEventArgs e)
