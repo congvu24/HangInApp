@@ -147,7 +147,7 @@
 
                 <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2" Height="84">
                     <Grid>
-                        <Button Height="86" Padding="0">
+                        <Button Height="86" Padding="0" x:Name="ToHomeViewButton" Click="ToHomeViewButton_Click">
 
                             <Grid Width="320">
                                 <Grid.ColumnDefinitions>

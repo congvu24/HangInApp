@@ -24,6 +24,11 @@ namespace DoAnLTTQ.Components
     public partial class NavBarMain : UserControl, INotifyPropertyChanged
     {
         public UserControl _TabChange;
+        public event ClickOnButtonHandler ButtonSwitchViewOnClick;
+        public event ClickOnButtonHandler ButtonSwitchViewByGridOnClick;
+
+        public GridProfile gridProfile = new GridProfile();
+        public GridMessage gridMessage = new GridMessage(); 
         public UserControl TabChange
         {
             get { return this._TabChange; }
@@ -37,12 +42,12 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
 
-            this.TabChange = new GridProfile();
+            this.TabChange = gridProfile; 
             this.DataContext = this; 
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+     
         protected virtual void OnPropertyChanged(string newName)
         {
             if (PropertyChanged != null)
@@ -53,13 +58,24 @@ namespace DoAnLTTQ.Components
 
         private void buttonQuanhDay_Click(object sender, RoutedEventArgs e)
         {
-            this.TabChange = new GridProfile(); 
+            this.TabChange = gridProfile; 
         }
 
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
-            this.TabChange = new GridMessage(); 
+            this.TabChange = gridMessage;
+            if (ButtonSwitchViewByGridOnClick != null)
+                ButtonSwitchViewByGridOnClick(); 
+
         }
+
+        private void ToHomeViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonSwitchViewOnClick != null)
+                ButtonSwitchViewOnClick();
+           
+        }
+
 
         // code here to check connect server-client
         //Server s = new Server();
@@ -103,6 +119,5 @@ namespace DoAnLTTQ.Components
 
         }
 
-      
     }
 }
