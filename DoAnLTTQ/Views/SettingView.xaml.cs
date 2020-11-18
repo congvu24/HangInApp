@@ -51,9 +51,10 @@ namespace DoAnLTTQ.Views
             navbarsetting.OnClickBackButton += Navbarsetting_BackToHomeView;
         }
 
-        private void Navbarsetting_BackToHomeView()
+        private void Navbarsetting_BackToHomeView(ViewEnum viewEnum)
         {
-            OnSwitchView(); 
+            if (viewEnum == ViewEnum.HomeView)
+                OnSwitchView(); 
         }
 
         //class client

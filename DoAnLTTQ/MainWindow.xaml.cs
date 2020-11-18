@@ -53,21 +53,10 @@ namespace DoAnLTTQ
 
             myHomeView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
             mySettingView.OnSwitchView += SettingView_OnSwitchViewToHomeView;
-            
-
-            //Chua dc
-            myMessageView.OnSwitchView += MyMessageView_OnSwitchViewToDetailsMessage;
+          
         }
-
-        private void MyMessageView_OnSwitchViewToDetailsMessage()
-        {
-            // Chua dc
-            this.ViewContext = myMessageView;
-        }
-
         private void SettingView_OnSwitchViewToHomeView()
         {
-
             this.ViewContext = myHomeView;
         }
 

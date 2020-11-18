@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace DoAnLTTQ.Views
 {
-    public enum viewEnum
+    public enum ViewEnum
     {
         HomeView,
         MessageView,
-        SettingView
+        SettingView,
+        QuanhDayView
     }
 
     public delegate void SwitchViewHandler();
-    public delegate void ClickOnButtonHandler(); 
+    public delegate void ClickOnButtonHandler(ViewEnum viewEnum); 
    
 }

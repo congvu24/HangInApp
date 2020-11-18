@@ -25,7 +25,7 @@ namespace DoAnLTTQ.Components
     {
         public UserControl _TabChange;
         public event ClickOnButtonHandler ButtonSwitchViewOnClick;
-        public event ClickOnButtonHandler ButtonSwitchViewByGridOnClick;
+
 
         public GridProfile gridProfile = new GridProfile();
         public GridMessage gridMessage = new GridMessage(); 
@@ -58,21 +58,24 @@ namespace DoAnLTTQ.Components
 
         private void buttonQuanhDay_Click(object sender, RoutedEventArgs e)
         {
-            this.TabChange = gridProfile; 
+            this.TabChange = gridProfile;
+            if (ButtonSwitchViewOnClick != null)
+                ButtonSwitchViewOnClick(ViewEnum.QuanhDayView);
         }
 
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
             this.TabChange = gridMessage;
-            if (ButtonSwitchViewByGridOnClick != null)
-                ButtonSwitchViewByGridOnClick(); 
+            if (ButtonSwitchViewOnClick != null)
+                ButtonSwitchViewOnClick(ViewEnum.MessageView);
+
 
         }
 
-        private void ToHomeViewButton_Click(object sender, RoutedEventArgs e)
+        private void ToSettingViewButton_Click(object sender, RoutedEventArgs e)
         {
             if (ButtonSwitchViewOnClick != null)
-                ButtonSwitchViewOnClick();
+                ButtonSwitchViewOnClick(ViewEnum.SettingView);
            
         }
 
