@@ -147,7 +147,7 @@
 
                 <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2" Height="84">
                     <Grid>
-                        <Button Height="86" Padding="0">
+                        <Button Height="86" Padding="0" x:Name="ToHomeViewButton" Click="ToHomeViewButton_Click">
 
                             <Grid Width="320">
                                 <Grid.ColumnDefinitions>
@@ -182,7 +182,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" BorderBrush="#D1DDE3" BorderThickness="0 0 0.5 0">
+                <Border Grid.Row="1" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                     <StackPanel  >
                         <Grid >
                             <Grid.ColumnDefinitions>
@@ -191,25 +191,24 @@
                             </Grid.ColumnDefinitions>
 
                             <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
-                                <Button  Style="{StaticResource changingbutton}" Content="Quanh đây">
+                                <Button x:Name="buttonQuanhDay" Click="buttonQuanhDay_Click" Style="{StaticResource changingbutton}" Content="Quanh đây">
 
                                 </Button>
                             </Border>
 
                             <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}">
-                                <Button  Style="{StaticResource changingbutton}" Content="Tin nhắn">
+                                <Button x:Name="buttonTinNhan" Click="buttonTinNhan_Click" Style="{StaticResource changingbutton}" Content="Tin nhắn">
 
                                 </Button>
                             </Border>
                         </Grid>
                         <!--<component:GridProfile></component:GridProfile>-->
-                        <component:GridProfile VerticalAlignment="Top" 
-                        picture="{Binding picture}"
-                            />
+                        <!--<component:GridProfile VerticalAlignment="Top"></component:GridProfile>-->
+                        <ContentControl Content="{Binding TabChange}"/>
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" BorderBrush="#D1DDE3" BorderThickness="0 2 1 0">
+                <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                     <Button Style="{StaticResource updateBtn}"  >
                         <Button.Resources>
                             <Style TargetType="Border">

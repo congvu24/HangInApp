@@ -21,26 +21,16 @@ namespace DoAnLTTQ.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
-        public List<Picture> userAvatar = new List<Picture>();
+        public event SwitchViewHandler OnSwitchView; 
         public HomeView()
         {
             InitializeComponent();
-            //User u = new User();
-            //Server s = new Server();
-            //s.run();
+            TabMain.ButtonSwitchViewOnClick += TabMain_ButtonSwitchViewOnClick;
+        }
 
-            //Client c = new Client();
-            //c.sendToServer(u);
-
-            //s.stop();
-            //s.close();
-            //System.Threading.Thread.Sleep(1000);
-            ////var userURL = s.getResult() as string;
-            //User userGet = s.getResult() as User;
-            //var userURL = userGet.myProfile.avatar.url.ToString();
-            //userAvatar.Add(new Picture() { url = userGet.myProfile.avatar.url });
-
-            this.DataContext = this;
+        private void TabMain_ButtonSwitchViewOnClick()
+        {
+            OnSwitchView();
         }
 
         private void NavBarMain_Loaded(object sender, RoutedEventArgs e)

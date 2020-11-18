@@ -35,6 +35,9 @@ namespace DoAnLTTQ.Views
         public Profile profile { get { return this._profile; } set { this._profile = value; this.OnPropertyChanged("profile"); } }
         public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
 
+        //Delegate nhan Click tu ST_Left, sau do truyen den MainWindow
+        public event SwitchViewHandler OnSwitchView;
+
         public SettingView()
         {
             InitializeComponent();
@@ -44,6 +47,13 @@ namespace DoAnLTTQ.Views
             mainsetting.UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
             this.picture = user.myProfile.picture;
             this.DataContext = this;
+
+            navbarsetting.OnClickBackButton += Navbarsetting_BackToHomeView;
+        }
+
+        private void Navbarsetting_BackToHomeView()
+        {
+            OnSwitchView(); 
         }
 
         //class client

@@ -30,11 +30,15 @@ namespace DoAnLTTQ
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public UserControl _ViewContext;
-        public List<Profile> friends = new List<Profile>(); 
+        public List<Profile> friends = new List<Profile>();
         //==>Home view 
+        public HomeView myHomeView = new HomeView();
+        public SettingView mySettingView = new SettingView();
+        public MessageView myMessageView = new MessageView(); 
 
-        public UserControl ViewContext { get { return this._ViewContext; } set {
-
+        public UserControl ViewContext { 
+            get { return this._ViewContext; } 
+            set {
                 _ViewContext = value;
                 OnPropertyChanged("ViewContext");
             }
@@ -42,9 +46,32 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = new MainView();
+            this.ViewContext = myHomeView;  
             this.DataContext = this;
-           
+
+            myHomeView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
+            mySettingView.OnSwitchView += SettingView_OnSwitchViewToHomeView;
+            
+
+            //Chua dc
+            myMessageView.OnSwitchView += MyMessageView_OnSwitchViewToDetailsMessage;
+        }
+
+        private void MyMessageView_OnSwitchViewToDetailsMessage()
+        {
+            // Chua dc
+            this.ViewContext = myMessageView;
+        }
+
+        private void SettingView_OnSwitchViewToHomeView()
+        {
+
+            this.ViewContext = myHomeView;
+        }
+
+        private void MyHomeView_OnSwitchToSettingView()
+        {
+            this.ViewContext = mySettingView; 
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -56,6 +83,8 @@ namespace DoAnLTTQ
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
+
+       
     }
 
 }

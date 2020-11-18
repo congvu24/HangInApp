@@ -23,22 +23,59 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class NavBarMain : UserControl, INotifyPropertyChanged
     {
-        public List<Picture> _picture = new List<Picture>();
-        //public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("userProfile"); } }
-        public Picture picture
-        {
-            get { return (Picture)GetValue(profilePicture); }
-            set { SetValue(profilePicture, value); }
-        }
-        public static readonly DependencyProperty profilePicture =
-             DependencyProperty.Register("_picture", typeof(Picture),
-               typeof(NavBarMain));
+        public UserControl _TabChange;
+        public event ClickOnButtonHandler ButtonSwitchViewOnClick;
+        public event ClickOnButtonHandler ButtonSwitchViewByGridOnClick;
 
+        public GridProfile gridProfile = new GridProfile();
+        public GridMessage gridMessage = new GridMessage(); 
+        public UserControl TabChange
+        {
+            get { return this._TabChange; }
+            set
+            {
+                _TabChange = value;
+                OnPropertyChanged("TabChange");
+            }
+        }
         public NavBarMain()
         {
             InitializeComponent();
-            this.DataContext = this;
+
+            this.TabChange = gridProfile; 
+            this.DataContext = this; 
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+     
+        protected virtual void OnPropertyChanged(string newName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(newName));
+            }
+        }
+
+        private void buttonQuanhDay_Click(object sender, RoutedEventArgs e)
+        {
+            this.TabChange = gridProfile; 
+        }
+
+        private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
+        {
+            this.TabChange = gridMessage;
+            if (ButtonSwitchViewByGridOnClick != null)
+                ButtonSwitchViewByGridOnClick(); 
+
+        }
+
+        private void ToHomeViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonSwitchViewOnClick != null)
+                ButtonSwitchViewOnClick();
+           
+        }
+
 
         // code here to check connect server-client
         //Server s = new Server();
@@ -80,16 +117,6 @@ namespace DoAnLTTQ.Components
         private void receiveInfo()
         {
 
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
-        protected virtual void OnPropertyChanged(string newName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(newName));
-            }
         }
     }
 }
