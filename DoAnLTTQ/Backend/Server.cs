@@ -5,112 +5,95 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
+using DoAnLTTQ.Backend;
+using DoAnLTTQ.Components;
 
 namespace DoAnLTTQ.Backend
 {
     class Server
     {
-
-        private Socket socket;
-        private bool isRunning = false;
-        public object objReceived;
-        public void run()
+        public void ListenProfile()
         {
-            var listener = new BackgroundWorker();
-            // tạo thread mới
-            listener.DoWork += new DoWorkEventHandler(init);
-            listener.RunWorkerAsync();
-
-            //listener.CancelAsync();
-        }
-        public void init(object sender, DoWorkEventArgs e)
-        {
-            var localIp = IPAddress.Any;
-            // tiến trình server sẽ sử dụng cổng 1308
-            var localPort = 1308;
-            // biến này sẽ chứa "địa chỉ" của tiến trình server trên mạng
-            var localEndPoint = new IPEndPoint(localIp, localPort);
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            socket.Bind(localEndPoint);
-
-            this.listen();
-        }
-        public void listen()
-        {
-            isRunning = true;
-            var size = 1024 * 4;
-            var receiveBuffer = new byte[size];
-            while (isRunning)
+            var listener = new TcpListener(IPAddress.Any, 1308);
+            listener.Start(10);
+            byte[] data = new byte[1024 * 1000];
+            while (true)
             {
-                // biến này về sau sẽ chứa địa chỉ của tiến trình client nào gửi gói tin tới
-                EndPoint remoteEndpoint = new IPEndPoint(IPAddress.Any, 0);
-                // khi nhận được gói tin nào sẽ lưu lại địa chỉ của tiến trình client
-                var length = socket.ReceiveFrom(receiveBuffer, ref remoteEndpoint);
-
-                // tạo ra đối tượng message mới để giải mã thông tin nhận được từ client
-                Message m = new Message();
-                // giải mã thông tin nhận được từ client
-                objReceived = m.reverse(receiveBuffer);
-                Array.Clear(receiveBuffer, 0, size);
-                //MessageBox.Show("user co tuoi: " + text);
-                //MessageBox.Show(text);
+                var client = listener.AcceptTcpClient();
+                var stream = client.GetStream();
+                var formatter = new BinaryFormatter();
+                var guest = formatter.Deserialize(stream) as GuestProfile;
+                guest.saveData();
+                
+                //this.Dispatcher.Invoke(() =>
+                //{
+                //    img.Source = Common.LoadImage(student.avatar.buffer);
+                //});
+                client.Close();
             }
         }
-        public void stop()
+        public void SendProfile(IPAddress ip)
         {
-            isRunning = false;
+            User user = new User();
+            GuestProfile u = new GuestProfile(user);
+            var client = new TcpClient();
+            client.Connect(ip, 1308);
+            var stream = client.GetStream();
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(stream, u);
 
+            client.Close();
         }
-        public void close()
+
+        public void ListenRequestMessage()
         {
-            this.socket.Close();
-        }
-        public object getResult() { return objReceived; }
+            var localIp = IPAddress.Any;
+            var localPort = 1308;
+            var localEndPoint = new IPEndPoint(localIp, localPort);
+            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            socket.Bind(localEndPoint);
 
+            var size = 1024;
+            var receiveBuffer = new byte[size];
+
+            while (true)
+            {
+                EndPoint remoteEndpoint = new IPEndPoint(IPAddress.Any, 0);
+                var length = socket.ReceiveFrom(receiveBuffer, ref remoteEndpoint);
+                var text = Encoding.ASCII.GetString(receiveBuffer, 0, length);
+                SendProfile(IPAddress.Parse(text));
+                Array.Clear(receiveBuffer, 0, size);
+            }
+        }
+
+        public void SendRequestMessage()
+        {
+            var serverEndpoint = new IPEndPoint(IPAddress.Broadcast, 1308);
+            var socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
+
+            var localIp = "";
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    localIp =  ip.ToString();
+                }
+            }
+
+            byte[] data = Encoding.ASCII.GetBytes(localIp);
+            socket.SendTo(data, serverEndpoint);
+        }
+
+        //public void SendProfile();
 
     }
 }
-//class Server
-//{
-//    private UdpClient socket;
-//    private bool isRunning;
-//    public Server()
-//    {
 
-//        isRunning = false;
-//    }
-//    public void init()
-//    {
-//        socket = new UdpClient(6969);
-//        Thread socketThread = new Thread(this.start);
-//        socketThread.Start();
-//    }
-//    public void start()
-//    {
-//        this.isRunning = true;
-
-
-
-//        while (isRunning)
-//        {
-//            IPEndPoint remoteEndpoint = new IPEndPoint(IPAddress.Any, 0);
-//            var buffer = socket.Receive(ref remoteEndpoint);
-//            string text = Encoding.ASCII.GetString(buffer);
-//            // clear buffer
-//            Array.Clear(buffer, 0, buffer.Length);
-
-//            MessageBox.Show(text);
-//        }
-//    }
-//    public void stop()
-//    {
-//        this.isRunning = false;
-//    }
-//}
-//}

@@ -144,7 +144,7 @@
                     <Canvas>
                         <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0">
                             <Border.Background>
-                                <ImageBrush ImageSource="/Resources/Images/hinh-anh-heo-cute-va-de-thuong_030601765.jpg"></ImageBrush>
+                                <ImageBrush ImageSource="{Binding Path=avatar}" x:Name="img"></ImageBrush>
                             </Border.Background>
                         </Border>
                         <StackPanel Style="{StaticResource infoParagraph}">
@@ -161,7 +161,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Style="{StaticResource navButton}" >
+                    <Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" >
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
 

@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Backend\Client.cs" />
+    <Compile Include="Backend\Common.cs" />
     <Compile Include="Backend\Message.cs" />
     <Compile Include="Backend\User.cs" />
     <Compile Include="Backend\Server.cs" />
@@ -210,6 +211,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Backend\Database\guest.json" />
     <None Include="Backend\Database\profile.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

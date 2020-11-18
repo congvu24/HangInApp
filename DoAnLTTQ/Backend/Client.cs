@@ -11,34 +11,6 @@ namespace DoAnLTTQ.Backend
 {
     class Client
     {
-        public void sendToServer(object o)
-        {
-            int type = 0;
-            if (o == o as Picture) type = 1;
-            if (o == o as User) type = 2;
-            
-
-            Message m = new Message(o,type);
-            var serverIp = IPAddress.Broadcast;
-           
-            var serverPort = 1308;
-
-            // đây là "địa chỉ" của tiến trình server trên mạng
-            // mỗi endpoint chứa ip của host và port của tiến trình
-            var serverEndpoint = new IPEndPoint(serverIp, serverPort);
-
-            //var size = 1024; // kích thước của bộ đệm
-            //var receiveBuffer = new byte[size];
-
-            // khởi tạo object của lớp socket để sử dụng dịch vụ Udp
-            // lưu ý SocketType của Udp là Dgram (datagram) 
-            var socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
-
-            // biến đổi chuỗi thành mảng byte
-            var sendBuffer = m.convert();
-            // gửi mảng byte trên đến tiến trình server
-            socket.SendTo(sendBuffer, serverEndpoint);
-        }
     }
 
 

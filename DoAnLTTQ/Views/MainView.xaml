@@ -34,10 +34,10 @@
                 <ColumnDefinition Width="271*" />
                 <ColumnDefinition Width="207*"/>
             </Grid.ColumnDefinitions>
-            <component:MainSetting  
+            <component:info_main  
                 x:Name="mainsetting"
                 Grid.ColumnSpan="2"
-                picture="{Binding picture}" Loaded="mainsetting_Loaded"/>
+                />
         </Grid>
     </Grid>
 </UserControl>

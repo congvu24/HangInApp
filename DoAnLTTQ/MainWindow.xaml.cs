@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.IO;
 
 namespace DoAnLTTQ
 {
@@ -34,6 +35,7 @@ namespace DoAnLTTQ
         //==>Home view 
         public HomeView myHomeView = new HomeView();
         public SettingView mySettingView = new SettingView();
+        public MainView myMainView = new MainView();
         public MessageView myMessageView = new MessageView(); 
 
         public UserControl ViewContext { 
@@ -83,8 +85,9 @@ namespace DoAnLTTQ
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-
-       
+        
+      
     }
+   
 
 }
