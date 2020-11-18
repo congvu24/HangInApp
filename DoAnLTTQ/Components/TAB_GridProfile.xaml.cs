@@ -23,8 +23,18 @@ namespace DoAnLTTQ.Components
     public partial class GridProfile : UserControl, INotifyPropertyChanged
     {
         public List<Picture> _picture = new List<Picture>();
-        public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
-
+        // code thu 2
+        //public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
+        public Picture picture
+        {
+            get { return (Picture)GetValue(profilePicture); }
+            set { SetValue(profilePicture, value); }
+        }
+        public static readonly DependencyProperty profilePicture =
+             DependencyProperty.Register("_picture", typeof(Picture),
+               typeof(GridProfile));
+      
+        // end
         public GridProfile()
         {
             InitializeComponent();
@@ -32,26 +42,21 @@ namespace DoAnLTTQ.Components
             this.DataContext = this;
 
             //MessageBox.Show(userURL);
+
+
+
+            List<Picture> data = new List<Picture>();
+
+            //for (int i = 0; i < 9; i++)
+            //{
+            //    data.Add(new Picture() { url = "/Resources/Images/IMG_9715.png" });
+
+            //}
+
+            //listImage.DataContext = data;
+            listImage.DataContext = _picture;
+
         }
-
-
-        //List<Picture> data = new List<Picture>();
-        //    //data.Add(new Picture() { imgUri = "/Resources/Images/IMG_9715.png" });
-        //    //data.Add(new Picture() { url = userURL } );
-        //    for (int i = 0; i < 8; i++)
-        //    {
-        //        data.Add(new Picture() { url = "/Resources/Images/IMG_9715.png" });
-        //    }
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    //data.Add(new Picture() { imgUri = "" });
-        //    listImage.DataContext = data;
-        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 

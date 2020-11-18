@@ -24,10 +24,20 @@ namespace DoAnLTTQ.Components
     public partial class NavBarMain : UserControl, INotifyPropertyChanged
     {
         public List<Picture> _picture = new List<Picture>();
-      
+        //public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("userProfile"); } }
+        public Picture picture
+        {
+            get { return (Picture)GetValue(profilePicture); }
+            set { SetValue(profilePicture, value); }
+        }
+        public static readonly DependencyProperty profilePicture =
+             DependencyProperty.Register("_picture", typeof(Picture),
+               typeof(NavBarMain));
+
         public NavBarMain()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         // code here to check connect server-client

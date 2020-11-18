@@ -39,7 +39,7 @@
 
     <Grid>
         <WrapPanel HorizontalAlignment="Center">
-            <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage" >
+            <ItemsControl ItemsSource="{Binding}" x:Name="listImage" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
 

@@ -20,8 +20,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <component:NavBarMain Loaded="NavBarMain_Loaded"/>
+            <component:NavBarMain 
+                Loaded="NavBarMain_Loaded" 
+                picture ="{Binding userProfile}"/>
             <!--picture="{Binding userAvatar}"-->
+            <!--picture = "{Binding userProfile }"-->
         </Grid>
         <Grid Grid.Column="1" Background="#f5f7fa">
             <Grid.RowDefinitions>

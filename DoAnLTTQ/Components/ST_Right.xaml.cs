@@ -35,7 +35,7 @@ namespace DoAnLTTQ.Components
         }
         public static readonly DependencyProperty vclProperty =
              DependencyProperty.Register("picture", typeof(IEnumerable),
-               typeof(MainSetting), new PropertyMetadata(""));
+               typeof(MainSetting), new PropertyMetadata(""));    
         public MainSetting()
         {
             InitializeComponent();

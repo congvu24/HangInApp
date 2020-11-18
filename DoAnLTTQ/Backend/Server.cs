@@ -69,7 +69,7 @@ namespace DoAnLTTQ.Backend
         }
         public void close()
         {
-            socket.Close();
+            this.socket.Close();
         }
         public object getResult() { return objReceived; }
 

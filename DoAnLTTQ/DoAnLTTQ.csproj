@@ -252,7 +252,7 @@
     <Resource Include="Resources\Images\Profile\hinh4.jpg" />
     <Resource Include="Resources\Images\Profile\hinh5.jpg" />
     <Resource Include="Resources\Images\hinh-anh-heo-cute-va-de-thuong_030601765.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>

@@ -203,7 +203,9 @@
                             </Border>
                         </Grid>
                         <!--<component:GridProfile></component:GridProfile>-->
-                        <component:GridProfile VerticalAlignment="Top"></component:GridProfile>
+                        <component:GridProfile VerticalAlignment="Top" 
+                        picture="{Binding picture}"
+                            />
                     </StackPanel>
                 </Border>
 
