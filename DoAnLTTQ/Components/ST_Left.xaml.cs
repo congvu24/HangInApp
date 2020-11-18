@@ -49,7 +49,7 @@ namespace DoAnLTTQ.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OnClickBackButton(); 
+            OnClickBackButton(ViewEnum.HomeView); 
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -74,6 +74,9 @@
     <Compile Include="Backend\Message.cs" />
     <Compile Include="Backend\User.cs" />
     <Compile Include="Backend\Server.cs" />
+    <Compile Include="Components\MessageAndDetails.xaml.cs">
+      <DependentUpon>MessageAndDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\MS_Right.xaml.cs">
       <DependentUpon>MS_Right.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
     </Compile>
     <Compile Include="Views\SwtichViewDelegate.cs" />
     <Page Include="Components\BackButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\MessageAndDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
