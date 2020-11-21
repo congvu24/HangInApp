@@ -203,7 +203,7 @@
                             </Border>
                         </Grid>
                         <!--<component:GridProfile></component:GridProfile>-->
-                        <!--<component:GridProfile VerticalAlignment="Top"></component:GridProfile>-->
+                        <component:GridProfile VerticalAlignment="Top" userPictureNearBy="{Binding m_userPictureNearBy}"></component:GridProfile>
                         <ContentControl Content="{Binding TabChange}"/>
                     </StackPanel>
                 </Border>
@@ -225,11 +225,7 @@
                     </Button>
 
                 </Border>
-                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
-                    <Button Click="Button_Click">start server</Button>
-                    <Button Click="Button_Click_2">close server</Button>
-                    <Button Click="Button_Click_1">send message</Button>
-                </StackPanel>
+                
             </Grid>
         </Grid>
     </Border>

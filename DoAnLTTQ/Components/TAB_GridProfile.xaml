@@ -60,8 +60,9 @@
                                 </Button.Resources>
 
                                 <Button.Background>
-                                    <ImageBrush ImageSource="{Binding url}" Stretch="Fill" />
+                                    <ImageBrush  ImageSource="{Binding item}" x:Name="img" Stretch="Fill" />
                                 </Button.Background>
+                                <!--x:Name="background"-->
                             </Button>
                         </Border>
                     </DataTemplate>
@@ -70,5 +71,6 @@
 
         </WrapPanel>
 
+        <!--<Button Click="Button_Click"> add</Button>-->
     </Grid>
 </UserControl>

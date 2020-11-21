@@ -43,7 +43,7 @@ namespace DoAnLTTQ.Components
             InitializeComponent();
 
             this.TabChange = gridProfile; 
-            this.DataContext = this; 
+            //this.DataContext = this; 
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
