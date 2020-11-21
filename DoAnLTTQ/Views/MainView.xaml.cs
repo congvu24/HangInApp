@@ -15,10 +15,11 @@
 
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
-    
+        // Guest picture
         public List<Picture> _userProfile = new List<Picture>();
+        public event SwitchViewHandler OnSwitchView;
 
-   
+
         public List<Picture> userProfile
         {
             get { return this._userProfile; }
@@ -37,9 +38,29 @@
             var client = new Thread(sv.SendRequestMessage);
             client.Start();
             this.DataContext = this;
+
+            NavbarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
 
-     
+        private void NavbarMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
+        {
+            if (viewEnum == ViewEnum.SettingView)
+            {
+                if (OnSwitchView != null)
+                    OnSwitchView();
+            }
+            else if (viewEnum == ViewEnum.MessageView)
+            {
+                mainsetting.Visibility = Visibility.Collapsed;
+                messagedetails.Visibility = Visibility.Visible;
+            }
+            else if (viewEnum == ViewEnum.QuanhDayView)
+            {
+                mainsetting.Visibility = Visibility.Visible;
+                messagedetails.Visibility = Visibility.Collapsed;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
       
