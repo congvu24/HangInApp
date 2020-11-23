@@ -21,7 +21,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <component:NavBarMain 
-                Loaded="NavBarMain_Loaded" />
+                Loaded="NavBarMain_Loaded" x:Name="NavbarMain" />
             <!--picture ="{Binding userProfile}"/>-->
             <!--picture="{Binding userAvatar}"-->
             <!--picture = "{Binding userProfile }"-->

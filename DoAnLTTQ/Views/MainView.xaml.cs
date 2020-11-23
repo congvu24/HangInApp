@@ -18,7 +18,6 @@
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
 
-        public List<Picture> _userProfile = new List<Picture>();
 
         // binding cai nay xuong de hien thi
         //public List<BitmapImage> userPictureNearBy = new List<BitmapImage>();
@@ -34,7 +33,6 @@
                 }
             }
         }
-        //
         public List<Picture> userProfile
         {
             get { return this._userProfile; }
@@ -58,9 +56,28 @@
             //m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
            
             this.DataContext = this;
+
+            NavbarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
 
-       
+        private void NavbarMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
+        {
+            if (viewEnum == ViewEnum.SettingView)
+            {
+                if (OnSwitchView != null)
+                    OnSwitchView();
+            }
+            else if (viewEnum == ViewEnum.MessageView)
+            {
+                mainsetting.Visibility = Visibility.Collapsed;
+                messagedetails.Visibility = Visibility.Visible;
+            }
+            else if (viewEnum == ViewEnum.QuanhDayView)
+            {
+                mainsetting.Visibility = Visibility.Visible;
+                messagedetails.Visibility = Visibility.Collapsed;
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
 
