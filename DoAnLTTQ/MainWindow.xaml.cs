@@ -48,7 +48,7 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = new MainView();  
+            this.ViewContext = myMainView;  
             this.DataContext = this;
 
             myHomeView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
