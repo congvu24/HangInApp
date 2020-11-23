@@ -20,6 +20,8 @@
         public static bool forceReload = false;
         public List<Picture> _userProfile = new List<Picture>();
 
+        public event SwitchViewHandler OnSwitchView; 
+
         // binding cai nay xuong de hien thi
         //public List<BitmapImage> userPictureNearBy = new List<BitmapImage>();
         private ObservableCollection<BitmapImage> _userPictureNearBy = new ObservableCollection<BitmapImage>();
@@ -57,8 +59,8 @@
             //m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
            
             this.DataContext = this;
-
-            NavbarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
+            
+            NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
 
         private void NavbarMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
