@@ -37,7 +37,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <component:NavBarMain Grid.RowSpan="2"
-                Loaded="NavBarMain_Loaded" />
+                x:Name="NavBarMain" Loaded="NavBarMain_Loaded" />
             <!--picture ="{Binding userProfile}"/>-->
             <!--picture="{Binding userAvatar}"-->
             <!--picture = "{Binding userProfile }"-->
@@ -73,6 +73,9 @@
                 x:Name="mainsetting"
                 Grid.ColumnSpan="2"
                 />
+            <component:MessageAndDetails 
+                x:Name="messagedetails" 
+                Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </UserControl>

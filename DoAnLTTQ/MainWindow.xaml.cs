@@ -36,7 +36,7 @@ namespace DoAnLTTQ
         public HomeView myHomeView = new HomeView();
         public SettingView mySettingView = new SettingView();
         public MainView myMainView = new MainView();
-        public MessageView myMessageView = new MessageView(); 
+
 
         public UserControl ViewContext { 
             get { return this._ViewContext; } 
@@ -51,13 +51,14 @@ namespace DoAnLTTQ
             this.ViewContext = myMainView;  
             this.DataContext = this;
 
-            myHomeView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
-            mySettingView.OnSwitchView += SettingView_OnSwitchViewToHomeView;
+            myMainView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
+            mySettingView.OnSwitchView += SettingView_OnSwitchViewToMainView;
           
         }
-        private void SettingView_OnSwitchViewToHomeView()
+
+        private void SettingView_OnSwitchViewToMainView()
         {
-            this.ViewContext = myHomeView;
+            this.ViewContext = myMainView;
         }
 
         private void MyHomeView_OnSwitchToSettingView()
