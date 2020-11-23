@@ -21,7 +21,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <component:NavBarMain 
-                Loaded="NavBarMain_Loaded" />
+                Loaded="NavBarMain_Loaded" x:Name="NavbarMain" />
             <!--picture ="{Binding userProfile}"/>-->
             <!--picture="{Binding userAvatar}"-->
             <!--picture = "{Binding userProfile }"-->
@@ -34,10 +34,8 @@
                 <ColumnDefinition Width="271*" />
                 <ColumnDefinition Width="207*"/>
             </Grid.ColumnDefinitions>
-            <component:info_main  
-                x:Name="mainsetting"
-                Grid.ColumnSpan="2"
-                />
+            <component:info_main x:Name="mainsetting" Grid.ColumnSpan="2"/>
+            <component:MessageAndDetails x:Name="messagedetails" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </UserControl>
