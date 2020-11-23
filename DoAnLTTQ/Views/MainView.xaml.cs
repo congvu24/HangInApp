@@ -17,7 +17,7 @@
 
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
-
+        public static bool forceReload = false;
         public List<Picture> _userProfile = new List<Picture>();
 
         // binding cai nay xuong de hien thi
@@ -82,10 +82,10 @@
         }
 
         // add more user
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Reload_Click(object sender, RoutedEventArgs e)
         {
-
-            for (int i = 0; i < 9; i++)
+            int USER_AMOUNT = 9;
+            for (int i = 0; i < USER_AMOUNT; i++)
             {
                 GuestProfile guest = new GuestProfile();
                 guest.LoadProfile();
