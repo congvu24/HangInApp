@@ -29,9 +29,8 @@ namespace DoAnLTTQ.Backend
             return image;
         }
 
-        public static void AddNewGuestProfile(GuestProfile guest)
+        public static void addNewGuestProfile(List<GuestProfile> guestList)
         {
-
         }
     }
 }

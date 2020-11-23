@@ -25,6 +25,9 @@
             <!--picture ="{Binding userProfile}"/>-->
             <!--picture="{Binding userAvatar}"-->
             <!--picture = "{Binding userProfile }"-->
+            <Canvas Panel.ZIndex="100">
+                <Button Click="Button_Click"/>
+            </Canvas>
         </Grid>
         <Grid Grid.Column="1" Background="#f5f7fa">
             <Grid.RowDefinitions>
@@ -34,8 +37,10 @@
                 <ColumnDefinition Width="271*" />
                 <ColumnDefinition Width="207*"/>
             </Grid.ColumnDefinitions>
-            <component:info_main x:Name="mainsetting" Grid.ColumnSpan="2"/>
-            <component:MessageAndDetails x:Name="messagedetails" Grid.ColumnSpan="2"/>
+            <component:info_main   
+                x:Name="mainsetting"
+                Grid.ColumnSpan="2"
+                />
         </Grid>
     </Grid>
 </UserControl>
