@@ -5,7 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DoAnLTTQ.Views" xmlns:component="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d">
-
+    <UserControl.Resources>
+        <Style x:Key="ReloadButton" TargetType="Button">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="Width" Value="136"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+           
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="FontWeight" Value="Medium" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="3*"/>
@@ -15,19 +30,36 @@
     </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition />
+                <RowDefinition Height="576"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <component:NavBarMain 
-                Loaded="NavBarMain_Loaded" x:Name="NavbarMain" />
+            <component:NavBarMain Grid.RowSpan="2"
+                Loaded="NavBarMain_Loaded" />
             <!--picture ="{Binding userProfile}"/>-->
             <!--picture="{Binding userAvatar}"-->
             <!--picture = "{Binding userProfile }"-->
-            <Canvas Panel.ZIndex="100">
-                <Button Click="Button_Click"/>
-            </Canvas>
+           
+            <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
+                <Button Style="{StaticResource ReloadButton}"  Click="Reload_Click" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#ff7854" Offset="0.0" />
+                            <GradientStop Color="#fd267d" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    Reload
+                </Button>
+
+            </Border>
+
         </Grid>
         <Grid Grid.Column="1" Background="#f5f7fa">
             <Grid.RowDefinitions>

@@ -61,22 +61,22 @@
             <Setter Property="FontFamily" Value="Comic Sans MS" />
         </Style>
 
-        <Style x:Key="updateBtn" TargetType="Button">
+
+        <!--Style x:Key="updateBtn" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="136"/>
             <Setter Property="Height" Value="44"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <!--<Setter Property="Canvas.Top" Value="31"/>
-            <Setter Property="Canvas.Left" Value="92"/>-->
+            --><!--<Setter Property="Canvas.Top" Value="31"/>
+            <Setter Property="Canvas.Left" Value="92"/>--><!--
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
-        </Style>
-
+        </Style>-->
         <Style x:Key="changingbutton" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="100"/>
@@ -203,13 +203,13 @@
                             </Border>
                         </Grid>
                         <!--<component:GridProfile></component:GridProfile>-->
-                        <component:GridProfile VerticalAlignment="Top" userPictureNearBy="{Binding m_userPictureNearBy}"></component:GridProfile>
+                        <component:GridProfile VerticalAlignment="Top" userPictureNearBy="{Binding m_userPictureNearBy}" ></component:GridProfile>
                         <ContentControl Content="{Binding TabChange}"/>
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
-                    <Button Style="{StaticResource updateBtn}"  >
+                <!--<Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
+                    <Button Style="{StaticResource updateBtn}" Click="{Binding Button_Click}"  >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20"/>
@@ -224,7 +224,7 @@
                         Reload
                     </Button>
 
-                </Border>
+                </Border>-->
                 
             </Grid>
         </Grid>

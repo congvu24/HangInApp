@@ -27,19 +27,7 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class GridProfile : UserControl, INotifyPropertyChanged
     {
-        //public List<Picture> _picture = new List<Picture>();
-        //// code thu 2
-        ////public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
-        //public Picture picture
-        //{
-        //    get { return (Picture)GetValue(profilePicture); }
-        //    set { SetValue(profilePicture, value); }
-        //}
-        //public static readonly DependencyProperty profilePicture =
-        //     DependencyProperty.Register("_picture", typeof(Picture),
-        //       typeof(GridProfile));
-
-        //// end
+        public bool g_forceReload;
         public ObservableCollection<BitmapImage> userPictureNearBy
         {
             get { return (ObservableCollection<BitmapImage>)GetValue(userPictureNearByProperty); }
@@ -62,9 +50,16 @@ namespace DoAnLTTQ.Components
                 userPictureNearBy.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(userPictureNearBy_CollectionChanged);
         }
 
+        //detect changes
         void userPictureNearBy_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            Console.WriteLine("grid Changed");
+            //Console.WriteLine("grid Changed");
+            int AMOUNT = userPictureNearBy.Count();
+            List<Source> source = new List<Source>();
+            for (int i = 0; i < AMOUNT; i++)
+                source.Add(new Source() { item = userPictureNearBy[i] });
+
+            listImage.DataContext = source;
         }
         public class Source
         {
@@ -73,18 +68,7 @@ namespace DoAnLTTQ.Components
         public GridProfile()
         {
             InitializeComponent();
-
             List<Source> source = new List<Source>();
-
-            for (int i = 0; i < 9; i++)
-            {
-                //GuestProfile guest = new GuestProfile();
-                //guest.LoadProfile();
-                //userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
-                
-                //source.Add(new Source() { item = userPictureNearBy[i] });
-            }
-           
 
             listImage.DataContext = source;
 
