@@ -27,8 +27,8 @@ namespace DoAnLTTQ.Components
         public event ClickOnButtonHandler ButtonSwitchViewOnClick;
 
 
-        public GridProfile gridProfile = new GridProfile();
-        public GridMessage gridMessage = new GridMessage(); 
+        //public GridProfile gridProfile = new GridProfile();
+        //public GridMessage gridMessage = new GridMessage(); 
         public UserControl TabChange
         {
             get { return this._TabChange; }
@@ -42,8 +42,11 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
 
-            this.TabChange = gridProfile; 
+            //this.TabChange = gridProfile; 
             //this.DataContext = this; 
+
+            gridProfile.Visibility = Visibility.Visible;
+            gridMessage.Visibility = Visibility.Collapsed;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,14 +61,16 @@ namespace DoAnLTTQ.Components
 
         private void buttonQuanhDay_Click(object sender, RoutedEventArgs e)
         {
-            this.TabChange = gridProfile;
+            gridProfile.Visibility = Visibility.Visible;
+            gridMessage.Visibility = Visibility.Collapsed;
             if (ButtonSwitchViewOnClick != null)
                 ButtonSwitchViewOnClick(ViewEnum.QuanhDayView);
         }
 
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
-            this.TabChange = gridMessage;
+            gridProfile.Visibility = Visibility.Collapsed;
+            gridMessage.Visibility = Visibility.Visible;
             if (ButtonSwitchViewOnClick != null)
                 ButtonSwitchViewOnClick(ViewEnum.MessageView);
 

@@ -63,15 +63,14 @@ namespace DoAnLTTQ.Components
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            //var content = TextToSend.Text;
-            //sendMessage(content);
-            this.listenMessage.Abort();
+            var content = TextToSend.Text;
+            sendMessage(content);
 
         }
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
         {
-            this.listenMessage.Abort();
+            //this.listenMessage.Abort();
             this.sv.DisconnectAll();
         }
         public void Unmmount()
