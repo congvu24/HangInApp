@@ -140,8 +140,10 @@
             <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="86"/>
-                    <RowDefinition Height="490"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="82"/>
+                    <RowDefinition Height="408"/>
+                    <RowDefinition Height="144"/>
+                    
 
                 </Grid.RowDefinitions>
 
@@ -202,11 +204,13 @@
                                 </Button>
                             </Border>
                         </Grid>
-                        <!--<component:GridProfile></component:GridProfile>-->
-                        <component:GridProfile VerticalAlignment="Top" userPictureNearBy="{Binding m_userPictureNearBy}" ></component:GridProfile>
-                        <ContentControl Content="{Binding TabChange}"/>
+                       
                     </StackPanel>
                 </Border>
+                <Grid Grid.Row="2" >
+                    <component:GridMessage VerticalAlignment="Top" x:Name="gridMessage" />
+                    <component:GridProfile VerticalAlignment="Top" x:Name="gridProfile" userPictureNearBy="{Binding m_userPictureNearBy}" ></component:GridProfile>
+                </Grid>
 
                 <!--<Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                     <Button Style="{StaticResource updateBtn}" Click="{Binding Button_Click}"  >
