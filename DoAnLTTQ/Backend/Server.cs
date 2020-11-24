@@ -17,21 +17,40 @@ using DoAnLTTQ.Components;
 
 namespace DoAnLTTQ.Backend
 {
-    class Server
+    public class Server
     {
+        public delegate void handleReceiveMessage(string content);
+
+        public handleReceiveMessage myDelegate;
+
+        public Socket MessageListener;
+        public TcpListener ProfileListener;
+
+
+        public void DisconnectAll()
+        {
+            if (this.MessageListener!= null)
+            { 
+                MessageListener.Close();
+            }
+            if(this.ProfileListener != null)
+            {
+                ProfileListener.Stop();
+            }
+        }
         public void ListenProfile()
         {
-            var listener = new TcpListener(IPAddress.Any, 1308);
-            listener.Start(10);
+            ProfileListener = new TcpListener(IPAddress.Any, 1308);
+            ProfileListener.Start(10);
             byte[] data = new byte[1024 * 1000];
             while (true)
             {
-                var client = listener.AcceptTcpClient();
+                var client = ProfileListener.AcceptTcpClient();
                 var stream = client.GetStream();
                 var formatter = new BinaryFormatter();
                 var guest = formatter.Deserialize(stream) as GuestProfile;
                 guest.saveData();
-                
+
                 //this.Dispatcher.Invoke(() =>
                 //{
                 //    img.Source = Common.LoadImage(student.avatar.buffer);
@@ -84,7 +103,7 @@ namespace DoAnLTTQ.Backend
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    localIp =  ip.ToString();
+                    localIp = ip.ToString();
                 }
             }
 
@@ -92,8 +111,48 @@ namespace DoAnLTTQ.Backend
             socket.SendTo(data, serverEndpoint);
         }
 
-        //public void SendProfile();
+        public void ListenMessage()
+        {
+            try
+            {
+                var localIp = IPAddress.Any;
+                var localPort = 1309;
+                var localEndPoint = new IPEndPoint(localIp, localPort);
+                MessageListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                MessageListener.Bind(localEndPoint);
+                MessageListener.Listen(10);
 
+                var size = 1024;
+                var receiveBuffer = new byte[size];
+
+                while (true)
+                {
+                    var socket = MessageListener.Accept();
+                    var length = socket.Receive(receiveBuffer);
+                    socket.Shutdown(SocketShutdown.Receive);
+                    var text = Encoding.ASCII.GetString(receiveBuffer, 0, length);
+                    //MessageBox.Show(text);
+                    this.myDelegate(text);
+                    socket.Close();
+                    Array.Clear(receiveBuffer, 0, size); 
+
+                }
+            }
+            catch 
+            {
+            }
+
+    }
+    
+        public void SendMessage(IPAddress ip, String content)
+        {
+            var serverEndpoint = new IPEndPoint(ip, 1309);
+            var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            socket.Connect(serverEndpoint);
+            var sendBuffer = Encoding.ASCII.GetBytes(content);
+            socket.Send(sendBuffer);
+            socket.Shutdown(SocketShutdown.Send);
+        }
     }
 }
 

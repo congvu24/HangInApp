@@ -30,7 +30,6 @@ namespace DoAnLTTQ
 
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public UserControl _ViewContext;
         public List<Profile> friends = new List<Profile>();
         //==>Home view 
         public HomeView myHomeView = new HomeView();
@@ -38,6 +37,7 @@ namespace DoAnLTTQ
         public MainView myMainView = new MainView();
 
 
+        public UserControl _ViewContext;
         public UserControl ViewContext { 
             get { return this._ViewContext; } 
             set {
@@ -75,8 +75,12 @@ namespace DoAnLTTQ
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-        
-      
+        private void OnWindowclose(object sender, EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode); // Prevent memory leak
+                                                    // System.Windows.Application.Current.Shutdown(); // Not sure if needed
+        }
+
     }
    
 

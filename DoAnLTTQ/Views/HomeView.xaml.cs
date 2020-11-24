@@ -35,20 +35,20 @@ namespace DoAnLTTQ.Views
 
         private void TabMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
         {
-            if (viewEnum == ViewEnum.SettingView)
-            {
-                OnSwitchView();
-            }
-            else if (viewEnum == ViewEnum.MessageView)
-            {
-                info_main.Visibility = Visibility.Collapsed;
-                messagedetails.Visibility = Visibility.Visible;
-            }
-            else if (viewEnum == ViewEnum.QuanhDayView)
-            {
-                info_main.Visibility = Visibility.Visible;
-                messagedetails.Visibility = Visibility.Collapsed;
-            }
+            //if (viewEnum == ViewEnum.SettingView)
+            //{
+            //    OnSwitchView();
+            //}
+            //else if (viewEnum == ViewEnum.MessageView)
+            //{
+            //    info_main.Visibility = Visibility.Collapsed;
+            //    messagedetails.Visibility = Visibility.Visible;
+            //}
+            //else if (viewEnum == ViewEnum.QuanhDayView)
+            //{
+            //    info_main.Visibility = Visibility.Visible;
+            //    messagedetails.Visibility = Visibility.Collapsed;
+            //}
 
         }
         private void NavBarMain_Loaded(object sender, RoutedEventArgs e)

@@ -75,11 +75,17 @@
     <Compile Include="Backend\Message.cs" />
     <Compile Include="Backend\User.cs" />
     <Compile Include="Backend\Server.cs" />
+    <Compile Include="Components\InComingMessage.xaml.cs">
+      <DependentUpon>InComingMessage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\MessageAndDetails.xaml.cs">
       <DependentUpon>MessageAndDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\MS_Right.xaml.cs">
       <DependentUpon>MS_Right.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\MyMessage.xaml.cs">
+      <DependentUpon>MyMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\TAB_GridMessage.xaml.cs">
       <DependentUpon>TAB_GridMessage.xaml</DependentUpon>
@@ -125,11 +131,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\InComingMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\MessageAndDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\MS_Right.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\MyMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
