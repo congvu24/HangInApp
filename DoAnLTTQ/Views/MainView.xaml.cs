@@ -127,7 +127,8 @@
             for (int i = 0; i < USER_AMOUNT; i++)
             {
                 GuestProfile guest = new GuestProfile();
-                guest.LoadProfile();
+                //guest.LoadProfile();
+                guest.LoadArrayProfile();
                 m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
             }
         }

@@ -70,17 +70,36 @@ namespace DoAnLTTQ.Components
         public void reloadGuest()
         {
             specialGuest = new GuestProfile();
+            //specialGuest.LoadArrayProfile();
             specialGuest.LoadProfile();
             this.avatar = specialGuest.avatar.buffer;
+            //this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
             img.ImageSource = Common.LoadImage(avatar);
 
-            
+        }   
+        public void reloadArrayGuest()
+        {
+            specialGuest = new GuestProfile();
+            specialGuest.LoadArrayProfile();
+            this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
+            img.ImageSource = Common.LoadImage(avatar);
+
+            foreach (var item in specialGuest.listGuestProfile)
+            {
+                MessageBox.Show(item.name); 
+            }
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            reloadGuest();
+            reloadArrayGuest();
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hello"); 
         }
         //public ObservableCollection<BitmapImage> userPictureNearBy
         //{

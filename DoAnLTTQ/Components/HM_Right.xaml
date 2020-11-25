@@ -165,13 +165,13 @@
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
 
-                    <Button Grid.Column="1" Style="{StaticResource navButton}"  >
+                    <Button Grid.Column="1" Style="{StaticResource navButton}" Click="Button_Click_2" >
                         <Image Source="/Resources/icon/heart.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
                     <Button Grid.Column="2" Style="{StaticResource navButton}" >
                         <Image Source="/Resources/icon/reject.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
-                    <TextBox x:Name="textBox"/>
+                    <!--<TextBox x:Name="textBox"/>-->
                 </Grid>
 
                 <!--disable tab navigation on stackpanel's child element with KeyboardNavigation.TabNavigation="None"-->

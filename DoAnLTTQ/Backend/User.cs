@@ -44,7 +44,7 @@
     [Serializable]
     public class Profile
     {
-     
+
         public string name { get; set; }
         public string age { get; set; }
         public string sex { get; set; }
@@ -68,10 +68,10 @@
     [Serializable]
     public class Picture
     {
-      
+
         public string name { get; set; }
 
-       
+
         public string url { get; set; }
     }
     [Serializable]
@@ -103,6 +103,25 @@
                 this.age = tmp.age;
                 this.sex = tmp.sex;
                 this.hobby = tmp.hobby;
+            }
+        }
+
+        public List<GuestProfile> listGuestProfile = new List<GuestProfile>();
+        public void LoadArrayProfile()
+        {
+            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            using (StreamReader r = new StreamReader(_source))
+            {
+                string json = r.ReadToEnd();
+                listGuestProfile = JsonConvert.DeserializeObject<List<GuestProfile>>(json);
+
+                GuestProfile firstProfile = listGuestProfile[0];
+
+                this.name = firstProfile.name;
+                this.avatar = firstProfile.avatar;
+                this.age = firstProfile.age;
+                this.sex = firstProfile.sex;
+                this.hobby = firstProfile.hobby;
             }
         }
 
