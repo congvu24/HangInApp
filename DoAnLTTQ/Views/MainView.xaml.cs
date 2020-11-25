@@ -1,6 +1,7 @@
 ﻿namespace DoAnLTTQ.Views
 {
     using DoAnLTTQ.Backend;
+    using DoAnLTTQ.Components;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -34,6 +35,18 @@
             }
         }
 
+        public event SwitchViewHandler OnSwitchView;
+
+        public UserControl _ViewContext;
+        public UserControl ViewContext
+        {
+            get { return this._ViewContext; }
+            set
+            {
+                _ViewContext = value;
+                OnPropertyChanged("ViewContext");
+            }
+        }
 
 
         // pass to GridProfile
@@ -61,16 +74,16 @@
         public MainView()
         {
             InitializeComponent();
-            //Server sv = new Server();
-            //var listenProfile = new Thread(sv.ListenProfile);
-            //listenProfile.Start();
-            //var server = new Thread(sv.ListenRequestMessage);
-            //server.Start();
+
             //var client = new Thread(sv.SendRequestMessage);
             //client.Start();
 
-
             NavBarMain.gridProfileName.ProfileSelected += new EventHandler<string>(xinxo);
+            //GuestProfile guest = new GuestProfile();
+            //guest.LoadProfile();
+            //m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
+
+            this.ViewContext = new info_main();
             this.DataContext = this;
 
 
@@ -86,13 +99,12 @@
             }
             else if (viewEnum == ViewEnum.MessageView)
             {
-                mainsetting.Visibility = Visibility.Collapsed;
-                messagedetails.Visibility = Visibility.Visible;
+                this.ViewContext = new MessageView_MessageDetails();
             }
             else if (viewEnum == ViewEnum.QuanhDayView)
             {
-                mainsetting.Visibility = Visibility.Visible;
-                messagedetails.Visibility = Visibility.Collapsed;
+                ((MessageView_MessageDetails)this.ViewContext).Unmmount();
+                this.ViewContext = new info_main();
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

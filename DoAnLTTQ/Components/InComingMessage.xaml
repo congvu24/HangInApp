@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="DoAnLTTQ.Components.InComingMessage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DoAnLTTQ.Components"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="partnerMessageContent">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Comic Sans ms"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="PartnerMessageBorder">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="Margin" Value="30,10,30,10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+    </UserControl.Resources>
+    <Border x:Name="PartnerMessage" Style="{StaticResource PartnerMessageBorder}">
+        <TextBlock x:Name="PartnerMessageContent" Style="{StaticResource partnerMessageContent}" >
+
+        </TextBlock>
+    </Border>
+</UserControl>
