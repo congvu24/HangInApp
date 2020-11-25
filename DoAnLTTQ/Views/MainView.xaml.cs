@@ -69,7 +69,6 @@
             set { this._userProfile = value; this.OnPropertyChanged("userProfile"); }
         }
 
-        public event SwitchViewHandler OnSwitchView;
 
         public MainView()
         {

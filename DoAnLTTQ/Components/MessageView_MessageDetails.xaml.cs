@@ -60,7 +60,7 @@ namespace DoAnLTTQ.Components
                 messagePanel.Children.Add(new InComingMessage(content));
             });
         }
-
+        
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             var content = TextToSend.Text;
@@ -70,13 +70,10 @@ namespace DoAnLTTQ.Components
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
         {
-            //this.listenMessage.Abort();
             this.sv.DisconnectAll();
         }
         public void Unmmount()
         {
-            //this.listenMessage.
-
             this.sv.DisconnectAll();
         }
     }
