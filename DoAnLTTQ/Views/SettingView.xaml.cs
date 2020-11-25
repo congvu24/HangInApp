@@ -154,20 +154,5 @@ namespace DoAnLTTQ.Views
 
         }
 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    this.cl = new client();
-        //    cl.sendToServer();
-        //}
-
-        //private void Button_Click_2(object sender, RoutedEventArgs e)
-        //{
-        //    this.sv.run();
-        //}
-
-        //private void Button_Click_3(object sender, RoutedEventArgs e)
-        //{
-        //    this.sv.stop();
-        //}
     }
 }

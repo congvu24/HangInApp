@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
+    using System.Linq;
     using System.Net;
     using System.Net.Sockets;
     using System.Runtime.Serialization.Formatters.Binary;
@@ -17,13 +18,24 @@
 
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
-        public static bool forceReload = false;
-        public List<Picture> _userProfile = new List<Picture>();
+        public string temp;
 
-        public event SwitchViewHandler OnSwitchView; 
+        // pass to info_main
+        private ObservableCollection<string> detailList = new ObservableCollection<string>();
+        public ObservableCollection<string> m_detailList
+        {
+            get { return detailList; }
+            set
+            {
+                if (value != detailList)
+                {
+                    detailList= value;
+                }
+            }
+        }
 
-        // binding cai nay xuong de hien thi
-        //public List<BitmapImage> userPictureNearBy = new List<BitmapImage>();
+
+        // pass to GridProfile
         private ObservableCollection<BitmapImage> _userPictureNearBy = new ObservableCollection<BitmapImage>();
         public ObservableCollection<BitmapImage> m_userPictureNearBy
         {
@@ -36,12 +48,14 @@
                 }
             }
         }
+        public List<Picture> _userProfile = new List<Picture>();
         public List<Picture> userProfile
         {
             get { return this._userProfile; }
             set { this._userProfile = value; this.OnPropertyChanged("userProfile"); }
         }
 
+        public event SwitchViewHandler OnSwitchView; 
 
         public MainView()
         {
@@ -54,11 +68,10 @@
             //var client = new Thread(sv.SendRequestMessage);
             //client.Start();
 
-            //GuestProfile guest = new GuestProfile();
-            //guest.LoadProfile();
-            //m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
-           
+
+            NavBarMain.gridProfileName.ProfileSelected += new EventHandler<string>(xinxo);
             this.DataContext = this;
+            
             
             NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
@@ -111,6 +124,24 @@
                 guest.LoadProfile();
                 m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
             }
+        }
+        public void xinxo(object sender, string s)
+        {
+            bool isProfileSeleted = (s == null);
+            string tempstring = "this is temp string in mainview";
+            if (isProfileSeleted)
+            {
+                temp = tempstring;
+            }
+            else
+            {
+                temp = s;
+            }
+            //MessageBox.Show(temp);
+            Console.WriteLine("Added");
+            Console.WriteLine(detailList.Count().ToString());
+            detailList.Add(temp);
+            
         }
     }
 }

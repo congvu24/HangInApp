@@ -27,7 +27,8 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class GridProfile : UserControl, INotifyPropertyChanged
     {
-        public bool g_forceReload;
+        public event EventHandler<string> ProfileSelected;
+
         public ObservableCollection<BitmapImage> userPictureNearBy
         {
             get { return (ObservableCollection<BitmapImage>)GetValue(userPictureNearByProperty); }
@@ -53,17 +54,17 @@ namespace DoAnLTTQ.Components
         //detect changes
         void userPictureNearBy_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            //Console.WriteLine("grid Changed");
             int AMOUNT = userPictureNearBy.Count();
             List<Source> source = new List<Source>();
             for (int i = 0; i < AMOUNT; i++)
-                source.Add(new Source() { item = userPictureNearBy[i] });
+                source.Add(new Source() { item = userPictureNearBy[i], name = i.ToString() });
 
             listImage.DataContext = source;
         }
         public class Source
         {
             public BitmapImage item { get; set; }
+            public string name { get; set; }
         }
         public GridProfile()
         {
@@ -97,6 +98,23 @@ namespace DoAnLTTQ.Components
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //img.ImageSource = userPictureNearBy[0];
+        }
+
+        private void reload_Click_1(object sender, RoutedEventArgs e)
+        {
+            profileSelecting();
+        }
+        private void profileSelecting()
+        {
+            // kiểm tra điều kiện khác null, nếu null thì khởi tạo giá trị mặc định
+            if (ProfileSelected != null)
+            {
+            string s = click.Content as string;
+
+
+                ProfileSelected(this, s);
+            }
+            // end
         }
     }
 }
