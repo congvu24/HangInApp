@@ -21,51 +21,52 @@ namespace DoAnLTTQ.Components
     /// <summary>
     /// Interaction logic for info_main.xaml
     /// </summary>
-    public partial class info_main : UserControl
+    public partial class info_main : UserControl, INotifyPropertyChanged
     {
-        //GuestProfile guest;
         byte[] avatar;
         public GuestProfile specialGuest;
         public int _profileIndex; // index of profile in list profile to show on screen
 
-        public ObservableCollection<string> profileIndex
+        public int profileIndex
         {
-            get { return (ObservableCollection<string>)GetValue(profileIndexProperty); }
-            set { SetValue(profileIndexProperty, value); }
+            get { return _profileIndex; }
+            set { _profileIndex = value; OnPropertyChanged("profileIndex"); }
         }
-        public static readonly DependencyProperty profileIndexProperty =
-            DependencyProperty.Register("profileIndex", typeof(ObservableCollection<string>), typeof(info_main),
-                                        new PropertyMetadata(new ObservableCollection<string>(), OnChanged));
 
 
-        static void OnChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string newName)
         {
-            (sender as info_main).OnChanged();
-
-        }
-        void OnChanged()
-        {
-            if (profileIndex != null)
-                profileIndex.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(profileIndex_CollectionChanged);
-        }
-        void profileIndex_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            int count = 0;
-            if (profileIndex.Count != 0)
+            if (PropertyChanged != null)
             {
-                _profileIndex = int.Parse(profileIndex[count]);
-                //Console.WriteLine(_profileIndex);
+                PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
+        public UserControl _ViewContext;
 
+        public UserControl ViewContext
+        {
+            get { return this._ViewContext; }
+            set
+            {
+                _ViewContext = value;
+                OnPropertyChanged("ViewContext");
+            }
+        }
+        public void ChangeProfile(int id)
+        {
+            List<int> t = new List<int>();
+            t.Add(11);
+            t.Add(21); 
+            t.Add(31); 
+            t.Add(41);
+            profileIndex = t[id];
+        }
         public info_main()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            profileIndex = 19;
+            this.DataContext = this;
         }
         public void reloadGuest()
         {
@@ -73,8 +74,6 @@ namespace DoAnLTTQ.Components
             specialGuest.LoadProfile();
             this.avatar = specialGuest.avatar.buffer;
             img.ImageSource = Common.LoadImage(avatar);
-
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -82,36 +81,5 @@ namespace DoAnLTTQ.Components
             reloadGuest();
 
         }
-        //public ObservableCollection<BitmapImage> userPictureNearBy
-        //{
-        //    get { return (ObservableCollection<BitmapImage>)GetValue(userPictureNearByProperty); }
-        //    set { SetValue(userPictureNearByProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty userPictureNearByProperty =
-        //    DependencyProperty.Register("userPictureNearBy", typeof(ObservableCollection<BitmapImage>), typeof(GridProfile),
-        //                                new PropertyMetadata(new ObservableCollection<BitmapImage>(), OnChanged));
-        //static void OnChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //    (sender as info_main).OnChanged();
-
-        //}
-
-        //void OnChanged()
-        //{
-        //    if (userPictureNearBy != null)
-        //        userPictureNearBy.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(userPictureNearBy_CollectionChanged);
-        //}
-
-        ////detect changes
-        //void userPictureNearBy_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        //{
-        //    int AMOUNT = userPictureNearBy.Count();
-        //    List<Source> source = new List<Source>();
-        //    for (int i = 0; i < AMOUNT; i++)
-        //        source.Add(new Source() { item = userPictureNearBy[i], name = i.ToString() });
-
-        //    listImage.DataContext = source;
-        //}
     }
 }

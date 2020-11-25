@@ -19,22 +19,6 @@
 
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
-        public string temp;
-
-        // pass to info_main
-        private ObservableCollection<string> profileIndex = new ObservableCollection<string>();
-        public ObservableCollection<string> m_profileIndex
-        {
-            get { return profileIndex; }
-            set
-            {
-                if (value != profileIndex)
-                {
-                    profileIndex = value;
-                }
-            }
-        }
-
         public event SwitchViewHandler OnSwitchView;
 
         public UserControl _ViewContext;
@@ -77,7 +61,7 @@
             //var client = new Thread(sv.SendRequestMessage);
             //client.Start();
 
-            NavBarMain.gridProfileName.ProfileSelected += new EventHandler<string>(xinxo);
+            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(xinxo);
             //GuestProfile guest = new GuestProfile();
             //guest.LoadProfile();
             //m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
@@ -116,7 +100,6 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-        // add more user
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
             // count number of guest user from guestjson
@@ -131,16 +114,9 @@
                 m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
             }
         }
-        public void xinxo(object sender, string s)
+        public void xinxo(object sender, int index)
         {
-            bool isProfileSeleted = (s == null);
-            string tempstring = "this is temp string in mainview";
-            if (isProfileSeleted)
-                temp = tempstring;
-            else
-                temp = s;
-            profileIndex.Clear();
-            profileIndex.Add(temp);
+            ((info_main)this.ViewContext).ChangeProfile(index);
 
         }
         private void mainsetting_Loaded(object sender, RoutedEventArgs e) { }
