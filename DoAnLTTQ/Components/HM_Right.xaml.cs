@@ -26,14 +26,15 @@ namespace DoAnLTTQ.Components
         //GuestProfile guest;
         byte[] avatar;
         public GuestProfile specialGuest;
+        public int _profileIndex; // index of profile in list profile to show on screen
 
-        public ObservableCollection<string> detail
+        public ObservableCollection<string> profileIndex
         {
-            get { return (ObservableCollection<string>)GetValue(detailProperty); }
-            set { SetValue(detailProperty, value); }
+            get { return (ObservableCollection<string>)GetValue(profileIndexProperty); }
+            set { SetValue(profileIndexProperty, value); }
         }
-        public static readonly DependencyProperty detailProperty =
-            DependencyProperty.Register("detail", typeof(ObservableCollection<string>), typeof(info_main),
+        public static readonly DependencyProperty profileIndexProperty =
+            DependencyProperty.Register("profileIndex", typeof(ObservableCollection<string>), typeof(info_main),
                                         new PropertyMetadata(new ObservableCollection<string>(), OnChanged));
 
 
@@ -44,20 +45,22 @@ namespace DoAnLTTQ.Components
         }
         void OnChanged()
         {
-            if (detail != null)
-                detail.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(detail_CollectionChanged);
+            if (profileIndex != null)
+                profileIndex.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(profileIndex_CollectionChanged);
         }
-        void detail_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        void profileIndex_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-           // event here
+            int count = 0;
+            if (profileIndex.Count != 0)
+            {
+                _profileIndex = int.Parse(profileIndex[count]);
+                //Console.WriteLine(_profileIndex);
+            }
         }
-   
+
         public info_main()
         {
             InitializeComponent();
-          
-            //this.DataContext = this;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,6 +73,8 @@ namespace DoAnLTTQ.Components
             specialGuest.LoadProfile();
             this.avatar = specialGuest.avatar.buffer;
             img.ImageSource = Common.LoadImage(avatar);
+
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

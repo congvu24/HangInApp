@@ -42,7 +42,6 @@ namespace DoAnLTTQ.Components
         static void OnChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             (sender as GridProfile).OnChanged();
-
         }
 
         void OnChanged()
@@ -94,26 +93,19 @@ namespace DoAnLTTQ.Components
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void select_Click(object sender, RoutedEventArgs e)
         {
-            //img.ImageSource = userPictureNearBy[0];
-        }
-
-        private void reload_Click_1(object sender, RoutedEventArgs e)
-        {
-            profileSelecting();
-        }
-        private void profileSelecting()
-        {
-            // kiểm tra điều kiện khác null, nếu null thì khởi tạo giá trị mặc định
+            string identify = (sender as Button).Uid;
+            //profileSelecting(identify);
             if (ProfileSelected != null)
             {
-            string s = click.Content as string;
-
-
-                ProfileSelected(this, s);
+                ProfileSelected(this, identify);
             }
+        }
+        private void profileSelecting(string identify)
+        {
+            // kiểm tra điều kiện khác null, nếu null thì khởi tạo giá trị mặc định
+           
             // end
         }
     }

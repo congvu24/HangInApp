@@ -49,13 +49,13 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border>
+                            <!--x:Name="click"-->
                             <Button  
                             Style="{StaticResource myImageSlotContent}"
                             HorizontalContentAlignment="Center" 
                             VerticalContentAlignment="Center"
-                            Click="reload_Click_1"
-                            x:Name="abutton"
-                                Content="hihi">
+                            Click="select_Click"
+                            Uid="{Binding name}">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="15"/>
@@ -63,7 +63,7 @@
                                 </Button.Resources>
 
                                 <Button.Background>
-                                    <ImageBrush  ImageSource="{Binding item}"  Stretch="Fill" />
+                                    <ImageBrush ImageSource="{Binding item}" Stretch="Fill" />
                                 </Button.Background>
                                 <!--x:Name="background"-->
                             </Button>
@@ -74,6 +74,6 @@
 
         </WrapPanel>
 
-        <Button Click="reload_Click_1" x:Name="click" Content="notclick"></Button>
+        <!--<Button Click="reload_Click_1" x:Name="click" Content="notclick"></Button>-->
     </Grid>
 </UserControl>

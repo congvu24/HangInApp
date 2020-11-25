@@ -72,7 +72,7 @@
             <component:info_main   
                 x:Name="mainsetting"
                 Grid.ColumnSpan="2"
-                detail="{Binding m_detailList}"
+               profileIndex ="{Binding m_profileIndex}"
                 />
             <component:MessageAndDetails 
                 x:Name="messagedetails" 

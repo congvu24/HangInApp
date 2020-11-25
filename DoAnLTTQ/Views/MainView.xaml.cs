@@ -21,18 +21,19 @@
         public string temp;
 
         // pass to info_main
-        private ObservableCollection<string> detailList = new ObservableCollection<string>();
-        public ObservableCollection<string> m_detailList
+        private ObservableCollection<string> profileIndex = new ObservableCollection<string>();
+        public ObservableCollection<string> m_profileIndex
         {
-            get { return detailList; }
+            get { return profileIndex; }
             set
             {
-                if (value != detailList)
+                if (value != profileIndex)
                 {
-                    detailList= value;
+                    profileIndex = value;
                 }
             }
         }
+
 
 
         // pass to GridProfile
@@ -55,7 +56,7 @@
             set { this._userProfile = value; this.OnPropertyChanged("userProfile"); }
         }
 
-        public event SwitchViewHandler OnSwitchView; 
+        public event SwitchViewHandler OnSwitchView;
 
         public MainView()
         {
@@ -71,8 +72,8 @@
 
             NavBarMain.gridProfileName.ProfileSelected += new EventHandler<string>(xinxo);
             this.DataContext = this;
-            
-            
+
+
             NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
 
@@ -104,20 +105,14 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-
-
-        private void mainsetting_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void NavBarMain_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
         // add more user
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
-            int USER_AMOUNT = 9;
+            // count number of guest user from guestjson
+            // then assign it to USER_AMOUNT
+
+            int USER_AMOUNT = (new Random()).Next(1, 8);
+            m_userPictureNearBy.Clear();
             for (int i = 0; i < USER_AMOUNT; i++)
             {
                 GuestProfile guest = new GuestProfile();
@@ -130,18 +125,15 @@
             bool isProfileSeleted = (s == null);
             string tempstring = "this is temp string in mainview";
             if (isProfileSeleted)
-            {
                 temp = tempstring;
-            }
             else
-            {
                 temp = s;
-            }
-            //MessageBox.Show(temp);
-            Console.WriteLine("Added");
-            Console.WriteLine(detailList.Count().ToString());
-            detailList.Add(temp);
-            
+            profileIndex.Clear();
+            profileIndex.Add(temp);
+
         }
+        private void mainsetting_Loaded(object sender, RoutedEventArgs e) { }
+        private void NavBarMain_Loaded(object sender, RoutedEventArgs e) { }
+
     }
 }
