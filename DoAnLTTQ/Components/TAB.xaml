@@ -204,7 +204,9 @@
                                 </Button>
                             </Border>
                         </Grid>
-                       
+                        <!--<component:GridProfile></component:GridProfile>-->
+                        <component:GridProfile VerticalAlignment="Top" userPictureNearBy="{Binding m_userPictureNearBy}" x:Name="gridProfileName"></component:GridProfile>
+                        <ContentControl Content="{Binding TabChange}"/>
                     </StackPanel>
                 </Border>
                 <Grid Grid.Row="2" >

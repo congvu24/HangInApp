@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
+    using System.Linq;
     using System.Net;
     using System.Net.Sockets;
     using System.Runtime.Serialization.Formatters.Binary;
@@ -18,8 +19,21 @@
 
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
-        public static bool forceReload = false;
-        public List<Picture> _userProfile = new List<Picture>();
+        public string temp;
+
+        // pass to info_main
+        private ObservableCollection<string> profileIndex = new ObservableCollection<string>();
+        public ObservableCollection<string> m_profileIndex
+        {
+            get { return profileIndex; }
+            set
+            {
+                if (value != profileIndex)
+                {
+                    profileIndex = value;
+                }
+            }
+        }
 
         public event SwitchViewHandler OnSwitchView;
 
@@ -34,8 +48,8 @@
             }
         }
 
-        // binding cai nay xuong de hien thi
-        //public List<BitmapImage> userPictureNearBy = new List<BitmapImage>();
+
+        // pass to GridProfile
         private ObservableCollection<BitmapImage> _userPictureNearBy = new ObservableCollection<BitmapImage>();
         public ObservableCollection<BitmapImage> m_userPictureNearBy
         {
@@ -48,12 +62,14 @@
                 }
             }
         }
+        public List<Picture> _userProfile = new List<Picture>();
         public List<Picture> userProfile
         {
             get { return this._userProfile; }
             set { this._userProfile = value; this.OnPropertyChanged("userProfile"); }
         }
 
+        public event SwitchViewHandler OnSwitchView;
 
         public MainView()
         {
@@ -62,13 +78,15 @@
             //var client = new Thread(sv.SendRequestMessage);
             //client.Start();
 
+            NavBarMain.gridProfileName.ProfileSelected += new EventHandler<string>(xinxo);
             //GuestProfile guest = new GuestProfile();
             //guest.LoadProfile();
             //m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
 
             this.ViewContext = new info_main();
             this.DataContext = this;
-            
+
+
             NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
 
@@ -99,20 +117,14 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-
-
-        private void mainsetting_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void NavBarMain_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
         // add more user
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
-            int USER_AMOUNT = 9;
+            // count number of guest user from guestjson
+            // then assign it to USER_AMOUNT
+
+            int USER_AMOUNT = (new Random()).Next(1, 8);
+            m_userPictureNearBy.Clear();
             for (int i = 0; i < USER_AMOUNT; i++)
             {
                 GuestProfile guest = new GuestProfile();
@@ -120,5 +132,20 @@
                 m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
             }
         }
+        public void xinxo(object sender, string s)
+        {
+            bool isProfileSeleted = (s == null);
+            string tempstring = "this is temp string in mainview";
+            if (isProfileSeleted)
+                temp = tempstring;
+            else
+                temp = s;
+            profileIndex.Clear();
+            profileIndex.Add(temp);
+
+        }
+        private void mainsetting_Loaded(object sender, RoutedEventArgs e) { }
+        private void NavBarMain_Loaded(object sender, RoutedEventArgs e) { }
+
     }
 }

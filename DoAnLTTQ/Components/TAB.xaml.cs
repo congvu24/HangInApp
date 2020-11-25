@@ -83,48 +83,5 @@ namespace DoAnLTTQ.Components
                 ButtonSwitchViewOnClick(ViewEnum.SettingView);
            
         }
-
-
-        // code here to check connect server-client
-        //Server s = new Server();
-        private void Button_Click(object sender, RoutedEventArgs e) //  button start server
-        {
-            //s.run();
-            
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e) // button send message
-        {
-            //sendMessage();
-        }
-        private void sendMessage()
-        {
-            Client c = new Client();
-
-            //var u = new User();
-
-            //var u = "check server";
-            //Message m = new Message(u, 2);
-
-            //c.sendToServer(u);
-            //MessageBox.Show(m.reverse() as string);
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e) // button stop message
-        {
-            //s.stop();
-        }
-        private void updatePicture()
-        {
-
-        }
-        private void sendInfo()
-        {
-
-        }
-        private void receiveInfo()
-        {
-
-        }
     }
 }

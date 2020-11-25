@@ -27,7 +27,8 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class GridProfile : UserControl, INotifyPropertyChanged
     {
-        public bool g_forceReload;
+        public event EventHandler<string> ProfileSelected;
+
         public ObservableCollection<BitmapImage> userPictureNearBy
         {
             get { return (ObservableCollection<BitmapImage>)GetValue(userPictureNearByProperty); }
@@ -41,7 +42,6 @@ namespace DoAnLTTQ.Components
         static void OnChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             (sender as GridProfile).OnChanged();
-
         }
 
         void OnChanged()
@@ -53,17 +53,17 @@ namespace DoAnLTTQ.Components
         //detect changes
         void userPictureNearBy_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            //Console.WriteLine("grid Changed");
             int AMOUNT = userPictureNearBy.Count();
             List<Source> source = new List<Source>();
             for (int i = 0; i < AMOUNT; i++)
-                source.Add(new Source() { item = userPictureNearBy[i] });
+                source.Add(new Source() { item = userPictureNearBy[i], name = i.ToString() });
 
             listImage.DataContext = source;
         }
         public class Source
         {
             public BitmapImage item { get; set; }
+            public string name { get; set; }
         }
         public GridProfile()
         {
@@ -93,10 +93,20 @@ namespace DoAnLTTQ.Components
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void select_Click(object sender, RoutedEventArgs e)
         {
-            //img.ImageSource = userPictureNearBy[0];
+            string identify = (sender as Button).Uid;
+            //profileSelecting(identify);
+            if (ProfileSelected != null)
+            {
+                ProfileSelected(this, identify);
+            }
+        }
+        private void profileSelecting(string identify)
+        {
+            // kiểm tra điều kiện khác null, nếu null thì khởi tạo giá trị mặc định
+           
+            // end
         }
     }
 }
