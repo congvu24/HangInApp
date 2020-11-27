@@ -39,7 +39,7 @@
             <!--<Setter Property="Background" Value="Purple"/>-->
             <Setter Property="BorderThickness" Value="0"/>
 
-           <!--Background="{Binding image, RelativeSource={RelativeSource Self}}"-->
+            <!--Background="{Binding image, RelativeSource={RelativeSource Self}}"-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -152,6 +152,7 @@
                             <TextBox Name="age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
                             <TextBox Name ="hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
                         </StackPanel>
+                        <!--<TextBox Text="{Binding profileIndex}" />-->
                     </Canvas>
                 </Grid>
                 <Grid Height="56">
@@ -171,7 +172,6 @@
                     <Button Grid.Column="2" Style="{StaticResource navButton}" >
                         <Image Source="/Resources/icon/reject.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
-                    <!--<TextBox x:Name="textBox"/>-->
                 </Grid>
 
                 <!--disable tab navigation on stackpanel's child element with KeyboardNavigation.TabNavigation="None"-->
@@ -243,5 +243,6 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+
     </Grid>
 </UserControl>

@@ -27,7 +27,7 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class GridProfile : UserControl, INotifyPropertyChanged
     {
-        public event EventHandler<string> ProfileSelected;
+        public event EventHandler<int> ProfileSelected;
 
         public ObservableCollection<BitmapImage> userPictureNearBy
         {
@@ -95,18 +95,13 @@ namespace DoAnLTTQ.Components
         }
         private void select_Click(object sender, RoutedEventArgs e)
         {
-            string identify = (sender as Button).Uid;
+            int identify = int.Parse((sender as Button).Uid);
             //profileSelecting(identify);
             if (ProfileSelected != null)
             {
                 ProfileSelected(this, identify);
             }
         }
-        private void profileSelecting(string identify)
-        {
-            // kiểm tra điều kiện khác null, nếu null thì khởi tạo giá trị mặc định
-           
-            // end
-        }
+        
     }
 }
