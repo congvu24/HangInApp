@@ -49,12 +49,8 @@ namespace DoAnLTTQ.Backend
                 var stream = client.GetStream();
                 var formatter = new BinaryFormatter();
                 var guest = formatter.Deserialize(stream) as GuestProfile;
-                guest.saveData();
-
-                //this.Dispatcher.Invoke(() =>
-                //{
-                //    img.Source = Common.LoadImage(student.avatar.buffer);
-                //});
+                var myGuest = guest;
+                guest.AddNewGuest(myGuest);
                 client.Close();
             }
         }

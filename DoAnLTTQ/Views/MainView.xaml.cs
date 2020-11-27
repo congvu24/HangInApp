@@ -57,15 +57,14 @@
         public MainView()
         {
             InitializeComponent();
-
+            //Server sv = new Server();
             //var client = new Thread(sv.SendRequestMessage);
             //client.Start();
+            //var server = new Thread(sv.ListenProfile);
+            //server.Start();
+            //sv.SendProfile(IPAddress.Parse("127.0.0.1"));
 
             NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(xinxo);
-            //GuestProfile guest = new GuestProfile();
-            //guest.LoadProfile();
-            //m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
-
             this.ViewContext = new info_main();
             this.DataContext = this;
 
@@ -86,7 +85,14 @@
             }
             else if (viewEnum == ViewEnum.QuanhDayView)
             {
+                try
+                {
                 ((MessageView_MessageDetails)this.ViewContext).Unmmount();
+                }
+                catch
+                {
+
+                }
                 this.ViewContext = new info_main();
             }
         }

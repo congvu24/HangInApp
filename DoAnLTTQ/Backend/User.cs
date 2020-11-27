@@ -77,7 +77,7 @@
     [Serializable]
     public class GuestProfile
     {
-        private readonly string myProfileData = "\\Backend\\Database\\guest.json";
+        public static readonly string myProfileData = "\\Backend\\Database\\guest.json";
         public string name { get; set; }
 
         public string age { get; set; }
@@ -114,14 +114,6 @@
             {
                 string json = r.ReadToEnd();
                 listGuestProfile = JsonConvert.DeserializeObject<List<GuestProfile>>(json);
-
-                GuestProfile firstProfile = listGuestProfile[0];
-
-                this.name = firstProfile.name;
-                this.avatar = firstProfile.avatar;
-                this.age = firstProfile.age;
-                this.sex = firstProfile.sex;
-                this.hobby = firstProfile.hobby;
             }
             return listGuestProfile;
         }
@@ -145,14 +137,14 @@
             byte[] image = File.ReadAllBytes(user.myProfile.avatar.url);
             avatar = new GuestPicture() { name = "vc", buffer = image };
         }
-        public void saveData()
+        public void AddNewGuest(GuestProfile guest)
         {
+            this.LoadArrayProfile();
             string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
-            string json = JsonConvert.SerializeObject(this);
+            listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar=guest.avatar, sex=guest.sex, hobby = guest.hobby,picture = guest.picture });
+            string json = JsonConvert.SerializeObject(listGuestProfile);
             File.WriteAllText(_source, json);
         }
-
-
     }
 
     [Serializable]
