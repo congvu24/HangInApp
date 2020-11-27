@@ -107,7 +107,7 @@
         }
 
         public List<GuestProfile> listGuestProfile = new List<GuestProfile>();
-        public void LoadArrayProfile()
+        public List<GuestProfile> LoadArrayProfile()
         {
             string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
             using (StreamReader r = new StreamReader(_source))
@@ -123,6 +123,7 @@
                 this.sex = firstProfile.sex;
                 this.hobby = firstProfile.hobby;
             }
+            return listGuestProfile;
         }
 
         public GuestProfile(GuestProfile profile)
