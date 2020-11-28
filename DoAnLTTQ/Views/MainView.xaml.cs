@@ -113,12 +113,13 @@
 
             int USER_AMOUNT = (new Random()).Next(1, 8);
             m_userPictureNearBy.Clear();
+
+            GuestProfile guest = new GuestProfile();
+            List<GuestProfile> listGuestProfile = guest.LoadArrayProfile(); 
             for (int i = 0; i < USER_AMOUNT; i++)
             {
-                GuestProfile guest = new GuestProfile();
-                //guest.LoadProfile();
-                guest.LoadArrayProfile();
-                m_userPictureNearBy.Add(Common.LoadImage(guest.avatar.buffer));
+               
+                m_userPictureNearBy.Add(Common.LoadImage(listGuestProfile[0].avatar.buffer));
             }
         }
         public void xinxo(object sender, int index)
@@ -129,5 +130,9 @@
         private void mainsetting_Loaded(object sender, RoutedEventArgs e) { }
         private void NavBarMain_Loaded(object sender, RoutedEventArgs e) { }
 
+        private void ContentControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            ((info_main)this.ViewContext).ChangeProfileInHomeView(e);
+        }
     }
 }

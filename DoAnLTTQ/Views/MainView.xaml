@@ -21,7 +21,7 @@
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid KeyDown="ContentControl_KeyDown">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="3*"/>
         <!-- nav bar -->

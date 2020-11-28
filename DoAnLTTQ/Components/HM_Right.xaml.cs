@@ -26,6 +26,7 @@ namespace DoAnLTTQ.Components
         byte[] avatar;
         public GuestProfile specialGuest;
         public int _profileIndex; // index of profile in list profile to show on screen
+        private int indexHomePicture = 0; 
 
         public int profileIndex
         {
@@ -68,16 +69,7 @@ namespace DoAnLTTQ.Components
             profileIndex = 19;
             this.DataContext = this;
         }
-        public void reloadGuest()
-        {
-            specialGuest = new GuestProfile();
-            //specialGuest.LoadArrayProfile();
-            specialGuest.LoadProfile();
-            this.avatar = specialGuest.avatar.buffer;
-            //this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
-            img.ImageSource = Common.LoadImage(avatar);
-
-        }   
+    
         public void reloadArrayGuest()
         {
             specialGuest = new GuestProfile();
@@ -94,7 +86,36 @@ namespace DoAnLTTQ.Components
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             reloadArrayGuest();
+        }
 
+        public void ChangeProfileInHomeView(KeyEventArgs e)
+        {
+            specialGuest = new GuestProfile();
+            specialGuest.LoadArrayProfile();
+
+            switch (e.Key)
+            {
+                case Key.A:
+                    if (indexHomePicture == 0)
+                        indexHomePicture = specialGuest.listGuestProfile.Count -1;
+                    else
+                        indexHomePicture--;
+
+                    MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
+                    break;
+                case Key.D:
+                    if (indexHomePicture == specialGuest.listGuestProfile.Count -1)
+                        indexHomePicture = 0;
+                    else
+                        indexHomePicture++;
+
+                    MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
+                    break;
+                default:
+                    MessageBox.Show("An phim A hoac W de thay doi home profile"); 
+                    break;
+            }
+            
         }
 
     }
