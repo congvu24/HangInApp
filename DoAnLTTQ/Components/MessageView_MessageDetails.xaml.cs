@@ -16,24 +16,36 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
 using System.Net.Sockets;
+using System.ComponentModel;
 
 namespace DoAnLTTQ.Components
 {
     /// <summary>
     /// Interaction logic for MessageView_MessageDetails.xaml
     /// </summary>
-    public partial class MessageView_MessageDetails : UserControl
+    public partial class MessageView_MessageDetails : UserControl, INotifyPropertyChanged
     {
         public Server sv;
         public String activeIp;
         public Thread listenMessage;
+        public GuestProfile _activeGuest;
+        GuestProfile guests;
+        List<GuestProfile> list;
+
+        public GuestProfile activeGuest
+        {
+            get { return this._activeGuest; }
+            set
+            {
+                _activeGuest = value;
+                OnPropertyChanged("activeGuest");
+            }
+        }
+
         public MessageView_MessageDetails()
         {
             InitializeComponent();
 
-            ChatList chatList = new ChatList() { imgUri = "/Resources/Images/IMG_9715.png", personName = "Công Vũ", message = "" };
-
-            //messageNameTitle.DataContext = chatList; 
             TextBox tb = new TextBox();
 
             activeIp = "127.0.0.1";
@@ -47,10 +59,22 @@ namespace DoAnLTTQ.Components
             listenMessage.IsBackground = true;
 
             listenMessage.Start();
+
+            guests = new GuestProfile();
+            list = guests.LoadArrayProfile();
+            activeGuest = list[0];
+
+            this.DataContext = activeGuest;
+        }
+
+        public void setActiveUser(string ip)
+        {
+            activeGuest = list.Find(x => x.ip == ip);
+            this.DataContext = activeGuest;
         }
         public void sendMessage(string content)
         {
-            sv.SendMessage(IPAddress.Parse(activeIp), content);
+            sv.SendMessage(IPAddress.Parse(this.activeGuest.ip), content);
             messagePanel.Children.Add(new MyMessage(content));
         }
         public void receiveMessage(string content)
@@ -76,5 +100,16 @@ namespace DoAnLTTQ.Components
         {
             this.sv.DisconnectAll();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string newName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(newName));
+            }
+        }
+      
     }
+
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnLTTQ.Backend;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class MessageAndDetails : UserControl
     {
+
         public MessageAndDetails()
         {
             InitializeComponent();
+           
         }
     }
 }

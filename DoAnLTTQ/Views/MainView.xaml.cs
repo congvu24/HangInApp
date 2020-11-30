@@ -57,14 +57,16 @@
         public MainView()
         {
             InitializeComponent();
-            //Server sv = new Server();
-            //var client = new Thread(sv.SendRequestMessage);
-            //client.Start();
-            //var server = new Thread(sv.ListenProfile);
-            //server.Start();
-            //sv.SendProfile(IPAddress.Parse("127.0.0.1"));
+            Server sv = new Server();
+            var client = new Thread(sv.SendRequestMessage);
+            client.Start();
+            var server = new Thread(sv.ListenProfile);
+            server.Start();
+            sv.SendProfile(IPAddress.Parse("127.0.0.1"));
 
-            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
+
+            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(xinxo);
+            NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
             this.ViewContext = new info_main();
             this.DataContext = this;
 
@@ -137,6 +139,11 @@
         private void ContentControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             ((info_main)this.ViewContext).ChangeProfileInHomeView(e);
+        }
+
+        public void changeActiveProfile(object sender, string ip)
+        {
+            ((MessageView_MessageDetails)this.ViewContext).setActiveUser(ip);
         }
     }
 }

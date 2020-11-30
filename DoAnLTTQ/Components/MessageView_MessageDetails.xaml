@@ -64,43 +64,17 @@
 
         <!--Avatar va ten partnerday-->
         <Grid Grid.Row="0" Background="White" >
-            <!--<ItemsControl x:Name="messageNameTitle" ItemsSource="{Binding}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel HorizontalAlignment="Left">
-
-                            <Border Grid.Column="0" CornerRadius="20">
-                                <Image Source="/Resources/Images/IMG_9715.png"  Style="{StaticResource myProfilePicture}"> 
-                                    <Image.Clip>
-                                        <EllipseGeometry Center="25,25" RadiusX="20" RadiusY="20" />
-                                    </Image.Clip>
-                                </Image>
-                            </Border>
-
-                            <Label>
-
-                            </Label>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>-->
             <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
 
                 <Border Grid.Column="0" CornerRadius="20">
-                    <Image Source="/Resources/Images/IMG_9715.png"  Style="{StaticResource myProfilePicture}">
+                    <Image Source="{Binding avatar.buffer}"  Style="{StaticResource myProfilePicture}">
                         <Image.Clip>
                             <EllipseGeometry Center="35,35" RadiusX="28" RadiusY="28" />
                         </Image.Clip>
                     </Image>
                 </Border>
 
-                <TextBlock Text="Công vũ" Style="{StaticResource myMessageName}"/>
+                <TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}"/>
             </WrapPanel>
         </Grid>
 
