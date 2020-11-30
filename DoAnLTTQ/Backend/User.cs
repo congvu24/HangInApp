@@ -74,6 +74,8 @@
 
         public string url { get; set; }
     }
+
+
     [Serializable]
     public class GuestProfile
     {

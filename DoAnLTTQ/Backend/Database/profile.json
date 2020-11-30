@@ -1,48 +1,48 @@
 {
-  "picture": [
-    {
-      "name": "hinh",
-      "url": "file:///C:/Users/Vuggy/OneDrive/Desktop/Google-app-icon-small.png"
-    },
-    {
-      "name": "placeholer0",
-      "url": ""
-    },
-    {
-      "name": "placeholer1",
-      "url": ""
-    },
-    {
-      "name": "placeholer2",
-      "url": ""
-    },
-    {
-      "name": "placeholer3",
-      "url": ""
-    },
-    {
-      "name": "placeholer4",
-      "url": ""
-    },
-    {
-      "name": "placeholer5",
-      "url": ""
-    },
-    {
-      "name": "placeholer6",
-      "url": ""
-    },
-    {
-      "name": "placeholer7",
-      "url": ""
+    "picture": [
+        {
+            "name": "hinh",
+            "url": "file:///C:/Users/Vuggy/OneDrive/Desktop/Google-app-icon-small.png"
+        },
+        {
+            "name": "placeholer0",
+            "url": ""
+        },
+        {
+            "name": "placeholer1",
+            "url": ""
+        },
+        {
+            "name": "placeholer2",
+            "url": ""
+        },
+        {
+            "name": "placeholer3",
+            "url": ""
+        },
+        {
+            "name": "placeholer4",
+            "url": ""
+        },
+        {
+            "name": "placeholer5",
+            "url": ""
+        },
+        {
+            "name": "placeholer6",
+            "url": ""
+        },
+        {
+            "name": "placeholer7",
+            "url": ""
+        }
+    ],
+    "name": "duy",
+    "age": "19",
+    "sex": "0",
+    "hobby": "sở thích",
+    "avatar": {
+        "name": "avatar",
+        "url": "C:\\Users\\vuong\\Pictures\\Camera Roll\\WIN_20201119_08_10_31_Pro.jpg"
     }
-  ],
-  "name": "cong vu",
-  "age": "19",
-  "sex": "0",
-  "hobby": "sở thích",
-  "avatar": {
-    "name": "avatar",
-    "url": "C:\\Users\\vuong\\Pictures\\Camera Roll\\WIN_20201119_08_10_31_Pro.jpg"
-  }
 }
