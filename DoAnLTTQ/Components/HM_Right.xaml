@@ -148,11 +148,16 @@
                             </Border.Background>
                         </Border>
                         <StackPanel Style="{StaticResource infoParagraph}">
-                            <TextBox Name="name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
-                            <TextBox Name="age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
-                            <TextBox Name ="hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
+                            <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
+                            <TextBox Name="info_age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
+                            <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
                         </StackPanel>
                         <!--<TextBox Text="{Binding profileIndex}" />-->
+                        <Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile">
+                           trai
+                        </Button>
+                        <Button Canvas.Right="0" Canvas.Top="250" Click="nextProfile"> phai
+                        </Button>
                     </Canvas>
                 </Grid>
                 <Grid Height="56">

@@ -26,14 +26,13 @@ namespace DoAnLTTQ.Components
         byte[] avatar;
         public GuestProfile specialGuest;
         public int _profileIndex; // index of profile in list profile to show on screen
-        private int indexHomePicture = 0; 
+        private int indexHomePicture = 0;
 
         public int profileIndex
         {
             get { return _profileIndex; }
             set { _profileIndex = value; OnPropertyChanged("profileIndex"); }
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string newName)
@@ -54,22 +53,24 @@ namespace DoAnLTTQ.Components
                 OnPropertyChanged("ViewContext");
             }
         }
-        public void ChangeProfile(int id)
-        {
-            List<int> t = new List<int>();
-            t.Add(11);
-            t.Add(21); 
-            t.Add(31); 
-            t.Add(41);
-            profileIndex = t[id];
-        }
         public info_main()
         {
             InitializeComponent();
             profileIndex = 19;
             this.DataContext = this;
         }
-    
+        public void ChangeProfile(int id)
+        {
+            GuestProfile g = new GuestProfile();
+            g.LoadArrayProfile();
+            
+            img.ImageSource = Common.LoadImage(g.listGuestProfile[id].avatar.buffer);
+            info_name.Text = g.listGuestProfile[id].name;
+            info_age.Text = g.listGuestProfile[id].age;
+            info_hobby.Text = g.listGuestProfile[id].hobby;
+        }
+
+
         public void reloadArrayGuest()
         {
             specialGuest = new GuestProfile();
@@ -77,10 +78,10 @@ namespace DoAnLTTQ.Components
             this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
             img.ImageSource = Common.LoadImage(avatar);
 
-            foreach (var item in specialGuest.listGuestProfile)
-            {
-                MessageBox.Show(item.name); 
-            }
+            //foreach (var item in specialGuest.listGuestProfile)
+            //{
+            //    MessageBox.Show(item.name); 
+            //}
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -97,14 +98,14 @@ namespace DoAnLTTQ.Components
             {
                 case Key.A:
                     if (indexHomePicture == 0)
-                        indexHomePicture = specialGuest.listGuestProfile.Count -1;
+                        indexHomePicture = specialGuest.listGuestProfile.Count - 1;
                     else
                         indexHomePicture--;
 
                     MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
                     break;
                 case Key.D:
-                    if (indexHomePicture == specialGuest.listGuestProfile.Count -1)
+                    if (indexHomePicture == specialGuest.listGuestProfile.Count - 1)
                         indexHomePicture = 0;
                     else
                         indexHomePicture++;
@@ -112,11 +113,20 @@ namespace DoAnLTTQ.Components
                     MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
                     break;
                 default:
-                    MessageBox.Show("An phim A hoac W de thay doi home profile"); 
+                    MessageBox.Show("An phim A hoac W de thay doi home profile");
                     break;
             }
-            
+
         }
 
+        private void nextProfile(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void previousProfile(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
