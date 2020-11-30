@@ -65,7 +65,7 @@
             sv.SendProfile(IPAddress.Parse("127.0.0.1"));
 
 
-            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(xinxo);
+            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
             NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
             this.ViewContext = new info_main();
             this.DataContext = this;
