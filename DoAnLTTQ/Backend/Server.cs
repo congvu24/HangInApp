@@ -42,7 +42,6 @@ namespace DoAnLTTQ.Backend
         {
             ProfileListener = new TcpListener(IPAddress.Any, 1308);
             ProfileListener.Start(10);
-            byte[] data = new byte[1024 * 1000];
             while (true)
             {
                 var client = ProfileListener.AcceptTcpClient();
@@ -58,6 +57,17 @@ namespace DoAnLTTQ.Backend
         {
             User user = new User();
             GuestProfile u = new GuestProfile(user);
+            var localIp = "";
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var myip in host.AddressList)
+            {
+                if (myip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    localIp = myip.ToString();
+                }
+            }
+            u.ip = localIp;
+
             var client = new TcpClient();
             client.Connect(ip, 1308);
             var stream = client.GetStream();

@@ -86,6 +86,8 @@
 
         public string hobby { get; set; }
 
+        public string ip { get; set; }
+
         public GuestPicture avatar { get; set; }
 
         public List<GuestPicture> picture = new List<GuestPicture>();
@@ -141,7 +143,15 @@
         {
             this.LoadArrayProfile();
             string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
-            listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar=guest.avatar, sex=guest.sex, hobby = guest.hobby,picture = guest.picture });
+            int indexOfIP = listGuestProfile.FindIndex(x => x.ip == guest.ip);
+            if(indexOfIP >= 0)
+            {
+                listGuestProfile[indexOfIP] = new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip };
+            }
+            else
+            {
+                listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar=guest.avatar, sex=guest.sex, hobby = guest.hobby,picture = guest.picture, ip = guest.ip });
+            }
             string json = JsonConvert.SerializeObject(listGuestProfile);
             File.WriteAllText(_source, json);
         }
