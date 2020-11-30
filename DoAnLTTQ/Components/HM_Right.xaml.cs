@@ -128,5 +128,11 @@ namespace DoAnLTTQ.Components
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string identify = ((Button)sender).Uid;
+            MessageBox.Show(identify);
+        }
     }
 }

@@ -89,6 +89,7 @@
         public string hobby { get; set; }
 
         public string ip { get; set; }
+        public Boolean isLove { get; set; }
 
         public GuestPicture avatar { get; set; }
 
@@ -148,11 +149,23 @@
             int indexOfIP = listGuestProfile.FindIndex(x => x.ip == guest.ip);
             if(indexOfIP >= 0)
             {
-                listGuestProfile[indexOfIP] = new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip };
+                listGuestProfile[indexOfIP] = new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = listGuestProfile[indexOfIP].isLove };
             }
             else
             {
-                listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar=guest.avatar, sex=guest.sex, hobby = guest.hobby,picture = guest.picture, ip = guest.ip });
+                listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar=guest.avatar, sex=guest.sex, hobby = guest.hobby,picture = guest.picture, ip = guest.ip, isLove = false });
+            }
+            string json = JsonConvert.SerializeObject(listGuestProfile);
+            File.WriteAllText(_source, json);
+        }
+        public void LikeProfile(string ip)
+        {
+            this.LoadArrayProfile();
+            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            int indexOfIP = listGuestProfile.FindIndex(x => x.ip == ip);
+            if (indexOfIP >= 0)
+            {
+                listGuestProfile[indexOfIP] = new GuestProfile() { name = listGuestProfile[indexOfIP].name, age = listGuestProfile[indexOfIP].age, avatar = listGuestProfile[indexOfIP].avatar, sex = listGuestProfile[indexOfIP].sex, hobby = listGuestProfile[indexOfIP].hobby, picture = listGuestProfile[indexOfIP].picture, ip = listGuestProfile[indexOfIP].ip, isLove = true };
             }
             string json = JsonConvert.SerializeObject(listGuestProfile);
             File.WriteAllText(_source, json);
