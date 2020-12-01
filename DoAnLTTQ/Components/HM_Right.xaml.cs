@@ -129,9 +129,16 @@ namespace DoAnLTTQ.Components
 
         }
 
+<<<<<<< HEAD
         private void showUID(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(profileIp);
+=======
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string identify = ((Button)sender).Uid;
+            MessageBox.Show(identify);
+>>>>>>> 024ada34fa1f2f2103640643b86c5311909a96fc
         }
     }
 }
