@@ -62,7 +62,18 @@ namespace DoAnLTTQ.Components
 
             guests = new GuestProfile();
             list = guests.LoadArrayProfile();
-            activeGuest = list[0];
+            List<GuestProfile> friends = new List<GuestProfile>();
+            foreach (var u in list)
+            {
+                if (u.isLove == true)
+                {
+                    friends.Add(u);
+                }
+            }
+            if(friends.Count > 1)
+            {
+            activeGuest = friends[0];
+            }
 
             this.DataContext = activeGuest;
         }
@@ -71,6 +82,7 @@ namespace DoAnLTTQ.Components
         {
             activeGuest = list.Find(x => x.ip == ip);
             this.DataContext = activeGuest;
+            messagePanel.Children.Clear();
         }
         public void sendMessage(string content)
         {

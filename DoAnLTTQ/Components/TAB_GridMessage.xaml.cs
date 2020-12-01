@@ -29,9 +29,17 @@ namespace DoAnLTTQ.Components
 
             InitializeComponent();
             guest = new GuestProfile();
+            List<GuestProfile> friends = new List<GuestProfile>();
             userList = guest.LoadArrayProfile();
+            foreach(var u in userList)
+            {
+                if(u.isLove == true)
+                {
+                    friends.Add(u);
+                }
+            }
 
-            ChatList.DataContext = userList;
+            ChatList.DataContext = friends;
         }
         private void select_Click(object sender, RoutedEventArgs e)
         {
@@ -42,5 +50,21 @@ namespace DoAnLTTQ.Components
                 ProfileSelected(this, identify);
             }
         }
+        public void reload()
+        {
+            guest = new GuestProfile();
+            List<GuestProfile> friends = new List<GuestProfile>();
+            userList = guest.LoadArrayProfile();
+            foreach (var u in userList)
+            {
+                if (u.isLove == true)
+                {
+                    friends.Add(u);
+                }
+            }
+
+            ChatList.DataContext = friends;
+        }
+
     }
 }

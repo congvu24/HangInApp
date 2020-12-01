@@ -152,12 +152,20 @@ namespace DoAnLTTQ.Backend
     
         public void SendMessage(IPAddress ip, String content)
         {
+            try
+            {
+
             var serverEndpoint = new IPEndPoint(ip, 1309);
             var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
             socket.Connect(serverEndpoint);
             var sendBuffer = Encoding.ASCII.GetBytes(content);
             socket.Send(sendBuffer);
             socket.Shutdown(SocketShutdown.Send);
+            }
+            catch
+            {
+                MessageBox.Show("You two haven't connected with each other");
+            }
         }
     }
 }

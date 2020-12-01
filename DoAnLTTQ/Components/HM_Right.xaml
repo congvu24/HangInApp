@@ -170,12 +170,7 @@
                     <Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" >
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
-
-<<<<<<< HEAD
                     <Button Grid.Column="1" Style="{StaticResource navButton}" Click="showUID" >
-=======
-                    <Button Grid.Column="1" Style="{StaticResource navButton}" Click="Button_Click" >
->>>>>>> 024ada34fa1f2f2103640643b86c5311909a96fc
                         <Image Source="/Resources/icon/heart.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
                     <Button Grid.Column="2" Style="{StaticResource navButton}" >

@@ -71,8 +71,10 @@ namespace DoAnLTTQ.Components
         {
             gridProfile.Visibility = Visibility.Collapsed;
             gridMessage.Visibility = Visibility.Visible;
-            if (ButtonSwitchViewOnClick != null)
+            gridMessage.reload();
+            if (ButtonSwitchViewOnClick != null) { }
                 ButtonSwitchViewOnClick(ViewEnum.MessageView);
+
 
 
         }

@@ -138,7 +138,15 @@
 
         private void ContentControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            try
+            {
+
             ((info_main)this.ViewContext).ChangeProfileInHomeView(e);
+            }
+            catch
+            {
+
+            }
         }
 
         public void changeActiveProfile(object sender, string ip)
