@@ -171,7 +171,7 @@
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
 
-                    <Button Grid.Column="1" Style="{StaticResource navButton}"  >
+                    <Button Grid.Column="1" Style="{StaticResource navButton}" Click="showUID" >
                         <Image Source="/Resources/icon/heart.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
                     <Button Grid.Column="2" Style="{StaticResource navButton}" >

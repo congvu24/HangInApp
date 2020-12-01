@@ -24,9 +24,10 @@ namespace DoAnLTTQ.Components
     public partial class info_main : UserControl, INotifyPropertyChanged
     {
         byte[] avatar;
-        public GuestProfile specialGuest;
+        public GuestProfile specialGuest = new GuestProfile();
         public int _profileIndex; // index of profile in list profile to show on screen
         private int indexHomePicture = 0;
+        public string profileIp;
 
         public int profileIndex
         {
@@ -61,19 +62,19 @@ namespace DoAnLTTQ.Components
         }
         public void ChangeProfile(int id)
         {
-            GuestProfile g = new GuestProfile();
-            g.LoadArrayProfile();
+            specialGuest.LoadArrayProfile();
             
-            img.ImageSource = Common.LoadImage(g.listGuestProfile[id].avatar.buffer);
-            info_name.Text = g.listGuestProfile[id].name;
-            info_age.Text = g.listGuestProfile[id].age;
-            info_hobby.Text = g.listGuestProfile[id].hobby;
+            img.ImageSource = Common.LoadImage(specialGuest.listGuestProfile[id].avatar.buffer);
+            info_name.Text = specialGuest.listGuestProfile[id].name;
+            info_age.Text = specialGuest.listGuestProfile[id].age;
+            info_hobby.Text = specialGuest.listGuestProfile[id].hobby;
+
+            profileIp = specialGuest.listGuestProfile[id].ip;
         }
 
 
         public void reloadArrayGuest()
         {
-            specialGuest = new GuestProfile();
             specialGuest.LoadArrayProfile();
             this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
             img.ImageSource = Common.LoadImage(avatar);
@@ -91,7 +92,6 @@ namespace DoAnLTTQ.Components
 
         public void ChangeProfileInHomeView(KeyEventArgs e)
         {
-            specialGuest = new GuestProfile();
             specialGuest.LoadArrayProfile();
 
             switch (e.Key)
@@ -127,6 +127,11 @@ namespace DoAnLTTQ.Components
         private void previousProfile(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void showUID(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(profileIp);
         }
     }
 }
