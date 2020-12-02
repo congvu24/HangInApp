@@ -20,7 +20,7 @@
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
         public event SwitchViewHandler OnSwitchView;
-
+        Server sv;
         public UserControl _ViewContext;
         public UserControl ViewContext
         {
@@ -57,15 +57,16 @@
         public MainView()
         {
             InitializeComponent();
-            Server sv = new Server();
-            var client = new Thread(sv.SendRequestMessage);
+            sv = new Server();
+            var client = new Thread(sv.ListenRequestMessage);
             client.IsBackground = true;
             client.Start();
             var server = new Thread(sv.ListenProfile);
             server.IsBackground = true;
             server.Start();
-            //sv.SendProfile(IPAddress.Parse("127.0.0.1"));
 
+            //sv.SendProfile(IPAddress.Parse("10.10.233.158"));
+            sv.SendRequestMessage();
 
 
             Reload_Guest();
@@ -116,6 +117,7 @@
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
             Reload_Guest();
+            sv.SendRequestMessage();
         }
         public void Reload_Guest()
         {
