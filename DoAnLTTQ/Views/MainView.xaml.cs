@@ -66,7 +66,7 @@
             server.Start();
             //sv.SendProfile(IPAddress.Parse("127.0.0.1"));
 
-
+            
 
             Reload_Guest();
             NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);

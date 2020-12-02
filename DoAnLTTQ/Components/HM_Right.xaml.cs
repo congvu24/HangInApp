@@ -59,10 +59,18 @@ namespace DoAnLTTQ.Components
             InitializeComponent();
             profileIndex = 19;
             this.DataContext = this;
+            this.Loaded += Info_main_Loaded;
         }
-        public void ChangeProfile(int id)
+
+        // Load profile khi infor-main view duoc render ra
+        private void Info_main_Loaded(object sender, RoutedEventArgs e)
         {
             specialGuest.LoadArrayProfile();
+        }
+
+        public void ChangeProfile(int id)
+        {
+            //specialGuest.LoadArrayProfile();
             
             img.ImageSource = Common.LoadImage(specialGuest.listGuestProfile[id].avatar.buffer);
             info_name.Text = specialGuest.listGuestProfile[id].name;
@@ -75,7 +83,8 @@ namespace DoAnLTTQ.Components
 
         public void reloadArrayGuest()
         {
-            specialGuest.LoadArrayProfile();
+            //specialGuest.LoadArrayProfile();
+
             this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
             img.ImageSource = Common.LoadImage(avatar);
 
@@ -92,41 +101,75 @@ namespace DoAnLTTQ.Components
 
         public void ChangeProfileInHomeView(KeyEventArgs e)
         {
-            specialGuest.LoadArrayProfile();
+            //specialGuest.LoadArrayProfile();
 
             switch (e.Key)
             {
-                case Key.A:
+                case Key.Left:
                     if (indexHomePicture == 0)
                         indexHomePicture = specialGuest.listGuestProfile.Count - 1;
                     else
                         indexHomePicture--;
 
-                    MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
+                    //MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
+                    e.Handled = true;
                     break;
-                case Key.D:
+                case Key.Right:
                     if (indexHomePicture == specialGuest.listGuestProfile.Count - 1)
                         indexHomePicture = 0;
                     else
                         indexHomePicture++;
 
-                    MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
+                    //MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
+                    e.Handled = true;
                     break;
                 default:
-                    MessageBox.Show("An phim A hoac W de thay doi home profile");
                     break;
             }
 
+            //info_name.Text = specialGuest.listGuestProfile[indexHomePicture].name;
+            //info_age.Text = specialGuest.listGuestProfile[indexHomePicture].age;
+            //info_hobby.Text = specialGuest.listGuestProfile[indexHomePicture].hobby;
+
+            ShowInformationToHomeView(indexHomePicture); 
+        }
+
+        private void ShowInformationToHomeView(int index)
+        {
+            try
+            {
+                this.avatar = specialGuest.listGuestProfile[index].avatar.buffer;
+                img.ImageSource = Common.LoadImage(avatar);
+                info_name.Text = specialGuest.listGuestProfile[index].name;
+                info_age.Text = specialGuest.listGuestProfile[index].age;
+                info_hobby.Text = specialGuest.listGuestProfile[index].hobby;
+            }
+            catch (Exception)
+            {
+
+              
+            }
+          
         }
 
         private void nextProfile(object sender, RoutedEventArgs e)
         {
+            if (indexHomePicture == specialGuest.listGuestProfile.Count - 1)
+                indexHomePicture = 0;
+            else
+                indexHomePicture++;
 
+            ShowInformationToHomeView(indexHomePicture);
         }
 
         private void previousProfile(object sender, RoutedEventArgs e)
         {
+            if (indexHomePicture == 0)
+                indexHomePicture = specialGuest.listGuestProfile.Count - 1;
+            else
+                indexHomePicture--;
 
+            ShowInformationToHomeView(indexHomePicture);
         }
 
         private void showUID(object sender, RoutedEventArgs e)
