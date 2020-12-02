@@ -59,12 +59,16 @@
             InitializeComponent();
             Server sv = new Server();
             var client = new Thread(sv.SendRequestMessage);
+            client.IsBackground = true;
             client.Start();
             var server = new Thread(sv.ListenProfile);
+            server.IsBackground = true;
             server.Start();
-            sv.SendProfile(IPAddress.Parse("127.0.0.1"));
+            //sv.SendProfile(IPAddress.Parse("127.0.0.1"));
 
 
+
+            Reload_Guest();
             NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
             NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
             this.ViewContext = new info_main();
@@ -90,6 +94,7 @@
                 try
                 {
                 ((MessageView_MessageDetails)this.ViewContext).Unmmount();
+                    Reload_Guest();
                 }
                 catch
                 {
@@ -110,18 +115,15 @@
         }
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
-            // count number of guest user from guestjson
-            // then assign it to USER_AMOUNT
-
-            //int USER_AMOUNT = (new Random()).Next(1, 8);
+            Reload_Guest();
+        }
+        public void Reload_Guest()
+        {
             GuestProfile g = new GuestProfile();
             g.LoadArrayProfile();
             int USER_AMOUNT = g.listGuestProfile.Count;
 
             m_userPictureNearBy.Clear();
-
-            //GuestProfile guest = new GuestProfile();
-            //List<GuestProfile> listGuestProfile = guest.LoadArrayProfile();
             for (int i = 0; i < USER_AMOUNT; i++)
             {
                 m_userPictureNearBy.Add(Common.LoadImage(g.listGuestProfile[i].avatar.buffer));

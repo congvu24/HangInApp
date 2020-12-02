@@ -38,9 +38,7 @@
             </Grid.ColumnDefinitions>
             <component:NavBarMain Grid.RowSpan="2"
                 x:Name="NavBarMain" Loaded="NavBarMain_Loaded" />
-            <!--picture ="{Binding userProfile}"/>-->
-            <!--picture="{Binding userAvatar}"-->
-            <!--picture = "{Binding userProfile }"-->
+            
            
             <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                 <Button Style="{StaticResource ReloadButton}"  Click="Reload_Click" >

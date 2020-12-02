@@ -139,8 +139,17 @@
             age = user.myProfile.age;
             sex = user.myProfile.sex;
             hobby = user.myProfile.hobby;
+            try
+            {
+
             byte[] image = File.ReadAllBytes(user.myProfile.avatar.url);
             avatar = new GuestPicture() { name = "vc", buffer = image };
+            }
+            catch
+            {
+                byte[] image = File.ReadAllBytes(".//heocute.jpg");
+                avatar = new GuestPicture() { name = "vc", buffer = image };
+            }
         }
         public void AddNewGuest(GuestProfile guest)
         {

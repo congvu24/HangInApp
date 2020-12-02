@@ -48,7 +48,8 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = myMainView;  
+            this.ViewContext = myMainView;
+            ((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
             this.DataContext = this;
 
             myMainView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
@@ -59,6 +60,8 @@ namespace DoAnLTTQ
         private void SettingView_OnSwitchViewToMainView()
         {
             this.ViewContext = myMainView;
+            ((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
+
         }
 
         private void MyHomeView_OnSwitchToSettingView()

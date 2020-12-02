@@ -24,11 +24,11 @@ namespace DoAnLTTQ.Components
     public partial class NavBarMain : UserControl, INotifyPropertyChanged
     {
         public UserControl _TabChange;
-        public event ClickOnButtonHandler ButtonSwitchViewOnClick;
 
 
         //public GridProfile gridProfile = new GridProfile();
         //public GridMessage gridMessage = new GridMessage(); 
+        public event ClickOnButtonHandler ButtonSwitchViewOnClick;
         public UserControl TabChange
         {
             get { return this._TabChange; }
@@ -38,13 +38,22 @@ namespace DoAnLTTQ.Components
                 OnPropertyChanged("TabChange");
             }
         }
+        public User _myUser;
+        public User myUser
+        {
+            get { return this._myUser; }
+            set
+            {
+                _myUser = value;
+                OnPropertyChanged("myUser");
+            }
+        }
         public NavBarMain()
         {
             InitializeComponent();
 
             //this.TabChange = gridProfile; 
             //this.DataContext = this; 
-
             gridProfile.Visibility = Visibility.Visible;
             gridMessage.Visibility = Visibility.Collapsed;
         }
@@ -84,6 +93,12 @@ namespace DoAnLTTQ.Components
             if (ButtonSwitchViewOnClick != null)
                 ButtonSwitchViewOnClick(ViewEnum.SettingView);
            
+        }
+        public void Reload_myProfile()
+        {
+            //MessageBox.Show("reload");
+            myUser = new User();
+            this.profile.DataContext = myUser.myProfile;
         }
     }
 }

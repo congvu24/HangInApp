@@ -96,7 +96,6 @@ namespace DoAnLTTQ.Components
         private void select_Click(object sender, RoutedEventArgs e)
         {
             int identify = int.Parse((sender as Button).Uid);
-            //profileSelecting(identify);
             if (ProfileSelected != null)
             {
                 ProfileSelected(this, identify);
