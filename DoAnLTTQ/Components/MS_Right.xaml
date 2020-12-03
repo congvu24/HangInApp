@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="320" FontFamily="Seoge UI">
+             d:DesignHeight="720" d:DesignWidth="320" FontFamily="Seoge UI" Background="White">
     <UserControl.Resources>
         <Style x:Key="profile" TargetType="StackPanel">
             <Setter Property="Margin" Value="16"/>
@@ -18,10 +18,10 @@
             </Style.Resources>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Margin="0,86,0,0">
         <StackPanel Orientation="Vertical">
             <Grid Height="400">
-                <Border CornerRadius="8" Margin="8,16,8,-4" BorderThickness="0" >
+                <Border CornerRadius="8" Margin="8,0,8,-4" BorderThickness="0" >
                     <Border.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Resources/Images/hinh-anh-heo-cute-va-de-thuong_030601765.jpg" />
                     </Border.Background>

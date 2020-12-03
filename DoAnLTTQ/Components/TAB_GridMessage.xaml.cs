@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnLTTQ.Backend;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,27 +21,50 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class GridMessage : UserControl
     {
-        
+        public GuestProfile guest;
+        public List<GuestProfile> userList;
+        public event EventHandler<string> ProfileSelected;
         public GridMessage()
         {
 
             InitializeComponent();
-
-            List<ChatList> chatLists = new List<ChatList>();
-            for (int i = 0; i < 4; i++)
+            guest = new GuestProfile();
+            List<GuestProfile> friends = new List<GuestProfile>();
+            userList = guest.LoadArrayProfile();
+            foreach(var u in userList)
             {
-                chatLists.Add(new ChatList() { imgUri = "/Resources/Images/IMG_9715.png", personName = "Công Vũ", message = "Ua la sao" });
+                if(u.isLove == true)
+                {
+                    friends.Add(u);
+                }
             }
 
-            ChatList.DataContext = chatLists; 
+            ChatList.DataContext = friends;
         }
+        private void select_Click(object sender, RoutedEventArgs e)
+        {
+            string identify = ((sender as Button).Uid).ToString();
+            //profileSelecting(identify);
+            if (ProfileSelected != null)
+            {
+                ProfileSelected(this, identify);
+            }
+        }
+        public void reload()
+        {
+            guest = new GuestProfile();
+            List<GuestProfile> friends = new List<GuestProfile>();
+            userList = guest.LoadArrayProfile();
+            foreach (var u in userList)
+            {
+                if (u.isLove == true)
+                {
+                    friends.Add(u);
+                }
+            }
 
-    }
-    class ChatList
-    {
-        public string imgUri { get; set; }
-        public string personName { get; set; }
-        public string message { get; set; }
+            ChatList.DataContext = friends;
+        }
 
     }
 }

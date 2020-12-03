@@ -71,7 +71,7 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Style="{StaticResource myChatButton}">
+                    <Button Style="{StaticResource myChatButton}" Uid="{Binding ip}" Click="select_Click">
                         <!--<Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25"/>
@@ -88,7 +88,7 @@
 
                             <!--Profile picture-->
                             <Border Grid.Column="0" CornerRadius="20">
-                                <Image Source="{Binding imgUri}" 
+                                <Image Source="{Binding avatar.buffer}" 
                                                   Style="{StaticResource myProfilePicture}">
                                     <Image.Clip>
                                         <EllipseGeometry Center="25,25" RadiusX="20" RadiusY="20" />
@@ -99,10 +99,10 @@
                             <!--Main content-->
                             <Border Grid.Column="1" Padding="4">
                                 <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding personName}"
+                                    <TextBlock Text="{Binding name}"
                           Style="{StaticResource myMessageName}"/>
 
-                                    <TextBlock Text="{Binding message}" 
+                                    <TextBlock Text="{Binding ip}" 
                            TextTrimming="CharacterEllipsis"/>
                                 </StackPanel>
 

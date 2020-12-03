@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnLTTQ.Backend;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,20 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DoAnLTTQ.Views
+namespace DoAnLTTQ.Components
 {
     /// <summary>
-    /// Interaction logic for MessageView.xaml
+    /// Interaction logic for MessageAndDetails.xaml
     /// </summary>
-    public partial class MessageView : UserControl
+    public partial class MessageAndDetails : UserControl
     {
-        public event SwitchViewHandler OnSwitchView;
-        public MessageView()
+
+        public MessageAndDetails()
         {
             InitializeComponent();
-       
+           
         }
-
-      
     }
 }

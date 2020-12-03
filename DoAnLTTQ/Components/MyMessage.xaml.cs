@@ -13,20 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DoAnLTTQ.Views
+namespace DoAnLTTQ.Components
 {
     /// <summary>
-    /// Interaction logic for MessageView.xaml
+    /// Interaction logic for MyMessage.xaml
     /// </summary>
-    public partial class MessageView : UserControl
+    public partial class MyMessage : UserControl
     {
-        public event SwitchViewHandler OnSwitchView;
-        public MessageView()
+        public MyMessage(String content)
         {
             InitializeComponent();
-       
+            MyMessageContent.Text = content;
         }
-
-      
     }
 }

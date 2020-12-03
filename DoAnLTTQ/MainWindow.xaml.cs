@@ -20,20 +20,27 @@ using System.Windows.Shapes;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.IO;
 
 namespace DoAnLTTQ
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public UserControl _ViewContext;
-        public List<Profile> friends = new List<Profile>(); 
+        public List<Profile> friends = new List<Profile>();
         //==>Home view 
+        public HomeView myHomeView = new HomeView();
+        public SettingView mySettingView = new SettingView();
+        public MainView myMainView = new MainView();
 
-        public UserControl ViewContext { get { return this._ViewContext; } set {
 
+        public UserControl _ViewContext;
+        public UserControl ViewContext { 
+            get { return this._ViewContext; } 
+            set {
                 _ViewContext = value;
                 OnPropertyChanged("ViewContext");
             }
@@ -41,9 +48,25 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = new MessageView();
+            this.ViewContext = myMainView;
+            ((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
             this.DataContext = this;
-           
+
+            myMainView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
+            mySettingView.OnSwitchView += SettingView_OnSwitchViewToMainView;
+          
+        }
+
+        private void SettingView_OnSwitchViewToMainView()
+        {
+            this.ViewContext = myMainView;
+            ((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
+
+        }
+
+        private void MyHomeView_OnSwitchToSettingView()
+        {
+            this.ViewContext = mySettingView; 
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,6 +78,13 @@ namespace DoAnLTTQ
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
+        private void OnWindowclose(object sender, EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode); // Prevent memory leak
+                                                    // System.Windows.Application.Current.Shutdown(); // Not sure if needed
+        }
+
     }
+   
 
 }

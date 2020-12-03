@@ -61,22 +61,22 @@
             <Setter Property="FontFamily" Value="Comic Sans MS" />
         </Style>
 
-        <Style x:Key="updateBtn" TargetType="Button">
+
+        <!--Style x:Key="updateBtn" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="136"/>
             <Setter Property="Height" Value="44"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <!--<Setter Property="Canvas.Top" Value="31"/>
-            <Setter Property="Canvas.Left" Value="92"/>-->
+            --><!--<Setter Property="Canvas.Top" Value="31"/>
+            <Setter Property="Canvas.Left" Value="92"/>--><!--
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
-        </Style>
-
+        </Style>-->
         <Style x:Key="changingbutton" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="100"/>
@@ -140,16 +140,18 @@
             <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="86"/>
-                    <RowDefinition Height="490"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="82"/>
+                    <RowDefinition Height="408"/>
+                    <RowDefinition Height="144"/>
+                    
 
                 </Grid.RowDefinitions>
 
                 <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2" Height="84">
                     <Grid>
-                        <Button Height="86" Padding="0">
+                        <Button Height="86" Padding="0" x:Name="ToSettingViewButton" Click="ToSettingViewButton_Click">
 
-                            <Grid Width="320">
+                            <Grid Width="320" x:Name="profile">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*"/>
@@ -162,9 +164,9 @@
                                     </LinearGradientBrush>
                                 </Grid.Background>
 
-                                <Grid Grid.Column="0">
+                                <Grid Grid.Column="0" >
                                     <Label Name="TopImage"  Height="Auto" HorizontalAlignment="Center">
-                                        <Image Stretch="Fill" Source="/Resources/Images/heocute.jpg" Width="80" Height="80">
+                                        <Image Stretch="Fill" Source="{Binding avatar.url}" Width="80" Height="80">
                                             <Image.Clip>
                                                 <EllipseGeometry Center="40,40" RadiusX="30" RadiusY="30" />
                                             </Image.Clip>
@@ -173,7 +175,7 @@
                                 </Grid>
 
                                 <Grid Grid.Column="1">
-                                    <Label Style="{StaticResource backBtnTitle}"  Content="Cong Vu" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
+                                    <Label Style="{StaticResource backBtnTitle}"  Content="{Binding name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
                                 </Grid>
 
                             </Grid>
@@ -182,7 +184,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" BorderBrush="#D1DDE3" BorderThickness="0 0 0.5 0">
+                <Border Grid.Row="1" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                     <StackPanel  >
                         <Grid >
                             <Grid.ColumnDefinitions>
@@ -191,24 +193,29 @@
                             </Grid.ColumnDefinitions>
 
                             <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
-                                <Button  Style="{StaticResource changingbutton}" Content="Quanh đây">
+                                <Button x:Name="buttonQuanhDay" Click="buttonQuanhDay_Click" Style="{StaticResource changingbutton}" Content="Quanh đây">
 
                                 </Button>
                             </Border>
 
                             <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}">
-                                <Button  Style="{StaticResource changingbutton}" Content="Tin nhắn">
+                                <Button x:Name="buttonTinNhan" Click="buttonTinNhan_Click" Style="{StaticResource changingbutton}" Content="Tin nhắn">
 
                                 </Button>
                             </Border>
                         </Grid>
                         <!--<component:GridProfile></component:GridProfile>-->
-                        <component:GridMessage VerticalAlignment="Top"></component:GridMessage>
+                        <component:GridProfile VerticalAlignment="Top" userPictureNearBy="{Binding m_userPictureNearBy}" x:Name="gridProfileName"></component:GridProfile>
+                        <ContentControl Content="{Binding TabChange}"/>
                     </StackPanel>
                 </Border>
+                <Grid Grid.Row="2" >
+                    <component:GridMessage VerticalAlignment="Top" x:Name="gridMessage" />
+                    <component:GridProfile VerticalAlignment="Top" x:Name="gridProfile" userPictureNearBy="{Binding m_userPictureNearBy}" ></component:GridProfile>
+                </Grid>
 
-                <Border Grid.Row="2" BorderBrush="#D1DDE3" BorderThickness="0 2 1 0">
-                    <Button Style="{StaticResource updateBtn}"  >
+                <!--<Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
+                    <Button Style="{StaticResource updateBtn}" Click="{Binding Button_Click}"  >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20"/>
@@ -222,7 +229,9 @@
                         </Button.Background>
                         Reload
                     </Button>
-                </Border>
+
+                </Border>-->
+                
             </Grid>
         </Grid>
     </Border>

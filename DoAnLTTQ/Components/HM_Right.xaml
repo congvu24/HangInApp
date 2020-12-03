@@ -25,6 +25,12 @@
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
 
+        <Style x:Key="ArrowImage" TargetType="Image">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+
         <Style x:Key="infoParagraph" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
             <Setter Property="Canvas.Bottom" Value="50"/>
@@ -39,6 +45,7 @@
             <!--<Setter Property="Background" Value="Purple"/>-->
             <Setter Property="BorderThickness" Value="0"/>
 
+            <!--Background="{Binding image, RelativeSource={RelativeSource Self}}"-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -47,7 +54,73 @@
            CornerRadius="30" 
            BorderThickness="1"
            Margin="0"
-           Background="{Binding image, RelativeSource={RelativeSource Self}}"
+           BorderBrush="#d9dbde" Padding="1">
+                            <ContentPresenter 
+             Margin="0"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020" />
+                            </Trigger>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020" />
+                            </Trigger>
+                            <!--<Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="red" />
+                            </Trigger>-->
+                            <Trigger Property="IsPressed" Value="true">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.075" To="44" 
+                                                            Storyboard.TargetProperty="Height" />
+                                            <DoubleAnimation Duration="0:0:0.075" To="44" 
+                                                            Storyboard.TargetProperty="Width" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.075" To="46" 
+                                                            Storyboard.TargetProperty="Height" />
+                                            <DoubleAnimation Duration="0:0:0.075" To="46" 
+                                                            Storyboard.TargetProperty="Width" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Border" Property="Background" Value="#EEEEEE" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA" />
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ArrowButton" TargetType="{x:Type Button}" >
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <!--<Setter Property="Background" Value="Purple"/>-->
+            <Setter Property="BorderThickness" Value="0"/>
+
+            <!--Background="{Binding image, RelativeSource={RelativeSource Self}}"-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border 
+           x:Name="Border"  
+           CornerRadius="20" 
+           BorderThickness="0"
+           Margin="0"
            BorderBrush="#d9dbde" Padding="1">
                             <ContentPresenter 
              Margin="0"
@@ -136,22 +209,51 @@
                 </Style>
             </Style.Resources>
         </Style>
+
+        <Style x:Key="LeftRightButton" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#f5f7fa"/>
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter />
+                        <ControlTemplate.Triggers>
+                            <!--<Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="red" />
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+        
     </UserControl.Resources>
-    <Grid>
+    <Grid KeyboardNavigation.DirectionalNavigation="Once">
         <Grid Background="#f5f7fa" Margin="0">
             <StackPanel Height="680" Width="383">
                 <Grid Margin="0,50,0,0" VerticalAlignment="Center" Height="520" Width="383">
                     <Canvas>
                         <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0">
                             <Border.Background>
-                                <ImageBrush ImageSource="/Resources/Images/hinh-anh-heo-cute-va-de-thuong_030601765.jpg"></ImageBrush>
+                                <ImageBrush ImageSource="{Binding Path=avatar}" x:Name="img"></ImageBrush>
                             </Border.Background>
                         </Border>
                         <StackPanel Style="{StaticResource infoParagraph}">
-                            <TextBox Name="name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
-                            <TextBox Name="age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
-                            <TextBox Name ="hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
+                            <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
+                            <TextBox Name="info_age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
+                            <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
                         </StackPanel>
+                        <!--<TextBox Text="{Binding profileIndex}" />-->
+                        <Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
+                            <Image Source="/Resources/icon/LeftArrow.png" Style="{StaticResource ArrowImage}"/>
+                        </Button>
+                        <Button Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
+                            <Image Source="/Resources/icon/RightArrow.png" Style="{StaticResource ArrowImage}"/>
+                        </Button>
                     </Canvas>
                 </Grid>
                 <Grid Height="56">
@@ -161,11 +263,10 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Style="{StaticResource navButton}" >
+                    <Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" >
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
-
-                    <Button Grid.Column="1" Style="{StaticResource navButton}"  >
+                    <Button Grid.Column="1" Style="{StaticResource navButton}" Click="showUID" >
                         <Image Source="/Resources/icon/heart.png" Style="{StaticResource defaultImageSize}"/>
                     </Button>
                     <Button Grid.Column="2" Style="{StaticResource navButton}" >
@@ -242,5 +343,6 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+
     </Grid>
 </UserControl>

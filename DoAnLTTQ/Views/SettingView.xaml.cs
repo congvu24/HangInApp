@@ -18,6 +18,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using DoAnLTTQ.Backend;
+using System.Runtime.CompilerServices;
 
 namespace DoAnLTTQ.Views
 {
@@ -33,8 +34,9 @@ namespace DoAnLTTQ.Views
         public User user { get { return this._user; } set { this._user = value; this.OnPropertyChanged("user"); } }
         public Profile profile { get { return this._profile; } set { this._profile = value; this.OnPropertyChanged("profile"); } }
         public List<Picture> picture { get { return this._picture; } set { this._picture = value; this.OnPropertyChanged("picture"); } }
-        private client cl;
-        private server sv = new server();
+
+        //Delegate nhan Click tu ST_Left, sau do truyen den MainWindow
+        public event SwitchViewHandler OnSwitchView;
 
         public SettingView()
         {
@@ -44,53 +46,60 @@ namespace DoAnLTTQ.Views
             navbarsetting.UserUpdateProfile += new EventHandler<Profile>(Update_User);
             mainsetting.UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
             this.picture = user.myProfile.picture;
-
             this.DataContext = this;
+
+            navbarsetting.OnClickBackButton += Navbarsetting_BackToHomeView;
         }
 
-        class client
+        private void Navbarsetting_BackToHomeView(ViewEnum viewEnum)
         {
-            public void sendToServer()
-            {
-                var ip = IPAddress.Parse("127.0.0.1");
-                var client = new UdpClient();
-                client.Connect(ip, 6969);
-                var buffer = Encoding.UTF8.GetBytes("vcl");
-                client.Send(buffer, buffer.Length);
-            }
+            if (viewEnum == ViewEnum.HomeView)
+                OnSwitchView(); 
         }
-        class server
-        {
-            private UdpClient listner;
-            private bool isRunning;
-            public server()
-            {
 
-                isRunning = false;
-            }
-            public void run()
-            {
-                listner = new UdpClient(6969);
-                Thread listnerThread = new Thread(this.start);
-                listnerThread.Start();
-            }
-            public void start()
-            {
-                this.isRunning = true;
-                while (isRunning)
-                {
-                    var remoteEp = new IPEndPoint(0, 0);
-                    var buffer = listner.Receive(ref remoteEp);
-                    var text = Encoding.ASCII.GetString(buffer);
-                    MessageBox.Show(text);
-                }
-            }
-            public void stop()
-            {
-                this.isRunning = false;
-            }
+        //class client
+        //{
+        //    public void sendToServer()
+        //    {
+        //        var ip = IPAddress.Parse("127.0.0.1");
+        //        var client = new UdpClient();
+        //        client.Connect(ip, 6969);
+        //        var buffer = Encoding.UTF8.GetBytes("vcl");
+        //        client.Send(buffer, buffer.Length);
+        //    }
+        //}
+        //class server
+        //{
+        //    private UdpClient listner;
+        //    private bool isRunning;
+        //    public server()
+        //    {
 
-        }
+        //        isRunning = false;
+        //    }
+        //    public void run()
+        //    {
+        //        listner = new UdpClient(6969);
+        //        Thread listnerThread = new Thread(this.start);
+        //        listnerThread.Start();
+        //    }
+        //    public void start()
+        //    {
+        //        this.isRunning = true;
+        //        while (isRunning)
+        //        {
+        //            var remoteEp = new IPEndPoint(0, 0);
+        //            var buffer = listner.Receive(ref remoteEp);
+        //            var text = Encoding.ASCII.GetString(buffer);
+        //            MessageBox.Show(text);
+        //        }
+        //    }
+        //    public void stop()
+        //    {
+        //        this.isRunning = false;
+        //    }
+
+        //}
 
         private void Update_User(object sender, Profile newProfile)
         {
@@ -120,8 +129,8 @@ namespace DoAnLTTQ.Views
             };
             user.saveData(this.profile);
         }
-        public event PropertyChangedEventHandler PropertyChanged;
 
+        public event PropertyChangedEventHandler PropertyChanged;
       
         protected virtual void OnPropertyChanged(string newName)
         {
@@ -135,20 +144,15 @@ namespace DoAnLTTQ.Views
         {
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void navbarsetting_Loaded_1(object sender, RoutedEventArgs e)
         {
-            this.cl = new client();
-            cl.sendToServer();
+
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void mainsetting_Loaded(object sender, RoutedEventArgs e)
         {
-            this.sv.run();
+
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.sv.stop();
-        }
     }
 }
