@@ -4,6 +4,8 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Net;
+    using System.Net.Sockets;
     using System.Windows;
 
     [Serializable]
@@ -14,6 +16,7 @@
         public User()
         {
             string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            MessageBox.Show(Environment.CurrentDirectory.ToString());
             this.myProfile = new Profile();
             using (StreamReader r = new StreamReader(_source))
             {
@@ -155,17 +158,29 @@
         {
             this.LoadArrayProfile();
             string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
-            int indexOfIP = listGuestProfile.FindIndex(x => x.ip == guest.ip);
-            if(indexOfIP >= 0)
+
+            var localIp = "";
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
             {
-                listGuestProfile[indexOfIP] = new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = listGuestProfile[indexOfIP].isLove };
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    localIp = ip.ToString();
+                }
             }
-            else
-            {
-                listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar=guest.avatar, sex=guest.sex, hobby = guest.hobby,picture = guest.picture, ip = guest.ip, isLove = false });
-            }
-            string json = JsonConvert.SerializeObject(listGuestProfile);
-            File.WriteAllText(_source, json);
+
+          
+                int indexOfIP = listGuestProfile.FindIndex(x => x.ip == guest.ip);
+                if (indexOfIP >= 0)
+                {
+                    listGuestProfile[indexOfIP] = new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = listGuestProfile[indexOfIP].isLove };
+                }
+                else
+                {
+                    listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = false });
+                }
+                string json = JsonConvert.SerializeObject(listGuestProfile);
+                File.WriteAllText(_source, json);
         }
         public void LikeProfile(string ip)
         {

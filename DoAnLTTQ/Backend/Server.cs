@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
@@ -41,7 +42,7 @@ namespace DoAnLTTQ.Backend
         public void ListenProfile()
         {
             ProfileListener = new TcpListener(IPAddress.Any, 1308);
-            ProfileListener.Start(10);
+            ProfileListener.Start(20);
             while (true)
             {
                 var client = ProfileListener.AcceptTcpClient();
@@ -100,9 +101,7 @@ namespace DoAnLTTQ.Backend
 
         public void SendRequestMessage()
         {
-            var serverEndpoint = new IPEndPoint(IPAddress.Broadcast, 1308);
             var socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
-
             var localIp = "";
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
@@ -112,9 +111,22 @@ namespace DoAnLTTQ.Backend
                     localIp = ip.ToString();
                 }
             }
-
             byte[] data = Encoding.ASCII.GetBytes(localIp);
-            socket.SendTo(data, serverEndpoint);
+
+            NetworkInterface[] Interfaces = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface Interface in Interfaces)
+            {
+                if (Interface.NetworkInterfaceType == NetworkInterfaceType.Loopback) continue;
+                if (Interface.OperationalStatus != OperationalStatus.Up) continue;
+                Console.WriteLine(Interface.Description);
+                UnicastIPAddressInformationCollection UnicastIPInfoCol = Interface.GetIPProperties().UnicastAddresses;
+                foreach (UnicastIPAddressInformation UnicatIPInfo in UnicastIPInfoCol)
+                {
+                    var serverEndpoint = new IPEndPoint(IPAddress.Parse(GetBroadCastIP(UnicatIPInfo.Address, UnicatIPInfo.IPv4Mask).ToString()), 1308);
+                    socket.SendTo(data, serverEndpoint);
+                }
+            }
+            socket.Close();
         }
 
         public void ListenMessage()
@@ -137,7 +149,6 @@ namespace DoAnLTTQ.Backend
                     var length = socket.Receive(receiveBuffer);
                     socket.Shutdown(SocketShutdown.Receive);
                     var text = Encoding.ASCII.GetString(receiveBuffer, 0, length);
-                    //MessageBox.Show(text);
                     this.myDelegate(text);
                     socket.Close();
                     Array.Clear(receiveBuffer, 0, size); 
@@ -166,6 +177,17 @@ namespace DoAnLTTQ.Backend
             {
                 MessageBox.Show("You two haven't connected with each other");
             }
+        }
+        public IPAddress GetBroadCastIP(IPAddress host, IPAddress mask)
+        {
+            byte[] broadcastIPBytes = new byte[4];
+            byte[] hostBytes = host.GetAddressBytes();
+            byte[] maskBytes = mask.GetAddressBytes();
+            for (int i = 0; i < 4; i++)
+            {
+                broadcastIPBytes[i] = (byte)(hostBytes[i] | (byte)~maskBytes[i]);
+            }
+            return new IPAddress(broadcastIPBytes);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace DoAnLTTQ.Components
 
             TextBox tb = new TextBox();
 
-            activeIp = "127.0.0.1";
+            //activeIp = "10.10.233.158";
             sv = new Server();
 
             this.Dispatcher.ShutdownStarted += Dispatcher_ShutdownStarted;
@@ -86,7 +86,7 @@ namespace DoAnLTTQ.Components
         }
         public void sendMessage(string content)
         {
-            sv.SendMessage(IPAddress.Parse(this.activeGuest.ip), content);
+            sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
             messagePanel.Children.Add(new MyMessage(content));
         }
         public void receiveMessage(string content)
