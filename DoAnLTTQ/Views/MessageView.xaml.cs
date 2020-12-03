@@ -20,13 +20,9 @@ namespace DoAnLTTQ.Views
     /// </summary>
     public partial class MessageView : UserControl
     {
-        public event SwitchViewHandler OnSwitchView;
         public MessageView()
         {
             InitializeComponent();
-       
         }
-
-      
     }
 }

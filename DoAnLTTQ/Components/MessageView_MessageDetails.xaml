@@ -5,9 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d" 
-              xmlns:component="clr-namespace:DoAnLTTQ.Components"
              d:DesignHeight="720" d:DesignWidth="640">
-
     <UserControl.Resources>
         <Style x:Key="myProfilePicture" TargetType="Image">
             <Setter Property="Margin" Value="15, 0, 10 ,0"/>
@@ -17,6 +15,43 @@
             <Setter Property="Height" Value="70"/>
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="myMessageName">
+            <Setter Property="FontSize" Value="34"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="PartnerMessageBorder">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="Margin" Value="30,10,30,10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="MyMessageBorder">
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="Margin" Value="30,10,30,10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="myMessageContent">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Comic Sans ms"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="partnerMessageContent">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Comic Sans ms"/>
+        </Style>
+
         <Style TargetType="TextBox" x:Key="TextToSendMessage">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -37,12 +72,6 @@
             <Setter Property="FontWeight" Value="Medium"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
-        <Style TargetType="TextBlock" x:Key="myMessageName">
-            <Setter Property="FontSize" Value="34"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="FontFamily" Value="Comic Sans MS" />
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
 
         <Style x:Key="emojiPicture" TargetType="Image">
             <Setter Property="Margin" Value="15, 10 ,10 ,10"/>
@@ -57,32 +86,73 @@
 
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="86" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="7*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--Avatar va ten partnerday-->
         <Grid Grid.Row="0" Background="White" >
+            <!--<ItemsControl x:Name="messageNameTitle" ItemsSource="{Binding}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel HorizontalAlignment="Left">
+
+                            <Border Grid.Column="0" CornerRadius="20">
+                                <Image Source="/Resources/Images/IMG_9715.png"  Style="{StaticResource myProfilePicture}"> 
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="25,25" RadiusX="20" RadiusY="20" />
+                                    </Image.Clip>
+                                </Image>
+                            </Border>
+
+                            <Label>
+
+                            </Label>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>-->
             <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
 
                 <Border Grid.Column="0" CornerRadius="20">
-                    <Image Source="{Binding avatar.buffer}"  Style="{StaticResource myProfilePicture}">
+                    <Image Source="/Resources/Images/IMG_9715.png"  Style="{StaticResource myProfilePicture}">
                         <Image.Clip>
                             <EllipseGeometry Center="35,35" RadiusX="28" RadiusY="28" />
                         </Image.Clip>
                     </Image>
                 </Border>
 
-                <TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}"/>
+                <TextBlock Text="Công vũ" Style="{StaticResource myMessageName}"/>
             </WrapPanel>
         </Grid>
 
         <!--Tin nhan nam day ne-->
         <Border Grid.Row="1" Background="White" BorderThickness="0, 1, 1, 1" BorderBrush="DarkGray">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Vertical" x:Name="messagePanel" >
+                <StackPanel Orientation="Vertical" >
+                    <Border x:Name="PartnerMessage" Style="{StaticResource PartnerMessageBorder}">
+                        <TextBlock x:Name="PartnerMessageContent" Style="{StaticResource partnerMessageContent}" Text="Baby Shark dududu">
 
+                        </TextBlock>
+                    </Border>
+
+                    <Border x:Name="MyMessage" Style="{StaticResource MyMessageBorder}">
+                        <TextBlock x:Name="MyMessageContent" Style="{StaticResource myMessageContent}" Text="aaaaaaaaaaaaaaaadudu">
+                        </TextBlock>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.2" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
                 </StackPanel>
             </ScrollViewer>
         </Border>
@@ -107,7 +177,7 @@
 
                 <!--Nut gui tin nhan day ne-->
                 <Border Grid.Column="2">
-                    <Button x:Name="SendButton" Style="{StaticResource SendButton}" Click="SendButton_Click" >
+                    <Button x:Name="SendButton" Style="{StaticResource SendButton}" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25"/>
