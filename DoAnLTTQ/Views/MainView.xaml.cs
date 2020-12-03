@@ -68,7 +68,6 @@
             //sv.SendProfile(IPAddress.Parse("10.10.233.158"));
             sv.SendRequestMessage();
 
-
             Reload_Guest();
             NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
             NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
