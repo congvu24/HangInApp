@@ -16,6 +16,7 @@
         public User()
         {
             string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            MessageBox.Show(Environment.CurrentDirectory.ToString());
             this.myProfile = new Profile();
             using (StreamReader r = new StreamReader(_source))
             {
@@ -168,8 +169,7 @@
                 }
             }
 
-           if(guest.ip != localIp)
-            {
+          
                 int indexOfIP = listGuestProfile.FindIndex(x => x.ip == guest.ip);
                 if (indexOfIP >= 0)
                 {
@@ -181,7 +181,6 @@
                 }
                 string json = JsonConvert.SerializeObject(listGuestProfile);
                 File.WriteAllText(_source, json);
-            }
         }
         public void LikeProfile(string ip)
         {
