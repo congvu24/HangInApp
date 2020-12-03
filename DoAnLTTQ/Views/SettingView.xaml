@@ -25,7 +25,7 @@
                 Grid.Column="0" 
                 Grid.Row="0"  
                 x:Name="navbarsetting"
-                myProfile="{Binding profile}" Loaded="navbarsetting_Loaded_1"/>
+                myProfile="{Binding profile}"/>
         </Grid>
         <Grid Grid.Column="1" Background="#f5f7fa">
             <Grid.RowDefinitions>
@@ -38,7 +38,7 @@
             <component:MainSetting  
                 x:Name="mainsetting"
                 Grid.ColumnSpan="2"
-                picture="{Binding picture}" Loaded="mainsetting_Loaded"/>
+                picture="{Binding picture}"/>
         </Grid>
     </Grid>
 </UserControl>

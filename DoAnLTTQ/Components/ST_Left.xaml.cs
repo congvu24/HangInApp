@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DoAnLTTQ.Backend;
-using DoAnLTTQ.Views;
 using Microsoft.Win32;
 using System.IO;
 using System.ComponentModel;
@@ -27,7 +26,6 @@ namespace DoAnLTTQ.Components
     public partial class NavBarSetting : UserControl, INotifyPropertyChanged
     {
         public event EventHandler<Profile> UserUpdateProfile;
-        public event ClickOnButtonHandler OnClickBackButton; 
         public string avatarLink { get; set; }
 
         public String myProfile
@@ -49,7 +47,6 @@ namespace DoAnLTTQ.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OnClickBackButton(ViewEnum.HomeView); 
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

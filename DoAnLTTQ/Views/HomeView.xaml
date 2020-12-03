@@ -21,10 +21,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <component:NavBarMain Loaded="NavBarMain_Loaded" x:Name="TabMain"/>
+            <component:NavBarMain />
         </Grid>
         <Grid Grid.Column="1" Background="#f5f7fa">
-
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -32,10 +31,7 @@
                 <ColumnDefinition Width="271*" />
                 <ColumnDefinition Width="207*"/>
             </Grid.ColumnDefinitions>
-            <!--<component:MessageAndDetails x:Name="messagedetails" Grid.ColumnSpan="2"/>-->
-            <component:info_main x:Name="info_main" Grid.ColumnSpan="2" />
-            <!--<ContentControl DataContext="{Binding HomeAndMessageViewContext}" Grid.ColumnSpan="2" />-->
-            
+            <component:info_main x:Name="info_main" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </UserControl>

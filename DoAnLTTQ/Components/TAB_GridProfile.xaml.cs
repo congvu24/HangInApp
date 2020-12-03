@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,91 +13,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DoAnLTTQ.Backend;
-using System.Drawing;
-
-
 
 namespace DoAnLTTQ.Components
 {
     /// <summary>
     /// Interaction logic for GridProfile.xaml
     /// </summary>
-    public partial class GridProfile : UserControl, INotifyPropertyChanged
+    public partial class GridProfile : UserControl
     {
-        public event EventHandler<int> ProfileSelected;
-
-        public ObservableCollection<BitmapImage> userPictureNearBy
-        {
-            get { return (ObservableCollection<BitmapImage>)GetValue(userPictureNearByProperty); }
-            set { SetValue(userPictureNearByProperty, value); }
-        }
-
-        public static readonly DependencyProperty userPictureNearByProperty =
-            DependencyProperty.Register("userPictureNearBy", typeof(ObservableCollection<BitmapImage>), typeof(GridProfile),
-                                        new PropertyMetadata(new ObservableCollection<BitmapImage>(), OnChanged));
-
-        static void OnChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            (sender as GridProfile).OnChanged();
-        }
-
-        void OnChanged()
-        {
-            if (userPictureNearBy != null)
-                userPictureNearBy.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(userPictureNearBy_CollectionChanged);
-        }
-
-        //detect changes
-        void userPictureNearBy_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            int AMOUNT = userPictureNearBy.Count();
-            List<Source> source = new List<Source>();
-            for (int i = 0; i < AMOUNT; i++)
-                source.Add(new Source() { item = userPictureNearBy[i], name = i.ToString() });
-
-            listImage.DataContext = source;
-        }
-        public class Source
-        {
-            public BitmapImage item { get; set; }
-            public string name { get; set; }
-        }
         public GridProfile()
         {
             InitializeComponent();
-            List<Source> source = new List<Source>();
 
-            listImage.DataContext = source;
-
-        }
-        public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            System.Drawing.Image returnImage = null;
-            using (MemoryStream ms = new MemoryStream(byteArrayIn))
+            List<Picture> data = new List<Picture>();
+            //data.Add(new Picture() { imgUri = "/Resources/Images/IMG_9715.png" });
+            for (int i = 0; i < 9; i++)
             {
-                returnImage = System.Drawing.Image.FromStream(ms);
+                data.Add(new Picture() { url = "/Resources/Images/IMG_9715.png" });
             }
-            return returnImage;
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            //data.Add(new Picture() { imgUri = "" });
+            listImage.DataContext = data;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
-        protected virtual void OnPropertyChanged(string newName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(newName));
-            }
-        }
-        private void select_Click(object sender, RoutedEventArgs e)
-        {
-            int identify = int.Parse((sender as Button).Uid);
-            if (ProfileSelected != null)
-            {
-                ProfileSelected(this, identify);
-            }
-        }
-        
     }
 }
