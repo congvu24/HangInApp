@@ -45,7 +45,8 @@ namespace DoAnLTTQ.Views
             this.profile = user.myProfile;
             navbarsetting.UserUpdateProfile += new EventHandler<Profile>(Update_User);
             mainsetting.UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
-            this.picture = user.myProfile.picture;
+            
+                this.picture = user.myProfile.picture;
             this.DataContext = this;
 
             navbarsetting.OnClickBackButton += Navbarsetting_BackToHomeView;
@@ -54,7 +55,7 @@ namespace DoAnLTTQ.Views
         private void Navbarsetting_BackToHomeView(ViewEnum viewEnum)
         {
             if (viewEnum == ViewEnum.HomeView)
-                OnSwitchView(); 
+                OnSwitchView();
         }
 
         //class client
@@ -131,7 +132,7 @@ namespace DoAnLTTQ.Views
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-      
+
         protected virtual void OnPropertyChanged(string newName)
         {
             if (PropertyChanged != null)

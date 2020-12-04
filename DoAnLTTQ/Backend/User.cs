@@ -21,14 +21,17 @@
             {
                 string json = r.ReadToEnd();
                 this.myProfile = JsonConvert.DeserializeObject<Profile>(json);
-                int count = this.myProfile.picture.Count;
-                if (count < 9)
-                {
-                    for (int i = 0; i < 9 - count; i++)
+                int count;
+               
+                    count = this.myProfile.picture.Count;
+                    if (count < 9)
                     {
-                        this.myProfile.picture.Add(new Picture() { name = "placeholer" + i, url = "" });
+                        for (int i = 0; i < 9 - count; i++)
+                        {
+                            this.myProfile.picture.Add(new Picture() { name = "placeholer" + i, url = "" });
+                        }
                     }
-                }
+                
             }
         }
         public Profile myProfile { get; set; }

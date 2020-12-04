@@ -35,12 +35,15 @@ namespace DoAnLTTQ
         public HomeView myHomeView = new HomeView();
         public SettingView mySettingView = new SettingView();
         public MainView myMainView = new MainView();
-
+        public LoginView myLoginView = new LoginView();
+        public CreateProfileView myCreateProfileView = new CreateProfileView();
 
         public UserControl _ViewContext;
-        public UserControl ViewContext { 
-            get { return this._ViewContext; } 
-            set {
+        public UserControl ViewContext
+        {
+            get { return this._ViewContext; }
+            set
+            {
                 _ViewContext = value;
                 OnPropertyChanged("ViewContext");
             }
@@ -48,15 +51,29 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            this.ViewContext = myMainView;
-            ((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
+            User u = new User();
+            if (u.myProfile.name == "default")
+                this.ViewContext = myLoginView;
+            else
+                this.ViewContext = myMainView;
+            //((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
             this.DataContext = this;
 
             myMainView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
             mySettingView.OnSwitchView += SettingView_OnSwitchViewToMainView;
-          
-        }
+            //myLoginView.OnSwitchView += LoginView_OnSwitchViewToCreateProileView;
+            myLoginView.switchView += new EventHandler(LoginView_OnSwitchViewToCreateProileView);
+            myCreateProfileView.SwitchToMainView += new EventHandler(CreateProfileView_OnSwitchViewToMainView);
 
+        }
+        private void LoginView_OnSwitchViewToCreateProileView(object sender, EventArgs e)
+        {
+            this.ViewContext = myCreateProfileView;
+        }
+        private void CreateProfileView_OnSwitchViewToMainView(object sender, EventArgs e)
+        {
+            this.ViewContext = myMainView;
+        }
         private void SettingView_OnSwitchViewToMainView()
         {
             this.ViewContext = myMainView;
@@ -66,7 +83,7 @@ namespace DoAnLTTQ
 
         private void MyHomeView_OnSwitchToSettingView()
         {
-            this.ViewContext = mySettingView; 
+            this.ViewContext = mySettingView;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -85,6 +102,6 @@ namespace DoAnLTTQ
         }
 
     }
-   
+
 
 }
