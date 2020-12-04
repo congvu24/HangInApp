@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 
+
 namespace DoAnLTTQ.Components
 {
     /// <summary>
@@ -24,6 +25,7 @@ namespace DoAnLTTQ.Components
     public partial class NavBarMain : UserControl, INotifyPropertyChanged
     {
         public UserControl _TabChange;
+        public bool buttonActivated = false;
 
 
         //public GridProfile gridProfile = new GridProfile();
@@ -78,6 +80,15 @@ namespace DoAnLTTQ.Components
 
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
+            //var converter = new System.Windows.Media.BrushConverter();
+            //var brush = (Brush)converter.ConvertFromString("#fd267d");
+
+            //if (buttonTinNhan.BorderBrush == brush)
+            //    buttonTinNhan.BorderBrush = (Brush)converter.ConvertFromString("#fcba03");
+
+            //(sender as Button).BorderThickness = new Thickness(0.0, 0.0, 0.0, 1.0);
+            //(sender as Button).BorderBrush = brush;
+
             gridProfile.Visibility = Visibility.Collapsed;
             gridMessage.Visibility = Visibility.Visible;
             gridMessage.reload();

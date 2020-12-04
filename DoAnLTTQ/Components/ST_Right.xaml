@@ -50,12 +50,73 @@
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
+        <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
+                <Border.Effect>
+                    <DropShadowEffect x:Name="shadow" BlurRadius="2" Color="#FFDFD6D6" RenderingBias="Quality" ShadowDepth="6"/>
+                </Border.Effect>
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.0" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="3" Color="#FFEFEFEF" RenderingBias="Quality"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="transparent"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="transparent"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="transparent"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SlotImage" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="LightGray" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="LightGray"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
     </UserControl.Resources>
 
     <Border BorderThickness="0.5" Width="468" Height="670" CornerRadius="10" Background="White">
         <Border.Effect>
             <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
         </Border.Effect>
+
         <StackPanel x:Name="LayoutRoot" >
             <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage" >
                 <ItemsControl.ItemsPanel>
@@ -67,11 +128,12 @@
                     <DataTemplate>
                         <Border>
                             <Button  
-                            Style="{StaticResource myImageSlotContent}"
+                            Style="{DynamicResource myImageSlotContent}"
+                            Template="{DynamicResource SlotImage}"
                             HorizontalContentAlignment="Center" 
                             VerticalContentAlignment="Center"
                             Content="+"
-                                Click="Slot_Click"
+                            Click="Slot_Click"
                                 >
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -79,15 +141,15 @@
                                     </Style>
                                 </Button.Resources>
                                 <Button.Background>
-                                <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
-                            </Button.Background>
+                                    <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
+                                </Button.Background>
                             </Button>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
             <Grid >
-                <Button Height="44"  Style="{StaticResource updateBtn}" Content="Save" Click="Save_Click">
+                <Button Height="44"  Style="{DynamicResource updateBtn}" Template="{DynamicResource ButtonBaseControlTemplate1}" Content="Save" Click="Save_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="20"/>
@@ -99,7 +161,7 @@
                             <GradientStop Color="#fd267d" Offset="1.0" />
                         </LinearGradientBrush>
                     </Button.Background>
-                    
+
                 </Button>
             </Grid>
         </StackPanel>
