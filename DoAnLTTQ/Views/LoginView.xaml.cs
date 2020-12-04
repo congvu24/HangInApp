@@ -22,6 +22,10 @@ namespace DoAnLTTQ
     /// </summary>
     public partial class LoginView : UserControl, INotifyPropertyChanged
     {
+        public event EventHandler switchView;
+        //public event SwitchViewHandler OnSwitchView;
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string newName)
@@ -45,12 +49,25 @@ namespace DoAnLTTQ
         public LoginView()
         {
             InitializeComponent();
+            //this.OnClickBackButton += LoginView_SwitchToCreateProfileView;
+            this.DataContext = this;
+
         }
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
-            //OnClickBackButton(ViewEnum.CreateProfileView);
-            this.ViewContext = new CreateProfileView();
+            //MessageBox.Show("nextclick");
+            if(switchView != null)
+            {
+                switchView(this, e);
+            }
+            //OnSwitchView();
+            //this.ViewContext = new CreateProfileView();
         }
+        //private void LoginView_SwitchToCreateProfileView(ViewEnum viewEnum)
+        //{
+        //    if (viewEnum == ViewEnum.HomeView)
+        //        OnSwitchView();
+        //}
     }
 }

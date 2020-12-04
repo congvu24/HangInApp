@@ -27,31 +27,12 @@ namespace DoAnLTTQ
     /// <summary>
     /// Interaction logic for CreateProfileView.xaml
     /// </summary>
-    public partial class CreateProfileView : UserControl, INotifyPropertyChanged
+    public partial class CreateProfileView : UserControl
     {
         private string avatarLink;
         private bool buttonClicked = false;
-        public event SwitchViewHandler OnSwitchView;
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler SwitchToMainView;
 
-        protected virtual void OnPropertyChanged(string newName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(newName));
-            }
-        }
-
-        public UserControl _ViewContext;
-        public UserControl ViewContext
-        {
-            get { return this._ViewContext; }
-            set
-            {
-                _ViewContext = value;
-                OnPropertyChanged("ViewContext");
-            }
-        }
         public CreateProfileView()
         {
             InitializeComponent();
@@ -59,12 +40,16 @@ namespace DoAnLTTQ
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             if (buttonClicked)
+            {
                 OnUserControlButtonClick();
+                if (SwitchToMainView != null)
+                    SwitchToMainView(this, e);
+            }
             else
             {
                 (sender as Button).Content = "Finish";
                 buttonClicked = !buttonClicked;
-            }
+            }   
 
         }
         private void OnUserControlButtonClick()

@@ -109,6 +109,18 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-496"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <!--<Storyboard x:Key="exitall">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.812"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.515"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-120"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-309.84"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-639.56"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>-->
         <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Height="Auto" Width="Auto" CornerRadius="13" Opacity="0.985" Margin="1.25,0,0,-10">
                 <Border.Effect>
