@@ -27,20 +27,49 @@ namespace DoAnLTTQ
     /// <summary>
     /// Interaction logic for CreateProfileView.xaml
     /// </summary>
-    public partial class CreateProfileView : UserControl
+    public partial class CreateProfileView : UserControl, INotifyPropertyChanged
     {
+        private string avatarLink;
+        private bool buttonClicked = false;
+        public event SwitchViewHandler OnSwitchView;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string newName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(newName));
+            }
+        }
+
+        public UserControl _ViewContext;
+        public UserControl ViewContext
+        {
+            get { return this._ViewContext; }
+            set
+            {
+                _ViewContext = value;
+                OnPropertyChanged("ViewContext");
+            }
+        }
         public CreateProfileView()
         {
             InitializeComponent();
-            this.DataContext = this;
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            OnUserControlButtonClick();
+            if (buttonClicked)
+                OnUserControlButtonClick();
+            else
+            {
+                (sender as Button).Content = "Finish";
+                buttonClicked = !buttonClicked;
+            }
 
         }
         private void OnUserControlButtonClick()
         {
+               
             Profile newProfile = new Profile()
             {
                 name = nameInput.Text,
@@ -50,7 +79,7 @@ namespace DoAnLTTQ
                 avatar = new Picture()
                 {
                     name = "avatar",
-                    url = "avatarLink",
+                    url = avatarLink,
                 }
             };
             // kt profile co bi trung chua-- chua lam
@@ -58,6 +87,17 @@ namespace DoAnLTTQ
             //end
             User u = new User();
             u.saveData(newProfile);
+        }
+
+        private void CreatePicture(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+
+                //this.avatarControl.ImageSource = new BitmapImage(new Uri("your path", UriKind.Relative));
+            //this.avatarControl.ImageSource = ne;
+            this.avatarControl.ImageSource= new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Relative));
+            this.avatarLink = openFileDialog.FileName;
         }
     }
 }

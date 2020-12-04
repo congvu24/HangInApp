@@ -49,7 +49,7 @@ namespace DoAnLTTQ
         {
             InitializeComponent();
             //this.ViewContext = myMainView;
-            this.ViewContext = new CreateProfileView();
+            this.ViewContext = new LoginView();
             //((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
             this.DataContext = this;
 
