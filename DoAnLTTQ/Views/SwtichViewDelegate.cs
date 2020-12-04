@@ -11,7 +11,9 @@ namespace DoAnLTTQ.Views
         HomeView,
         MessageView,
         SettingView,
-        QuanhDayView
+        QuanhDayView,
+        LoginView,
+        CreateProfileView,
     }
 
     public delegate void SwitchViewHandler();
