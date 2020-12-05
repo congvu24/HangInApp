@@ -12,10 +12,10 @@
     public class User
     {
 
-        private readonly string myProfileData = "\\Backend\\Database\\profile.json";
+        private readonly string myProfileData = "//Backend//Database//profile.json";
         public User()
         {
-            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
             this.myProfile = new Profile();
             using (StreamReader r = new StreamReader(_source))
             {
@@ -38,7 +38,7 @@
 
         public void saveData(Profile profile)
         {
-            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
             string json = JsonConvert.SerializeObject(profile);
             System.IO.File.WriteAllText(_source, json);
         }
@@ -84,7 +84,7 @@
     [Serializable]
     public class GuestProfile
     {
-        public static readonly string myProfileData = "\\Backend\\Database\\guest.json";
+        public static readonly string myProfileData = "//Backend//Database//guest.json";
         public string name { get; set; }
 
         public string age { get; set; }
@@ -102,7 +102,7 @@
         public GuestProfile() { }
         public void LoadProfile()
         {
-            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
             using (StreamReader r = new StreamReader(_source))
             {
                 string json = r.ReadToEnd();
@@ -119,7 +119,7 @@
         public List<GuestProfile> listGuestProfile = new List<GuestProfile>();
         public List<GuestProfile> LoadArrayProfile()
         {
-            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
             using (StreamReader r = new StreamReader(_source))
             {
                 string json = r.ReadToEnd();
@@ -152,14 +152,14 @@
             }
             catch
             {
-                byte[] image = File.ReadAllBytes(".//heocute.jpg");
+                byte[] image = File.ReadAllBytes(".//Resources//Images//heocute.jpg");
                 avatar = new GuestPicture() { name = "vc", buffer = image };
             }
         }
         public void AddNewGuest(GuestProfile guest)
         {
             this.LoadArrayProfile();
-            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
 
             var localIp = "";
             var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -187,7 +187,7 @@
         public void LikeProfile(string ip)
         {
             this.LoadArrayProfile();
-            string _source = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + myProfileData;
+            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
             int indexOfIP = listGuestProfile.FindIndex(x => x.ip == ip);
             if (indexOfIP >= 0)
             {
