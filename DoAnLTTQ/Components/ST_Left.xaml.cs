@@ -43,6 +43,7 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
             LayoutRoot.DataContext = this;
+        
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -214,5 +215,6 @@ namespace DoAnLTTQ.Components
             }
         }
 
+        
     }
 }
