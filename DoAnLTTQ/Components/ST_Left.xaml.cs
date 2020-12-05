@@ -27,7 +27,7 @@ namespace DoAnLTTQ.Components
     public partial class NavBarSetting : UserControl, INotifyPropertyChanged
     {
         public event EventHandler<Profile> UserUpdateProfile;
-        public event ClickOnButtonHandler OnClickBackButton; 
+        public event ClickOnButtonHandler OnClickBackButton;
         public string avatarLink { get; set; }
 
         public String myProfile
@@ -49,7 +49,7 @@ namespace DoAnLTTQ.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OnClickBackButton(ViewEnum.HomeView); 
+            OnClickBackButton(ViewEnum.HomeView);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -59,7 +59,10 @@ namespace DoAnLTTQ.Components
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            OnUserControlButtonClick();
+            if (isValidInputInformation())
+            {
+                OnUserControlButtonClick();
+            }
 
         }
         private void OnUserControlButtonClick()
@@ -72,7 +75,7 @@ namespace DoAnLTTQ.Components
                     age = ageInput.Text,
                     sex = sexSelect.SelectedIndex.ToString(),
                     hobby = hobbyInput.Text,
-                    avatar = new Picture() { name="avatar", url=avatarLink}
+                    avatar = new Picture() { name = "avatar", url = avatarLink }
                 };
 
                 UserUpdateProfile(this, newProfile);
@@ -83,7 +86,7 @@ namespace DoAnLTTQ.Components
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-            this.avatarControl.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                this.avatarControl.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             this.avatarLink = openFileDialog.FileName;
         }
 
@@ -98,5 +101,118 @@ namespace DoAnLTTQ.Components
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
+
+        private bool isValidInputInformation()
+        {
+            if (!isValidNameInput(nameInput.Text))
+            {
+                ErrorName.Visibility = Visibility.Visible;
+                ErrorName.Content = "Vui lòng nhập tên hợp lệ! ";
+            }
+            else
+            {
+                ErrorName.Visibility = Visibility.Hidden;
+            }
+
+            if (!isValidAgeInput(ageInput.Text))
+            {
+                ErrorAge.Visibility = Visibility.Visible;
+                ErrorAge.Content = "Vui lòng nhập tuổi hợp lệ! ";
+            }
+            else
+            {
+                ErrorAge.Visibility = Visibility.Hidden; 
+            }                
+
+            if (!isValidHobbyInput(hobbyInput.Text))
+            {
+                ErrorHobby.Visibility = Visibility.Visible;
+                ErrorHobby.Content = "Vui lòng nhập sở thích hợp lệ";
+            }
+            else
+            {
+                ErrorHobby.Visibility = Visibility.Hidden; 
+            }
+
+            if (ErrorName.Visibility != Visibility.Visible && 
+                ErrorAge.Visibility != Visibility.Visible && 
+                ErrorHobby.Visibility != Visibility.Visible)
+            {
+                return true; 
+            }
+            return false; 
+        }
+
+        private bool isValidNameInput(string input)
+        {
+            if (input.Length < 1)
+            {
+                return false;
+            }
+            else
+            {
+                byte[] asciiBytes = Encoding.ASCII.GetBytes(input);
+
+                for (int i = 0; i < asciiBytes.Length; i++)
+                {
+                    if (isSpecialKey(asciiBytes[i]))
+                        return false;
+                }
+
+                return true;
+            }
+        }
+
+        private bool isSpecialKey(byte key)
+        {
+            if (key >= 33 && key <= 64)
+                return true;
+            if (key == 95 || key == 96)
+                return true;
+            if (key >= 123 && key <= 126)
+                return true;
+
+            return false;
+        }
+
+        private bool isValidAgeInput(string ageString)
+        {
+            byte age = 1;
+            bool checkage = byte.TryParse(ageString, out age); 
+
+            if (checkage)
+            {
+                if (age < 10 || age > 110)
+                    return false; 
+            }
+            else
+            {
+                return false; 
+            }
+
+            return true;
+
+        }
+
+        private bool isValidHobbyInput(string input)
+        {
+            if (input.Length < 1)
+            {
+                return false;
+            }
+            else
+            {
+                byte[] asciiBytes = Encoding.ASCII.GetBytes(input);
+
+                for (int i = 0; i < asciiBytes.Length; i++)
+                {
+                    if (isSpecialKey(asciiBytes[i]))
+                        return false;
+                }
+
+                return true;
+            }
+        }
+
     }
 }
