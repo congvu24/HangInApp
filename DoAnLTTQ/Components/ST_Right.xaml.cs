@@ -59,6 +59,7 @@ namespace DoAnLTTQ.Components
                 BitmapImage image = new BitmapImage(new Uri(openFileDialog.FileName));
                 ((sender as Button).FindName("brush") as ImageBrush).ImageSource = image;
                 //MessageBox.Show(((sender as Button).FindName("brush") as ImageBrush).ImageSource.ToString());
+                (sender as Button).Content = "";
             }
         }
         private void Save_Click(object sender, RoutedEventArgs e)

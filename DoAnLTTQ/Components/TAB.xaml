@@ -31,18 +31,20 @@
                 </Setter.Value>
             </Setter>
 
-            <Setter Property="Template">
+            <!--<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <ContentPresenter />
                         <ControlTemplate.Triggers>
-                            <!--<Trigger Property="IsMouseOver" Value="true">
+                            -->
+            <!--<Trigger Property="IsMouseOver" Value="true">
                                 <Setter TargetName="Border" Property="BorderBrush" Value="red" />
                             </Trigger>-->
+            <!--
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
 
             <!--end-->
         </Style>
@@ -68,8 +70,10 @@
             <Setter Property="Height" Value="44"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            --><!--<Setter Property="Canvas.Top" Value="31"/>
-            <Setter Property="Canvas.Left" Value="92"/>--><!--
+            -->
+        <!--<Setter Property="Canvas.Top" Value="31"/>
+            <Setter Property="Canvas.Left" Value="92"/>-->
+        <!--
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -83,8 +87,6 @@
             <Setter Property="Height" Value="35"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <!--<Setter Property="Canvas.Top" Value="31"/>
-            <Setter Property="Canvas.Left" Value="92"/>-->
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontStretch" Value="Expanded"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -92,6 +94,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -101,11 +104,15 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
+            <!--<Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#8d918a"/>
+                    -->
+            <!--<Setter Property="Background" Value="#8d918a"/>-->
+            <!--
+                    <Setter Property="Background" Value="Transparent"/>
+
                 </Trigger>
-            </Style.Triggers>
+            </Style.Triggers>-->
         </Style>
 
 
@@ -126,11 +133,69 @@
 
         <Style x:Key="UnderLineButtonStyle" TargetType="Border">
             <Setter Property="BorderBrush" Value="LightGray"/>
-            <Setter Property="BorderThickness" Value="0 0 0 1.5"/>
+            <Setter Property="BorderThickness" Value="0 0 0 0"/>
             <Setter Property="Margin" Value="20, 35, 20, 20"/>
+            <!--<Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect ShadowDepth="4" />
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger.Setters>
+                </Trigger>
+            </Style.Triggers>-->
         </Style>
+        <ControlTemplate x:Key="boderSelect" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
+                <!--<Border.Effect>
+                    <DropShadowEffect x:Name="shadow" BlurRadius="2" Color="#FFDFD6D6" RenderingBias="Quality" ShadowDepth="6"/>
+                </Border.Effect>-->
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                
+                
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Storyboard x:Key="ChangeToQuanhDay">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-190"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.32"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ChangeToTinNhan">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="163.298"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.8"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ChangeToTinnhan">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-34"/>
+            </DoubleAnimationUsingKeyFrames>
+            
+        </Storyboard>
+
 
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonQuanhDay">
+            <BeginStoryboard x:Name="ChangeToTinNhan_BeginStoryboard" Storyboard="{StaticResource ChangeToQuanhDay}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonTinNhan">
+            <BeginStoryboard x:Name="ChangeToTinNhan_BeginStoryboard1" Storyboard="{StaticResource ChangeToTinnhan}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
 
     <!--main content-->
     <Border BorderBrush="#D1DDE3" BorderThickness="0 0 1 0">
@@ -143,7 +208,7 @@
                     <RowDefinition Height="82"/>
                     <RowDefinition Height="408"/>
                     <RowDefinition Height="144"/>
-                    
+
 
                 </Grid.RowDefinitions>
 
@@ -193,15 +258,11 @@
                             </Grid.ColumnDefinitions>
 
                             <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
-                                <Button x:Name="buttonQuanhDay" Click="buttonQuanhDay_Click" Style="{StaticResource changingbutton}" Content="Quanh đây">
-
-                                </Button>
+                                <Button x:Name="buttonQuanhDay" Click="buttonQuanhDay_Click" Template="{DynamicResource boderSelect}" Style="{DynamicResource changingbutton}" Content="Quanh đây"/>
                             </Border>
 
                             <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}">
-                                <Button x:Name="buttonTinNhan" Click="buttonTinNhan_Click" Style="{StaticResource changingbutton}" Content="Tin nhắn">
-
-                                </Button>
+                                <Button x:Name="buttonTinNhan" Click="buttonTinNhan_Click" Template="{DynamicResource boderSelect}" Style="{DynamicResource changingbutton}" Content="Tin nhắn"/>
                             </Border>
                         </Grid>
                         <!--<component:GridProfile></component:GridProfile>-->
@@ -213,6 +274,22 @@
                     <component:GridMessage VerticalAlignment="Top" x:Name="gridMessage" />
                     <component:GridProfile VerticalAlignment="Top" x:Name="gridProfile" userPictureNearBy="{Binding m_userPictureNearBy}" ></component:GridProfile>
                 </Grid>
+                <Path x:Name="path" Data="M163.12228,0.66666667 L220.56822,0.33333333" HorizontalAlignment="Left" Height="6" Margin="50,64,0,0" Grid.Row="1" VerticalAlignment="Top" Width="221.248" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="-2" StrokeThickness="2">
+                    <Path.Stroke>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFF7854" Offset="0"/>
+                            <GradientStop Color="#FFFD277D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Path.Stroke>
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.266"/>
+                            <TranslateTransform X="-0.00087694609253929912" Y="0.37778360689053847"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
 
                 <!--<Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
                     <Button Style="{StaticResource updateBtn}" Click="{Binding Button_Click}"  >
@@ -231,7 +308,7 @@
                     </Button>
 
                 </Border>-->
-                
+
             </Grid>
         </Grid>
     </Border>

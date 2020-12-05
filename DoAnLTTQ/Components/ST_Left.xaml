@@ -50,21 +50,6 @@
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
-        <Style x:Key="updateBtn" TargetType="Button">
-            <Setter Property="Grid.Row" Value="3"/>
-            <Setter Property="Width" Value="136"/>
-            <Setter Property="Height" Value="44"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <!--<Setter Property="Canvas.Top" Value="31"/>
-            <Setter Property="Canvas.Left" Value="92"/>-->
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Foreground" Value="#fff" />
-            <Setter Property="FontWeight" Value="Medium" />
-        </Style>
-
         <!--placeholder for textbox-->
         <!--this style is base on textBox style at line 38 definition for that at line 46-->
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource textBox}">
@@ -101,6 +86,64 @@
             </Setter>
         </Style>
 
+        <Style x:Key="updateBtn" TargetType="Button">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="Width" Value="136"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <!--<Setter Property="Canvas.Top" Value="31"/>
+            <Setter Property="Canvas.Left" Value="92"/>-->
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="FontWeight" Value="Medium" />
+        </Style>
+        
+        <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
+                <Border.Effect>
+                    <DropShadowEffect x:Name="shadow" BlurRadius="2" Color="#FFDFD6D6" RenderingBias="Quality" ShadowDepth="6"/>
+                </Border.Effect>
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.0" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="3" Color="#FFEFEFEF" RenderingBias="Quality"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="transparent"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="transparent"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="transparent"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
         <Style x:Key="changProfilePicture" TargetType="Button">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Canvas.Top" Value="135"/>
@@ -114,6 +157,58 @@
         <Style x:Key="changeProFilePicture_border" TargetType="Border">
             <Setter Property="CornerRadius" Value="25"/>
         </Style>
+        <Style x:Key="aa" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="58"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <ControlTemplate x:Key="BackButtonShadow" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Height="Auto" Width="Auto" CornerRadius="13" Opacity="0.985" Margin="1.25,0,0,-10">
+                <Border.Effect>
+                    <DropShadowEffect x:Name="shadow" BlurRadius="1" Color="#FFDFD6D6" RenderingBias="Quality" ShadowDepth="6"/>
+                </Border.Effect>
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.7"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="3" Color="#FFEFEFEF" RenderingBias="Quality"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ChangeProfileButton" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Height="Auto" Width="Auto" CornerRadius="13" Opacity="0.985" Margin="1.25,0,0,-10">
+                <Border.Effect>
+                    <DropShadowEffect x:Name="shadow" BlurRadius="1" Color="#FFEFEFEF" RenderingBias="Quality" ShadowDepth="1"/>
+                </Border.Effect>
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="3" Color="#FFEFEFEF" RenderingBias="Quality"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
     </UserControl.Resources>
 
     <!--main content-->
@@ -128,7 +223,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 2" >
+                <Border BorderBrush="#FFF9F7F3" BorderThickness="0 0 0 2" >
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
@@ -140,8 +235,10 @@
                                 <GradientStop Color="#fd267d" Offset="1.0" />
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <Button Name="backBtnIcon" Click="Button_Click" Style="{StaticResource backBtnIcon}" Height="Auto" HorizontalAlignment="Left">
-                            <materialDesign:PackIcon VerticalAlignment="Center" Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" />
+                        <!--Style="{DynamicResource BackButtonShadow}"-->
+                        <Button Name="backBtnIcon" Click="Button_Click"  Style="{DynamicResource aa}" Template="{DynamicResource BackButtonShadow}" Height="Auto" HorizontalAlignment="Left">
+                            <materialDesign:PackIcon VerticalAlignment="Center" Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" >
+                            </materialDesign:PackIcon>
                         </Button>
                         <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
                     </Grid>
@@ -161,19 +258,22 @@
                                     </Image.Clip>
                                 </Image>
                             </Border>
-                            <Button Style="{StaticResource changProfilePicture}" Click="Avatar_Click">
+                            <Button Style="{DynamicResource changProfilePicture}" Template="{DynamicResource ChangeProfileButton}" Click="Avatar_Click" d:IsEffectDisabled="True">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="20"/>
                                     </Style>
                                 </Button.Resources>
-                                <Border Style="{StaticResource changeProFilePicture_border}" >
+                                <Grid>
+                                    <Border Style="{StaticResource changeProFilePicture_border}" BorderBrush="Black" >
+                                    </Border>
                                     <materialDesign:PackIcon Kind="Plus"
                                     Width="32"
                                     Height="32"
                                     Foreground="red">
                                     </materialDesign:PackIcon>
-                                </Border>
+                                </Grid>
+                               
                             </Button>
                         </Canvas>
                     </Label>
@@ -188,21 +288,19 @@
                               SelectedIndex="{Binding Path=myProfile.sex}"
                               x:Name="sexSelect"
                               Width="194"
-                              Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,37">
-                        <ComboBoxItem>Male</ComboBoxItem>
-                        <ComboBoxItem>Female</ComboBoxItem>
-                        <ComboBoxItem>I don't want to tell</ComboBoxItem>
+                              Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,37"
+                              Foreground="#707070">
+                        <ComboBoxItem Foreground="Black">Male</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
                     </ComboBox>
                     <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="hobbyInput"/>
-
-
-
                 </StackPanel>
 
                 <Grid Grid.Row="3">
-                    <Button Style="{StaticResource updateBtn}" Click="Update_Click" >
+                    <Button x:Name="button" Content="Update" Style="{DynamicResource updateBtn}" Click="Update_Click" Template="{DynamicResource ButtonBaseControlTemplate1}" >
                         <Button.Resources>
-                            <Style TargetType="Border">
+                            <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="20"/>
                             </Style>
                         </Button.Resources>
@@ -212,10 +310,15 @@
                                 <GradientStop Color="#fd267d" Offset="1.0" />
                             </LinearGradientBrush>
                         </Button.Background>
-                        Update
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
                     </Button>
-
-
                 </Grid>
             </Grid>
         </Grid>
