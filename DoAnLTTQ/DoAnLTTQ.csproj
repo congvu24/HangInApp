@@ -246,8 +246,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Backend\Database\guest.json" />
-    <None Include="Backend\Database\profile.json" />
+    <AdditionalFiles Include="Backend\Database\guest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Backend\Database\profile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -258,75 +262,105 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Chartridge046_small.jpg" />
-    <Resource Include="Resources\Images\Contact.png" />
-    <Resource Include="Resources\Images\favicon.ico" />
-    <Resource Include="Resources\Images\ms-icon-310x310.png" />
-    <Resource Include="Resources\Images\ProfilePic.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\heocute.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Confirmbutton.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\ImageSlot.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\IMG_9715.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Profile\hinh1.jpg" />
-    <Resource Include="Resources\Images\Profile\hinh2.jpg" />
-    <Resource Include="Resources\Images\Profile\hinh3.jpg" />
-    <Resource Include="Resources\Images\Profile\hinh4.jpg" />
-    <Resource Include="Resources\Images\Profile\hinh5.jpg" />
-    <Resource Include="Resources\Images\hinh-anh-heo-cute-va-de-thuong_030601765.jpg">
+    <AdditionalFiles Include="Resources\Images\Chartridge046_small.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\Contact.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\ms-icon-310x310.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\ProfilePic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon\heart.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\icon\reject.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\icon\reload.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <AdditionalFiles Include="Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon\down.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\icon\left.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\icon\enter.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\icon\right.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\icon\up.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <AdditionalFiles Include="Resources\Images\heocute.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon\emoji tin nhan.png" />
+    <AdditionalFiles Include="Resources\Images\Confirmbutton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\ImageSlot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon\LeftArrow.png" />
-    <Resource Include="Resources\icon\RightArrow.png" />
+    <AdditionalFiles Include="Resources\Images\IMG_9715.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="Resources\Images\Profile\hinh1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\Profile\hinh2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\Profile\hinh3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\Profile\hinh4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\Profile\hinh5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\Images\hinh-anh-heo-cute-va-de-thuong_030601765.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="Resources\icon\heart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\icon\reject.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\icon\reload.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="Resources\icon\down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\icon\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\icon\enter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\icon\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\icon\up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="Resources\icon\emoji tin nhan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="Resources\icon\LeftArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\icon\RightArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\color palete - Copy.bmp" />
