@@ -322,45 +322,45 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="Resources\icon\heart.png">
+    <Content Include="Resources\icon\heart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
-    <AdditionalFiles Include="Resources\icon\reject.png">
+    </Content>
+    <Content Include="Resources\icon\reject.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
-    <AdditionalFiles Include="Resources\icon\reload.png">
+    </Content>
+    <Content Include="Resources\icon\reload.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="Resources\icon\down.png">
+    <Content Include="Resources\icon\down.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
-    <AdditionalFiles Include="Resources\icon\left.png">
+    </Content>
+    <Content Include="Resources\icon\left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
-    <AdditionalFiles Include="Resources\icon\enter.png">
+    </Content>
+    <Content Include="Resources\icon\enter.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
-    <AdditionalFiles Include="Resources\icon\right.png">
+    </Content>
+    <Content Include="Resources\icon\right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
-    <AdditionalFiles Include="Resources\icon\up.png">
+    </Content>
+    <Content Include="Resources\icon\up.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="Resources\icon\emoji tin nhan.png">
+    <Content Include="Resources\icon\emoji tin nhan.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="Resources\icon\LeftArrow.png">
+    <Content Include="Resources\icon\LeftArrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
-    <AdditionalFiles Include="Resources\icon\RightArrow.png">
+    </Content>
+    <Content Include="Resources\icon\RightArrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\color palete - Copy.bmp" />
