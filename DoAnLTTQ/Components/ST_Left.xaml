@@ -46,7 +46,7 @@
         <Style x:Key="textBox" TargetType="TextBox">
             <Setter Property="Width" Value="194"/>
             <Setter Property="Height" Value="28.5"/>
-            <Setter Property="Margin" Value="0,0,0,37"/>
+            <Setter Property="Margin" Value="0,0,0,2"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
@@ -100,7 +100,15 @@
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
-        
+
+        <Style x:Key="ErrorAnouncement" TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Margin" Value="58, 0, 0, 12"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+            <!--<Setter Property="HorizontalAlignment" Value="Center"/>-->
+        </Style>
+
         <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
                 <Border.Effect>
@@ -282,20 +290,25 @@
                 <StackPanel Grid.Row="2">
 
                     <TextBox Style="{StaticResource placeHolder}" Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="nameInput"/>
+                    <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorName" Content="Hello"/>
                     <TextBox Style="{StaticResource placeHolder}" Tag="Age" Text="{Binding Path=myProfile.age}" TextChanged="TextBox_TextChanged" x:Name="ageInput"/>
                     <!--<TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>-->
+                    <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorAge" Content="Hello"/>
                     <ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
                               SelectedIndex="{Binding Path=myProfile.sex}"
                               x:Name="sexSelect"
                               Width="194"
-                              Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,37"
+                              Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,2"
                               Foreground="#707070">
                         <ComboBoxItem Foreground="Black">Male</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
                     </ComboBox>
+                    <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorSex"/>
                     <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="hobbyInput"/>
+                    <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorHobby" Margin="58, 0, 0, 0"/>
                 </StackPanel>
+                
 
                 <Grid Grid.Row="3">
                     <Button x:Name="button" Content="Update" Style="{DynamicResource updateBtn}" Click="Update_Click" Template="{DynamicResource ButtonBaseControlTemplate1}" >
