@@ -12,7 +12,7 @@
     public class User
     {
 
-        private readonly string myProfileData = "//Backend//Database//profile.json";
+        private readonly string myProfileData = "\\Backend\\Database\\profile.json";
         public User()
         {
             string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
@@ -41,6 +41,7 @@
             string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
             string json = JsonConvert.SerializeObject(profile);
             System.IO.File.WriteAllText(_source, json);
+            
         }
 
         public List<Profile> userList = new List<Profile>();
