@@ -48,6 +48,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
+                        
                         <Border>
                             <!--x:Name="click"-->
                             <Button  
@@ -72,6 +73,11 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
+            
+            
+            
+            
+            
         </WrapPanel>
 
         <!--<Button Click="reload_Click_1" x:Name="click" Content="notclick"></Button>-->

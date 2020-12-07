@@ -215,7 +215,7 @@
             <Setter Property="Width" Value="40"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="#f5f7fa"/>
-            
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -228,20 +228,24 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            
+
         </Style>
-        
+        <Storyboard x:Key="header-in"/>
+
     </UserControl.Resources>
     <Grid KeyboardNavigation.DirectionalNavigation="Once">
         <Grid Background="#f5f7fa" Margin="0">
             <StackPanel Height="680" Width="383">
                 <Grid Margin="0,50,0,0" VerticalAlignment="Center" Height="520" Width="383">
                     <Canvas>
-                        <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0">
+
+                        <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0" Panel.ZIndex="-1000">
                             <Border.Background>
                                 <ImageBrush ImageSource="{Binding Path=avatar}" x:Name="img"></ImageBrush>
                             </Border.Background>
                         </Border>
+
+
                         <StackPanel Style="{StaticResource infoParagraph}">
                             <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
                             <TextBox Name="info_age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
@@ -251,8 +255,8 @@
                         <Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
                             <Image Source="/Resources/icon/LeftArrow.png" Style="{StaticResource ArrowImage}"/>
                         </Button>
-                        <Button Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
-                            <Image Source="/Resources/icon/RightArrow.png" Style="{StaticResource ArrowImage}"/>
+                        <Button x:Name="button" Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
+                            <Image x:Name="image" Source="/Resources/icon/RightArrow.png" Style="{StaticResource ArrowImage}"/>
                         </Button>
                     </Canvas>
                 </Grid>
@@ -262,6 +266,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+
+                    
 
                     <Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" >
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
@@ -342,7 +348,9 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
+
         </Grid>
+
 
     </Grid>
 </UserControl>

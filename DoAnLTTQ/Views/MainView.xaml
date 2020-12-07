@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DoAnLTTQ.Views" xmlns:component="clr-namespace:DoAnLTTQ.Components"
+             
+             xmlns:local="clr-namespace:DoAnLTTQ.Views" xmlns:component="clr-namespace:DoAnLTTQ.Components" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="ReloadButton" TargetType="Button">
@@ -12,7 +13,7 @@
             <Setter Property="Height" Value="44"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-           
+
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -44,12 +45,12 @@
 
     </UserControl.Resources>
     <Grid KeyDown="ContentControl_KeyDown">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="3*"/>
-        <!-- nav bar -->
-        <ColumnDefinition Width="9* "/>
-        <!-- main-->
-    </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <!-- nav bar -->
+            <ColumnDefinition Width="9* "/>
+            <!-- main-->
+        </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="576"/>
@@ -60,15 +61,18 @@
             </Grid.ColumnDefinitions>
             <component:NavBarMain Grid.RowSpan="2"
                 x:Name="NavBarMain" Loaded="NavBarMain_Loaded" />
-            
-           
-            <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
-                <Button Style="{DynamicResource ReloadButton}" Template="{DynamicResource ButtonBaseControlTemplate1}" Content="Reload" Click="Reload_Click" >
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"/>
-                        </Style>
-                    </Button.Resources>
+
+
+            <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0" Margin="0 20">
+                <Button
+                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                            Width="136" Height="44"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20" FontWeight="Medium" 
+                            Content="Reload"
+                            materialDesign:ButtonAssist.CornerRadius="20"
+                            Click="Reload_Click">
                     <Button.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                             <GradientStop Color="#ff7854" Offset="0.0" />

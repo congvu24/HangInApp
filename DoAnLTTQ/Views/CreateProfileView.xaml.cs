@@ -70,8 +70,8 @@ namespace DoAnLTTQ
             // kt profile co bi trung chua-- chua lam
 
             //end
-            User u = new User();
-            u.saveData(newProfile);
+            //User u = new User();
+            //u.saveData(newProfile);
         }
 
         private void CreatePicture(object sender, MouseButtonEventArgs e)

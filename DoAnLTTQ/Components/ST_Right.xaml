@@ -112,7 +112,7 @@
 
     </UserControl.Resources>
 
-    <Border BorderThickness="0.5" Width="468" Height="670" CornerRadius="10" Background="White">
+    <Border BorderThickness="0.5" Width="468" Height="670" CornerRadius="10" Background="#FFF9F7F3">
         <Border.Effect>
             <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
         </Border.Effect>
@@ -149,19 +149,21 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
             <Grid >
-                <Button Height="44"  Style="{DynamicResource updateBtn}" Template="{DynamicResource ButtonBaseControlTemplate1}" Content="Save" Click="Save_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"/>
-                        </Style>
-                    </Button.Resources>
+                <Button
+                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                            Width="136" Height="44"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            FontSize="20" FontWeight="Medium" 
+                            Content="Save"
+                            materialDesign:ButtonAssist.CornerRadius="20"
+                            Click="Save_Click">
                     <Button.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                             <GradientStop Color="#ff7854" Offset="0.0" />
                             <GradientStop Color="#fd267d" Offset="1.0" />
                         </LinearGradientBrush>
                     </Button.Background>
-
                 </Button>
             </Grid>
         </StackPanel>

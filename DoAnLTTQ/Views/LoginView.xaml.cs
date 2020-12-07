@@ -56,13 +56,10 @@ namespace DoAnLTTQ
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("nextclick");
             if(switchView != null)
             {
                 switchView(this, e);
             }
-            //OnSwitchView();
-            //this.ViewContext = new CreateProfileView();
         }
         //private void LoginView_SwitchToCreateProfileView(ViewEnum viewEnum)
         //{

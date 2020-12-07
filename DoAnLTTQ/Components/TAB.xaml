@@ -158,42 +158,42 @@
                 <Trigger Property="Button.IsDefaulted" Value="True">
                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                 </Trigger>
-                
-                
+
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        <Storyboard x:Key="ChangeToQuanhDay">
+        <Storyboard x:Key="floatLeft">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-190"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-159.001"/>
+
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.378"/>
             </DoubleAnimationUsingKeyFrames>
 
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.32"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="ChangeToTinNhan">
+        <Storyboard x:Key="floatRight">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="163.298"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-1.32"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.9"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="ChangeToTinnhan">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-34"/>
-            </DoubleAnimationUsingKeyFrames>
-            
-        </Storyboard>
-
-
     </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonQuanhDay">
-            <BeginStoryboard x:Name="ChangeToTinNhan_BeginStoryboard" Storyboard="{StaticResource ChangeToQuanhDay}"/>
+            <BeginStoryboard x:Name="floatRight_BeginStoryboard" Storyboard="{StaticResource floatLeft}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonTinNhan">
-            <BeginStoryboard x:Name="ChangeToTinNhan_BeginStoryboard1" Storyboard="{StaticResource ChangeToTinnhan}"/>
+            <BeginStoryboard x:Name="floatRight_BeginStoryboard2" Storyboard="{StaticResource floatRight}"/>
         </EventTrigger>
     </UserControl.Triggers>
 
@@ -230,12 +230,13 @@
                                 </Grid.Background>
 
                                 <Grid Grid.Column="0" >
-                                    <Label Name="TopImage"  Height="Auto" HorizontalAlignment="Center">
-                                        <Image Stretch="Fill" Source="{Binding avatar.url}" Width="80" Height="80">
+                                    <Label Name="TopImage"  Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <!--<Image Stretch="Fill" Source="{Binding avatar.url}" Width="80" Height="80">
                                             <Image.Clip>
                                                 <EllipseGeometry Center="40,40" RadiusX="30" RadiusY="30" />
                                             </Image.Clip>
-                                        </Image>
+                                        </Image>-->
+                                        <materialDesign:PackIcon Kind="AccountCircleOutline" Width="40" Height="40" Foreground="Beige"/>
                                     </Label>
                                 </Grid>
 
@@ -274,7 +275,7 @@
                     <component:GridMessage VerticalAlignment="Top" x:Name="gridMessage" />
                     <component:GridProfile VerticalAlignment="Top" x:Name="gridProfile" userPictureNearBy="{Binding m_userPictureNearBy}" ></component:GridProfile>
                 </Grid>
-                <Path x:Name="path" Data="M163.12228,0.66666667 L220.56822,0.33333333" HorizontalAlignment="Left" Height="6" Margin="50,64,0,0" Grid.Row="1" VerticalAlignment="Top" Width="221.248" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="-2" StrokeThickness="2">
+                <Path x:Name="path" Data="M163.12228,0 L220.56822,0" HorizontalAlignment="Left" Height="6" Margin="213.423,64,0,0" Grid.Row="1" VerticalAlignment="Top" Width="53.248" RenderTransformOrigin="0.5,0.5" StrokeThickness="2" Stretch="Fill">
                     <Path.Stroke>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FFFF7854" Offset="0"/>
@@ -285,30 +286,11 @@
                         <TransformGroup>
                             <ScaleTransform/>
                             <SkewTransform/>
-                            <RotateTransform Angle="0.266"/>
+                            <RotateTransform/>
                             <TranslateTransform X="-0.00087694609253929912" Y="0.37778360689053847"/>
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>
-
-                <!--<Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0">
-                    <Button Style="{StaticResource updateBtn}" Click="{Binding Button_Click}"  >
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="20"/>
-                            </Style>
-                        </Button.Resources>
-                        <Button.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="#ff7854" Offset="0.0" />
-                                <GradientStop Color="#fd267d" Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Button.Background>
-                        Reload
-                    </Button>
-
-                </Border>-->
-
             </Grid>
         </Grid>
     </Border>

@@ -86,7 +86,7 @@
             </Setter>
         </Style>
 
-        <Style x:Key="updateBtn" TargetType="Button">
+        <Style x:Key="updateBtn" TargetType="Button" >
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="136"/>
             <Setter Property="Height" Value="44"/>
@@ -99,6 +99,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
+            
         </Style>
 
         <Style x:Key="ErrorAnouncement" TargetType="Label">
@@ -205,7 +206,7 @@
             <ControlTemplate.Triggers>
                 <Trigger Property="Button.IsDefaulted" Value="True">
                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                    
+
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Effect">
@@ -220,7 +221,7 @@
     </UserControl.Resources>
 
     <!--main content-->
-    <Border BorderBrush="#D1DDE3" BorderThickness="0 0 1 0">
+    <Border BorderBrush="#FFF9F7F3" BorderThickness="0 0 1 0">
         <Grid x:Name="LayoutRoot">
             <!--change height here-->
             <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680" >
@@ -281,7 +282,7 @@
                                     Foreground="red">
                                     </materialDesign:PackIcon>
                                 </Grid>
-                               
+
                             </Button>
                         </Canvas>
                     </Label>
@@ -308,32 +309,35 @@
                     <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="hobbyInput"/>
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorHobby" Margin="58, 0, 0, 0"/>
                 </StackPanel>
-                
-
-                <Grid Grid.Row="3">
-                    <Button x:Name="button" Content="Update" Style="{DynamicResource updateBtn}" Click="Update_Click" Template="{DynamicResource ButtonBaseControlTemplate1}" >
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="20"/>
-                            </Style>
-                        </Button.Resources>
-                        <Button.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="#ff7854" Offset="0.0" />
-                                <GradientStop Color="#fd267d" Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Button.Background>
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                </Grid>
             </Grid>
+           
+            <materialDesign:DialogHost CloseOnClickAway="True" Margin="0 25">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Height="70" Width="100" Margin="20" Orientation="Vertical" >
+                        <TextBlock Text ="Profile updated" Margin="0 12" HorizontalAlignment="Center"/>
+                        <Button  Content="Ok" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+
+                <Button
+                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                            Width="136" Height="44"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            FontSize="20" FontWeight="Medium" 
+                            Content="Update"
+                            materialDesign:ButtonAssist.CornerRadius="20"
+                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                            Click="Update_Click">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#ff7854" Offset="0.0" />
+                            <GradientStop Color="#fd267d" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </materialDesign:DialogHost>
         </Grid>
+        
     </Border>
 </UserControl>

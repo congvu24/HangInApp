@@ -78,7 +78,7 @@ namespace DoAnLTTQ.Components
                     hobby = hobbyInput.Text,
                     avatar = new Picture() { name = "avatar", url = avatarLink }
                 };
-
+                
                 UserUpdateProfile(this, newProfile);
             }
         }

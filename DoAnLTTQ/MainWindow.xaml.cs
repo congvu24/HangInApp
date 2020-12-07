@@ -37,6 +37,7 @@ namespace DoAnLTTQ
         public MainView myMainView = new MainView();
         public LoginView myLoginView = new LoginView();
         public CreateProfileView myCreateProfileView = new CreateProfileView();
+        public WellcomeScreen myWellcomeScreen = new WellcomeScreen();
 
         public UserControl _ViewContext;
         public UserControl ViewContext
@@ -51,19 +52,27 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-            User u = new User();
-            if (u.myProfile.name == "default")
-                this.ViewContext = myLoginView;
-            else
-                this.ViewContext = myMainView;
+        
+
+            this.ViewContext = myWellcomeScreen;
+
             //((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
             this.DataContext = this;
 
             myMainView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
             mySettingView.OnSwitchView += SettingView_OnSwitchViewToMainView;
-            //myLoginView.OnSwitchView += LoginView_OnSwitchViewToCreateProileView;
             myLoginView.switchView += new EventHandler(LoginView_OnSwitchViewToCreateProileView);
             myCreateProfileView.SwitchToMainView += new EventHandler(CreateProfileView_OnSwitchViewToMainView);
+            myWellcomeScreen.OnSwitchView += new EventHandler(WellcomeView_OnSwitchViewToCreateProileView);
+
+        }
+        private void WellcomeView_OnSwitchViewToCreateProileView(object sender, EventArgs e)
+        {
+            User u = new User();
+            if (u.myProfile.name == "default")
+                this.ViewContext = myCreateProfileView;
+            else
+                this.ViewContext = myMainView;
 
         }
         private void LoginView_OnSwitchViewToCreateProileView(object sender, EventArgs e)

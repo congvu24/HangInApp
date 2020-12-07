@@ -23,6 +23,8 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class info_main : UserControl, INotifyPropertyChanged
     {
+        public bool IsSaveComplete = false;
+
         byte[] avatar;
         public GuestProfile specialGuest = new GuestProfile();
         public int _profileIndex; // index of profile in list profile to show on screen
@@ -176,6 +178,11 @@ namespace DoAnLTTQ.Components
         {
             GuestProfile guest = new GuestProfile();
             guest.LikeProfile(profileIp);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            IsSaveComplete = true;
         }
     }
 }
