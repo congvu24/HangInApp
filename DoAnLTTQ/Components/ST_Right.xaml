@@ -50,48 +50,6 @@
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
-        <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
-            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
-                <Border.Effect>
-                    <DropShadowEffect x:Name="shadow" BlurRadius="2" Color="#FFDFD6D6" RenderingBias="Quality" ShadowDepth="6"/>
-                </Border.Effect>
-                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="Button.IsDefaulted" Value="True">
-                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" TargetName="border">
-                        <Setter.Value>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="#ff7854" Offset="0.0" />
-                                <GradientStop Color="#fd267d" Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
-                    <Setter Property="Effect">
-                        <Setter.Value>
-                            <DropShadowEffect BlurRadius="3" Color="#FFEFEFEF" RenderingBias="Quality"/>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="transparent"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
-                </Trigger>
-                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="transparent"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" TargetName="border" Value="transparent"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
-                    <Setter Property="Foreground" Value="#FF838383"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
         <ControlTemplate x:Key="SlotImage" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" BorderBrush="LightGray" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -112,21 +70,21 @@
 
     </UserControl.Resources>
 
-    <Border BorderThickness="0.5" Width="468" Height="670" CornerRadius="10" Background="#FFF9F7F3">
+    <Border BorderThickness="0.5" Width="500" Height="670" CornerRadius="10" Background="#FFF9F7F3" Padding="3">
         <Border.Effect>
             <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
         </Border.Effect>
 
-        <StackPanel x:Name="LayoutRoot" >
-            <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage" >
+        <StackPanel x:Name="LayoutRoot" Background="#fcf9f7">
+            <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage" Margin="1">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate >
-                        <WrapPanel x:Name="vcl"/>
+                        <WrapPanel/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border>
+                        <Border Margin="1" BorderThickness="1">
                             <Button  
                             Style="{DynamicResource myImageSlotContent}"
                             Template="{DynamicResource SlotImage}"

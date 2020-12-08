@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
-
+using System.Collections.ObjectModel;
 
 namespace DoAnLTTQ.Components
 {
@@ -27,6 +27,19 @@ namespace DoAnLTTQ.Components
         public UserControl _TabChange;
         public bool buttonActivated = false;
 
+
+        private ObservableCollection<BitmapImage> _userPictureNearBy = new ObservableCollection<BitmapImage>();
+        public ObservableCollection<BitmapImage> n_userPictureNearBy
+        {
+            get { return _userPictureNearBy; }
+            set
+            {
+                if (value != _userPictureNearBy)
+                {
+                    _userPictureNearBy = value;
+                }
+            }
+        }
 
         //public GridProfile gridProfile = new GridProfile();
         //public GridMessage gridMessage = new GridMessage(); 
@@ -76,8 +89,24 @@ namespace DoAnLTTQ.Components
             gridMessage.Visibility = Visibility.Collapsed;
             if (ButtonSwitchViewOnClick != null)
                 ButtonSwitchViewOnClick(ViewEnum.QuanhDayView);
+            Reload_Guest();
+
+        }
+        public void Reload_Guest()
+        {
+            GuestProfile g = new GuestProfile();
+            g.LoadArrayProfile();
+            int USER_AMOUNT = g.listGuestProfile.Count;
+
+            n_userPictureNearBy.Clear();
+            Console.WriteLine(USER_AMOUNT + "  nav bar main reloaded");
+            for (int i = 0; i < USER_AMOUNT; i++)
+            {
+                n_userPictureNearBy.Add(Common.LoadImage(g.listGuestProfile[i].avatar.buffer));
+            }
         }
 
+       
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
             //var converter = new System.Windows.Media.BrushConverter();

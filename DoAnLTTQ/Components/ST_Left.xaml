@@ -33,7 +33,7 @@
         <Style x:Key="backBtnTitle" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="30"/>
-            <Setter Property="Foreground" Value="#ffff"/>
+            <!--<Setter Property="Foreground" Value="#ffff"/>-->
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Width" Value="237"/>
@@ -233,7 +233,7 @@
                 </Grid.RowDefinitions>
 
                 <Border BorderBrush="#FFF9F7F3" BorderThickness="0 0 0 2" >
-                    <Grid >
+                    <!--<Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*"/>
@@ -244,13 +244,45 @@
                                 <GradientStop Color="#fd267d" Offset="1.0" />
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <!--Style="{DynamicResource BackButtonShadow}"-->
+                        --><!--Style="{DynamicResource BackButtonShadow}"--><!--
                         <Button Name="backBtnIcon" Click="Button_Click"  Style="{DynamicResource aa}" Template="{DynamicResource BackButtonShadow}" Height="Auto" HorizontalAlignment="Left">
                             <materialDesign:PackIcon VerticalAlignment="Center" Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" >
                             </materialDesign:PackIcon>
                         </Button>
                         <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
+                    </Grid>-->
+                    <Button Click="Button_Click" Padding="0" Width="320" Height="86" Background="Transparent" BorderThickness="0">
+                    <Grid Width="320" x:Name="profile" Height="86" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                       
+                            
+                        
+                        <Button
+                                           
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            materialDesign:ShadowAssist.ShadowEdges="All"
+                                            materialDesign:ButtonAssist.CornerRadius="35"
+                                            BorderThickness="0"
+                                            Width="40"
+                                            Height="40"
+                                    ToolTip="Profile setting"
+                                            Grid.Column="0"
+                           >
+
+
+                        </Button>
+                        <materialDesign:PackIcon Kind="HomeOutline" HorizontalAlignment="Center" Width="30" Height="40" Foreground="Beige" Margin="20,23,20,0"/>
+                     
+                        <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
+
+
                     </Grid>
+                    </Button>
+
+
                 </Border>
                 <Grid Grid.Row="1">
                     <Label HorizontalAlignment="Center"  Margin="0,41,0,41">
@@ -311,7 +343,7 @@
                 </StackPanel>
             </Grid>
            
-            <materialDesign:DialogHost CloseOnClickAway="True" Margin="0 25">
+            <materialDesign:DialogHost CloseOnClickAway="True">
                 <materialDesign:DialogHost.DialogContent>
                     <StackPanel Height="70" Width="100" Margin="20" Orientation="Vertical" >
                         <TextBlock Text ="Profile updated" Margin="0 12" HorizontalAlignment="Center"/>
@@ -322,6 +354,7 @@
                 <Button
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             Width="136" Height="44"
+                            Margin="0 25"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             FontSize="20" FontWeight="Medium" 
