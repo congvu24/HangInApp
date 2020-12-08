@@ -51,12 +51,7 @@ namespace DoAnLTTQ.Views
             //}
 
         }
-        private void NavBarMain_Loaded(object sender, RoutedEventArgs e)
-        {
-
-           
-        }
-       
+        
         
     }
 }

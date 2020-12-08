@@ -62,7 +62,7 @@ namespace DoAnLTTQ.Components
         {
             if (isValidInputInformation())
             {
-                ProfileHeaderName.Content = nameInput.Text; 
+                // ProfileHeaderName.Content = nameInput.Text; 
                 OnUserControlButtonClick();
             }
 
