@@ -88,8 +88,10 @@ namespace DoAnLTTQ.Components
             gridProfile.Visibility = Visibility.Visible;
             gridMessage.Visibility = Visibility.Collapsed;
             if (ButtonSwitchViewOnClick != null)
+            {
                 ButtonSwitchViewOnClick(ViewEnum.QuanhDayView);
-            Reload_Guest();
+                Reload_Guest();
+            }
 
         }
         public void Reload_Guest()
@@ -99,7 +101,6 @@ namespace DoAnLTTQ.Components
             int USER_AMOUNT = g.listGuestProfile.Count;
 
             n_userPictureNearBy.Clear();
-            Console.WriteLine(USER_AMOUNT + "  nav bar main reloaded");
             for (int i = 0; i < USER_AMOUNT; i++)
             {
                 n_userPictureNearBy.Add(Common.LoadImage(g.listGuestProfile[i].avatar.buffer));
@@ -109,14 +110,6 @@ namespace DoAnLTTQ.Components
        
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
-            //var converter = new System.Windows.Media.BrushConverter();
-            //var brush = (Brush)converter.ConvertFromString("#fd267d");
-
-            //if (buttonTinNhan.BorderBrush == brush)
-            //    buttonTinNhan.BorderBrush = (Brush)converter.ConvertFromString("#fcba03");
-
-            //(sender as Button).BorderThickness = new Thickness(0.0, 0.0, 0.0, 1.0);
-            //(sender as Button).BorderBrush = brush;
 
             gridProfile.Visibility = Visibility.Collapsed;
             gridMessage.Visibility = Visibility.Visible;
@@ -136,7 +129,6 @@ namespace DoAnLTTQ.Components
         }
         public void Reload_myProfile()
         {
-            //MessageBox.Show("reload");
             myUser = new User();
             this.profile.DataContext = myUser.myProfile;
         }
