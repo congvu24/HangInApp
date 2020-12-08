@@ -39,7 +39,6 @@
         public void saveData(Profile profile)
         {
             string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
-            MessageBox.Show(_source);
             string json = JsonConvert.SerializeObject(profile);
             File.WriteAllText(_source, json);
         }

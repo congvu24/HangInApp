@@ -59,7 +59,7 @@
             InitializeComponent();
 
             StartingServer(ref sv); 
-            Reload_Guest();
+            //Reload_Guest();
 
             NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
             NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
@@ -79,7 +79,6 @@
             server.IsBackground = true;
             server.Start();
 
-            //sv.SendProfile(IPAddress.Parse("10.10.233.158"));
             sv.SendRequestMessage();
         }
 
@@ -134,6 +133,11 @@
             {
                 m_userPictureNearBy.Add(Common.LoadImage(g.listGuestProfile[i].avatar.buffer));
             }
+        }
+
+        public void Reload_Profile()
+        {
+            NavBarMain.Reload_myProfile();
         }
         public void GetSelectedProileIndex(object sender, int index)
         {
