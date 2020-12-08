@@ -43,7 +43,6 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
             LayoutRoot.DataContext = this;
-        
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -62,8 +61,13 @@ namespace DoAnLTTQ.Components
         {
             if (isValidInputInformation())
             {
-                // ProfileHeaderName.Content = nameInput.Text; 
+                ProfileHeaderName.Content = nameInput.Text;
+                UpdateNotification.Text = "Successful!"; 
                 OnUserControlButtonClick();
+            }
+            else
+            {
+                UpdateNotification.Text = "Update Failed!"; 
             }
 
         }

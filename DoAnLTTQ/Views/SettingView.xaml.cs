@@ -43,12 +43,10 @@ namespace DoAnLTTQ.Views
             InitializeComponent();
             user = new User();
             this.profile = user.myProfile;
+            this.picture = user.myProfile.picture;
+            this.DataContext = this;
             navbarsetting.UserUpdateProfile += new EventHandler<Profile>(Update_User);
             mainsetting.UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
-            
-                this.picture = user.myProfile.picture;
-            this.DataContext = this;
-
             navbarsetting.OnClickBackButton += Navbarsetting_BackToHomeView;
         }
 
@@ -58,49 +56,6 @@ namespace DoAnLTTQ.Views
                 OnSwitchView();
         }
 
-        //class client
-        //{
-        //    public void sendToServer()
-        //    {
-        //        var ip = IPAddress.Parse("127.0.0.1");
-        //        var client = new UdpClient();
-        //        client.Connect(ip, 6969);
-        //        var buffer = Encoding.UTF8.GetBytes("vcl");
-        //        client.Send(buffer, buffer.Length);
-        //    }
-        //}
-        //class server
-        //{
-        //    private UdpClient listner;
-        //    private bool isRunning;
-        //    public server()
-        //    {
-
-        //        isRunning = false;
-        //    }
-        //    public void run()
-        //    {
-        //        listner = new UdpClient(6969);
-        //        Thread listnerThread = new Thread(this.start);
-        //        listnerThread.Start();
-        //    }
-        //    public void start()
-        //    {
-        //        this.isRunning = true;
-        //        while (isRunning)
-        //        {
-        //            var remoteEp = new IPEndPoint(0, 0);
-        //            var buffer = listner.Receive(ref remoteEp);
-        //            var text = Encoding.ASCII.GetString(buffer);
-        //            MessageBox.Show(text);
-        //        }
-        //    }
-        //    public void stop()
-        //    {
-        //        this.isRunning = false;
-        //    }
-
-        //}
 
         private void Update_User(object sender, Profile newProfile)
         {
@@ -153,6 +108,14 @@ namespace DoAnLTTQ.Views
         private void mainsetting_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void Reload_Profile()
+        {
+            user = new User();
+            this.profile = user.myProfile;
+            this.picture = user.myProfile.picture;
+            this.DataContext = this;
         }
 
     }

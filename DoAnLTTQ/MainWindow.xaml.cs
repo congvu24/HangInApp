@@ -52,27 +52,34 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-        
 
             this.ViewContext = myWellcomeScreen;
-
-            //((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
             this.DataContext = this;
-
             myMainView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
             mySettingView.OnSwitchView += SettingView_OnSwitchViewToMainView;
             myLoginView.switchView += new EventHandler(LoginView_OnSwitchViewToCreateProileView);
             myCreateProfileView.SwitchToMainView += new EventHandler(CreateProfileView_OnSwitchViewToMainView);
             myWellcomeScreen.OnSwitchView += new EventHandler(WellcomeView_OnSwitchViewToCreateProileView);
-
         }
         private void WellcomeView_OnSwitchViewToCreateProileView(object sender, EventArgs e)
         {
+            try
+            {
             User u = new User();
             if (u.myProfile.name == "default")
                 this.ViewContext = myCreateProfileView;
             else
-                this.ViewContext = myMainView;
+            {
+                    this.ViewContext = myMainView;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        myMainView.Reload_Guest();
+                        myMainView.Reload_Profile();
+                    });
+               
+            }
+            }
+            catch { }
 
         }
         private void LoginView_OnSwitchViewToCreateProileView(object sender, EventArgs e)
@@ -82,6 +89,8 @@ namespace DoAnLTTQ
         private void CreateProfileView_OnSwitchViewToMainView(object sender, EventArgs e)
         {
             this.ViewContext = myMainView;
+            myMainView.Reload_Profile();
+            myMainView.Reload_Guest();
         }
         private void SettingView_OnSwitchViewToMainView()
         {
@@ -93,6 +102,8 @@ namespace DoAnLTTQ
         private void MyHomeView_OnSwitchToSettingView()
         {
             this.ViewContext = mySettingView;
+            mySettingView.Reload_Profile();
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -106,8 +117,7 @@ namespace DoAnLTTQ
         }
         private void OnWindowclose(object sender, EventArgs e)
         {
-            Environment.Exit(Environment.ExitCode); // Prevent memory leak
-                                                    // System.Windows.Application.Current.Shutdown(); // Not sure if needed
+            Environment.Exit(Environment.ExitCode); 
         }
 
     }

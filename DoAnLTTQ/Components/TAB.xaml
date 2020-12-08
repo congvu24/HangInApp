@@ -221,32 +221,6 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-
-                                <!--<Grid.Background>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                        <GradientStop Color="#ff7854" Offset="0.0" />
-                                        <GradientStop Color="#fd267d" Offset="1.0" />
-                                    </LinearGradientBrush>
-                                </Grid.Background>-->
-
-                                <!--<Grid Grid.Column="0" >
-                                    <Label Name="TopImage"  Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        --><!--<Image Stretch="Fill" Source="{Binding avatar.url}" Width="80" Height="80">
-                                            <Image.Clip>
-                                                <EllipseGeometry Center="40,40" RadiusX="30" RadiusY="30" />
-                                            </Image.Clip>
-                                        </Image>--><!--
-                                        <Button
-  Style="{StaticResource MaterialDesignIconButton}"
-  ToolTip="MaterialDesignIconButton">
-                                            <materialDesign:PackIcon Kind="AccountCircleOutline" Width="40" Height="40" Foreground="Beige"/>
-
-                                        </Button>
-                                    </Label>
-                                
-                              
-    
-                                        </Grid.ColumnDefinitions>-->
                                         <Button
                                            
                                             materialDesign:ShadowAssist.ShadowDepth="Depth2"
