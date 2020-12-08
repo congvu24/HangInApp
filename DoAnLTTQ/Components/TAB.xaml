@@ -164,11 +164,11 @@
         </ControlTemplate>
         <Storyboard x:Key="floatLeft">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-159.001"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-1.32"/>
 
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.378"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
 
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
@@ -177,7 +177,7 @@
         </Storyboard>
         <Storyboard x:Key="floatRight">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-1.32"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="159.001"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
@@ -295,7 +295,7 @@
                     <component:GridMessage VerticalAlignment="Top" x:Name="gridMessage" />
                     <component:GridProfile VerticalAlignment="Top" x:Name="gridProfile" userPictureNearBy="{Binding m_userPictureNearBy}" ></component:GridProfile>
                 </Grid>
-                <Path x:Name="path" Data="M163.12228,0 L220.56822,0" HorizontalAlignment="Left" Height="6" Margin="213.423,64,0,0" Grid.Row="1" VerticalAlignment="Top" Width="53.248" RenderTransformOrigin="0.5,0.5" StrokeThickness="2" Stretch="Fill">
+                <Path x:Name="path" Data="M163.12228,0 L220.56822,0" HorizontalAlignment="Left" Height="6" Margin="54.423,64,0,0" Grid.Row="1" VerticalAlignment="Top" Width="53.248" RenderTransformOrigin="0.5,0.5" StrokeThickness="2" Stretch="Fill">
                     <Path.Stroke>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FFFF7854" Offset="0"/>
