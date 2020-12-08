@@ -57,6 +57,20 @@
         public MainView()
         {
             InitializeComponent();
+
+            StartingServer(ref sv); 
+            Reload_Guest();
+
+            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
+            NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
+            NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
+
+            this.ViewContext = new info_main();
+            this.DataContext = this;
+        }
+
+        private void StartingServer(ref Server sv)
+        {
             sv = new Server();
             var client = new Thread(sv.ListenRequestMessage);
             client.IsBackground = true;
@@ -67,15 +81,6 @@
 
             //sv.SendProfile(IPAddress.Parse("10.10.233.158"));
             sv.SendRequestMessage();
-
-            Reload_Guest();
-            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
-            NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
-            this.ViewContext = new info_main();
-            this.DataContext = this;
-
-
-            NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
 
         private void NavbarMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
@@ -93,7 +98,7 @@
             {
                 try
                 {
-                ((MessageView_MessageDetails)this.ViewContext).Unmmount();
+                    ((MessageView_MessageDetails)this.ViewContext).Unmmount();
                     Reload_Guest();
                 }
                 catch
@@ -133,18 +138,16 @@
         public void GetSelectedProileIndex(object sender, int index)
         {
             ((info_main)this.ViewContext).ChangeProfile(index);
-            
+
 
         }
-        private void mainsetting_Loaded(object sender, RoutedEventArgs e) { }
-        private void NavBarMain_Loaded(object sender, RoutedEventArgs e) { }
 
         private void ContentControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             try
             {
 
-            ((info_main)this.ViewContext).ChangeProfileInHomeView(e);
+                ((info_main)this.ViewContext).ChangeProfileInHomeView(e);
             }
             catch
             {
