@@ -89,7 +89,7 @@ namespace DoAnLTTQ.Components
             gridMessage.Visibility = Visibility.Collapsed;
             if (ButtonSwitchViewOnClick != null)
                 ButtonSwitchViewOnClick(ViewEnum.QuanhDayView);
-            Reload_Guest();
+           
 
         }
         public void Reload_Guest()

@@ -246,7 +246,7 @@
                         </Border>
 
 
-                        <StackPanel Style="{StaticResource infoParagraph}">
+                        <StackPanel Style="{StaticResource infoParagraph}" Background="Black" Opacity="0.4">
                             <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
                             <TextBox Name="info_age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
                             <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
