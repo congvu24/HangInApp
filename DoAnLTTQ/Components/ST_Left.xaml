@@ -276,7 +276,8 @@
                         </Button>
                         <materialDesign:PackIcon Kind="HomeOutline" HorizontalAlignment="Center" Width="30" Height="40" Foreground="Beige" Margin="20,23,20,0"/>
                      
-                        <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
+                        <!--<Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>-->
+                            <Label Style="{StaticResource backBtnTitle}" x:Name="ProfileHeaderName"  Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
 
 
                     </Grid>
@@ -346,7 +347,7 @@
             <materialDesign:DialogHost CloseOnClickAway="True">
                 <materialDesign:DialogHost.DialogContent>
                     <StackPanel Height="70" Width="100" Margin="20" Orientation="Vertical" >
-                        <TextBlock Text ="Profile updated" Margin="0 12" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="UpdateNotification" Margin="0 12" HorizontalAlignment="Center"/>
                         <Button  Content="Ok" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}"/>
                     </StackPanel>
                 </materialDesign:DialogHost.DialogContent>
