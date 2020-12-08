@@ -74,7 +74,7 @@ namespace DoAnLTTQ.Components
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-     
+
         protected virtual void OnPropertyChanged(string newName)
         {
             if (PropertyChanged != null)
@@ -92,7 +92,6 @@ namespace DoAnLTTQ.Components
                 ButtonSwitchViewOnClick(ViewEnum.QuanhDayView);
                 Reload_Guest();
             }
-
         }
         public void Reload_Guest()
         {
@@ -107,7 +106,7 @@ namespace DoAnLTTQ.Components
             }
         }
 
-       
+
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
 
@@ -115,17 +114,14 @@ namespace DoAnLTTQ.Components
             gridMessage.Visibility = Visibility.Visible;
             gridMessage.reload();
             if (ButtonSwitchViewOnClick != null) { }
-                ButtonSwitchViewOnClick(ViewEnum.MessageView);
-
-
-
+            ButtonSwitchViewOnClick(ViewEnum.MessageView);
         }
 
         private void ToSettingViewButton_Click(object sender, RoutedEventArgs e)
         {
             if (ButtonSwitchViewOnClick != null)
                 ButtonSwitchViewOnClick(ViewEnum.SettingView);
-           
+            Reload_myProfile();
         }
         public void Reload_myProfile()
         {

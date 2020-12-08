@@ -102,6 +102,8 @@ namespace DoAnLTTQ
         private void MyHomeView_OnSwitchToSettingView()
         {
             this.ViewContext = mySettingView;
+            mySettingView.Reload_Profile();
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
