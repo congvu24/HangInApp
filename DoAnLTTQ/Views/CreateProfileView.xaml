@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:DoAnLTTQ"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
@@ -330,12 +331,33 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Button x:Name="button" Content="Next" Style="{DynamicResource updateBtn}" Click="Update_Click" Grid.Row="0" RenderTransformOrigin="0.5,0.5" Template="{DynamicResource ButtonBaseControlTemplate1}" Width="142.5" Margin="572.5,1056,565,-380" >
+        <!--<Button x:Name="button" Content="Next" Style="{DynamicResource updateBtn}" Click="Update_Click" Grid.Row="0" RenderTransformOrigin="0.5,0.5" Template="{DynamicResource ButtonBaseControlTemplate1}" Width="142.5" Margin="572.5,1056,565,-380" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="20"/>
                 </Style>
             </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#ff7854" Offset="0.0" />
+                    <GradientStop Color="#fd267d" Offset="1.0" />
+                </LinearGradientBrush>
+            </Button.Background>
+            
+        </Button>-->
+
+        <Button             x:Name="button" Content="Next"
+                            Grid.Row="0" RenderTransformOrigin="0.5,0.5" 
+                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                            Width="136" Height="44"
+                            Margin="572.5,1056,565,-380"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            FontSize="20" FontWeight="Medium" 
+                         
+                            materialDesign:ButtonAssist.CornerRadius="20"
+                            
+                            Click="Update_Click">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                     <GradientStop Color="#ff7854" Offset="0.0" />
@@ -351,6 +373,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        
+        
         <Border x:Name="border" BorderBrush="#99333333" BorderThickness="1" HorizontalAlignment="Left" Height="375" Margin="1285,133.5,-380,0" VerticalAlignment="Top" Width="375" CornerRadius="182.5" RenderTransformOrigin="0.5,0.5" MouseDown="CreatePicture">
             <Border.Effect>
                 <DropShadowEffect/>

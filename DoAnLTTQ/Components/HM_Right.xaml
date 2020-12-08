@@ -31,11 +31,11 @@
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
 
-        <Style x:Key="infoParagraph" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Vertical"/>
-            <Setter Property="Canvas.Bottom" Value="50"/>
+        <Style x:Key="infoParagraph" TargetType="Canvas">
+            <Setter Property="Canvas.Bottom" Value="0"/>
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
             <Setter Property="Panel.ZIndex" Value="2"/>
+          
         </Style>
         <Style x:Key="navButton" TargetType="{x:Type Button}" >
             <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -236,21 +236,24 @@
     <Grid KeyboardNavigation.DirectionalNavigation="Once">
         <Grid Background="#f5f7fa" Margin="0">
             <StackPanel Height="680" Width="383">
-                <Grid Margin="0,50,0,0" VerticalAlignment="Center" Height="520" Width="383">
+                <Grid Margin="0,50,0,0"  Height="520" Width="383">
                     <Canvas>
-
                         <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0" Panel.ZIndex="-1000">
                             <Border.Background>
                                 <ImageBrush ImageSource="{Binding Path=avatar}" x:Name="img"></ImageBrush>
                             </Border.Background>
+
+                            <Canvas  Style="{StaticResource infoParagraph}" Width="383" Height="auto" >
+                                <Grid x:Name="background" Background="Black" Opacity="0.4" Width="383" Height="100" Canvas.Bottom="0"/>
+                                <StackPanel Canvas.Bottom="0">
+                                    <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
+                                    <TextBox Name="info_age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
+                                    <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
+                                </StackPanel>
+                            </Canvas>
                         </Border>
 
 
-                        <StackPanel Style="{StaticResource infoParagraph}" Background="Black" Opacity="0.4">
-                            <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
-                            <TextBox Name="info_age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
-                            <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
-                        </StackPanel>
                         <!--<TextBox Text="{Binding profileIndex}" />-->
                         <Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
                             <Image Source="/Resources/icon/LeftArrow.png" Style="{StaticResource ArrowImage}"/>
@@ -267,7 +270,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    
+
 
                     <Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" >
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
