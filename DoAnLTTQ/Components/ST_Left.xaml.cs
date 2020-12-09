@@ -62,12 +62,12 @@ namespace DoAnLTTQ.Components
             if (isValidInputInformation())
             {
                 ProfileHeaderName.Content = nameInput.Text;
-                UpdateNotification.Text = "Successful!"; 
+                UpdateNotification.Text = "Successful!";
                 OnUserControlButtonClick();
             }
             else
             {
-                UpdateNotification.Text = "Update Failed!"; 
+                UpdateNotification.Text = "Update Failed!";
             }
 
         }
@@ -83,7 +83,7 @@ namespace DoAnLTTQ.Components
                     hobby = hobbyInput.Text,
                     avatar = new Picture() { name = "avatar", url = avatarLink }
                 };
-                
+
                 UserUpdateProfile(this, newProfile);
             }
         }
@@ -127,8 +127,18 @@ namespace DoAnLTTQ.Components
             }
             else
             {
-                ErrorAge.Visibility = Visibility.Hidden; 
-            }                
+                ErrorAge.Visibility = Visibility.Hidden;
+            }
+
+            if (!isValidSexInput(sexSelect.Text))
+            {
+                ErrorSex.Visibility = Visibility.Visible;
+                ErrorSex.Content = "Vui lòng chọn giới tính!";
+            }
+            else
+            {
+                ErrorSex.Visibility = Visibility.Hidden;
+            }
 
             if (!isValidHobbyInput(hobbyInput.Text))
             {
@@ -137,16 +147,17 @@ namespace DoAnLTTQ.Components
             }
             else
             {
-                ErrorHobby.Visibility = Visibility.Hidden; 
+                ErrorHobby.Visibility = Visibility.Hidden;
             }
 
-            if (ErrorName.Visibility != Visibility.Visible && 
-                ErrorAge.Visibility != Visibility.Visible && 
-                ErrorHobby.Visibility != Visibility.Visible)
+            if (ErrorName.Visibility != Visibility.Visible &&
+                ErrorAge.Visibility != Visibility.Visible &&
+                ErrorHobby.Visibility != Visibility.Visible &&
+                ErrorSex.Visibility != Visibility.Visible)
             {
-                return true; 
+                return true;
             }
-            return false; 
+            return false;
         }
 
         private bool isValidNameInput(string input)
@@ -171,7 +182,9 @@ namespace DoAnLTTQ.Components
 
         private bool isSpecialKey(byte key)
         {
-            if (key >= 33 && key <= 64)
+            if (key >= 33 && key <= 47)
+                return true; 
+            if (key >= 58 && key <= 64)
                 return true;
             if (key == 95 || key == 96)
                 return true;
@@ -184,20 +197,32 @@ namespace DoAnLTTQ.Components
         private bool isValidAgeInput(string ageString)
         {
             byte age = 1;
-            bool checkage = byte.TryParse(ageString, out age); 
+            bool checkage = byte.TryParse(ageString, out age);
 
             if (checkage)
             {
-                if (age < 10 || age > 110)
-                    return false; 
+                if (age < 14 || age > 110)
+                    return false;
             }
             else
             {
-                return false; 
+                return false;
             }
 
             return true;
 
+        }
+
+        private bool isValidSexInput(string sexString)
+        {
+            if (sexString == "Select-" || String.IsNullOrWhiteSpace(sexString))
+            {
+                return false;
+            }
+            else
+            {
+                return true;    
+            }
         }
 
         private bool isValidHobbyInput(string input)
@@ -220,6 +245,6 @@ namespace DoAnLTTQ.Components
             }
         }
 
-        
+
     }
 }
