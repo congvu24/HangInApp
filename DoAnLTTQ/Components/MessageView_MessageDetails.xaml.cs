@@ -70,9 +70,9 @@ namespace DoAnLTTQ.Components
                     friends.Add(u);
                 }
             }
-            if(friends.Count > 1)
+            if (friends.Count > 1)
             {
-            activeGuest = friends[0];
+                activeGuest = friends[0];
             }
 
             this.DataContext = activeGuest;
@@ -96,7 +96,7 @@ namespace DoAnLTTQ.Components
                 messagePanel.Children.Add(new InComingMessage(content));
             });
         }
-        
+
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             var content = TextToSend.Text;
@@ -121,7 +121,20 @@ namespace DoAnLTTQ.Components
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-      
+
+        private void TextToSend_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                try
+                {
+                    SendButton_Click(sender, e);
+                }
+                catch (Exception)
+                {
+
+                }
+
+        }
     }
 
 }
