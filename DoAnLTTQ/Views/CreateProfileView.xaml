@@ -60,6 +60,16 @@
             </Setter>
         </Style>
 
+        <Style x:Key="ErrorAnounce" TargetType="TextBlock">
+            <Setter Property="Height" Value="25 "/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.8"/>
+            <Setter Property="Foreground" Value="#FFE81A1A"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="Margin" Value="70, 0, 0, 0"/>
+        </Style>
+
         <Storyboard x:Key="header-in">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="textBlock">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="105"/>
@@ -263,8 +273,8 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Grid.RenderTransform>
-                <Grid Margin="0,0,40,25">
-                    <TextBox x:Name="nameInput" Style="{StaticResource placeHolder}" Tag="--Your name--"  Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16" FontFamily="Tahoma" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
+                <Grid Margin="0,0,40,30">
+                    <TextBox x:Name="nameInput" Style="{StaticResource placeHolder}" Tag="--Your name--" TextWrapping="Wrap" Width="390" FontSize="16" FontFamily="Tahoma" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
                         <TextBox.SelectionBrush>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFFF7854" Offset="0"/>
@@ -274,6 +284,7 @@
                     </TextBox>
                     <TextBlock  HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0"/>
                 </Grid>
+                <TextBlock Text="abvcdfasdasdasdasd:" Style="{StaticResource ErrorAnounce}" x:Name="errorNameInput"/>
             </Grid>
             <Grid x:Name="grid6" Margin="0,75,0,150" >
                 <Grid x:Name="grid1" RenderTransformOrigin="0.5,0.5">
@@ -285,8 +296,9 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <TextBox x:Name="ageInput" Style="{StaticResource placeHolder}" Tag="--age--" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16" FontFamily="Tahoma" SelectionBrush="{x:Null}" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0"/>
+                    <TextBox x:Name="ageInput" Style="{StaticResource placeHolder}" Tag="--Age--" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16" FontFamily="Tahoma" SelectionBrush="{x:Null}" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0" Height="45"/>
                     <TextBlock  HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Top" Width="70" Margin="0,5,0,0"/>
+                    <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorAgeInput"/>
                 </Grid>
             </Grid>
             <Grid Margin="0,150,0,75">
@@ -301,12 +313,13 @@
                     </Grid.RenderTransform>
                     <ComboBox IsEditable="True" IsReadOnly="True" Text="---Select--"
                         x:Name="sexSelect" FontFamily="Tahoma" FontSize="16" Foreground="#707070"
-                        Height="50" HorizontalAlignment="Left" Width="181" Margin="70,0,0,25">
+                        Height="45" HorizontalAlignment="Left" Width="181" Margin="70,0,0,25">
                         <ComboBoxItem Content="Male" Foreground="Black"/>
                         <ComboBoxItem Content="Female"  Foreground="Black"/>
                         <ComboBoxItem Content="I don't want to tell"  Foreground="Black"/>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" Height="25.823" TextWrapping="Wrap" Text="Sex:" VerticalAlignment="Top" Width="70" Margin="0,6,0,0"/>
+                    <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorGenderInput"/>
                 </Grid>
             </Grid>
             <Grid Margin="0,225,0,0">
@@ -319,7 +332,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <TextBox x:Name="hobbyInput" Style="{StaticResource placeHolder}" Tag="--Your hobby--" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16" FontFamily="Tahoma" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
+                    <TextBox x:Name="hobbyInput" Style="{StaticResource placeHolder}" Tag="--Your hobby--" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16" FontFamily="Tahoma" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
                         <TextBox.SelectionBrush>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Black" Offset="0"/>
@@ -328,6 +341,7 @@
                         </TextBox.SelectionBrush>
                     </TextBox>
                     <TextBlock HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Hobby:" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0"/>
+                    <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorHobbyInput"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -395,7 +409,7 @@
                             materialDesign:ButtonAssist.CornerRadius="20"
                             
                             Click="Update_Click">
-                            <!--Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"-->
+                <!--Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"-->
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#ff7854" Offset="0.0" />
