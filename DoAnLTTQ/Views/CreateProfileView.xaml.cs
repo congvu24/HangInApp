@@ -30,31 +30,31 @@ namespace DoAnLTTQ
     public partial class CreateProfileView : UserControl
     {
         private string avatarLink;
-        private bool buttonClicked = false;
+        private bool isButtonClicked = false, isProfileInvalid = false;
         public event EventHandler SwitchToMainView;
 
         public CreateProfileView()
         {
             InitializeComponent();
+            UpdateNotification.Text = "Create profile failed, check your profile again";
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            if (buttonClicked)
+            if (isButtonClicked && isProfileInvalid)
             {
-                OnUserControlButtonClick();
-                if (SwitchToMainView != null)
-                    SwitchToMainView(this, e);
+                CreateNewProfile();
+                button.Command = MaterialDesignThemes.Wpf.DialogHost.OpenDialogCommand;
             }
             else
             {
                 (sender as Button).Content = "Finish";
-                buttonClicked = !buttonClicked;
-            }   
-
+                isButtonClicked = true;
+            }
         }
-        private void OnUserControlButtonClick()
+      
+        private void CreateNewProfile()
         {
-               
+
             Profile newProfile = new Profile()
             {
                 name = nameInput.Text,
@@ -71,18 +71,26 @@ namespace DoAnLTTQ
 
             //end
             User u = new User();
-            u.saveData(newProfile);
+            if (u != null && u.myProfile != newProfile)
+                u.saveData(newProfile);
         }
 
-        private void CreatePicture(object sender, MouseButtonEventArgs e)
+        private void CloseDialog_Click(object sender, RoutedEventArgs e)
+        {
+            if (SwitchToMainView != null && isProfileInvalid)
+                SwitchToMainView(this, e);
+        }
+
+        private void AddProfilePicure(object sender, MouseButtonEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
 
                 //this.avatarControl.ImageSource = new BitmapImage(new Uri("your path", UriKind.Relative));
-            //this.avatarControl.ImageSource = ne;
-            this.avatarControl.ImageSource= new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Relative));
+                //this.avatarControl.ImageSource = ne;
+                this.avatarControl.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Relative));
             this.avatarLink = openFileDialog.FileName;
         }
+        // kt xem profile có đúng chưa, nếu đúng thì set lại biến isProfileInvalid = true và set content của UpdateNotification thành Create Success
     }
 }
