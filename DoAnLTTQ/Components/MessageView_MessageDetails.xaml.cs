@@ -88,6 +88,7 @@ namespace DoAnLTTQ.Components
         {
             sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
             messagePanel.Children.Add(new MyMessage(content));
+            TextToSend.Text = "";
         }
         public void receiveMessage(string content)
         {
