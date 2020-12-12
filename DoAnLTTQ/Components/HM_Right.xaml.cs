@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 using DoAnLTTQ.Backend;
+using System.Windows.Threading;
 
 namespace DoAnLTTQ.Components
 {
@@ -59,7 +61,7 @@ namespace DoAnLTTQ.Components
         public info_main()
         {
             InitializeComponent();
-            profileIndex = 19;
+           
             this.DataContext = this;
             this.Loaded += Info_main_Loaded;
         }
@@ -162,6 +164,8 @@ namespace DoAnLTTQ.Components
                 indexHomePicture++;
 
             ShowInformationToHomeView(indexHomePicture);
+            
+
         }
 
         private void previousProfile(object sender, RoutedEventArgs e)
@@ -178,11 +182,38 @@ namespace DoAnLTTQ.Components
         {
             GuestProfile guest = new GuestProfile();
             guest.LikeProfile(profileIp);
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             IsSaveComplete = true;
         }
+
+        private void sendFriendRq_Click(object sender, RoutedEventArgs e)
+        {
+            GuestProfile guest = new GuestProfile();
+            guest.LikeProfile(profileIp);
+            animation();
+           
+        }
+        private async void animation()
+        {
+            await Task.Run(() => Thread.Sleep(500));
+            await Dispatcher.BeginInvoke(new Action(delegate
+             {
+                 Task.Run(() => Thread.Sleep(500));
+
+                 if (indexHomePicture == specialGuest.listGuestProfile.Count - 1)
+                     indexHomePicture = 0;
+                 else
+                     indexHomePicture++;
+
+                 ShowInformationToHomeView(indexHomePicture);
+             }), DispatcherPriority.Background);
+            sendFriendRq.IsChecked = false;
+
+        }
+
     }
 }

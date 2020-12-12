@@ -86,8 +86,17 @@ namespace DoAnLTTQ.Components
         }
         public void sendMessage(string content)
         {
+            if(activeGuest == null)
+            {
+
+                MessageBox.Show("You have not choose receiver, choose a receiver and try again");
+                return;
+            }
+            else
+            {
             sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
             messagePanel.Children.Add(new MyMessage(content));
+            }
         }
         public void receiveMessage(string content)
         {
@@ -101,7 +110,6 @@ namespace DoAnLTTQ.Components
         {
             var content = TextToSend.Text;
             sendMessage(content);
-
         }
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
@@ -127,7 +135,7 @@ namespace DoAnLTTQ.Components
             if (e.Key == Key.Enter)
                 try
                 {
-                    SendButton_Click(sender, e);
+                    SendButton_Click(sender,e);
                 }
                 catch (Exception)
                 {

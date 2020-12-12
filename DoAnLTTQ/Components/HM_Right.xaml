@@ -20,8 +20,8 @@
         </Style>
 
         <Style x:Key="defaultImageSize" TargetType="Image">
-            <Setter Property="Width" Value="40"/>
-            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
 
@@ -35,7 +35,7 @@
             <Setter Property="Canvas.Bottom" Value="0"/>
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
             <Setter Property="Panel.ZIndex" Value="2"/>
-          
+
         </Style>
         <Style x:Key="navButton" TargetType="{x:Type Button}" >
             <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -255,12 +255,26 @@
 
 
                         <!--<TextBox Text="{Binding profileIndex}" />-->
-                        <Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
+                        <!--<Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
                             <Image Source="/Resources/icon/LeftArrow.png" Style="{StaticResource ArrowImage}"/>
+                        </Button>-->
+                        <Button Width="60" Height="60"
+  Style="{StaticResource MaterialDesignIconButton}"
+                            Canvas.Left="-65" Canvas.Top="245"
+                            Click="previousProfile"
+  ToolTip="Previous profile">
+                            <materialDesign:PackIcon Kind="ChevronLeft" Height="60" Width="40" />
                         </Button>
-                        <Button x:Name="button" Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
+                        <Button Width="60" Height="60"
+  Style="{StaticResource MaterialDesignIconButton}"
+                             Canvas.Top="245"
+  ToolTip="Next profile" Canvas.Left="388"
+                            Click="nextProfile">
+                            <materialDesign:PackIcon Kind="ChevronRight" Height="60" Width="40" />
+                        </Button>
+                        <!--<Button x:Name="button" Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
                             <Image x:Name="image" Source="/Resources/icon/RightArrow.png" Style="{StaticResource ArrowImage}"/>
-                        </Button>
+                        </Button>-->
                     </Canvas>
                 </Grid>
                 <Grid Height="56">
@@ -272,15 +286,40 @@
 
 
 
-                    <Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" >
+                    <ToggleButton x:Name="reloadButton"
+                    Width="46"
+                    Height="46"
+                    Style="{StaticResource MaterialDesignActionToggleButton}"
+                    Background="AliceBlue"
+                    Click="Button_Click_1"
+                    >
+                        <ToggleButton.Content>
+                            <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"
+                            ToolTip="Send friend request"
+                            />
+                        </ToggleButton.Content>
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon  
+                            Width="30" Height="30"
+                            ToolTip="Friend request sent"
+                            Kind="Check" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                    </ToggleButton>
+                    <!--<Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" 
+                            ToolTip="Reload image">
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
-                    </Button>
-                    <Button Grid.Column="1" Style="{StaticResource navButton}" Click="showUID" >
+                    </Button>-->
+                    <!--<Button Grid.Column="1" Style="{StaticResource navButton}" Click="showUID"
+                            ToolTip="Send friend request"
+                         >
+                        
                         <Image Source="/Resources/icon/heart.png" Style="{StaticResource defaultImageSize}"/>
-                    </Button>
-                    <Button Grid.Column="2" Style="{StaticResource navButton}" >
+                    </Button>-->
+
+                    <!--<Button Grid.Column="2" Style="{StaticResource navButton}" 
+                            ToolTip="Feature comming soon">
                         <Image Source="/Resources/icon/reject.png" Style="{StaticResource defaultImageSize}"/>
-                    </Button>
+                    </Button>-->
                 </Grid>
 
                 <!--disable tab navigation on stackpanel's child element with KeyboardNavigation.TabNavigation="None"-->
@@ -351,6 +390,37 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
+            <materialDesign:DialogHost CloseOnClickAway="True" Height="680" Width="960"
+                                   Margin="0"
+                                   >
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Height="300" Width="300" Margin="20" Orientation="Vertical" >
+                        <TextBlock x:Name="UpdateNotification" FontSize="12" Margin="0 12" HorizontalAlignment="Center"/>
+                        <Button x:Name="CloseDialog"  Content="Ok" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+                <!--Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"-->
+                <ToggleButton x:Name="sendFriendRq"
+                    Width="46"
+                    Height="46"
+                    Margin="584.331,574,329.668,60"
+                    Style="{StaticResource MaterialDesignActionToggleButton}"
+                    Click="sendFriendRq_Click"
+                    >
+                    <ToggleButton.Content>
+                        <materialDesign:PackIcon 
+                            Width="30" Height="30"
+                            ToolTip="Send friend request"
+                            Kind="Heart" />
+                    </ToggleButton.Content>
+                    <materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon  
+                            Width="30" Height="30"
+                            ToolTip="Friend request sent"
+                            Kind="Check" />
+                    </materialDesign:ToggleButtonAssist.OnContent>
+                </ToggleButton>
+            </materialDesign:DialogHost>
 
         </Grid>
 
