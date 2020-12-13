@@ -74,8 +74,7 @@ namespace DoAnLTTQ.Components
 
         public void ChangeProfile(int id)
         {
-            //specialGuest.LoadArrayProfile();
-            
+            specialGuest.LoadArrayProfile();
             img.ImageSource = Common.LoadImage(specialGuest.listGuestProfile[id].avatar.buffer);
             info_name.Text = specialGuest.listGuestProfile[id].name;
             info_age.Text = specialGuest.listGuestProfile[id].age;

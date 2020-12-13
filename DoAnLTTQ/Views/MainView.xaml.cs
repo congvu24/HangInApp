@@ -142,8 +142,6 @@
         public void GetSelectedProileIndex(object sender, int index)
         {
             ((info_main)this.ViewContext).ChangeProfile(index);
-
-
         }
 
         private void ContentControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)

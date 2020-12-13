@@ -66,7 +66,7 @@
                     </Image>
                 </Border>
 
-                <TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}"/>
+                <TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}" x:Name="txtname"/>
             </WrapPanel>
         </Grid>
 

@@ -89,14 +89,18 @@ namespace DoAnLTTQ.Components
             if(activeGuest == null)
             {
 
-                MessageBox.Show("You have not choose receiver, choose a receiver and try again");
+                MessageBox.Show("Select a friend to send this message!");
                 return;
             }
             else
             {
-            sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
-            messagePanel.Children.Add(new MyMessage(content));
+                 if (txtname.Text.Length > 0)
+            {
+                sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                messagePanel.Children.Add(new MyMessage(content));
+                TextToSend.Text = "";
             }
+            
         }
         public void receiveMessage(string content)
         {
