@@ -95,7 +95,7 @@ namespace DoAnLTTQ.Components
             else
             {
                  if (txtname.Text.Length > 0)
-            {
+            
                 sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
                 messagePanel.Children.Add(new MyMessage(content));
                 TextToSend.Text = "";

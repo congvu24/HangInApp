@@ -59,6 +59,53 @@ namespace DoAnLTTQ.Components
                 source.Add(new Source() { item = userPictureNearBy[i], name = i.ToString() });
 
             listImage.DataContext = source;
+
+            
+            //var template = 
+        }
+        public static T FindChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            if (parent != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                    if (child != null && child is T)
+                    {
+                        return (T)child;
+                    }
+
+                    T childItem = FindChild<T>(child);
+                    if (childItem != null)
+                    {
+                        return childItem;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static List<T> GetChildrenOfType<T>( DependencyObject depObj)
+   where T : DependencyObject
+        {
+            var result = new List<T>();
+            if (depObj == null) return null;
+            var queue = new Queue<DependencyObject>();
+            queue.Enqueue(depObj);
+            while (queue.Count > 0)
+            {
+                var currentElement = queue.Dequeue();
+                var childrenCount = VisualTreeHelper.GetChildrenCount(currentElement);
+                for (var i = 0; i < childrenCount; i++)
+                {
+                    var child = VisualTreeHelper.GetChild(currentElement, i);
+                    if (child is T)
+                        result.Add(child as T);
+                    queue.Enqueue(child);
+                }
+            }
+
+            return result;
         }
         public class Source
         {
@@ -101,6 +148,25 @@ namespace DoAnLTTQ.Components
                 ProfileSelected(this, identify);
             }
         }
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //foreach (var item in listImage.Items)
+            //{
+            //    Button selectedButton = FindChild<Button>(listImage);
+            //    Console.WriteLine(selectedButton.Uid);
+            //}
+            List<Button> btnList = GetChildrenOfType<Button>(listImage);
+            foreach (var item in btnList)
+            {
+                //Console.WriteLine(item.Uid);
+                if (item.Uid == "1")
+                {
+                    
+                    item.BorderBrush = System.Windows.Media.Brushes.Red;
+                }
+            }
+            
+        }
     }
 }
