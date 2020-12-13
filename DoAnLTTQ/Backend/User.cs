@@ -15,22 +15,29 @@
         private readonly string myProfileData = "\\Backend\\Database\\profile.json";
         public User()
         {
-            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
-            this.myProfile = new Profile();
-            using (StreamReader r = new StreamReader(_source))
+            try
             {
-                string json = r.ReadToEnd();
-                this.myProfile = JsonConvert.DeserializeObject<Profile>(json);
-                int count;
-
-                count = this.myProfile.picture.Count;
-                if (count < 9)
+                string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
+                this.myProfile = new Profile();
+                using (StreamReader r = new StreamReader(_source))
                 {
-                    for (int i = 0; i < 9 - count; i++)
+                    string json = r.ReadToEnd();
+                    this.myProfile = JsonConvert.DeserializeObject<Profile>(json);
+                    int count;
+
+                    count = this.myProfile.picture.Count;
+                    if (count < 9)
                     {
-                        this.myProfile.picture.Add(new Picture() { name = "placeholer" + i, url = "" });
+                        for (int i = 0; i < 9 - count; i++)
+                        {
+                            this.myProfile.picture.Add(new Picture() { name = "placeholer" + i, url = "" });
+                        }
                     }
+
                 }
+            }
+            catch
+            {
 
             }
         }
@@ -38,9 +45,16 @@
 
         public void saveData(Profile profile)
         {
-            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
-            string json = JsonConvert.SerializeObject(profile);
-            File.WriteAllText(_source, json);
+            try
+            {
+                string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
+                string json = JsonConvert.SerializeObject(profile);
+                File.WriteAllText(_source, json);
+            }
+            catch
+            {
+
+            }
         }
 
         public List<Profile> userList = new List<Profile>();
@@ -49,7 +63,6 @@
     [Serializable]
     public class Profile
     {
-
         public string name { get; set; }
         public string age { get; set; }
         public string sex { get; set; }
@@ -119,13 +132,20 @@
         public List<GuestProfile> listGuestProfile = new List<GuestProfile>();
         public List<GuestProfile> LoadArrayProfile()
         {
-            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
-            using (StreamReader r = new StreamReader(_source))
+            try
             {
-                string json = r.ReadToEnd();
-                listGuestProfile = JsonConvert.DeserializeObject<List<GuestProfile>>(json);
+                string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
+                using (StreamReader r = new StreamReader(_source))
+                {
+                    string json = r.ReadToEnd();
+                    listGuestProfile = JsonConvert.DeserializeObject<List<GuestProfile>>(json);
+                }
+                return listGuestProfile;
             }
-            return listGuestProfile;
+            catch
+            {
+                return new List<GuestProfile>();
+            }
         }
 
         public GuestProfile(GuestProfile profile)
@@ -146,55 +166,68 @@
             hobby = user.myProfile.hobby;
             try
             {
-
                 byte[] image = File.ReadAllBytes(user.myProfile.avatar.url);
-                avatar = new GuestPicture() { name = "vc", buffer = image };
+                avatar = new GuestPicture() { name = "img", buffer = image };
             }
             catch
             {
                 byte[] image = File.ReadAllBytes(".//Resources//Images//heocute.jpg");
-                avatar = new GuestPicture() { name = "vc", buffer = image };
+                avatar = new GuestPicture() { name = "img", buffer = image };
             }
         }
         public void AddNewGuest(GuestProfile guest)
         {
-            this.LoadArrayProfile();
-            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
-
-            var localIp = "";
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
+            try
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                this.LoadArrayProfile();
+                string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
+
+                var localIp = "";
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
                 {
-                    localIp = ip.ToString();
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        localIp = ip.ToString();
+                    }
                 }
-            }
 
 
-            int indexOfIP = listGuestProfile.FindIndex(x => x.ip == guest.ip);
-            if (indexOfIP >= 0)
-            {
-                listGuestProfile[indexOfIP] = new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = listGuestProfile[indexOfIP].isLove };
+                int indexOfIP = listGuestProfile.FindIndex(x => x.ip == guest.ip);
+                if (indexOfIP >= 0)
+                {
+                    listGuestProfile[indexOfIP] = new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = listGuestProfile[indexOfIP].isLove };
+                }
+                else
+                {
+                    listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = false });
+                }
+                string json = JsonConvert.SerializeObject(listGuestProfile);
+                File.WriteAllText(_source, json);
             }
-            else
+            catch
             {
-                listGuestProfile.Add(new GuestProfile() { name = guest.name, age = guest.age, avatar = guest.avatar, sex = guest.sex, hobby = guest.hobby, picture = guest.picture, ip = guest.ip, isLove = false });
+
             }
-            string json = JsonConvert.SerializeObject(listGuestProfile);
-            File.WriteAllText(_source, json);
         }
         public void LikeProfile(string ip)
         {
-            this.LoadArrayProfile();
-            string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
-            int indexOfIP = listGuestProfile.FindIndex(x => x.ip == ip);
-            if (indexOfIP >= 0)
+            try
             {
-                listGuestProfile[indexOfIP] = new GuestProfile() { name = listGuestProfile[indexOfIP].name, age = listGuestProfile[indexOfIP].age, avatar = listGuestProfile[indexOfIP].avatar, sex = listGuestProfile[indexOfIP].sex, hobby = listGuestProfile[indexOfIP].hobby, picture = listGuestProfile[indexOfIP].picture, ip = listGuestProfile[indexOfIP].ip, isLove = true };
+                this.LoadArrayProfile();
+                string _source = Directory.GetCurrentDirectory().ToString() + myProfileData;
+                int indexOfIP = listGuestProfile.FindIndex(x => x.ip == ip);
+                if (indexOfIP >= 0)
+                {
+                    listGuestProfile[indexOfIP] = new GuestProfile() { name = listGuestProfile[indexOfIP].name, age = listGuestProfile[indexOfIP].age, avatar = listGuestProfile[indexOfIP].avatar, sex = listGuestProfile[indexOfIP].sex, hobby = listGuestProfile[indexOfIP].hobby, picture = listGuestProfile[indexOfIP].picture, ip = listGuestProfile[indexOfIP].ip, isLove = true };
+                }
+                string json = JsonConvert.SerializeObject(listGuestProfile);
+                File.WriteAllText(_source, json);
             }
-            string json = JsonConvert.SerializeObject(listGuestProfile);
-            File.WriteAllText(_source, json);
+            catch
+            {
+
+            }
         }
     }
 

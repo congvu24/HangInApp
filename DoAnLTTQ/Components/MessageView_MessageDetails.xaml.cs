@@ -86,9 +86,16 @@ namespace DoAnLTTQ.Components
         }
         public void sendMessage(string content)
         {
-            sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
-            messagePanel.Children.Add(new MyMessage(content));
-            TextToSend.Text = "";
+            if (txtname.Text.Length > 0)
+            {
+                sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                messagePanel.Children.Add(new MyMessage(content));
+                TextToSend.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Select a friend to send this message!");
+            }
         }
         public void receiveMessage(string content)
         {
@@ -102,7 +109,6 @@ namespace DoAnLTTQ.Components
         {
             var content = TextToSend.Text;
             sendMessage(content);
-
         }
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)

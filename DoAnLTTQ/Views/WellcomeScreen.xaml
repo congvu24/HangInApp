@@ -52,7 +52,7 @@
                             <Viewbox Width="214.238" Height="90.236">
                                 <Image Source="/Resources/icon/Logo.png" Stretch="Fill" Width="111.849"/>
                             </Viewbox>
-                            <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" FontSize="18" FontFamily="tahoma" Foreground="#F7A072" Loaded="TextBlock_Loaded"/>
+                            <TextBlock Text="HangInApp - connect with your lover." FontSize="18" FontFamily="tahoma" Foreground="#F7A072" Loaded="TextBlock_Loaded"/>
                         </StackPanel>
 
                     </materialDesign:TransitionerSlide>
