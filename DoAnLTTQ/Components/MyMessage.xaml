@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d" >
     <UserControl.Resources>
@@ -22,7 +23,7 @@
         </Style>
     </UserControl.Resources>
     <Border x:Name="MyMessageBorder" Style="{StaticResource MyMessageBorder}">
-        <TextBlock x:Name="MyMessageContent" Style="{StaticResource myMessageContent}"/>
+        <emoji:TextBlock x:Name="MyMessageContent" Style="{StaticResource myMessageContent}"/>
         <Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                 <GradientStop Color="#ff7854" Offset="0.2" />

@@ -7,6 +7,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         x:Class="DoAnLTTQ.MainWindow" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="Seoge UI" mc:Ignorable="d" Title="HangInApp - Connect with your Lover" Height="720" Width="1280"
         xmlns:component="clr-namespace:DoAnLTTQ.Components"
+        xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
         xmlns:view="clr-namespace:DoAnLTTQ.Views"  Icon="/Resources/icon/Logo.png" ResizeMode="CanMinimize"
         >
     <Grid>

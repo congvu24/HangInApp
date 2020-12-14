@@ -98,7 +98,7 @@ namespace DoAnLTTQ.Components
                 {
                     sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
                     messagePanel.Children.Add(new MyMessage(content));
-                    TextToSend.Text = "";
+                    //TextToSend
                 }
             }
         }
@@ -145,6 +145,11 @@ namespace DoAnLTTQ.Components
                 {
 
                 }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            myPopup.IsOpen = true;
         }
     }
 
