@@ -92,15 +92,15 @@ namespace DoAnLTTQ.Components
                 MessageBox.Show("Select a friend to send this message!");
                 return;
             }
-            else
+            if (txtname.Text.Length > 0 )
             {
-                 if (txtname.Text.Length > 0)
-            
-                sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
-                messagePanel.Children.Add(new MyMessage(content));
-                TextToSend.Text = "";
+                if (TextToSend.Text.Length > 0)
+                {
+                    sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                    messagePanel.Children.Add(new MyMessage(content));
+                    TextToSend.Text = "";
+                }
             }
-            
         }
         public void receiveMessage(string content)
         {
@@ -145,7 +145,6 @@ namespace DoAnLTTQ.Components
                 {
 
                 }
-
         }
     }
 

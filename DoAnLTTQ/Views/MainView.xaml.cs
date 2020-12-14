@@ -11,11 +11,14 @@
     using System.Net.Sockets;
     using System.Runtime.Serialization.Formatters.Binary;
     using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-
+    using System.Windows.Threading;
+    using System.Timers;
+    using MaterialDesignThemes.Wpf;
 
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
@@ -53,19 +56,22 @@
             set { this._userProfile = value; this.OnPropertyChanged("userProfile"); }
         }
 
+        public info_main infoMain = new info_main();
 
         public MainView()
         {
             InitializeComponent();
 
-            StartingServer(ref sv); 
+            StartingServer(ref sv);
             //Reload_Guest();
 
             NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
             NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
             NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
 
-            this.ViewContext = new info_main();
+            infoMain.NotifyProfile += new EventHandler<int>(HighlightSelectedProfile);
+
+            this.ViewContext = infoMain;
             this.DataContext = this;
         }
 
@@ -117,11 +123,26 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(newName));
             }
         }
-        private void Reload_Click(object sender, RoutedEventArgs e)
+        private async void Reload_Click(object sender, RoutedEventArgs e)
         {
             Reload_Guest();
+            infoMain.reloadArrayGuest();
+
+            // automatically close dialog after 700ms
+            var result = await DialogHost.Show(stack, async delegate (object sender1, DialogOpenedEventArgs args)
+            {
+                await Task.Run(() => Thread.Sleep(500));
+                await Dispatcher.BeginInvoke(new Action(delegate
+               {
+                   if(args.Session.IsEnded == false)
+                        args.Session.Close(false);
+
+               }), DispatcherPriority.Background);
+            });
+
             sv.SendRequestMessage();
         }
+
         public void Reload_Guest()
         {
             GuestProfile g = new GuestProfile();
@@ -133,6 +154,8 @@
             {
                 m_userPictureNearBy.Add(Common.LoadImage(g.listGuestProfile[i].avatar.buffer));
             }
+            if (USER_AMOUNT >= 0)
+                HighlightSelectedProfile((new object() as Button),0);
         }
 
         public void Reload_Profile()
@@ -161,5 +184,10 @@
         {
             ((MessageView_MessageDetails)this.ViewContext).setActiveUser(ip);
         }
+        public void HighlightSelectedProfile(object sender, int index)
+        {
+            NavBarMain.gridProfile.HighlightButton(index);
+        }
+
     }
 }

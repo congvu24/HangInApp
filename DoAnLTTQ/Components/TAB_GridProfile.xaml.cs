@@ -59,32 +59,9 @@ namespace DoAnLTTQ.Components
                 source.Add(new Source() { item = userPictureNearBy[i], name = i.ToString() });
 
             listImage.DataContext = source;
-
-            
-            //var template = 
         }
-        public static T FindChild<T>(DependencyObject parent) where T : DependencyObject
-        {
-            if (parent != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(parent, i);
-                    if (child != null && child is T)
-                    {
-                        return (T)child;
-                    }
-
-                    T childItem = FindChild<T>(child);
-                    if (childItem != null)
-                    {
-                        return childItem;
-                    }
-                }
-            }
-            return null;
-        }
-
+       
+        // get all children of a dependency object
         public static List<T> GetChildrenOfType<T>( DependencyObject depObj)
    where T : DependencyObject
         {
@@ -147,24 +124,20 @@ namespace DoAnLTTQ.Components
             {
                 ProfileSelected(this, identify);
             }
+            HighlightButton(identify);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void HighlightButton(int index)
         {
-            //foreach (var item in listImage.Items)
-            //{
-            //    Button selectedButton = FindChild<Button>(listImage);
-            //    Console.WriteLine(selectedButton.Uid);
-            //}
             List<Button> btnList = GetChildrenOfType<Button>(listImage);
             foreach (var item in btnList)
             {
-                //Console.WriteLine(item.Uid);
-                if (item.Uid == "1")
+                if (item.Uid == index.ToString())
                 {
-                    
                     item.BorderBrush = System.Windows.Media.Brushes.Red;
                 }
+                else
+                    item.BorderBrush = System.Windows.Media.Brushes.Transparent;
             }
             
         }

@@ -20,8 +20,8 @@
         </Style>
 
         <Style x:Key="defaultImageSize" TargetType="Image">
-            <Setter Property="Width" Value="30"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Height" Value="auto"/>
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
 
@@ -246,9 +246,9 @@
                             <Canvas  Style="{StaticResource infoParagraph}" Width="383" Height="auto" >
                                 <Grid x:Name="background" Background="Black" Opacity="0.4" Width="383" Height="100" Canvas.Bottom="0"/>
                                 <StackPanel Canvas.Bottom="0">
-                                    <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold">Duy đẹp trai</TextBox>
-                                    <TextBox Name="info_age" Style="{StaticResource infoTextBox}">age: 20</TextBox>
-                                    <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}">Like: you :3</TextBox>
+                                    <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold"/>
+                                    <TextBox Name="info_age" Style="{StaticResource infoTextBox}"/>
+                                    <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}"/>
                                 </StackPanel>
                             </Canvas>
                         </Border>
@@ -290,21 +290,47 @@
                     Width="46"
                     Height="46"
                     Style="{StaticResource MaterialDesignActionToggleButton}"
-                    Background="AliceBlue"
+                    Background="ForestGreen"
                     Click="Button_Click_1"
                     >
                         <ToggleButton.Content>
-                            <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"
-                            ToolTip="Send friend request"
+                            <!--<Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"-->
+                            <materialDesign:PackIcon 
+                                Kind="Reload"
+                                Width="30" Height="30"
+                            ToolTip="Renew list"
+                             
                             />
                         </ToggleButton.Content>
                         <materialDesign:ToggleButtonAssist.OnContent>
                             <materialDesign:PackIcon  
                             Width="30" Height="30"
-                            ToolTip="Friend request sent"
+                            ToolTip="Done"
+                            Kind="Check"/>
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                    </ToggleButton>
+
+                    <ToggleButton x:Name="sendFriendRq"
+                                  Grid.Column="2"
+                    Width="46"
+                    Height="46"
+                    Style="{StaticResource MaterialDesignActionToggleButton}"
+                    Click="sendFriendRq_Click"
+                    >
+                        <ToggleButton.Content>
+                            <materialDesign:PackIcon 
+                            Width="30" Height="30"
+                            ToolTip="Send friend request"
+                            Kind="Heart" />
+                        </ToggleButton.Content>
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon  
+                            Width="30" Height="30"
+                            ToolTip="Sent"
                             Kind="Check" />
                         </materialDesign:ToggleButtonAssist.OnContent>
                     </ToggleButton>
+                            <!--Background="Transparent"-->
                     <!--<Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" 
                             ToolTip="Reload image">
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
@@ -390,37 +416,10 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <materialDesign:DialogHost CloseOnClickAway="True" Height="680" Width="960"
-                                   Margin="0"
-                                   >
-                <materialDesign:DialogHost.DialogContent>
-                    <StackPanel Height="300" Width="300" Margin="20" Orientation="Vertical" >
-                        <TextBlock x:Name="UpdateNotification" FontSize="12" Margin="0 12" HorizontalAlignment="Center"/>
-                        <Button x:Name="CloseDialog"  Content="Ok" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}"/>
-                    </StackPanel>
-                </materialDesign:DialogHost.DialogContent>
+          
                 <!--Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"-->
-                <ToggleButton x:Name="sendFriendRq"
-                    Width="46"
-                    Height="46"
-                    Margin="584.331,574,329.668,60"
-                    Style="{StaticResource MaterialDesignActionToggleButton}"
-                    Click="sendFriendRq_Click"
-                    >
-                    <ToggleButton.Content>
-                        <materialDesign:PackIcon 
-                            Width="30" Height="30"
-                            ToolTip="Send friend request"
-                            Kind="Heart" />
-                    </ToggleButton.Content>
-                    <materialDesign:ToggleButtonAssist.OnContent>
-                        <materialDesign:PackIcon  
-                            Width="30" Height="30"
-                            ToolTip="Friend request sent"
-                            Kind="Check" />
-                    </materialDesign:ToggleButtonAssist.OnContent>
-                </ToggleButton>
-            </materialDesign:DialogHost>
+                
+            
 
         </Grid>
 

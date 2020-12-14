@@ -23,14 +23,13 @@ namespace DoAnLTTQ.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
-        public event SwitchViewHandler OnSwitchView;
+        //public event SwitchViewHandler OnSwitchView;
 
         public HomeView()
         {
             InitializeComponent();
   
             TabMain.ButtonSwitchViewOnClick += TabMain_ButtonSwitchViewOnClick;
-            
         }
 
         private void TabMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
@@ -51,7 +50,6 @@ namespace DoAnLTTQ.Views
             //}
 
         }
-        
-        
     }
+
 }
