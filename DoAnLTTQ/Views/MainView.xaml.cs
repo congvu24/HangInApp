@@ -129,7 +129,7 @@
             infoMain.reloadArrayGuest();
 
             // automatically close dialog after 700ms
-            var result = await DialogHost.Show(stack, async delegate (object sender1, DialogOpenedEventArgs args)
+            var result = await DialogHost.Show(stack, "MainViewReload", async delegate (object sender1, DialogOpenedEventArgs args)
             {
                 await Task.Run(() => Thread.Sleep(500));
                 await Dispatcher.BeginInvoke(new Action(delegate
