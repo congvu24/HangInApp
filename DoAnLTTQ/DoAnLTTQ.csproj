@@ -70,7 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Backend\Client.cs" />
     <Compile Include="Backend\Common.cs" />
     <Compile Include="Backend\Message.cs" />
     <Compile Include="Backend\User.cs" />

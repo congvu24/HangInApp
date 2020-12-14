@@ -86,11 +86,14 @@ namespace DoAnLTTQ.Components
         }
         public void sendMessage(string content)
         {
-            if (txtname.Text.Length > 0)
+            if (txtname.Text.Length > 0 )
             {
-                sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
-                messagePanel.Children.Add(new MyMessage(content));
-                TextToSend.Text = "";
+                if (TextToSend.Text.Length > 0)
+                {
+                    sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                    messagePanel.Children.Add(new MyMessage(content));
+                    TextToSend.Text = "";
+                }
             }
             else
             {
@@ -140,7 +143,6 @@ namespace DoAnLTTQ.Components
                 {
 
                 }
-
         }
     }
 
