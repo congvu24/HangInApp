@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Net;
 using System.Net.Sockets;
 using System.ComponentModel;
+using MaterialDesignThemes.Wpf;
 
 namespace DoAnLTTQ.Components
 {
@@ -149,7 +150,11 @@ namespace DoAnLTTQ.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            myPopup.IsOpen = true;
+            //myPopup.IsOpen = true;
+            DialogHost.Show(emojiPanel, "emojiDialog");
+            //như dòng 126 mainview.cs
+            //cách tắt https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/wiki/Dialogs#dialoghostshow
+
         }
     }
 

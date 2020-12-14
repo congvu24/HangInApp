@@ -89,7 +89,6 @@ namespace DoAnLTTQ.Components
 
         public async void reloadArrayGuest()
         {
-            //specialGuest.LoadArrayProfile();
             //this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
             //img.ImageSource = Common.LoadImage(avatar);
             //await Task.Run(() =>
@@ -97,12 +96,14 @@ namespace DoAnLTTQ.Components
             //    Thread.Sleep(500);
             //    reloadButton.IsChecked = false;
             //});
+            specialGuest.LoadArrayProfile();
 
             await Task.Run(() => Thread.Sleep(500));
             await Dispatcher.BeginInvoke(new Action(delegate
             {
                 //Task.Run(() => Thread.Sleep(500));
-                ShowInformationToHomeView(0);
+                if(specialGuest.listGuestProfile.Count >= 0)
+                    ShowInformationToHomeView(0);
 
             }), DispatcherPriority.Background);
 
