@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 using DoAnLTTQ.Backend;
+using System.Windows.Threading;
 
 namespace DoAnLTTQ.Components
 {
@@ -23,6 +25,7 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class info_main : UserControl, INotifyPropertyChanged
     {
+        public event EventHandler<int> NotifyProfile;
         public bool IsSaveComplete = false;
 
         byte[] avatar;
@@ -59,7 +62,7 @@ namespace DoAnLTTQ.Components
         public info_main()
         {
             InitializeComponent();
-            profileIndex = 19;
+           
             this.DataContext = this;
             this.Loaded += Info_main_Loaded;
         }
@@ -68,6 +71,8 @@ namespace DoAnLTTQ.Components
         private void Info_main_Loaded(object sender, RoutedEventArgs e)
         {
             specialGuest.LoadArrayProfile();
+            if(specialGuest.LoadArrayProfile() != null)
+                ShowInformationToHomeView(0);
         }
 
         public void ChangeProfile(int id)
@@ -82,17 +87,26 @@ namespace DoAnLTTQ.Components
         }
 
 
-        public void reloadArrayGuest()
+        public async void reloadArrayGuest()
         {
             //specialGuest.LoadArrayProfile();
-
-            this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
-            img.ImageSource = Common.LoadImage(avatar);
-
-            //foreach (var item in specialGuest.listGuestProfile)
+            //this.avatar = specialGuest.listGuestProfile[0].avatar.buffer;
+            //img.ImageSource = Common.LoadImage(avatar);
+            //await Task.Run(() =>
             //{
-            //    MessageBox.Show(item.name); 
-            //}
+            //    Thread.Sleep(500);
+            //    reloadButton.IsChecked = false;
+            //});
+
+            await Task.Run(() => Thread.Sleep(500));
+            await Dispatcher.BeginInvoke(new Action(delegate
+            {
+                //Task.Run(() => Thread.Sleep(500));
+                ShowInformationToHomeView(0);
+
+            }), DispatcherPriority.Background);
+
+            reloadButton.IsChecked = false;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -102,8 +116,6 @@ namespace DoAnLTTQ.Components
 
         public void ChangeProfileInHomeView(KeyEventArgs e)
         {
-            //specialGuest.LoadArrayProfile();
-
             switch (e.Key)
             {
                 case Key.Left:
@@ -112,7 +124,6 @@ namespace DoAnLTTQ.Components
                     else
                         indexHomePicture--;
 
-                    //MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
                     e.Handled = true;
                     break;
                 case Key.Right:
@@ -121,22 +132,20 @@ namespace DoAnLTTQ.Components
                     else
                         indexHomePicture++;
 
-                    //MessageBox.Show(specialGuest.listGuestProfile[indexHomePicture].name);
                     e.Handled = true;
                     break;
                 default:
                     break;
             }
-
-            //info_name.Text = specialGuest.listGuestProfile[indexHomePicture].name;
-            //info_age.Text = specialGuest.listGuestProfile[indexHomePicture].age;
-            //info_hobby.Text = specialGuest.listGuestProfile[indexHomePicture].hobby;
-
+            
             ShowInformationToHomeView(indexHomePicture); 
         }
 
         private void ShowInformationToHomeView(int index)
         {
+            if (NotifyProfile != null)
+                NotifyProfile((new object()) as Button, index);
+
             try
             {
                 this.avatar = specialGuest.listGuestProfile[index].avatar.buffer;
@@ -145,12 +154,7 @@ namespace DoAnLTTQ.Components
                 info_age.Text = specialGuest.listGuestProfile[index].age;
                 info_hobby.Text = specialGuest.listGuestProfile[index].hobby;
             }
-            catch (Exception)
-            {
-
-              
-            }
-          
+            catch (Exception) { }
         }
 
         private void nextProfile(object sender, RoutedEventArgs e)
@@ -161,6 +165,9 @@ namespace DoAnLTTQ.Components
                 indexHomePicture++;
 
             ShowInformationToHomeView(indexHomePicture);
+         
+            //if(NotifyProfile != null)
+            //    NotifyProfile(sender, indexHomePicture);
         }
 
         private void previousProfile(object sender, RoutedEventArgs e)
@@ -171,17 +178,47 @@ namespace DoAnLTTQ.Components
                 indexHomePicture--;
 
             ShowInformationToHomeView(indexHomePicture);
+
+            //if (NotifyProfile != null)
+            //    NotifyProfile(sender, indexHomePicture);
         }
 
         private void showUID(object sender, RoutedEventArgs e)
         {
             GuestProfile guest = new GuestProfile();
             guest.LikeProfile(profileIp);
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             IsSaveComplete = true;
         }
+
+        private void sendFriendRq_Click(object sender, RoutedEventArgs e)
+        {
+            GuestProfile guest = new GuestProfile();
+            guest.LikeProfile(profileIp);
+            animation();
+           
+        }
+        private async void animation()
+        {
+            await Task.Run(() => Thread.Sleep(500));
+            await Dispatcher.BeginInvoke(new Action(delegate
+             {
+                 //Task.Run(() => Thread.Sleep(500));
+
+                 if (indexHomePicture == specialGuest.listGuestProfile.Count - 1)
+                     indexHomePicture = 0;
+                 else
+                     indexHomePicture++;
+
+                 ShowInformationToHomeView(indexHomePicture);
+             }), DispatcherPriority.Background);
+            sendFriendRq.IsChecked = false;
+
+        }
+
     }
 }

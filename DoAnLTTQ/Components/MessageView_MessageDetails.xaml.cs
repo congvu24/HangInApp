@@ -86,6 +86,12 @@ namespace DoAnLTTQ.Components
         }
         public void sendMessage(string content)
         {
+            if(activeGuest == null)
+            {
+
+                MessageBox.Show("Select a friend to send this message!");
+                return;
+            }
             if (txtname.Text.Length > 0 )
             {
                 if (TextToSend.Text.Length > 0)
@@ -94,10 +100,6 @@ namespace DoAnLTTQ.Components
                     messagePanel.Children.Add(new MyMessage(content));
                     TextToSend.Text = "";
                 }
-            }
-            else
-            {
-                MessageBox.Show("Select a friend to send this message!");
             }
         }
         public void receiveMessage(string content)
@@ -137,7 +139,7 @@ namespace DoAnLTTQ.Components
             if (e.Key == Key.Enter)
                 try
                 {
-                    SendButton_Click(sender, e);
+                    SendButton_Click(sender,e);
                 }
                 catch (Exception)
                 {

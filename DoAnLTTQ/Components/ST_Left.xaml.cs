@@ -87,7 +87,7 @@ namespace DoAnLTTQ.Components
                 UserUpdateProfile(this, newProfile);
             }
         }
-
+        
         private void Avatar_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

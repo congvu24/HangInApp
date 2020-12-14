@@ -245,7 +245,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Height="85.615" TextWrapping="Wrap" Text="Let's create your profile" VerticalAlignment="Top" Width="375" FontSize="36" FontFamily="Tahoma" Margin="450,-110.615,455,0" RenderTransformOrigin="0.5,0.5">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Height="85.615" TextWrapping="Wrap" Text="Let's create your profile" VerticalAlignment="Top" Width="375" FontSize="36"  Margin="450,-110.615,455,0" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -274,7 +274,7 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <Grid Margin="0,0,40,30">
-                    <TextBox x:Name="nameInput" Style="{StaticResource placeHolder}" Tag="--Your name--" TextWrapping="Wrap" Width="390" FontSize="16" FontFamily="Tahoma" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
+                    <TextBox x:Name="nameInput" Style="{StaticResource placeHolder}" Tag="--Your name--" TextWrapping="Wrap" Width="390" FontSize="16" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
                         <TextBox.SelectionBrush>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFFF7854" Offset="0"/>
@@ -296,7 +296,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <TextBox x:Name="ageInput" Style="{StaticResource placeHolder}" Tag="--Age--" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16" FontFamily="Tahoma" SelectionBrush="{x:Null}" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0" Height="45"/>
+                    <TextBox x:Name="ageInput" Style="{StaticResource placeHolder}" Tag="--Age--" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  SelectionBrush="{x:Null}" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0" Height="45"/>
                     <TextBlock  HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Top" Width="70" Margin="0,5,0,0"/>
                     <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorAgeInput"/>
                 </Grid>
@@ -312,7 +312,7 @@
                         </TransformGroup>
                     </Grid.RenderTransform>
                     <ComboBox IsEditable="True" IsReadOnly="True" Text="---Select--"
-                        x:Name="sexSelect" FontFamily="Tahoma" FontSize="16" Foreground="#707070"
+                        x:Name="sexSelect"  FontSize="16" Foreground="#707070"
                         Height="45" HorizontalAlignment="Left" Width="181" Margin="70,0,0,25">
                         <ComboBoxItem Content="Male" Foreground="Black"/>
                         <ComboBoxItem Content="Female"  Foreground="Black"/>
@@ -332,7 +332,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <TextBox x:Name="hobbyInput" Style="{StaticResource placeHolder}" Tag="--Your hobby--" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16" FontFamily="Tahoma" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
+                    <TextBox x:Name="hobbyInput" Style="{StaticResource placeHolder}" Tag="--Your hobby--" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
                         <TextBox.SelectionBrush>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Black" Offset="0"/>
@@ -444,7 +444,7 @@
                 <ImageBrush x:Name="avatarControl"/>
             </Border.Background>
         </Border>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Center" Height="85.615" TextWrapping="Wrap" Text="Select your profile Picture" VerticalAlignment="Top" Width="410" FontSize="36" FontFamily="Tahoma" Margin="450,-110.615,420,0" RenderTransformOrigin="0.5,0.5">
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Center" Height="85.615" TextWrapping="Wrap" Text="Select your profile Picture" VerticalAlignment="Top" Width="410" FontSize="36"  Margin="450,-110.615,420,0" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

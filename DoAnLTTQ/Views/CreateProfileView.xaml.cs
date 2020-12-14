@@ -41,10 +41,13 @@ namespace DoAnLTTQ
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             isProfileInvalid = isValidInputInformation();
-            if (isButtonClicked && isProfileInvalid)
+            if (isButtonClicked)
             {
+                if(isProfileInvalid)
+                {
                 CreateNewProfile();
                 UpdateNotification.Text = "Create profile successful";
+                }
                 button.Command = MaterialDesignThemes.Wpf.DialogHost.OpenDialogCommand;
             }
             else

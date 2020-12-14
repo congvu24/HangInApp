@@ -60,6 +60,30 @@ namespace DoAnLTTQ.Components
 
             listImage.DataContext = source;
         }
+       
+        // get all children of a dependency object
+        public static List<T> GetChildrenOfType<T>( DependencyObject depObj)
+   where T : DependencyObject
+        {
+            var result = new List<T>();
+            if (depObj == null) return null;
+            var queue = new Queue<DependencyObject>();
+            queue.Enqueue(depObj);
+            while (queue.Count > 0)
+            {
+                var currentElement = queue.Dequeue();
+                var childrenCount = VisualTreeHelper.GetChildrenCount(currentElement);
+                for (var i = 0; i < childrenCount; i++)
+                {
+                    var child = VisualTreeHelper.GetChild(currentElement, i);
+                    if (child is T)
+                        result.Add(child as T);
+                    queue.Enqueue(child);
+                }
+            }
+
+            return result;
+        }
         public class Source
         {
             public BitmapImage item { get; set; }
@@ -100,7 +124,22 @@ namespace DoAnLTTQ.Components
             {
                 ProfileSelected(this, identify);
             }
+            HighlightButton(identify);
         }
-        
+
+        public void HighlightButton(int index)
+        {
+            List<Button> btnList = GetChildrenOfType<Button>(listImage);
+            foreach (var item in btnList)
+            {
+                if (item.Uid == index.ToString())
+                {
+                    item.BorderBrush = System.Windows.Media.Brushes.Red;
+                }
+                else
+                    item.BorderBrush = System.Windows.Media.Brushes.Transparent;
+            }
+            
+        }
     }
 }

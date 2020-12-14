@@ -290,9 +290,9 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="Resources\Images\heocute.jpg">
+    <Resource Include="Resources\Images\heocute.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="Resources\Images\Confirmbutton.png">
