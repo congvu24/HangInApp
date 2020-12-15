@@ -150,11 +150,18 @@ namespace DoAnLTTQ.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //myPopup.IsOpen = true;
-            DialogHost.Show(emojiPanel, "emojiDialog");
+            myPopup.IsOpen = true;
+            //DialogHost.Show(emojiPanel, "emojiDialog");
             //như dòng 126 mainview.cs
             //cách tắt https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/wiki/Dialogs#dialoghostshow
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var currentText = TextToSend.Text;
+            TextToSend.Document.Blocks.Clear();
+            TextToSend.Document.Blocks.Add(new Paragraph(new Run(currentText + (((sender as Button).Content) as Emoji.Wpf.TextBlock).Text)));
         }
     }
 
