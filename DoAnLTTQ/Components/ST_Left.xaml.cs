@@ -18,6 +18,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.ComponentModel;
 using System.Security.Policy;
+using MaterialDesignThemes.Wpf;
 
 namespace DoAnLTTQ.Components
 {
@@ -54,6 +55,8 @@ namespace DoAnLTTQ.Components
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
+
+            DialogHost.Show(UpdatePanel, "StLeftUpdate");
             if (isValidInputInformation())
             {
                 ProfileHeaderName.Content = nameInput.Text;
@@ -82,7 +85,7 @@ namespace DoAnLTTQ.Components
                 UserUpdateProfile(this, newProfile);
             }
         }
-
+        
         private void Avatar_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

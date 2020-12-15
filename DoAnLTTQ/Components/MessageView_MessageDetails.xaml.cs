@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Net;
 using System.Net.Sockets;
 using System.ComponentModel;
+using MaterialDesignThemes.Wpf;
 
 namespace DoAnLTTQ.Components
 {
@@ -86,15 +87,20 @@ namespace DoAnLTTQ.Components
         }
         public void sendMessage(string content)
         {
-            if (txtname.Text.Length > 0)
+            if(activeGuest == null)
             {
-                sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
-                messagePanel.Children.Add(new MyMessage(content));
-                TextToSend.Text = "";
-            }
-            else
-            {
+
                 MessageBox.Show("Select a friend to send this message!");
+                return;
+            }
+            if (txtname.Text.Length > 0 )
+            {
+                if (TextToSend.Text.Length > 0)
+                {
+                    sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                    messagePanel.Children.Add(new MyMessage(content));
+                    //TextToSend
+                }
             }
         }
         public void receiveMessage(string content)
@@ -135,13 +141,28 @@ namespace DoAnLTTQ.Components
             if (e.Key == Key.Enter)
                 try
                 {
-                    SendButton_Click(sender, e);
+                    SendButton_Click(sender,e);
                 }
                 catch (Exception)
                 {
 
                 }
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            myPopup.IsOpen = true;
+            //DialogHost.Show(emojiPanel, "emojiDialog");
+            //như dòng 126 mainview.cs
+            //cách tắt https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/wiki/Dialogs#dialoghostshow
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var currentText = TextToSend.Text;
+            TextToSend.Document.Blocks.Clear();
+            TextToSend.Document.Blocks.Add(new Paragraph(new Run(currentText + (((sender as Button).Content) as Emoji.Wpf.TextBlock).Text)));
         }
 
         private void messagePanel_SizeChanged(object sender, SizeChangedEventArgs e)

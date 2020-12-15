@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d" 
              d:DesignWidth="320">
@@ -10,16 +11,15 @@
         <Style TargetType="Button" x:Key="myImageSlotContent">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="70"/>
-            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="Transparent"/>
             <!--<Setter Property="Content" Value="+"/>-->
             <Setter Property="Height" Value="106"/>
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="70" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Width" Value="75" />
             <Setter Property="Margin" Value="8" />
             <!--change hover effect-->
-            <Setter Property="Template">
+            <!--<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" BorderBrush="#fd267d" BorderThickness="1">
@@ -27,7 +27,7 @@
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="Transparent"/>
@@ -49,37 +49,39 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         
-                        <Border>
+                        <!--<Border x:Name="h">-->
                             <!--x:Name="click"-->
-                            <Button  
-                            Style="{StaticResource myImageSlotContent}"
+                        <!--<Button
+    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+    Width="150"
+    ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+    materialDesign:RippleAssist.IsDisabled="True">
+                            NO RIPPLE
+                            --><!--Style="{StaticResource myImageSlotContent}"--><!--
+                        </Button>-->
+                        <Button  
                             HorizontalContentAlignment="Center" 
+                            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                            Width="75"
+                            Margin="8"
+                            materialDesign:RippleAssist.IsDisabled="True"
+                            Height="106"
                             VerticalContentAlignment="Center"
+                            BorderBrush="Transparent"
                             Click="select_Click"
-                            Uid="{Binding name}">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="15"/>
-                                    </Style>
-                                </Button.Resources>
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            Uid="{Binding name}"
+                            >
 
                                 <Button.Background>
                                     <ImageBrush ImageSource="{Binding item}" Stretch="Fill" />
                                 </Button.Background>
                                 <!--x:Name="background"-->
                             </Button>
-                        </Border>
+                        <!--</Border>-->
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-
-            
-            
-            
-            
-            
         </WrapPanel>
-
-        <!--<Button Click="reload_Click_1" x:Name="click" Content="notclick"></Button>-->
     </Grid>
 </UserControl>

@@ -148,11 +148,10 @@ namespace DoAnLTTQ.Backend
                     var socket = MessageListener.Accept();
                     var length = socket.Receive(receiveBuffer);
                     socket.Shutdown(SocketShutdown.Receive);
-                    var text = Encoding.ASCII.GetString(receiveBuffer, 0, length);
+                    var text = Encoding.UTF8.GetString(receiveBuffer, 0, length);
                     this.myDelegate(text);
                     socket.Close();
                     Array.Clear(receiveBuffer, 0, size); 
-
                 }
             }
             catch 
@@ -165,13 +164,12 @@ namespace DoAnLTTQ.Backend
         {
             try
             {
-
-            var serverEndpoint = new IPEndPoint(ip, 1309);
-            var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect(serverEndpoint);
-            var sendBuffer = Encoding.ASCII.GetBytes(content);
-            socket.Send(sendBuffer);
-            socket.Shutdown(SocketShutdown.Send);
+                var serverEndpoint = new IPEndPoint(ip, 1309);
+                var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect(serverEndpoint);
+                var sendBuffer = Encoding.UTF8.GetBytes(content);
+                socket.Send(sendBuffer);
+                socket.Shutdown(SocketShutdown.Send);
             }
             catch
             {

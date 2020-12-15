@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d">
     <UserControl.Resources>
@@ -23,8 +24,8 @@
 
     </UserControl.Resources>
     <Border x:Name="PartnerMessage" Style="{StaticResource PartnerMessageBorder}">
-        <TextBlock x:Name="PartnerMessageContent" Style="{StaticResource partnerMessageContent}" >
+        <emoji:TextBlock x:Name="PartnerMessageContent" Style="{StaticResource partnerMessageContent}" >
 
-        </TextBlock>
+        </emoji:TextBlock>
     </Border>
 </UserControl>

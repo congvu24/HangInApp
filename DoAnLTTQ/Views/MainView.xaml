@@ -64,22 +64,33 @@
 
 
             <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0" Margin="0 20">
-                <Button
+                <materialDesign:DialogHost CloseOnClickAway="True" Margin="0,-623,0,-20" Identifier="MainViewReload">
+                    <materialDesign:DialogHost.DialogContent>
+                        <StackPanel x:Name="stack" Height="70" Width="100" Margin="20" Orientation="Vertical" >
+                            <materialDesign:PackIcon Kind="Check" Foreground="ForestGreen" Width="30" Height="30" Margin="10" HorizontalAlignment="Center"/>
+                            <Label Content="Done" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </materialDesign:DialogHost.DialogContent>
+
+                    <Button
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             Width="136" Height="44"
+                            Margin="0 0 0 25"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
+                            VerticalAlignment="Bottom"
                             FontSize="20" FontWeight="Medium" 
                             Content="Reload"
                             materialDesign:ButtonAssist.CornerRadius="20"
+                            ToolTip="Renew profile list"
                             Click="Reload_Click">
-                    <Button.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                            <GradientStop Color="#ff7854" Offset="0.0" />
-                            <GradientStop Color="#fd267d" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.0" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </materialDesign:DialogHost>
 
             </Border>
 
