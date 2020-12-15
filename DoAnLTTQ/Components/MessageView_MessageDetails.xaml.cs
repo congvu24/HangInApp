@@ -115,6 +115,7 @@ namespace DoAnLTTQ.Components
         {
             var content = TextToSend.Text;
             sendMessage(content);
+
         }
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
@@ -162,6 +163,11 @@ namespace DoAnLTTQ.Components
             var currentText = TextToSend.Text;
             TextToSend.Document.Blocks.Clear();
             TextToSend.Document.Blocks.Add(new Paragraph(new Run(currentText + (((sender as Button).Content) as Emoji.Wpf.TextBlock).Text)));
+        }
+
+        private void messagePanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            chatField.ScrollToBottom(); 
         }
     }
 
