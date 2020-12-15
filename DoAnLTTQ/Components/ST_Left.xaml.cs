@@ -52,11 +52,6 @@ namespace DoAnLTTQ.Components
             OnClickBackButton(ViewEnum.HomeView);
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             if (isValidInputInformation())

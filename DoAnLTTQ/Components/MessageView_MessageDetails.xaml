@@ -80,8 +80,8 @@
 
         <!--Tin nhan nam day ne-->
         <Border Grid.Row="1" Background="#FFF9F7F3" BorderThickness="0, 1, 1, 1" BorderBrush="DarkGray">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Vertical" x:Name="messagePanel" >
+            <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="chatField" >
+                <StackPanel Orientation="Vertical" x:Name="messagePanel" SizeChanged="messagePanel_SizeChanged"  >
 
                 </StackPanel>
             </ScrollViewer>

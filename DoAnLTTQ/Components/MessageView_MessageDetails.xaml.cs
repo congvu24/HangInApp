@@ -109,6 +109,7 @@ namespace DoAnLTTQ.Components
         {
             var content = TextToSend.Text;
             sendMessage(content);
+
         }
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
@@ -141,6 +142,11 @@ namespace DoAnLTTQ.Components
 
                 }
 
+        }
+
+        private void messagePanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            chatField.ScrollToBottom(); 
         }
     }
 
