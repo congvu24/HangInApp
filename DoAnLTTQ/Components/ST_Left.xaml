@@ -294,7 +294,7 @@
                             <Button
                                 Background="White"  BorderThickness="0" BorderBrush="Transparent"
                                 Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                ToolTip="MaterialDesignFloatingActionMiniLightButton"
+                                ToolTip="Change picture"
                                 Click="Avatar_Click" d:IsEffectDisabled="True"
                                 Canvas.Top="135"
                                 Canvas.Left="113">
