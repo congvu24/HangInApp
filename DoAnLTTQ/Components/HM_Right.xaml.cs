@@ -30,8 +30,8 @@ namespace DoAnLTTQ.Components
 
         byte[] avatar;
         public GuestProfile specialGuest = new GuestProfile();
-        public int _profileIndex; // index of profile in list profile to show on screen
-        private int indexHomePicture = 0;
+        private int _profileIndex; // index of profile in list profile to show on screen
+        public int indexHomePicture = 0;
         public string profileIp;
 
         public int profileIndex
@@ -84,6 +84,7 @@ namespace DoAnLTTQ.Components
             info_hobby.Text = specialGuest.listGuestProfile[id].hobby;
 
             profileIp = specialGuest.listGuestProfile[id].ip;
+            this.indexHomePicture = id;
         }
 
 
@@ -113,6 +114,7 @@ namespace DoAnLTTQ.Components
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             reloadArrayGuest();
+            this.indexHomePicture = 0;
         }
 
         public void ChangeProfileInHomeView(KeyEventArgs e)
@@ -144,9 +146,16 @@ namespace DoAnLTTQ.Components
 
         private void ShowInformationToHomeView(int index)
         {
-            if (NotifyProfile != null)
-                NotifyProfile((new object()) as Button, index);
-
+            try
+            {
+                //if (NotifyProfile != null)
+                    NotifyProfile((new object()) as Button, index);
+            }
+            catch
+            {
+                Console.WriteLine("bug catched");
+            }
+                
             try
             {
                 this.avatar = specialGuest.listGuestProfile[index].avatar.buffer;

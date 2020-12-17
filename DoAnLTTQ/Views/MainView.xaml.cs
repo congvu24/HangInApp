@@ -70,7 +70,7 @@
             NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
 
             infoMain.NotifyProfile += new EventHandler<int>(HighlightSelectedProfile);
-
+            infoMain.indexHomePicture = 0;
             this.ViewContext = infoMain;
             this.DataContext = this;
         }
@@ -90,6 +90,8 @@
 
         private void NavbarMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
         {
+            infoMain.NotifyProfile += new EventHandler<int>(HighlightSelectedProfile);
+
             if (viewEnum == ViewEnum.SettingView)
             {
                 if (OnSwitchView != null)
@@ -104,13 +106,14 @@
                 try
                 {
                     ((MessageView_MessageDetails)this.ViewContext).Unmmount();
+                    infoMain.indexHomePicture = 0;
                     Reload_Guest();
                 }
                 catch
                 {
 
                 }
-                this.ViewContext = new info_main();
+                this.ViewContext = infoMain;
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

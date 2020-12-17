@@ -45,8 +45,9 @@
         </Style>
         <Style x:Key="textBox" TargetType="TextBox">
             <Setter Property="Width" Value="194"/>
-            <Setter Property="Height" Value="28.5"/>
+            <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="0,0,0,2"/>
+            <Setter Property="Padding" Value="8 0 0 0 "/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
@@ -63,12 +64,14 @@
                                                 UpdateSourceTrigger=PropertyChanged}"
                                  x:Name="textSource" 
                                  Background="Transparent"
-                                 Panel.ZIndex="2" />
+                                 Panel.ZIndex="2"
+                                  Padding="8 0 0 0"/>
                             <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
                                 <TextBox.Style>
                                     <Style TargetType="{x:Type TextBox}">
                                         <Setter Property="Foreground" Value="Transparent"/>
                                         <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Padding" Value=" 8 0 0 0"/>
                                         <Style.Triggers>
                                             <!--style for text in placeholder here-->
                                             <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
@@ -91,8 +94,6 @@
             <Setter Property="Width" Value="136"/>
             <Setter Property="Height" Value="44"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <!--<Setter Property="Canvas.Top" Value="31"/>
-            <Setter Property="Canvas.Left" Value="92"/>-->
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -159,10 +160,6 @@
             <Setter Property="Canvas.Top" Value="135"/>
             <Setter Property="Canvas.Left" Value="113"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <!--<Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="25"/>
-                <Setter Property="BorderThickness" Value="0"/>
-            </Style>-->
         </Style>
         <Style x:Key="changeProFilePicture_border" TargetType="Border">
             <Setter Property="CornerRadius" Value="25"/>
@@ -294,22 +291,17 @@
                                     </Image.Clip>
                                 </Image>
                             </Border>
-                            <Button Style="{DynamicResource changProfilePicture}" Template="{DynamicResource ChangeProfileButton}" Click="Avatar_Click" d:IsEffectDisabled="True">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="20"/>
-                                    </Style>
-                                </Button.Resources>
-                                <Grid>
-                                    <Border Style="{StaticResource changeProFilePicture_border}" BorderBrush="Black" >
-                                    </Border>
-                                    <materialDesign:PackIcon Kind="Plus"
+                            <Button
+                                Background="White"  BorderThickness="0" BorderBrush="Transparent"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                ToolTip="MaterialDesignFloatingActionMiniLightButton"
+                                Click="Avatar_Click" d:IsEffectDisabled="True"
+                                Canvas.Top="135"
+                                Canvas.Left="113">
+                                <materialDesign:PackIcon Kind="Plus"
                                     Width="32"
                                     Height="32"
-                                    Foreground="red">
-                                    </materialDesign:PackIcon>
-                                </Grid>
-
+                                    Foreground="red"/>
                             </Button>
                         </Canvas>
                     </Label>
@@ -317,12 +309,13 @@
 
                 <StackPanel Grid.Row="2">
 
-                    <TextBox Style="{StaticResource placeHolder}" Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="nameInput" KeyboardNavigation.TabIndex="0"/>
+                    <TextBox Style="{StaticResource placeHolder}"  Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="nameInput" KeyboardNavigation.TabIndex="0"/>
                     <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorName" Content="Hello" />
                     <TextBox Style="{StaticResource placeHolder}" Tag="Age" Text="{Binding Path=myProfile.age}" x:Name="ageInput" KeyboardNavigation.TabIndex="1" TabIndex="1" />
                     <!--<TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>-->
                     <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorAge" Content="Hello"/>
-                    <ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
+                    <!--<ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
+
                               SelectedIndex="{Binding Path=myProfile.sex}"
                               x:Name="sexSelect"
                               Width="194"
@@ -332,7 +325,37 @@
                         <ComboBoxItem Foreground="Black">Male</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
+                    </ComboBox>-->
+                    <ComboBox IsEditable="True" IsReadOnly="True" 
+    Style="{StaticResource MaterialDesignFilledComboBox}"
+                  
+                            Padding="12 8 8 8 "
+                              Background="#f5f7fa"
+    materialDesign:HintAssist.Hint="Sex"
+
+                              SelectedIndex="{Binding Path=myProfile.sex}"
+                              x:Name="sexSelect"
+                              Width="194"
+                             SelectionChanged="LocaleCombo_SelectionChanged"
+                              KeyboardNavigation.TabIndex="2">
+                        <ComboBoxItem Foreground="Black">Male</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
                     </ComboBox>
+                    <!--<ComboBox
+    Style="{StaticResource MaterialDesignFilledComboBox}"
+    x:Name="FilledComboBox"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledComboBoxEnabledComboBox}"
+    materialDesign:HintAssist.Hint="Some item"
+    Width="256">
+                        <ComboBoxItem
+      Content="Item 1" />
+                        <ComboBoxItem
+      Content="Item 2" />
+                        <ComboBoxItem
+      Content="Item 3" />
+                    </ComboBox>-->
+
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorSex"/>
                     <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="hobbyInput" TabIndex="3"/>
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorHobby" Margin="58, 0, 0, 0"/>

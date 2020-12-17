@@ -48,7 +48,7 @@
 
     </UserControl.Resources>
 
-    <Grid Background="White">
+    <Grid Background ="#e1e3e2">
         <Grid.RowDefinitions>
             <RowDefinition Height="86" />
             <RowDefinition Height="7*"/>
@@ -72,7 +72,7 @@
         </Grid>
 
         <!--Tin nhan nam day ne-->
-        <Border Grid.Row="1" Background="#FFF9F7F3" BorderThickness="0, 1, 1, 1" BorderBrush="DarkGray">
+        <Border Grid.Row="1" Background="Transparent" BorderThickness="0, 1, 1, 1" BorderBrush="DarkGray">
             <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="chatField" >
                 <StackPanel Orientation="Vertical" x:Name="messagePanel" SizeChanged="messagePanel_SizeChanged"  >
 
@@ -210,8 +210,8 @@
                     </StackPanel>
                
                 <!--Nhap tin nhan vao day ne-->
-                <Border Grid.Column="1" Padding="2 0" Background="White" CornerRadius="20" BorderThickness="1" BorderBrush="#FF6A6060">
-                    <emoji:RichTextBox x:Name="TextToSend" Style="{DynamicResource TextToSendMessage}" KeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
+                <Border Grid.Column="1" Padding="2 0" Background="#f5f7f6" CornerRadius="20" BorderThickness="1" BorderBrush="#FF6A6060">
+                    <emoji:RichTextBox x:Name="TextToSend" Style="{DynamicResource TextToSendMessage}" Background="Transparent" KeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
                 </Border>
 
                 <!--Nut gui tin nhan day ne-->

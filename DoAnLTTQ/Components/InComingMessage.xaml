@@ -7,19 +7,34 @@
              xmlns:local="clr-namespace:DoAnLTTQ.Components"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <Style TargetType="TextBlock" x:Key="partnerMessageContent">
+        <Style TargetType="TextBlock" x:Key="3">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="Comic Sans ms"/>
         </Style>
 
-        <Style TargetType="Border" x:Key="PartnerMessageBorder">
+        <Style TargetType="Border" x:Key="2">
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="CornerRadius" Value="25"/>
             <Setter Property="Margin" Value="30,10,30,10"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+
+        <Style TargetType="Border" x:Key="PartnerMessageBorder">
+            <Setter Property="Background" Value="#f5f7f6"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Margin" Value="30,10,30,10"/>
+            <Setter Property="Padding" Value="16 8"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="partnerMessageContent">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
 
     </UserControl.Resources>

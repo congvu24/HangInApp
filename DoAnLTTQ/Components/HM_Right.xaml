@@ -235,49 +235,67 @@
     </UserControl.Resources>
     <Grid KeyboardNavigation.DirectionalNavigation="Once">
         <Grid Background="#f5f7fa" Margin="0">
-            <StackPanel Height="680" Width="383">
-                <Grid Margin="0,50,0,0"  Height="520" Width="383">
-                    <Canvas>
-                        <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0" Panel.ZIndex="-1000">
-                            <Border.Background>
-                                <ImageBrush ImageSource="{Binding Path=avatar}" x:Name="img"></ImageBrush>
-                            </Border.Background>
+            <Grid Height="680" Width="383">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="580"/>
+                    <RowDefinition Height="2*"/>
 
-                            <Canvas  Style="{StaticResource infoParagraph}" Width="383" Height="auto" >
-                                <Grid x:Name="background" Background="Black" Opacity="0.4" Width="383" Height="100" Canvas.Bottom="0"/>
-                                <StackPanel Canvas.Bottom="0">
-                                    <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold"/>
-                                    <TextBox Name="info_age" Style="{StaticResource infoTextBox}"/>
-                                    <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}"/>
-                                </StackPanel>
-                            </Canvas>
-                        </Border>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <materialDesign:Card
+    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                    Height="auto" Margin="0 60 0 0"
+                    
+                    UniformCornerRadius="11">
+                    <Grid Height="auto" Width="383 ">
+                        <Canvas>
+                            <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding Path=avatar}" x:Name="img"></ImageBrush>
+                                </Border.Background>
+
+                                <Canvas  Style="{StaticResource infoParagraph}" Width="383" Height="auto" >
+                                    <Grid x:Name="background" Background="Black" Opacity="0.4" Width="383" Height="100" Canvas.Bottom="0"/>
+                                    <StackPanel Canvas.Bottom="0">
+                                        <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold"/>
+                                        <TextBox Name="info_age" Style="{StaticResource infoTextBox}"/>
+                                        <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}"/>
+                                    </StackPanel>
+                                </Canvas>
+                            </Border>
 
 
-                        <!--<TextBox Text="{Binding profileIndex}" />-->
-                        <!--<Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
+                            <!--<TextBox Text="{Binding profileIndex}" />-->
+                            <!--<Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
                             <Image Source="/Resources/icon/LeftArrow.png" Style="{StaticResource ArrowImage}"/>
                         </Button>-->
-                        <Button Width="60" Height="60"
-  Style="{StaticResource MaterialDesignIconButton}"
-                            Canvas.Left="-65" Canvas.Top="245"
-                            Click="previousProfile"
-  ToolTip="Previous profile">
-                            <materialDesign:PackIcon Kind="ChevronLeft" Height="60" Width="40" />
-                        </Button>
-                        <Button Width="60" Height="60"
-  Style="{StaticResource MaterialDesignIconButton}"
-                             Canvas.Top="245"
-  ToolTip="Next profile" Canvas.Left="388"
-                            Click="nextProfile">
-                            <materialDesign:PackIcon Kind="ChevronRight" Height="60" Width="40" />
-                        </Button>
-                        <!--<Button x:Name="button" Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
+                            
+                            <!--<Button x:Name="button" Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
                             <Image x:Name="image" Source="/Resources/icon/RightArrow.png" Style="{StaticResource ArrowImage}"/>
                         </Button>-->
-                    </Canvas>
-                </Grid>
-                <Grid Height="56">
+                        </Canvas>
+                    </Grid>
+
+
+                </materialDesign:Card>
+                <Canvas Grid.Row="0">
+                    <Button Width="60" Height="60"
+                            Style="{StaticResource MaterialDesignIconButton}"
+                            Canvas.Left="-65" Canvas.Top="245"
+                            Click="previousProfile"
+                            ToolTip="Previous profile">
+                        <materialDesign:PackIcon Kind="ChevronLeft" Height="60" Width="40" />
+                    </Button>
+                    <Button Width="60" Height="60"
+                            Style="{StaticResource MaterialDesignIconButton}"
+                            Canvas.Top="245"
+                            ToolTip="Next profile" Canvas.Left="388"
+                            Click="nextProfile">
+                        <materialDesign:PackIcon Kind="ChevronRight" Height="60" Width="40" />
+                    </Button>
+                </Canvas>
+                
+                <Grid Height="56" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -330,7 +348,7 @@
                             Kind="Check" />
                         </materialDesign:ToggleButtonAssist.OnContent>
                     </ToggleButton>
-                            <!--Background="Transparent"-->
+                    <!--Background="Transparent"-->
                     <!--<Button Grid.Column="0" Style="{StaticResource navButton}" Click="Button_Click_1" 
                             ToolTip="Reload image">
                         <Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"/>
@@ -349,7 +367,7 @@
                 </Grid>
 
                 <!--disable tab navigation on stackpanel's child element with KeyboardNavigation.TabNavigation="None"-->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" KeyboardNavigation.TabNavigation="None">
+                <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" KeyboardNavigation.TabNavigation="None">
                     <Button Style="{StaticResource embeddedNavButton}">
                         <Button.Content>
                             <Grid>
@@ -415,11 +433,11 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
-            </StackPanel>
-          
-                <!--Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"-->
-                
-            
+            </Grid>
+
+            <!--Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"-->
+
+
 
         </Grid>
 

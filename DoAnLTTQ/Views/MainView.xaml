@@ -95,7 +95,7 @@
             </Border>
 
         </Grid>
-        <Grid Grid.Column="1" Background="#f5f7fa">
+        <Grid Grid.Column="1" Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
