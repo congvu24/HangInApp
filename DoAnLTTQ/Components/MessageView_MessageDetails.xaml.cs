@@ -29,6 +29,7 @@ namespace DoAnLTTQ.Components
         public Server sv;
         public String activeIp;
         public Thread listenMessage;
+        public Thread sendThread;
         public GuestProfile _activeGuest;
         GuestProfile guests;
         List<GuestProfile> list;
@@ -97,9 +98,19 @@ namespace DoAnLTTQ.Components
             {
                 if (TextToSend.Text.Length > 0)
                 {
-                    sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                    sendThread = new Thread(()=> {
+                        try
+                        {
+                            sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                        }
+                        catch {
+                            this.sendThread.Abort();
+                        }
+                    }
+                );
                     messagePanel.Children.Add(new MyMessage(content));
-                    //TextToSend
+                    sendThread.IsBackground = true;
+                    sendThread.Start();
                 }
             }
         }
@@ -115,7 +126,7 @@ namespace DoAnLTTQ.Components
         {
             var content = TextToSend.Text;
             sendMessage(content);
-
+            TextToSend.Document.Blocks.Clear();
         }
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
@@ -152,10 +163,6 @@ namespace DoAnLTTQ.Components
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             myPopup.IsOpen = true;
-            //DialogHost.Show(emojiPanel, "emojiDialog");
-            //như dòng 126 mainview.cs
-            //cách tắt https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/wiki/Dialogs#dialoghostshow
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

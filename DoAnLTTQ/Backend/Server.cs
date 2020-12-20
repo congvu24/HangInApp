@@ -173,7 +173,6 @@ namespace DoAnLTTQ.Backend
             }
             catch
             {
-                MessageBox.Show("You two haven't connected with each other");
             }
         }
         public IPAddress GetBroadCastIP(IPAddress host, IPAddress mask)
