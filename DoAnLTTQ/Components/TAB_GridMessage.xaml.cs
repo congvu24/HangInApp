@@ -49,6 +49,20 @@ namespace DoAnLTTQ.Components
             {
                 ProfileSelected(this, identify);
             }
+            HightLightSelection(sender);
+        }
+
+      
+        private void HightLightSelection(object sender)
+        {
+            Style backgroundStyle = this.FindResource("GradientBackground") as Style;
+            Style hover = this.FindResource("myChatButton") as Style;
+            List<Button> btnList = GetChildrenOfType<Button>(ChatList);
+            foreach (var button in btnList)
+            {
+                button.Style = hover;
+            }
+            (sender as Button).Style = backgroundStyle;
         }
         public void reload()
         {
@@ -66,5 +80,28 @@ namespace DoAnLTTQ.Components
             ChatList.DataContext = friends;
         }
 
+        // get all children of a dependency object
+        public static List<T> GetChildrenOfType<T>(DependencyObject depObj)
+   where T : DependencyObject
+        {
+            var result = new List<T>();
+            if (depObj == null) return null;
+            var queue = new Queue<DependencyObject>();
+            queue.Enqueue(depObj);
+            while (queue.Count > 0)
+            {
+                var currentElement = queue.Dequeue();
+                var childrenCount = VisualTreeHelper.GetChildrenCount(currentElement);
+                for (var i = 0; i < childrenCount; i++)
+                {
+                    var child = VisualTreeHelper.GetChild(currentElement, i);
+                    if (child is T)
+                        result.Add(child as T);
+                    queue.Enqueue(child);
+                }
+            }
+
+            return result;
+        }
     }
 }

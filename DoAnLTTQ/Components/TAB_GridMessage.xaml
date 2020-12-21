@@ -49,6 +49,21 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="GradientBackground" TargetType="Button" BasedOn="{StaticResource myChatButton}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#ff7854" Offset="0.0" />
+                        <GradientStop Color="#fd267d" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="White"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="myProfilePicture" TargetType="Image">
             <Setter Property="Margin" Value="4"/>
             <Setter Property="VerticalAlignment" Value="Center"/>

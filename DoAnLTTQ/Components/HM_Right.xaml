@@ -310,20 +310,19 @@
                     Style="{StaticResource MaterialDesignActionToggleButton}"
                     Background="ForestGreen"
                     Click="Button_Click_1"
+                    ToolTip="Renew list"
                     >
                         <ToggleButton.Content>
                             <!--<Image Source="/Resources/icon/reload.png" Style="{StaticResource defaultImageSize}"-->
                             <materialDesign:PackIcon 
                                 Kind="Reload"
                                 Width="30" Height="30"
-                            ToolTip="Renew list"
                              
                             />
                         </ToggleButton.Content>
                         <materialDesign:ToggleButtonAssist.OnContent>
                             <materialDesign:PackIcon  
                             Width="30" Height="30"
-                            ToolTip="Done"
                             Kind="Check"/>
                         </materialDesign:ToggleButtonAssist.OnContent>
                     </ToggleButton>
@@ -334,17 +333,16 @@
                     Height="46"
                     Style="{StaticResource MaterialDesignActionToggleButton}"
                     Click="sendFriendRq_Click"
+                    ToolTip="Send friend request"
                     >
                         <ToggleButton.Content>
                             <materialDesign:PackIcon 
                             Width="30" Height="30"
-                            ToolTip="Send friend request"
                             Kind="Heart" />
                         </ToggleButton.Content>
                         <materialDesign:ToggleButtonAssist.OnContent>
                             <materialDesign:PackIcon  
                             Width="30" Height="30"
-                            ToolTip="Sent"
                             Kind="Check" />
                         </materialDesign:ToggleButtonAssist.OnContent>
                     </ToggleButton>
