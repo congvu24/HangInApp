@@ -234,7 +234,7 @@
 
     </UserControl.Resources>
     <Grid KeyboardNavigation.DirectionalNavigation="Once">
-        <Grid Background="#f5f7fa" Margin="0">
+        <Grid Background="Transparent" Margin="0" >
             <Grid Height="680" Width="383">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="580"/>

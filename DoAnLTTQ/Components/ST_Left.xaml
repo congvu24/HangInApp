@@ -309,12 +309,12 @@
 
                 <StackPanel Grid.Row="2">
 
-                    <TextBox Style="{StaticResource placeHolder}"  Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="nameInput" KeyboardNavigation.TabIndex="0"/>
+                    <TextBox Style="{StaticResource placeHolder}" Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="nameInput" KeyboardNavigation.TabIndex="0"/>
                     <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorName" Content="Hello" />
                     <TextBox Style="{StaticResource placeHolder}" Tag="Age" Text="{Binding Path=myProfile.age}" x:Name="ageInput" KeyboardNavigation.TabIndex="1" TabIndex="1" />
                     <!--<TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>-->
                     <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorAge" Content="Hello"/>
-                    <!--<ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
+                    <ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
 
                               SelectedIndex="{Binding Path=myProfile.sex}"
                               x:Name="sexSelect"
@@ -325,8 +325,8 @@
                         <ComboBoxItem Foreground="Black">Male</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
-                    </ComboBox>-->
-                    <ComboBox IsEditable="True" IsReadOnly="True" 
+                    </ComboBox>
+                    <!--<ComboBox IsEditable="True" IsReadOnly="True" 
     Style="{StaticResource MaterialDesignFilledComboBox}"
                   
                             Padding="12 8 8 8 "
@@ -341,20 +341,8 @@
                         <ComboBoxItem Foreground="Black">Male</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
-                    </ComboBox>
-                    <!--<ComboBox
-    Style="{StaticResource MaterialDesignFilledComboBox}"
-    x:Name="FilledComboBox"
-    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledComboBoxEnabledComboBox}"
-    materialDesign:HintAssist.Hint="Some item"
-    Width="256">
-                        <ComboBoxItem
-      Content="Item 1" />
-                        <ComboBoxItem
-      Content="Item 2" />
-                        <ComboBoxItem
-      Content="Item 3" />
                     </ComboBox>-->
+                  
 
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorSex"/>
                     <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="hobbyInput" TabIndex="3"/>
