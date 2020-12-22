@@ -56,6 +56,9 @@ namespace DoAnLTTQ.Backend
         }
         public void SendProfile(IPAddress ip)
         {
+            try
+            {
+
             User user = new User();
             GuestProfile u = new GuestProfile(user);
             var localIp = "";
@@ -76,6 +79,11 @@ namespace DoAnLTTQ.Backend
             formatter.Serialize(stream, u);
 
             client.Close();
+            }
+            catch
+            {
+
+            }
         }
 
         public void ListenRequestMessage()
