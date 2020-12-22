@@ -211,7 +211,7 @@
                
                 <!--Nhap tin nhan vao day ne-->
                 <Border Grid.Column="1" Padding="2 0" Background="#f5f7f6" CornerRadius="20" BorderThickness="1" BorderBrush="#FF6A6060">
-                    <emoji:RichTextBox x:Name="TextToSend" Style="{DynamicResource TextToSendMessage}" Background="Transparent" KeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
+                    <emoji:RichTextBox x:Name="TextToSend" Style="{DynamicResource TextToSendMessage}" Background="Transparent" PreviewKeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
                 </Border>
 
                 <!--Nut gui tin nhan day ne-->

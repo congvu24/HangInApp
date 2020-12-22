@@ -149,10 +149,11 @@ namespace DoAnLTTQ.Components
 
         private void TextToSend_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Return)
                 try
                 {
                     SendButton_Click(sender, e);
+                    e.Handled = true;
                 }
                 catch (Exception)
                 {
