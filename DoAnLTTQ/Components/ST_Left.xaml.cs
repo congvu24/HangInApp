@@ -43,6 +43,14 @@ namespace DoAnLTTQ.Components
         public NavBarSetting()
         {
             InitializeComponent();
+            Name.GotFocus += RemoveText;
+            Age.GotFocus += RemoveText;
+            Hobby.GotFocus += RemoveText;
+
+            Name.LostFocus += AddText;
+            Age.LostFocus += AddText;
+            Hobby.LostFocus += AddText;
+
             LayoutRoot.DataContext = this;
         }
 
@@ -59,7 +67,7 @@ namespace DoAnLTTQ.Components
             DialogHost.Show(UpdatePanel, "StLeftUpdate");
             if (isValidInputInformation())
             {
-                ProfileHeaderName.Content = nameInput.Text;
+                ProfileHeaderName.Content = Name.Text;
                 UpdateNotification.Text = "Successful!";
                 OnUserControlButtonClick();
             }
@@ -75,10 +83,10 @@ namespace DoAnLTTQ.Components
             {
                 Profile newProfile = new Profile()
                 {
-                    name = nameInput.Text,
-                    age = ageInput.Text,
+                    name = Name.Text,
+                    age = Age.Text,
                     sex = sexSelect.SelectedIndex.ToString(),
-                    hobby = hobbyInput.Text,
+                    hobby = Hobby.Text,
                     avatar = new Picture() { name = "avatar", url = avatarLink }
                 };
 
@@ -108,7 +116,7 @@ namespace DoAnLTTQ.Components
 
         private bool isValidInputInformation()
         {
-            if (!isValidNameInput(nameInput.Text))
+            if (!isValidNameInput(Name.Text))
             {
                 ErrorName.Visibility = Visibility.Visible;
                 ErrorName.Content = "Vui lòng nhập tên hợp lệ! ";
@@ -118,7 +126,7 @@ namespace DoAnLTTQ.Components
                 ErrorName.Visibility = Visibility.Hidden;
             }
 
-            if (!isValidAgeInput(ageInput.Text))
+            if (!isValidAgeInput(Age.Text))
             {
                 ErrorAge.Visibility = Visibility.Visible;
                 ErrorAge.Content = "Vui lòng nhập tuổi hợp lệ! ";
@@ -138,7 +146,7 @@ namespace DoAnLTTQ.Components
                 ErrorSex.Visibility = Visibility.Hidden;
             }
 
-            if (!isValidHobbyInput(hobbyInput.Text))
+            if (!isValidHobbyInput(Hobby.Text))
             {
                 ErrorHobby.Visibility = Visibility.Visible;
                 ErrorHobby.Content = "Vui lòng nhập sở thích hợp lệ";
@@ -243,6 +251,25 @@ namespace DoAnLTTQ.Components
             }
         }
 
+        public void RemoveText(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb.Text == tb.Name)
+            {
+                tb.Text = "";
+            }
+        }
+
+        public void AddText(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(tb.Text))
+            {
+                tb.Text = "";
+                tb.Text = tb.Name;
+
+            }
+        }
 
     }
 }

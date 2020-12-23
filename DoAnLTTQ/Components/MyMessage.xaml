@@ -31,7 +31,7 @@
             </LinearGradientBrush>
         </Border.Background>
     </Border>-->
-    <Grid Height="auto" MinWidth="36" Margin="0,0,8,16">
+    <Grid Height="auto" MinWidth="36" Margin="0,0,26,16">
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>

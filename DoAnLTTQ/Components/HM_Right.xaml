@@ -234,7 +234,7 @@
 
     </UserControl.Resources>
     <Grid KeyboardNavigation.DirectionalNavigation="Once">
-        <Grid Background="Transparent" Margin="0" >
+        <Grid Background="{StaticResource AppicationBackgroundBursh}" Margin="0" >
             <Grid Height="680" Width="383">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="580"/>
@@ -243,7 +243,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <materialDesign:Card
-    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+    materialDesign:ShadowAssist.ShadowDepth="Depth4"
                     Height="auto" Margin="0 60 0 0"
                     
                     UniformCornerRadius="11">

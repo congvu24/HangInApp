@@ -17,6 +17,8 @@ using System.Windows.Shapes;
 using System.Threading;
 using DoAnLTTQ.Backend;
 using System.Windows.Threading;
+using System.Drawing;
+using System.IO;
 
 namespace DoAnLTTQ.Components
 {
@@ -62,7 +64,7 @@ namespace DoAnLTTQ.Components
         public info_main()
         {
             InitializeComponent();
-           
+
             this.DataContext = this;
             this.Loaded += Info_main_Loaded;
         }
@@ -71,7 +73,7 @@ namespace DoAnLTTQ.Components
         private void Info_main_Loaded(object sender, RoutedEventArgs e)
         {
             specialGuest.LoadArrayProfile();
-            if(specialGuest.LoadArrayProfile() != null)
+            if (specialGuest.LoadArrayProfile() != null)
                 ShowInformationToHomeView(0);
         }
 
@@ -103,7 +105,7 @@ namespace DoAnLTTQ.Components
             await Dispatcher.BeginInvoke(new Action(delegate
             {
                 //Task.Run(() => Thread.Sleep(500));
-                if(specialGuest.listGuestProfile.Count >= 0)
+                if (specialGuest.listGuestProfile.Count >= 0)
                     ShowInformationToHomeView(0);
 
             }), DispatcherPriority.Background);
@@ -140,8 +142,8 @@ namespace DoAnLTTQ.Components
                 default:
                     break;
             }
-            
-            ShowInformationToHomeView(indexHomePicture); 
+
+            ShowInformationToHomeView(indexHomePicture);
         }
 
         private void ShowInformationToHomeView(int index)
@@ -149,13 +151,13 @@ namespace DoAnLTTQ.Components
             try
             {
                 //if (NotifyProfile != null)
-                    NotifyProfile((new object()) as Button, index);
+                NotifyProfile((new object()) as Button, index);
             }
             catch
             {
                 Console.WriteLine("bug catched");
             }
-                
+
             try
             {
                 this.avatar = specialGuest.listGuestProfile[index].avatar.buffer;
@@ -163,10 +165,16 @@ namespace DoAnLTTQ.Components
                 info_name.Text = specialGuest.listGuestProfile[index].name;
                 info_age.Text = specialGuest.listGuestProfile[index].age;
                 info_hobby.Text = specialGuest.listGuestProfile[index].hobby;
+
+                //            var bmImage = Common.LoadImage(avatar);
+                //var bitmap = new TransformedBitmap(bmImage,
+                //new ScaleTransform(
+                //    383 / bmImage.PixelWidth,
+                //    520 / bmImage.PixelHeight));
+                //            img.ImageSource = bitmap;
             }
             catch (Exception) { }
         }
-
         private void nextProfile(object sender, RoutedEventArgs e)
         {
             if (indexHomePicture == specialGuest.listGuestProfile.Count - 1)
@@ -175,7 +183,7 @@ namespace DoAnLTTQ.Components
                 indexHomePicture++;
 
             ShowInformationToHomeView(indexHomePicture);
-         
+
             //if(NotifyProfile != null)
             //    NotifyProfile(sender, indexHomePicture);
         }
@@ -197,7 +205,7 @@ namespace DoAnLTTQ.Components
         {
             GuestProfile guest = new GuestProfile();
             guest.LikeProfile(profileIp);
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -210,7 +218,7 @@ namespace DoAnLTTQ.Components
             GuestProfile guest = new GuestProfile();
             guest.LikeProfile(profileIp);
             animation();
-           
+
         }
         private async void animation()
         {

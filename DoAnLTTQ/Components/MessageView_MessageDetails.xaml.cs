@@ -48,6 +48,11 @@ namespace DoAnLTTQ.Components
         {
             InitializeComponent();
 
+            TextToSend.GotFocus += RemoveText;
+            TextToSend.LostFocus += AddText;
+            TextToSend.Document.Blocks.Clear();
+            TextToSend.Document.Blocks.Add(new Paragraph(new Run("Type something")));
+
             TextBox tb = new TextBox();
 
             //activeIp = "10.10.233.158";
@@ -94,16 +99,19 @@ namespace DoAnLTTQ.Components
                 MessageBox.Show("Select a friend to send this message!");
                 return;
             }
-            if (txtname.Text.Length > 0)
+            if (txtName.Text.Length > 0)
+                //if ((txtName.Content as string).Length > 0)
             {
                 if (TextToSend.Text.Length > 0)
                 {
-                    sendThread = new Thread(()=> {
+                    sendThread = new Thread(() =>
+                    {
                         try
                         {
                             sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
                         }
-                        catch {
+                        catch
+                        {
                             this.sendThread.Abort();
                         }
                     }
@@ -176,6 +184,28 @@ namespace DoAnLTTQ.Components
         private void messagePanel_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             chatField.ScrollToBottom();
+        }
+
+
+
+        public void RemoveText(object sender, EventArgs e)
+        {
+
+            if (TextToSend.Text == "Type something")
+            {
+                TextToSend.Document.Blocks.Clear();
+                TextToSend.Document.Blocks.Add(new Paragraph(new Run("")));
+            }
+        }
+
+        public void AddText(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(TextToSend.Text))
+            {
+                TextToSend.Document.Blocks.Clear();
+                TextToSend.Document.Blocks.Add(new Paragraph(new Run("" + "Type something")));
+            }
         }
     }
 

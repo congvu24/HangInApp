@@ -15,8 +15,8 @@
             <Setter Property="Margin" Value="15, 0, 10 ,0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="70"/>
-            <Setter Property="Height" Value="70"/>
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
         <Style TargetType="RichTextBox" x:Key="TextToSendMessage">
@@ -32,9 +32,9 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="myMessageName">
-            <Setter Property="FontSize" Value="34"/>
-            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="24"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#31326f"/>
         </Style>
 
         <Style x:Key="emojiPicture" TargetType="Image">
@@ -46,33 +46,51 @@
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
 
+       
     </UserControl.Resources>
 
-    <Grid Background ="#e1e3e2">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="86" />
             <RowDefinition Height="7*"/>
             <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.RowSpan="3" Background="{StaticResource AppicationBackgroundBursh}">
+            <!--<Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#fd267d" Offset="0.0" />
+                    <GradientStop Color="#ff7854" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>-->
+        </Grid>
         <!--Avatar va ten partnerday-->
-        <Grid Grid.Row="0" Background="Transparent" >
-            <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Grid Grid.Row="0" Background="Transparent">
+            <Border CornerRadius="6" Background="{StaticResource ApplicationBackgroundDarkBursh}" Opacity="0.5" Margin="24,16"/>
+            <WrapPanel VerticalAlignment="Center"  Margin="28,16" HorizontalAlignment="Center">
 
-                <Border Grid.Column="0" CornerRadius="20">
+                <!--<Border Grid.Column="0" CornerRadius="20" Background="White">
                     <Image Source="{Binding avatar.buffer}"  Style="{StaticResource myProfilePicture}">
                         <Image.Clip>
-                            <EllipseGeometry Center="35,35" RadiusX="28" RadiusY="28" />
+                            <EllipseGeometry Center="20,20" RadiusX="28" RadiusY="28" />
                         </Image.Clip>
                     </Image>
-                </Border>
+                </Border>-->
+                <materialDesign:Chip IconBackground="{x:Null}" MinHeight="40" MinWidth="60">
+                    <TextBlock Text="{Binding name}" x:Name="txtName" FontSize="16" FontWeight="Bold"/>
+                    <materialDesign:Chip.Icon>
+                        <Image Source="{Binding avatar.buffer}"/>
 
-                <TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}" x:Name="txtname"/>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
+
+                <!--<TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}" x:Name="txtname"/>-->
             </WrapPanel>
+
         </Grid>
 
         <!--Tin nhan nam day ne-->
-        <Border Grid.Row="1" Background="Transparent" BorderThickness="0, 1, 1, 1" BorderBrush="DarkGray">
+        <Border Grid.Row="1" Background="Transparent" BorderThickness="0, 1, 1, 1">
             <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="chatField" >
                 <StackPanel Orientation="Vertical" x:Name="messagePanel" SizeChanged="messagePanel_SizeChanged"  >
 
@@ -81,148 +99,159 @@
             </ScrollViewer>
         </Border>
 
-        <Grid Grid.Row="2" Background="Transparent" >
-            <Grid Margin="0 8">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="40"/>
-                </Grid.ColumnDefinitions>
+        <Border Grid.Row="2" Padding="24,4,24,8">
+            <Grid Background="Transparent">
 
-                <!--Icon nam day ne-->
-                <materialDesign:PackIcon Kind="StickerEmoji"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
 
-                <StackPanel>
-                        
-                        <Popup x:Name="myPopup" StaysOpen="false" PopupAnimation="Fade">
-                            <WrapPanel Background="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center"  Orientation="Horizontal" x:Name="emojiPanel" Height="300" Width="300">
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😀" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😃" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😄" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😆" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😅" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
-                                        <emoji:TextBlock Text="😂" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🤣" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🙂" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🙃" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😉" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
-                                        <emoji:TextBlock Text="😌" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😍" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🥰" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😘" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😗" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
-                                        <emoji:TextBlock Text="😙" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😎" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🤪" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🤬" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😫" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
-                                        <emoji:TextBlock Text="👿" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🥳" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🤩" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😤" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😭" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
-                                        <emoji:TextBlock Text="🥺" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😢" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😑" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😪" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🤡" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😴" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
-                                        <emoji:TextBlock Text="🥱" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="😮" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🤔" />
-                                    </Button>
-                                    <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="💀" />
-                                    </Button>
-                                     <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                                        <emoji:TextBlock Text="🤑" />
-                                    </Button>   
+                <!--background-->
+                <Border Grid.ColumnSpan="3" Background="{StaticResource ApplicationBackgroundDarkBursh}" Opacity="0.5" CornerRadius="6"/>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!--Icon nam day ne-->
+                    <materialDesign:PackIcon Kind="StickerEmoji"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
+
+                    <StackPanel Background ="Transparent">
+                        <Popup x:Name="myPopup" StaysOpen="false" PopupAnimation="Fade" >
+                            <Grid Background="Transparent">
+                            <!--background-->
+                                <Border Background="WhiteSmoke" CornerRadius="8" BorderThickness="0" BorderBrush="Transparent"/>
+                            <WrapPanel Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"  Orientation="Horizontal" x:Name="emojiPanel" Height="300" Width="300">
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😀" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😃" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😄" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😆" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😅" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
+                                    <emoji:TextBlock Text="😂" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🤣" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🙂" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🙃" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😉" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
+                                    <emoji:TextBlock Text="😌" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😍" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🥰" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😘" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😗" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
+                                    <emoji:TextBlock Text="😙" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😎" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🤪" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🤬" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😫" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
+                                    <emoji:TextBlock Text="👿" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🥳" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🤩" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😤" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😭" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
+                                    <emoji:TextBlock Text="🥺" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😢" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😑" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😪" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🤡" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😴" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0" >
+                                    <emoji:TextBlock Text="🥱" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="😮" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🤔" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="💀" />
+                                </Button>
+                                <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
+                                    <emoji:TextBlock Text="🤑" />
+                                </Button>
                             </WrapPanel>
-                            </Popup>
-                        <Button Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="30" Width="30" Click="Button_Click"/>
+                            </Grid>
+                        </Popup>
+                        <Button Background="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="6"  HorizontalAlignment="Center" Height="46" Width="40" Click="Button_Click"/>
                     </StackPanel>
-               
-                <!--Nhap tin nhan vao day ne-->
-                <Border Grid.Column="1" Padding="2 0" Background="#f5f7f6" CornerRadius="20" BorderThickness="1" BorderBrush="#FF6A6060">
-                    <emoji:RichTextBox x:Name="TextToSend" Style="{DynamicResource TextToSendMessage}" Background="Transparent" PreviewKeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
-                </Border>
 
-                <!--Nut gui tin nhan day ne-->
-                <materialDesign:PackIcon 
+                    <!--Nhap tin nhan vao day ne-->
+                    <Border Grid.Column="1" Padding="2 0" Background="Transparent" CornerRadius="8" BorderThickness="1">
+                        <emoji:RichTextBox x:Name="TextToSend" VerticalAlignment="Center" Foreground="Black" Style="{StaticResource TextToSendMessage }" Background="Transparent" PreviewKeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
+                    </Border>
+
+                    <!--Nut gui tin nhan day ne-->
+                    <materialDesign:PackIcon 
                         x:Name="SendButton"
                         Kind="Send" Margin="5 0 10 0" Grid.Column="2"
                    Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Width="26" Height="25"/>
-                <Button Click="SendButton_Click" Grid.Column="2" BorderThickness="0" Background="Transparent"/>
+                    <Button Click="SendButton_Click" Grid.Column="2" BorderThickness="0" Background="Transparent"/>
+
+                </Grid>
 
             </Grid>
-
-        </Grid>
+        </Border>
     </Grid>
 </UserControl>

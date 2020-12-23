@@ -38,6 +38,7 @@
     </UserControl.Resources>
 
     <Grid>
+        <materialDesign:Card Height="400" Width="290" UniformCornerRadius="16" Background="{StaticResource ApplicationBackgroundDarkBursh}" materialDesign:ShadowAssist.ShadowDepth="Depth4" materialDesign:BottomDashedLineAdorner.Brush="Black">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <WrapPanel HorizontalAlignment="Center">
                 <ItemsControl ItemsSource="{Binding}" x:Name="listImage" >
@@ -87,5 +88,6 @@
                 </ItemsControl>
             </WrapPanel>
         </ScrollViewer>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

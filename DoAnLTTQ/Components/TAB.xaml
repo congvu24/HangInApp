@@ -11,7 +11,6 @@
     <UserControl.Resources>
 
         <Style x:Key="BackBtnWarper" TargetType="Grid">
-            <Setter Property="Background" Value="#f5f7fa"/>
         </Style>
 
         <Style x:Key="backBtnIcon" TargetType="Button">
@@ -91,7 +90,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Foreground" Value="red" />
             <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
@@ -198,18 +197,16 @@
     </UserControl.Triggers>
 
     <!--main content-->
-    <Border BorderBrush="#D1DDE3" BorderThickness="0 0 1 0">
+    <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 0">
         <Grid>
 
             <!--change height here-->
-            <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680">
+            <Grid Background="{StaticResource AppicationBackgroundBursh}" VerticalAlignment="Bottom" Height="680">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="86"/>
                     <RowDefinition Height="82"/>
                     <RowDefinition Height="408"/>
                     <RowDefinition Height="144"/>
-
-
                 </Grid.RowDefinitions>
 
                 <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 0" Height="84">

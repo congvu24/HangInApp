@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DoAnLTTQ.Resources">
+    
+    <Color x:Key="ButtonColor">#31326f</Color>
+
+
+    <Color x:Key="ApplicationBackground">#ffdada</Color>
+    <SolidColorBrush x:Key="AppicationBackgroundBursh" Color="{StaticResource ApplicationBackground}"/>
+
+
+    <Color x:Key="ApplicationBackgroundDark">#f0b1b1</Color>
+    <SolidColorBrush x:Key="ApplicationBackgroundDarkBursh" Color="{StaticResource ApplicationBackgroundDark}"/>
+
+    <Color x:Key="MessageViewBackground">#fffafa</Color>
+    <SolidColorBrush x:Key="MessageViewBackgroundBursh" Color="{StaticResource MessageViewBackground}"/>
+
+</ResourceDictionary>

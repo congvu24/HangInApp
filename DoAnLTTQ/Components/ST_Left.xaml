@@ -43,13 +43,13 @@
             <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="FontFamily" Value="Comic Sans MS" />
         </Style>
-        <Style x:Key="textBox" TargetType="TextBox">
+        <Style x:Key="textBox" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
             <Setter Property="Width" Value="194"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="0,0,0,2"/>
-            <Setter Property="Padding" Value="8 0 0 0 "/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Background" Value="#f5f7fa"/>
+            <Setter Property="Padding" Value="4,0,0,0"/>
+            <Setter Property="BorderBrush" Value="#707070"/>
+            <Setter Property="Background" Value="Transparent"/>
         </Style>
         <!--placeholder for textbox-->
         <!--this style is base on textBox style at line 38 definition for that at line 46-->
@@ -65,13 +65,13 @@
                                  x:Name="textSource" 
                                  Background="Transparent"
                                  Panel.ZIndex="2"
-                                  Padding="8 0 0 0"/>
+                                  Padding="4 0 0 0"/>
                             <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
                                 <TextBox.Style>
                                     <Style TargetType="{x:Type TextBox}">
                                         <Setter Property="Foreground" Value="Transparent"/>
                                         <Setter Property="BorderThickness" Value="0"/>
-                                        <Setter Property="Padding" Value=" 8 0 0 0"/>
+                                        <Setter Property="Padding" Value=" 4 0 0 0"/>
                                         <Style.Triggers>
                                             <!--style for text in placeholder here-->
                                             <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
@@ -219,10 +219,10 @@
     </UserControl.Resources>
 
     <!--main content-->
-    <Border BorderBrush="#FFF9F7F3" BorderThickness="0 0 1 0">
+    <Border BorderBrush="Transparent" BorderThickness="0 0 1 0">
         <Grid x:Name="LayoutRoot">
             <!--change height here-->
-            <Grid Style="{StaticResource BackBtnWarper}" VerticalAlignment="Bottom" Height="680" >
+            <Grid Style="{StaticResource BackBtnWarper}" Background="{StaticResource AppicationBackgroundBursh}"  VerticalAlignment="Bottom" Height="680" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="auto"/>
@@ -230,7 +230,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border BorderBrush="#FFF9F7F3" BorderThickness="0 0 0 2" >
+                <Border BorderBrush="#FFF9F7F3" BorderThickness="0 0 0 0" >
                     <!--<Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
@@ -309,19 +309,19 @@
 
                 <StackPanel Grid.Row="2">
 
-                    <TextBox Style="{StaticResource placeHolder}" Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="nameInput" KeyboardNavigation.TabIndex="0"/>
+                    <TextBox Style="{StaticResource textBox}" Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="Name" />
                     <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorName" Content="Hello" />
-                    <TextBox Style="{StaticResource placeHolder}" Tag="Age" Text="{Binding Path=myProfile.age}" x:Name="ageInput" KeyboardNavigation.TabIndex="1" TabIndex="1" />
+                    <TextBox Style="{StaticResource textBox}" Tag="Age" Text="{Binding Path=myProfile.age}" x:Name="Age"  />
                     <!--<TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>-->
                     <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorAge" Content="Hello"/>
                     <ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
-
+                              
                               SelectedIndex="{Binding Path=myProfile.sex}"
                               x:Name="sexSelect"
                               Width="194"
-                              Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,2"
-                              Foreground="#707070"
-                              KeyboardNavigation.TabIndex="2">
+                              Height="28.5" SelectionChanged="LocaleCombo_SelectionChanged" Margin="0,0,0,2" Padding="4,0,0,0"
+                              Foreground="Black"
+                             >
                         <ComboBoxItem Foreground="Black">Male</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
@@ -345,7 +345,7 @@
                   
 
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorSex"/>
-                    <TextBox Style="{StaticResource placeHolder}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="hobbyInput" TabIndex="3"/>
+                    <TextBox Style="{StaticResource textBox}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="Hobby" />
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorHobby" Margin="58, 0, 0, 0"/>
                 </StackPanel>
             </Grid>
