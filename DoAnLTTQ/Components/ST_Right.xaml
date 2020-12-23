@@ -15,10 +15,10 @@
             <Setter Property="Foreground" Value="LightCoral"/>
             <Setter Property="Content" Value="+"/>
             <Setter Property="Height" Value="160"/>
-            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderThickness" Value="0" />
             <Setter Property="FontSize" Value="70" />
             <Setter Property="Width" Value="115" />
-            <Setter Property="Margin" Value="20" />
+            
             <!--change hover effect-->
             <Setter Property="Template">
                 <Setter.Value>
@@ -84,13 +84,32 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Margin="1" BorderThickness="1">
+                        <Border BorderThickness="1" Width="118" Height="163" Margin="20" CornerRadius="16" Loaded="Border_Loaded"
+                                x:Name="border">
+                            <Border.BorderBrush>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Rectangle StrokeDashArray="4 2"
+                                                   
+                      Stroke="Red"
+                      StrokeThickness="2"
+                      RadiusX="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=CornerRadius.TopRight}"
+                      RadiusY="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=CornerRadius.BottomLeft}"
+                      Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualWidth}"
+                      Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualHeight}"
+                                                  x:Name="rect"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Border.BorderBrush>
                             <Button  
                             Style="{DynamicResource myImageSlotContent}"
                             Template="{DynamicResource SlotImage}"
                             HorizontalContentAlignment="Center" 
                             VerticalContentAlignment="Center"
+                            Loaded="Button_Loaded"
                             Click="Slot_Click"
+                                x:Name="avt"
+                            
                                 >
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -101,15 +120,18 @@
                                     <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
                                 </Button.Background>
                                 <Button.Content>
-                                    <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                                           
+                                   
+                                    <Button x:Name="content"  Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
                                             materialDesign:ShadowAssist.ShadowDepth="Depth2">
                                         <Button.Content>
                                             <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
                                         </Button.Content>
                                     </Button>
+                                   
                                 </Button.Content>
                             </Button>
-                           
+
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

@@ -108,6 +108,20 @@ namespace DoAnLTTQ.Components
             }
         }
 
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (((sender as Button).FindName("brush") as ImageBrush).ImageSource != null)
+            {
+                (sender as Button).Content = "";
+            }
+        }
+
+        private void Border_Loaded(object sender, RoutedEventArgs e)
+        {
+            var btn = (sender as Border).FindName("avt") as Button;
+            if ((btn.FindName("brush") as ImageBrush).ImageSource != null)
+                (sender as Border).BorderBrush = null;
+        }
     }
    
 
