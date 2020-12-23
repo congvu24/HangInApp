@@ -159,7 +159,7 @@ namespace DoAnLTTQ
             }
             else
             {
-                byte[] asciiBytes = Encoding.ASCII.GetBytes(input);
+                byte[] asciiBytes = Encoding.UTF8.GetBytes(input);
 
                 for (int i = 0; i < asciiBytes.Length; i++)
                 {
@@ -224,7 +224,7 @@ namespace DoAnLTTQ
             }
             else
             {
-                byte[] asciiBytes = Encoding.ASCII.GetBytes(input);
+                byte[] asciiBytes = Encoding.UTF8.GetBytes(input);
 
                 for (int i = 0; i < asciiBytes.Length; i++)
                 {
