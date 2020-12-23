@@ -166,11 +166,11 @@ namespace DoAnLTTQ.Components
             }
             else
             {
-                byte[] asciiBytes = Encoding.ASCII.GetBytes(input);
-
-                for (int i = 0; i < asciiBytes.Length; i++)
+                byte[] UTF8Bytes = Encoding.UTF8.GetBytes(input);
+               
+                for (int i = 0; i < UTF8Bytes.Length; i++)
                 {
-                    if (isSpecialKey(asciiBytes[i]))
+                    if (isSpecialKey(UTF8Bytes[i]))
                         return false;
                 }
 
@@ -191,6 +191,7 @@ namespace DoAnLTTQ.Components
 
             return false;
         }
+        
 
         private bool isValidAgeInput(string ageString)
         {
@@ -231,7 +232,7 @@ namespace DoAnLTTQ.Components
             }
             else
             {
-                byte[] asciiBytes = Encoding.ASCII.GetBytes(input);
+                byte[] asciiBytes = Encoding.UTF8.GetBytes(input);
 
                 for (int i = 0; i < asciiBytes.Length; i++)
                 {
