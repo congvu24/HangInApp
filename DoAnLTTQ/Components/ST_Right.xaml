@@ -12,10 +12,10 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="70"/>
-            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Foreground" Value="LightCoral"/>
             <Setter Property="Content" Value="+"/>
             <Setter Property="Height" Value="160"/>
-            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderThickness" Value="2" />
             <Setter Property="FontSize" Value="70" />
             <Setter Property="Width" Value="115" />
             <Setter Property="Margin" Value="20" />
@@ -61,7 +61,7 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Effect">
                         <Setter.Value>
-                            <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="LightGray"/>
+                            <DropShadowEffect BlurRadius="0" ShadowDepth="1" Color="LightGray"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -70,7 +70,7 @@
 
     </UserControl.Resources>
 
-    <Border BorderThickness="0.5" Width="500" Height="670" CornerRadius="10" Background="#FFF9F7F3" Padding="3">
+    <Border BorderThickness="0.5" Width="500" Height="670" CornerRadius="10" Background="{DynamicResource ApplicationBackgroundDarkBursh}" Padding="3" Cursor="Hand" BorderBrush="#FF0E0D0D">
         <Border.Effect>
             <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
         </Border.Effect>
@@ -90,18 +90,26 @@
                             Template="{DynamicResource SlotImage}"
                             HorizontalContentAlignment="Center" 
                             VerticalContentAlignment="Center"
-                            Content="+"
                             Click="Slot_Click"
                                 >
                                 <Button.Resources>
                                     <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="15"/>
+                                        <Setter Property ="CornerRadius" Value="16"/>
                                     </Style>
                                 </Button.Resources>
                                 <Button.Background>
                                     <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
                                 </Button.Background>
+                                <Button.Content>
+                                    <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth2">
+                                        <Button.Content>
+                                            <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
+                                        </Button.Content>
+                                    </Button>
+                                </Button.Content>
                             </Button>
+                           
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

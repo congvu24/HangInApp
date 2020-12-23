@@ -10,7 +10,7 @@
 
 
         <Style TargetType="Border" x:Key="MyMessageBorder">
-            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="CornerRadius" Value="16 16 0,16"/>
             <Setter Property="Margin" Value="30,10,0,0"/>
             <Setter Property="Padding" Value="16 8"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -46,19 +46,5 @@
             </Border.Background>
 
         </Border>
-        <Path 
-                              Stroke="Black"
-                              Panel.ZIndex="-1"
-                            
-                              Data="M 0 0 L 0 36 L -16 36 L 0 16" 
-                              StrokeThickness="0" HorizontalAlignment="Right" Stretch="Fill" Width="20" Margin="0,10,0,0">
-            <Path.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="#ff7854" Offset="0.2" />
-                    <GradientStop Color="#fd267d" Offset="1.0" />
-                </LinearGradientBrush>
-            </Path.Fill>
-        </Path>
-
     </Grid>
 </UserControl>

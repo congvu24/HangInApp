@@ -66,7 +66,7 @@
         </Grid>
         <!--Avatar va ten partnerday-->
         <Grid Grid.Row="0" Background="Transparent">
-            <Border CornerRadius="6" Background="{StaticResource ApplicationBackgroundDarkBursh}" Opacity="0.5" Margin="24,16"/>
+            <Border CornerRadius="6" Background="{StaticResource ApplicationBackgroundDarkBursh}" Opacity="0.5" Margin="24,16" BorderThickness="2" BorderBrush="{StaticResource ApplicationBackgroundDarkBursh}" />
             <WrapPanel VerticalAlignment="Center"  Margin="28,16" HorizontalAlignment="Center">
 
                 <!--<Border Grid.Column="0" CornerRadius="20" Background="White">
@@ -76,7 +76,7 @@
                         </Image.Clip>
                     </Image>
                 </Border>-->
-                <materialDesign:Chip IconBackground="{x:Null}" MinHeight="40" MinWidth="60">
+                <materialDesign:Chip IconBackground="{x:Null}" MinHeight="40" MinWidth="60" >
                     <TextBlock Text="{Binding name}" x:Name="txtName" FontSize="16" FontWeight="Bold"/>
                     <materialDesign:Chip.Icon>
                         <Image Source="{Binding avatar.buffer}"/>

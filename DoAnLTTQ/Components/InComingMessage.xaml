@@ -8,8 +8,8 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="Border" x:Key="PartnerMessageBorder">
-            <Setter Property="Background" Value="#f5f7f6"/>
-            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Background" Value="{StaticResource MessageViewHeaderBursh}"/>
+            <Setter Property="CornerRadius" Value="16 16 16 0"/>
             <Setter Property="Margin" Value="0,10,30,0"/>
             <Setter Property="Padding" Value="16 8"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -28,17 +28,9 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
-        
-        <Border Grid.Column="1" x:Name="PartnerMessage" MinWidth="36" Style="{StaticResource PartnerMessageBorder}" Width="auto" MinHeight="36">
-            <emoji:TextBlock x:Name="PartnerMessageContent" Style="{StaticResource partnerMessageContent}" />
-        </Border>
-        <Path 
-                              Stroke="Black"
-                              Panel.ZIndex="-1"
-                              Grid.Column="1"            
-                              Data="M 0 0 L 0 36 L 16 36 L 0 16" 
-                              StrokeThickness="0"
-                            Fill="#f5f7f6" HorizontalAlignment="Left" Stretch="Fill" Width="20" Margin="0,10,0,0"/>
 
+        <Border Grid.Column="1" x:Name="PartnerMessage" MinWidth="36" Style="{StaticResource PartnerMessageBorder}" Width="auto" MinHeight="36">
+            <emoji:TextBlock x:Name="PartnerMessageContent" Style="{StaticResource partnerMessageContent}" Text="Some visualize text" />
+        </Border>
     </Grid>
 </UserControl>

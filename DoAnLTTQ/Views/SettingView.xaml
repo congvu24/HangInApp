@@ -27,7 +27,7 @@
                 x:Name="navbarsetting"
                 myProfile="{Binding profile}" Loaded="navbarsetting_Loaded_1"/>
         </Grid>
-        <Grid Grid.Column="1" Background="#f5f7fa">
+        <Grid Grid.Column="1" Background="{StaticResource AppicationBackgroundBursh}">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>

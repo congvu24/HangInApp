@@ -5,14 +5,18 @@
     <Color x:Key="ButtonColor">#31326f</Color>
 
 
-    <Color x:Key="ApplicationBackground">#ffdada</Color>
+    <!--<Color x:Key="ApplicationBackground">#ffdada</Color>-->
+    <Color x:Key="ApplicationBackground">#f7f5f6</Color>
     <SolidColorBrush x:Key="AppicationBackgroundBursh" Color="{StaticResource ApplicationBackground}"/>
 
 
-    <Color x:Key="ApplicationBackgroundDark">#f0b1b1</Color>
+    <!--<Color x:Key="ApplicationBackgroundDark">#f0b1b1</Color>-->
+    <Color x:Key="ApplicationBackgroundDark">#fefffc</Color>
     <SolidColorBrush x:Key="ApplicationBackgroundDarkBursh" Color="{StaticResource ApplicationBackgroundDark}"/>
 
     <Color x:Key="MessageViewBackground">#fffafa</Color>
     <SolidColorBrush x:Key="MessageViewBackgroundBursh" Color="{StaticResource MessageViewBackground}"/>
 
+    <Color x:Key="MessageViewHeader">#fffafa</Color>
+    <SolidColorBrush x:Key="MessageViewHeaderBursh" Color="{StaticResource MessageViewBackground}"/>
 </ResourceDictionary>
