@@ -55,17 +55,20 @@ namespace DoAnLTTQ.Components
 
             TextBox tb = new TextBox();
 
-            //activeIp = "10.10.233.158";
-            sv = new Server();
+            //sv = new Server();
+            //sv.myDelegate = new Server.handleReceiveMessage(this.receiveMessage);
+            //try
+            //{
+            //    listenMessage = new Thread(sv.ListenMessage);
+            //    listenMessage.IsBackground = true;
+            //    //listenMessage.Start();
+            //}
+            //catch
+            //{
+
+            //}
 
             this.Dispatcher.ShutdownStarted += Dispatcher_ShutdownStarted;
-
-            sv.myDelegate = new Server.handleReceiveMessage(this.receiveMessage);
-
-            listenMessage = new Thread(sv.ListenMessage);
-            listenMessage.IsBackground = true;
-
-            listenMessage.Start();
 
             guests = new GuestProfile();
             list = guests.LoadArrayProfile();
@@ -139,11 +142,11 @@ namespace DoAnLTTQ.Components
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
         {
-            this.sv.DisconnectAll();
+            //this.sv.DisconnectAll();
         }
         public void Unmmount()
         {
-            this.sv.DisconnectAll();
+            //this.sv.DisconnectAll();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

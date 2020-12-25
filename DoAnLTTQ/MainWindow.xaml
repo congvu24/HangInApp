@@ -8,9 +8,11 @@
         x:Class="DoAnLTTQ.MainWindow" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="Seoge UI" mc:Ignorable="d" Title="HangInApp - Connect with your Lover" Height="720" Width="1280"
         xmlns:component="clr-namespace:DoAnLTTQ.Components"
         xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
+        xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
         xmlns:view="clr-namespace:DoAnLTTQ.Views"  Icon="/Resources/icon/Logo.png" ResizeMode="CanMinimize"
         >
     <Grid>
         <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>
+        <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="3"/>
     </Grid>
 </Window>

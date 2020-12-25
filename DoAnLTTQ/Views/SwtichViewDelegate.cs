@@ -17,6 +17,7 @@ namespace DoAnLTTQ.Views
     }
 
     public delegate void SwitchViewHandler();
+    public delegate void NotifyHandler(String content);
     public delegate void ClickOnButtonHandler(ViewEnum viewEnum); 
    
 }

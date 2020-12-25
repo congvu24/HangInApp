@@ -23,6 +23,9 @@
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
         public event SwitchViewHandler OnSwitchView;
+        public event NotifyHandler ShowNotify;
+        public Thread listenMessage;
+        public Boolean IsHome = true;
         Server sv;
         public UserControl _ViewContext;
         public UserControl ViewContext
@@ -85,28 +88,42 @@
             server.IsBackground = true;
             server.Start();
 
+            sv.myDelegate = new Server.handleReceiveMessage(this.receiveMessage);
+            listenMessage = new Thread(sv.ListenMessage);
+            listenMessage.IsBackground = true;
+            listenMessage.Start();
+
             sv.SendRequestMessage();
         }
 
+        [Obsolete]
         private void NavbarMain_ButtonSwitchViewOnClick(ViewEnum viewEnum)
         {
             infoMain.NotifyProfile += new EventHandler<int>(HighlightSelectedProfile);
 
             if (viewEnum == ViewEnum.SettingView)
             {
+                IsHome = false;
                 if (OnSwitchView != null)
                     OnSwitchView();
+
             }
             else if (viewEnum == ViewEnum.MessageView)
             {
+                IsHome = false;
                 this.ViewContext = new MessageView_MessageDetails();
+                sv.myDelegate = new Server.handleReceiveMessage(((this.ViewContext) as MessageView_MessageDetails).receiveMessage);
             }
             else if (viewEnum == ViewEnum.QuanhDayView)
             {
                 try
                 {
+                    IsHome = true;
                     ((MessageView_MessageDetails)this.ViewContext).Unmmount();
                     infoMain.indexHomePicture = 0;
+                    sv.myDelegate = new Server.handleReceiveMessage(this.receiveMessage);
+                    listenMessage.Resume();
+
                     Reload_Guest();
                 }
                 catch
@@ -190,6 +207,13 @@
         public void HighlightSelectedProfile(object sender, int index)
         {
             NavBarMain.gridProfile.HighlightButton(index);
+        }
+        public void receiveMessage(string content)
+        {
+            //if (IsHome == true)
+            //{
+                ShowNotify(content);
+            //}
         }
 
     }

@@ -27,7 +27,6 @@ namespace DoAnLTTQ.Backend
         public Socket MessageListener;
         public TcpListener ProfileListener;
 
-
         public void DisconnectAll()
         {
             if (this.MessageListener!= null)
@@ -37,6 +36,13 @@ namespace DoAnLTTQ.Backend
             if(this.ProfileListener != null)
             {
                 ProfileListener.Stop();
+            }
+        }
+        public void DisconnectMessage()
+        {
+            if (this.MessageListener != null)
+            {
+                MessageListener.Close();
             }
         }
         public void ListenProfile()
@@ -139,8 +145,7 @@ namespace DoAnLTTQ.Backend
 
         public void ListenMessage()
         {
-            try
-            {
+           
                 var localIp = IPAddress.Any;
                 var localPort = 1309;
                 var localEndPoint = new IPEndPoint(localIp, localPort);
@@ -161,10 +166,7 @@ namespace DoAnLTTQ.Backend
                     socket.Close();
                     Array.Clear(receiveBuffer, 0, size); 
                 }
-            }
-            catch 
-            {
-            }
+           
 
     }
     

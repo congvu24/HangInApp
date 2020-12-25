@@ -21,6 +21,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using Notifications.Wpf;
+using System.Media;
 
 namespace DoAnLTTQ
 {
@@ -38,7 +40,7 @@ namespace DoAnLTTQ
         public LoginView myLoginView = new LoginView();
         public CreateProfileView myCreateProfileView = new CreateProfileView();
         public WellcomeScreen myWellcomeScreen = new WellcomeScreen();
-
+        public NotificationManager notificationManager = new NotificationManager();
         public UserControl _ViewContext;
         public UserControl ViewContext
         {
@@ -52,10 +54,11 @@ namespace DoAnLTTQ
         public MainWindow()
         {
             InitializeComponent();
-
+            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             this.ViewContext = myWellcomeScreen;
             this.DataContext = this;
             myMainView.OnSwitchView += MyHomeView_OnSwitchToSettingView;
+            myMainView.ShowNotify += ShowNotifyNe;
             mySettingView.OnSwitchView += SettingView_OnSwitchViewToMainView;
             myLoginView.switchView += new EventHandler(LoginView_OnSwitchViewToCreateProileView);
             myCreateProfileView.SwitchToMainView += new EventHandler(CreateProfileView_OnSwitchViewToMainView);
@@ -118,6 +121,16 @@ namespace DoAnLTTQ
         private void OnWindowclose(object sender, EventArgs e)
         {
             Environment.Exit(Environment.ExitCode); 
+        }
+        private void ShowNotifyNe(string content)
+        {
+            notificationManager.Show(new NotificationContent
+            {
+                Title = "New Message",
+                Message = content,
+                Type = NotificationType.Success
+            });
+            SystemSounds.Beep.Play();
         }
 
     }
