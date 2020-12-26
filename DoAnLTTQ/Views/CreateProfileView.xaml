@@ -22,6 +22,16 @@
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
+
+        <Style x:Key="textBox" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+            <Setter Property="Width" Value="194"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0,0,0,2"/>
+            <Setter Property="Padding" Value="4,0,0,0"/>
+            <Setter Property="BorderBrush" Value="#707070"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        
         <!--placehoder-->
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="Transparent"/>
@@ -216,7 +226,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="textBlock_Copy">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="105"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="150"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
@@ -236,7 +246,7 @@
             <BeginStoryboard x:Name="header2in_BeginStoryboard1" Storyboard="{StaticResource header2in}"/>
         </EventTrigger>
     </UserControl.Triggers>
-    <Grid x:Name="grid5" Background="#FFF9F7F3" Width="1280" Height="720" RenderTransformOrigin="0.5,0.5">
+    <Grid x:Name="grid5" Background="{StaticResource AppicationBackgroundBursh}" Width="1280" Height="720" RenderTransformOrigin="0.5,0.5">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -245,7 +255,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Height="85.615" TextWrapping="Wrap" Text="Let's create your profile" VerticalAlignment="Top" Width="375" FontSize="36"  Margin="450,-110.615,455,0" RenderTransformOrigin="0.5,0.5">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Height="86" TextWrapping="Wrap" Text="Let's create your profile" VerticalAlignment="Top" Width="406" FontSize="36" FontWeight="SemiBold" Margin="438,-111,436,0" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -274,13 +284,7 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <Grid Margin="0,0,40,30">
-                    <TextBox x:Name="nameInput" Style="{StaticResource placeHolder}" Tag="--Your name--" TextWrapping="Wrap" Width="390" FontSize="16" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
-                        <TextBox.SelectionBrush>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFFF7854" Offset="0"/>
-                                <GradientStop Color="#FFFD267D" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBox.SelectionBrush>
+                    <TextBox x:Name="Name" Style="{StaticResource textBox}" Tag="--Your name--" TextWrapping="Wrap" Width="390" FontSize="16" HorizontalAlignment="Left" Margin="70,0,0,0">
                     </TextBox>
                     <TextBlock  HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0"/>
                 </Grid>
@@ -296,7 +300,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <TextBox x:Name="ageInput" Style="{StaticResource placeHolder}" Tag="--Age--" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  SelectionBrush="{x:Null}" CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0" Height="45"/>
+                    <TextBox x:Name="Age" Style="{StaticResource textBox}" Tag="--Age--" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  HorizontalAlignment="Left" Margin="70,0,0,0" Height="45"/>
                     <TextBlock  HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Top" Width="70" Margin="0,5,0,0"/>
                     <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorAgeInput"/>
                 </Grid>
@@ -332,13 +336,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <TextBox x:Name="hobbyInput" Style="{StaticResource placeHolder}" Tag="--Your hobby--" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  CaretBrush="#FFB5E2FA" HorizontalAlignment="Left" Margin="70,0,0,0">
-                        <TextBox.SelectionBrush>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="Black" Offset="0"/>
-                                <GradientStop Color="White" Offset="0.5"/>
-                            </LinearGradientBrush>
-                        </TextBox.SelectionBrush>
+                    <TextBox x:Name="Hobby" Style="{StaticResource textBox}" Tag="--Your hobby--" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  HorizontalAlignment="Left" Margin="70,0,0,0">
                     </TextBox>
                     <TextBlock HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Hobby:" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0"/>
                     <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorHobbyInput"/>
@@ -444,7 +442,7 @@
                 <ImageBrush x:Name="avatarControl"/>
             </Border.Background>
         </Border>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Center" Height="85.615" TextWrapping="Wrap" Text="Select your profile Picture" VerticalAlignment="Top" Width="410" FontSize="36"  Margin="450,-110.615,420,0" RenderTransformOrigin="0.5,0.5">
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Center" Height="86" TextWrapping="Wrap" Text="Select your profile picture" VerticalAlignment="Top" Width="444" FontSize="36" FontWeight="SemiBold" Margin="428,-111,408,0" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

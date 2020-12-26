@@ -36,6 +36,15 @@ namespace DoAnLTTQ
         public CreateProfileView()
         {
             InitializeComponent();
+
+            Name.GotFocus += RemoveText;
+            Age.GotFocus += RemoveText;
+            Hobby.GotFocus += RemoveText;
+
+            Name.LostFocus += AddText;
+            Age.LostFocus += AddText;
+            Hobby.LostFocus += AddText;
+
             UpdateNotification.Text = "Create profile failed, check your profile again";
         }
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -63,10 +72,10 @@ namespace DoAnLTTQ
 
             Profile newProfile = new Profile()
             {
-                name = nameInput.Text,
-                age = ageInput.Text,
+                name = Name.Text,
+                age = Age.Text,
                 sex = sexSelect.SelectedIndex.ToString(),
-                hobby = hobbyInput.Text,
+                hobby = Hobby.Text,
                 avatar = new Picture()
                 {
                     name = "avatar",
@@ -101,7 +110,7 @@ namespace DoAnLTTQ
 
         private bool isValidInputInformation()
         {
-            if (!isValidNameInput(nameInput.Text))
+            if (!isValidNameInput(Name.Text))
             {
                 errorNameInput.Visibility = Visibility.Visible;
                 errorNameInput.Text = "Vui lòng nhập tên hợp lệ! ";
@@ -111,7 +120,7 @@ namespace DoAnLTTQ
                 errorNameInput.Visibility = Visibility.Hidden;
             }
 
-            if (!isValidAgeInput(ageInput.Text))
+            if (!isValidAgeInput(Age.Text))
             {
                 errorAgeInput.Visibility = Visibility.Visible;
                 errorAgeInput.Text = "Vui lòng nhập tuổi hợp lệ! ";
@@ -131,7 +140,7 @@ namespace DoAnLTTQ
                 errorGenderInput.Visibility = Visibility.Hidden;
             }
 
-            if (!isValidHobbyInput(hobbyInput.Text))
+            if (!isValidHobbyInput(Hobby.Text))
             {
                 errorHobbyInput.Visibility = Visibility.Visible;
                 errorHobbyInput.Text = "Vui lòng nhập sở thích hợp lệ";
@@ -153,7 +162,7 @@ namespace DoAnLTTQ
 
         private bool isValidNameInput(string input)
         {
-            if (String.IsNullOrWhiteSpace(input))
+            if (String.IsNullOrWhiteSpace(input) || input == "Name")
             {
                 return false;
             }
@@ -224,6 +233,7 @@ namespace DoAnLTTQ
             }
             else
             {
+                if (input == "Hobby") return false;
                 byte[] asciiBytes = Encoding.UTF8.GetBytes(input);
 
                 for (int i = 0; i < asciiBytes.Length; i++)
@@ -233,6 +243,25 @@ namespace DoAnLTTQ
                 }
 
                 return true;
+            }
+        }
+        public void RemoveText(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb.Text == tb.Name)
+            {
+                tb.Text = "";
+            }
+        }
+
+        public void AddText(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(tb.Text))
+            {
+                tb.Text = "";
+                tb.Text = tb.Name;
+
             }
         }
     }

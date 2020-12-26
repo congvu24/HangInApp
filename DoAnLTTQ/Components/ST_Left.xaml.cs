@@ -168,7 +168,7 @@ namespace DoAnLTTQ.Components
 
         private bool isValidNameInput(string input)
         {
-            if (input.Length < 1)
+            if (String.IsNullOrEmpty(input) || input == "Name")
             {
                 return false;
             }
@@ -240,6 +240,7 @@ namespace DoAnLTTQ.Components
             }
             else
             {
+                if (input == "Hobby") return false;
                 byte[] asciiBytes = Encoding.UTF8.GetBytes(input);
 
                 for (int i = 0; i < asciiBytes.Length; i++)
