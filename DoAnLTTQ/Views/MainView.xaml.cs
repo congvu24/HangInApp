@@ -208,12 +208,13 @@
         {
             NavBarMain.gridProfile.HighlightButton(index);
         }
-        public void receiveMessage(string content)
+        public void receiveMessage(string ip, string content)
         {
-            //if (IsHome == true)
-            //{
+            var guest = new GuestProfile();
+            if(guest.isExist(ip) == true)
+            {
                 ShowNotify(content);
-            //}
+            }
         }
 
     }

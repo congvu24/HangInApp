@@ -229,6 +229,23 @@
 
             }
         }
+        public bool isExist(string ip)
+        {
+            try
+            {
+                this.LoadArrayProfile();
+                int indexOfIP = listGuestProfile.FindIndex(x => x.ip == ip);
+                if (indexOfIP >= 0 && this.listGuestProfile[indexOfIP].isLove == true)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 
     [Serializable]

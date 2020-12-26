@@ -55,18 +55,7 @@ namespace DoAnLTTQ.Components
 
             TextBox tb = new TextBox();
 
-            //sv = new Server();
-            //sv.myDelegate = new Server.handleReceiveMessage(this.receiveMessage);
-            //try
-            //{
-            //    listenMessage = new Thread(sv.ListenMessage);
-            //    listenMessage.IsBackground = true;
-            //    //listenMessage.Start();
-            //}
-            //catch
-            //{
-
-            //}
+            sv = new Server();
 
             this.Dispatcher.ShutdownStarted += Dispatcher_ShutdownStarted;
 
@@ -119,18 +108,22 @@ namespace DoAnLTTQ.Components
                         }
                     }
                 );
-                    messagePanel.Children.Add(new MyMessage(content));
                     sendThread.IsBackground = true;
                     sendThread.Start();
+                    messagePanel.Children.Add(new MyMessage(content));
                 }
             }
         }
-        public void receiveMessage(string content)
+        public void receiveMessage(string ip, string content)
         {
-            this.Dispatcher.Invoke(() =>
+            var guest = new GuestProfile();
+            if (guest.isExist(ip) == true && ip == activeGuest.ip)
             {
-                messagePanel.Children.Add(new InComingMessage(content));
-            });
+                this.Dispatcher.Invoke(() =>
+                {
+                    messagePanel.Children.Add(new InComingMessage(content));
+                });
+            }
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)

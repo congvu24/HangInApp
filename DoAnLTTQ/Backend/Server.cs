@@ -20,7 +20,7 @@ namespace DoAnLTTQ.Backend
 {
     public class Server
     {
-        public delegate void handleReceiveMessage(string content);
+        public delegate void handleReceiveMessage(string ip, string content);
 
         public handleReceiveMessage myDelegate;
 
@@ -64,7 +64,7 @@ namespace DoAnLTTQ.Backend
         {
             try
             {
-
+               Console.WriteLine("send");
             User user = new User();
             GuestProfile u = new GuestProfile(user);
             var localIp = "";
@@ -161,8 +161,9 @@ namespace DoAnLTTQ.Backend
                     var socket = MessageListener.Accept();
                     var length = socket.Receive(receiveBuffer);
                     socket.Shutdown(SocketShutdown.Receive);
+                    var ip = socket.RemoteEndPoint.ToString().Split(':')[0];
                     var text = Encoding.UTF8.GetString(receiveBuffer, 0, length);
-                    this.myDelegate(text);
+                    this.myDelegate(ip,text);
                     socket.Close();
                     Array.Clear(receiveBuffer, 0, size); 
                 }
