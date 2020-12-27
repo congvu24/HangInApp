@@ -8,7 +8,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="Border" x:Key="PartnerMessageBorder">
-            <Setter Property="Background" Value="{StaticResource MessageViewHeaderBursh}"/>
+            <Setter Property="Background" Value="{StaticResource GlobalGrayBrush}"/>
             <Setter Property="CornerRadius" Value="16 16 16 0"/>
             <Setter Property="Margin" Value="0,10,30,0"/>
             <Setter Property="Padding" Value="16 8"/>

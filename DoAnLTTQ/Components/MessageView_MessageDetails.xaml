@@ -56,7 +56,7 @@
             <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.RowSpan="3" Background="{StaticResource AppicationBackgroundBursh}">
+        <Grid Grid.RowSpan="3" Background="{StaticResource MessageViewBackgroundBrush}">
             <!--<Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#fd267d" Offset="0.0" />
@@ -118,11 +118,11 @@
                     <materialDesign:PackIcon Kind="StickerEmoji"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
 
                     <StackPanel Background ="Transparent">
-                        <Popup x:Name="myPopup" StaysOpen="false" PopupAnimation="Fade" >
+                        <Popup x:Name="myPopup" StaysOpen="false" PopupAnimation="Slide" >
                             <Grid Background="Transparent">
                             <!--background-->
                                 <Border Background="WhiteSmoke" CornerRadius="8" BorderThickness="0" BorderBrush="Transparent"/>
-                            <WrapPanel Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"  Orientation="Horizontal" x:Name="emojiPanel" Height="300" Width="300">
+                                <WrapPanel Background="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center"  Orientation="Horizontal" x:Name="emojiPanel" Height="300" Width="300">
                                 <Button Click="Button_Click_1" Width="50" Height="50" Background="Transparent" BorderThickness="0">
                                     <emoji:TextBlock Text="😀" />
                                 </Button>
@@ -238,7 +238,7 @@
                     </StackPanel>
 
                     <!--Nhap tin nhan vao day ne-->
-                    <Border Grid.Column="1" Padding="2 0" Background="Transparent" CornerRadius="8" BorderThickness="1">
+                    <Border Grid.Column="1" Padding="2 0" Background="{StaticResource GlobalGrayBrush}" CornerRadius="8" BorderThickness="1">
                         <emoji:RichTextBox x:Name="TextToSend" VerticalAlignment="Center" Foreground="Black" Style="{StaticResource TextToSendMessage }" Background="Transparent" PreviewKeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
                     </Border>
 

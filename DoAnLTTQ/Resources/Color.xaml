@@ -14,9 +14,22 @@
     <Color x:Key="ApplicationBackgroundDark">#fefffc</Color>
     <SolidColorBrush x:Key="ApplicationBackgroundDarkBursh" Color="{StaticResource ApplicationBackgroundDark}"/>
 
-    <Color x:Key="MessageViewBackground">#fffafa</Color>
-    <SolidColorBrush x:Key="MessageViewBackgroundBursh" Color="{StaticResource MessageViewBackground}"/>
+    <!--<Color x:Key="MessageViewBackground">#fffafa</Color>
+    <SolidColorBrush x:Key="MessageViewBackgroundBursh" Color="{StaticResource MessageViewBackground}"/>-->
 
     <Color x:Key="MessageViewHeader">#fffafa</Color>
-    <SolidColorBrush x:Key="MessageViewHeaderBursh" Color="{StaticResource MessageViewBackground}"/>
+    <SolidColorBrush x:Key="MessageViewHeaderBursh" Color="{StaticResource MessageViewHeader}"/>
+
+    <Color x:Key="MessageViewBackground">#ffffff</Color>
+    <SolidColorBrush x:Key="MessageViewBackgroundBrush" Color="{StaticResource MessageViewBackground}"/>
+
+    <Color x:Key="GlobalGray">#E8E8E8</Color>
+    <SolidColorBrush x:Key="GlobalGrayBrush" Color="{StaticResource GlobalGray}"/>
+
+    <Color x:Key="ImageSlot">#fcdada</Color>
+    <SolidColorBrush x:Key="ImageSlotBrush" Color="{StaticResource ImageSlot}"/>
+
+    <Color x:Key="ImageSlotBorderStroke">#ffa5a5</Color>
+    <SolidColorBrush x:Key="ImageSlotBorderStrokeBrush" Color="{StaticResource ImageSlotBorderStroke}"/>
+
 </ResourceDictionary>
