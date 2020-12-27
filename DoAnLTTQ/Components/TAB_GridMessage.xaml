@@ -12,7 +12,6 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
             <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="FontFamily" Value="Comic Sans MS" />
         </Style>
 
         <Style x:Key="myChatButton" TargetType="Button">
@@ -114,11 +113,10 @@
 
                             <!--Main content-->
                             <Border Grid.Column="1" Padding="4">
-                                <StackPanel VerticalAlignment="Center">
-                                    <Viewbox StretchDirection="DownOnly">
-                                        <TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}"/>
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    <Viewbox StretchDirection="DownOnly" HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding name}" TextTrimming="CharacterEllipsis" TextWrapping="WrapWithOverflow" Style="{StaticResource myMessageName}"/>
                                     </Viewbox>
-
                                     <TextBlock Text="{Binding ip}" 
                            TextTrimming="CharacterEllipsis"/>
                                 </StackPanel>
