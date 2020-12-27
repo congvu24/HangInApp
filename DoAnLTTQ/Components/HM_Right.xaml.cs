@@ -30,11 +30,12 @@ namespace DoAnLTTQ.Components
         public event EventHandler<int> NotifyProfile;
         public bool IsSaveComplete = false;
 
-        byte[] avatar;
+        public byte[] avatar1;
         public GuestProfile specialGuest = new GuestProfile();
         private int _profileIndex; // index of profile in list profile to show on screen
         public int indexHomePicture = 0;
         public string profileIp;
+      
 
         public int profileIndex
         {
@@ -84,9 +85,10 @@ namespace DoAnLTTQ.Components
             info_name.Text = specialGuest.listGuestProfile[id].name;
             info_age.Text = specialGuest.listGuestProfile[id].age;
             info_hobby.Text = specialGuest.listGuestProfile[id].hobby;
+          
 
             profileIp = specialGuest.listGuestProfile[id].ip;
-            this.indexHomePicture = id;
+            //this.indexHomePicture = id;
         }
 
 
@@ -148,6 +150,7 @@ namespace DoAnLTTQ.Components
 
         private void ShowInformationToHomeView(int index)
         {
+            profileIp = specialGuest.listGuestProfile[index].ip;
             try
             {
                 //if (NotifyProfile != null)
@@ -160,8 +163,8 @@ namespace DoAnLTTQ.Components
 
             try
             {
-                this.avatar = specialGuest.listGuestProfile[index].avatar.buffer;
-                img.ImageSource = Common.LoadImage(avatar);
+                this.avatar1 = specialGuest.listGuestProfile[index].avatar.buffer;
+                img.ImageSource = Common.LoadImage(avatar1);
                 info_name.Text = specialGuest.listGuestProfile[index].name;
                 info_age.Text = specialGuest.listGuestProfile[index].age;
                 info_hobby.Text = specialGuest.listGuestProfile[index].hobby;
@@ -216,7 +219,9 @@ namespace DoAnLTTQ.Components
         private void sendFriendRq_Click(object sender, RoutedEventArgs e)
         {
             GuestProfile guest = new GuestProfile();
+            //guest.LikeProfile(profileIp);
             guest.LikeProfile(profileIp);
+
             animation();
 
         }
@@ -237,6 +242,6 @@ namespace DoAnLTTQ.Components
             sendFriendRq.IsChecked = false;
 
         }
-
     }
 }
+

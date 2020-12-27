@@ -263,7 +263,7 @@
                                             BorderThickness="0"
                                             Width="40"
                                             Height="40"
-                                            ToolTip="Profile setting"
+                                            ToolTip="Back to Home"
                                             Grid.Column="0"
                            >
                         </Button>
@@ -271,7 +271,7 @@
                      
                         <!--<Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>-->
                             <Viewbox Grid.Column="1" MaxWidth="210"                                    StretchDirection="DownOnly" >
-                                <TextBlock MinWidth="35" Style="{StaticResource backBtnTitle}"  Text="{Binding Path=myProfile.name}" x:Name="ProfileHeaderName" Height="auto">c</TextBlock>
+                                <TextBlock MinWidth="35" Style="{StaticResource backBtnTitle}"  Text="{Binding Path=myProfile.name}" x:Name="ProfileHeaderName" Height="auto"/>
                             </Viewbox>
                         </Grid>
                     </Button>

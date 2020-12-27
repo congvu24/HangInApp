@@ -18,7 +18,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="FontSize" Value="70" />
             <Setter Property="Width" Value="115" />
-            
+
             <!--change hover effect-->
             <Setter Property="Template">
                 <Setter.Value>
@@ -120,15 +120,15 @@
                                     <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
                                 </Button.Background>
                                 <Button.Content>
-                                           
-                                   
+
+
                                     <Button x:Name="content"  Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
                                             materialDesign:ShadowAssist.ShadowDepth="Depth2">
                                         <Button.Content>
                                             <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
                                         </Button.Content>
                                     </Button>
-                                   
+
                                 </Button.Content>
                             </Button>
 

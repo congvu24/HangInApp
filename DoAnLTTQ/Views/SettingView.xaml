@@ -5,16 +5,33 @@
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                xmlns:component="clr-namespace:DoAnLTTQ.Components"
-        >
-    <Grid>
+                xmlns:component="clr-namespace:DoAnLTTQ.Components">
+    <UserControl.Resources>
+        <Storyboard x:Key="OnWindowReload">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="cover">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="cover">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="OnWindowReload_BeginStoryboard" Storyboard="{StaticResource OnWindowReload}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid x:Name="grid" Background="{StaticResource AppicationBackgroundBursh}" Width="1280" Height="680">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="320"/>
             <!-- nav bar -->
-            <ColumnDefinition Width="9* "/>
+            <ColumnDefinition Width="960* "/>
             <!-- main-->
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid x:Name="grid1" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -27,7 +44,8 @@
                 x:Name="navbarsetting"
                 myProfile="{Binding profile}" Loaded="navbarsetting_Loaded_1"/>
         </Grid>
-        <Grid Grid.Column="1" Background="{StaticResource AppicationBackgroundBursh}">
+
+        <Grid x:Name="grid2" Grid.Column="1" Background="{StaticResource AppicationBackgroundBursh}" >
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -40,5 +58,15 @@
                 Grid.ColumnSpan="2"
                 picture="{Binding picture}" Loaded="mainsetting_Loaded"/>
         </Grid>
+        <Grid Grid.ColumnSpan="2" x:Name="cover"  Focusable="False" Background="Red" Visibility="Hidden" Height="680" Width="1280">
+            <materialDesign:PackIcon Kind="AccountCircleOutline" Width="150" Height="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" ForceCursor="False"/>
+        </Grid>
+
+        <Grid Grid.ColumnSpan="2" x:Name="roundedCover" Focusable="False"  Visibility="Visible">
+            <Border x:Name="border" CornerRadius="320" Width="0" Height="0" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
     </Grid>
 </UserControl>
+<!--auto (821) auo 680-->
+    

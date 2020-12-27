@@ -19,6 +19,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Security.Policy;
 using MaterialDesignThemes.Wpf;
+using System.Collections.ObjectModel;
 
 namespace DoAnLTTQ.Components
 {
@@ -31,14 +32,24 @@ namespace DoAnLTTQ.Components
         public event ClickOnButtonHandler OnClickBackButton;
         public string avatarLink { get; set; }
 
-        public String myProfile
+        //public String myProfile
+        //{
+        //    get { return (String)GetValue(profileProperty); }
+        //    set { SetValue(profileProperty, value); }
+        //}
+        //public static readonly DependencyProperty profileProperty =
+        //     DependencyProperty.Register("myProfile", typeof(object),
+        //       typeof(NavBarSetting), new PropertyMetadata(""));
+
+        public Profile myProfile
         {
-            get { return (String)GetValue(profileProperty); }
+            get { return (Profile)GetValue(profileProperty); }
             set { SetValue(profileProperty, value); }
         }
+
         public static readonly DependencyProperty profileProperty =
-             DependencyProperty.Register("myProfile", typeof(object),
-               typeof(NavBarSetting), new PropertyMetadata(""));
+            DependencyProperty.Register("myProfile", typeof(Profile), typeof(NavBarSetting),
+                                        new PropertyMetadata(new Profile()));
 
         public NavBarSetting()
         {

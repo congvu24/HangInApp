@@ -139,7 +139,11 @@ namespace DoAnLTTQ.Components
                 else
                     item.BorderBrush = System.Windows.Media.Brushes.Transparent;
             }
-            
+            //if (ProfileSelected != null)
+            //{
+            //    ProfileSelected(this, index);
+            //}
+
         }
     }
 }

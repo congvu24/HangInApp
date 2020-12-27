@@ -207,8 +207,8 @@
                 </Grid.RowDefinitions>
 
                 <Border BorderBrush="#D1DDE3" BorderThickness="0 0 0 0" Height="84">
-                   
-                        <Button Height="86" Padding="0" x:Name="ToSettingViewButton" Click="ToSettingViewButton_Click" Background="Transparent" BorderThickness="0">
+
+                    <Button Height="86" Padding="0" x:Name="ToSettingViewButton" Click="ToSettingViewButton_Click" Background="Transparent" BorderThickness="0" ToolTip="Go to profile setting">
 
                             <Grid Width="320" x:Name="profile" Height="86">
                                 <Grid.ColumnDefinitions>
@@ -223,7 +223,7 @@
                                             BorderThickness="0"
                                             Width="40"
                                             Height="40"
-                                    ToolTip="Profile setting"
+                                    
                                             Grid.Column="0">
                                   
     

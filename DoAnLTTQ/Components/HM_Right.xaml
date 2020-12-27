@@ -9,14 +9,15 @@
              d:DesignHeight="680" d:DesignWidth="960">
 
     <UserControl.Resources>
-        <Style x:Key="infoTextBox" TargetType="TextBox">
+        <Style x:Key="infoTextBox" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <!--<Setter Property="BorderThickness" Value="0"/>-->
             <Setter Property="Margin" Value="4,0,0,8"/>
             <Setter Property="FontSize" Value="15"/>
-            <Setter Property="IsReadOnly" Value="True"/>
-            <Setter Property="Focusable" Value="True"/>
+            <!--<Setter Property="IsReadOnly" Value="True"/>-->
+            <!--<Setter Property="Focusable" Value="True"/>-->
+            <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
 
         <Style x:Key="defaultImageSize" TargetType="Image">
@@ -231,8 +232,28 @@
 
         </Style>
         <Storyboard x:Key="header-in"/>
+        <Storyboard x:Key="OnSwitchProfile">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
 
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="OnSwitchProfile_BeginStoryboard" Storyboard="{StaticResource OnSwitchProfile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="border">
+            <BeginStoryboard x:Name="OnSwitchProfile_BeginStoryboard1" Storyboard="{StaticResource OnSwitchProfile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button">
+            <BeginStoryboard x:Name="OnSwitchProfile_BeginStoryboard2" Storyboard="{StaticResource OnSwitchProfile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button1">
+            <BeginStoryboard x:Name="OnSwitchProfile_BeginStoryboard3" Storyboard="{StaticResource OnSwitchProfile}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
     <Grid KeyboardNavigation.DirectionalNavigation="Once">
         <Grid Background="{StaticResource AppicationBackgroundBursh}" Margin="0" >
             <Grid Height="680" Width="383">
@@ -249,18 +270,23 @@
                     UniformCornerRadius="11">
                     <Grid Height="auto" Width="383 ">
                         <Canvas>
-                            <Border Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0">
+                            <Border x:Name="border" Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="{Binding Path=avatar}" x:Name="img"></ImageBrush>
+                                    <ImageBrush ImageSource="{Binding kavatar1}" x:Name="img"></ImageBrush>
                                 </Border.Background>
 
                                 <Canvas  Style="{StaticResource infoParagraph}" Width="383" Height="auto" >
                                     <Grid x:Name="background" Background="Black" Opacity="0.4" Width="383" Height="100" Canvas.Bottom="0"/>
-                                    <StackPanel Canvas.Bottom="0">
-                                        <TextBox Name="info_name" Style="{StaticResource infoTextBox}"  FontSize="29" FontWeight="Bold"/>
-                                        <TextBox Name="info_age" Style="{StaticResource infoTextBox}"/>
-                                        <TextBox Name ="info_hobby" Style="{StaticResource infoTextBox}"/>
+                                    <!--<Viewbox Canvas.Bottom="0" StretchDirection="DownOnly">-->
+                                    <StackPanel Canvas.Bottom="0" MaxWidth="372">
+                                        <Viewbox MaxWidth="372" StretchDirection="DownOnly">
+                                            <TextBlock Name="info_name" TextWrapping="Wrap" Style="{StaticResource infoTextBox}"                                FontSize="29" FontWeight="Bold"/>
+                                        </Viewbox>
+                                        <TextBlock Name="info_age" Style="{StaticResource infoTextBox}"/>
+                                        
+                                            <TextBlock Name ="info_hobby" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis" Style="{StaticResource infoTextBox}"/>
                                     </StackPanel>
+                                    <!--</Viewbox>-->
                                 </Canvas>
                             </Border>
 
@@ -269,7 +295,7 @@
                             <!--<Button  Canvas.Left="0" Canvas.Top="250" Click="previousProfile" Style="{StaticResource ArrowButton}">
                             <Image Source="/Resources/icon/LeftArrow.png" Style="{StaticResource ArrowImage}"/>
                         </Button>-->
-                            
+
                             <!--<Button x:Name="button" Canvas.Right="0" Canvas.Top="250" Click="nextProfile" Style="{StaticResource ArrowButton}">
                             <Image x:Name="image" Source="/Resources/icon/RightArrow.png" Style="{StaticResource ArrowImage}"/>
                         </Button>-->
@@ -279,14 +305,14 @@
 
                 </materialDesign:Card>
                 <Canvas Grid.Row="0">
-                    <Button Width="60" Height="60"
+                    <Button x:Name="button1" Width="60" Height="60"
                             Style="{StaticResource MaterialDesignIconButton}"
                             Canvas.Left="-65" Canvas.Top="245"
                             Click="previousProfile"
                             ToolTip="Previous profile">
                         <materialDesign:PackIcon Kind="ChevronLeft" Height="60" Width="40" />
                     </Button>
-                    <Button Width="60" Height="60"
+                    <Button x:Name="button" Width="60" Height="60"
                             Style="{StaticResource MaterialDesignIconButton}"
                             Canvas.Top="245"
                             ToolTip="Next profile" Canvas.Left="388"
@@ -294,7 +320,7 @@
                         <materialDesign:PackIcon Kind="ChevronRight" Height="60" Width="40" />
                     </Button>
                 </Canvas>
-                
+
                 <Grid Height="56" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

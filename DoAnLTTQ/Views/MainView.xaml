@@ -7,6 +7,15 @@
              xmlns:local="clr-namespace:DoAnLTTQ.Views" xmlns:component="clr-namespace:DoAnLTTQ.Components" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <UserControl.Resources>
+
+      
+        <Storyboard x:Key="OnReloadWindow">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="container">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    
         <Style x:Key="ReloadButton" TargetType="Button">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="Width" Value="136"/>
@@ -42,9 +51,16 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-
     </UserControl.Resources>
-    <Grid KeyDown="ContentControl_KeyDown">
+    
+    <!--<UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.RequestBringIntoView">
+            <BeginStoryboard Storyboard="{StaticResource OnReloadWindow}"/>
+        </EventTrigger>
+    </UserControl.Triggers>-->
+    
+    
+    <Grid KeyDown="ContentControl_KeyDown" x:Name="container">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <!-- nav bar -->

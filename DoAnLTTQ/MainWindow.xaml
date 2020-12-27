@@ -11,7 +11,21 @@
         xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
         xmlns:view="clr-namespace:DoAnLTTQ.Views"  Icon="/Resources/icon/Logo.png" ResizeMode="CanMinimize"
         >
-    <Grid>
+    <!--<Window.Resources>
+        <Storyboard x:Key="OnReloadWindow">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.RequestBringIntoView">
+            <BeginStoryboard Storyboard="{StaticResource OnReloadWindow}"/>
+        </EventTrigger>
+    </Window.Triggers>-->
+
+    <Grid x:Name="grid">
         <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>
         <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="3"/>
     </Grid>

@@ -115,8 +115,9 @@
                             <!--Main content-->
                             <Border Grid.Column="1" Padding="4">
                                 <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding name}"
-                          Style="{StaticResource myMessageName}"/>
+                                    <Viewbox StretchDirection="DownOnly">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource myMessageName}"/>
+                                    </Viewbox>
 
                                     <TextBlock Text="{Binding ip}" 
                            TextTrimming="CharacterEllipsis"/>
