@@ -30,18 +30,18 @@
             </Setter>
             <!--end-->
         </Style>
-        <Style x:Key="backBtnTitle" TargetType="Label">
+        <Style x:Key="backBtnTitle" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="30"/>
             <!--<Setter Property="Foreground" Value="#ffff"/>-->
-            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Width" Value="237"/>
-            <Setter Property="Height" Value="84"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Grid.Column" Value="2"/>
+            <!--<Setter Property="Width" Value="237"/>
+            <Setter Property="Height" Value="84"/>-->
+            <!--<Setter Property="VerticalContentAlignment" Value="Center"/>-->
+           
             <Setter Property="FontWeight" Value="Medium" />
-            <Setter Property="FontFamily" Value="Comic Sans MS" />
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style x:Key="textBox" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
             <Setter Property="Width" Value="194"/>
@@ -249,11 +249,11 @@
                         </Button>
                         <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
                     </Grid>-->
-                    <Button Click="Button_Click" Padding="0" Width="320" Height="86" Background="Transparent" BorderThickness="0">
-                    <Grid Width="320" x:Name="profile" Height="86" >
+                    <Button Click="Button_Click" Padding="0" Width="320" Height="86" Background="Transparent" BorderThickness="0" >
+                        <Grid Width="320" x:Name="profile" Height="86" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="240"/>
                         </Grid.ColumnDefinitions>
                         <Button
                                            
@@ -270,8 +270,10 @@
                         <materialDesign:PackIcon Kind="HomeOutline" HorizontalAlignment="Center" Width="30" Height="40" Foreground="Beige" Margin="20,23,20,0"/>
                      
                         <!--<Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>-->
-                            <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" x:Name="ProfileHeaderName"  Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"  />
-                    </Grid>
+                            <Viewbox Grid.Column="1" MaxWidth="210"                                    StretchDirection="DownOnly" >
+                                <TextBlock MinWidth="35" Style="{StaticResource backBtnTitle}"  Text="{Binding Path=myProfile.name}" x:Name="ProfileHeaderName" Height="auto">c</TextBlock>
+                            </Viewbox>
+                        </Grid>
                     </Button>
 
 

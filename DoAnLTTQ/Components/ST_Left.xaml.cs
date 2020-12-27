@@ -67,7 +67,7 @@ namespace DoAnLTTQ.Components
             DialogHost.Show(UpdatePanel, "StLeftUpdate");
             if (isValidInputInformation())
             {
-                ProfileHeaderName.Content = Name.Text;
+                ProfileHeaderName.Text = Name.Text;
                 UpdateNotification.Text = "Successful!";
                 OnUserControlButtonClick();
             }

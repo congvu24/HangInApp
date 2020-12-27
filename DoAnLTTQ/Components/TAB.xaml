@@ -48,17 +48,14 @@
             <!--end-->
         </Style>
 
-        <Style x:Key="backBtnTitle" TargetType="Label">
+        <Style x:Key="backBtnTitle" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="30"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Width" Value="237"/>
-            <Setter Property="Height" Value="84"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <!--<Setter Property="VerticalContentAlignment" Value="Center"/>-->
             <Setter Property="FontWeight" Value="Medium" />
-            <Setter Property="FontFamily" Value="Comic Sans MS" />
         </Style>
 
 
@@ -232,10 +229,12 @@
     
                                         </Button>
                                             <materialDesign:PackIcon Kind="AccountCircleOutline" HorizontalAlignment="Center" Width="30" Height="40" Foreground="Beige" Margin="20,23,20,0"/>
-                                <Label Content="{Binding name}" Grid.Column="1" Style="{StaticResource backBtnTitle}" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
-                                        
+                                <!--<Label Content="{Binding name}" Grid.Column="1" Style="{StaticResource backBtnTitle}" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>-->
+                            <Viewbox Grid.Column="1" MaxWidth="210" StretchDirection="DownOnly" >
+                                <TextBlock MinWidth="35" Style="{StaticResource backBtnTitle}"  Text="{Binding name}"  Height="auto"/>
+                            </Viewbox>
 
-                            </Grid>
+                        </Grid>
                         </Button>
 
                   
