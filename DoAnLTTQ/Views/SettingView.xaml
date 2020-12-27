@@ -18,11 +18,6 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
-    <UserControl.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard x:Name="OnWindowReload_BeginStoryboard" Storyboard="{StaticResource OnWindowReload}"/>
-        </EventTrigger>
-    </UserControl.Triggers>
 
     <Grid x:Name="grid" Background="{StaticResource AppicationBackgroundBursh}" Width="1280" Height="680">
         <Grid.ColumnDefinitions>
