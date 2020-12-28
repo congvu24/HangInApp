@@ -37,14 +37,13 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="white" MinHeight="400">
+    <Grid Background="{StaticResource AppicationBackgroundBursh}" MinHeight="400">
         <!--<materialDesign:Card Height="400" Width="290" UniformCornerRadius="4" Background="{StaticResource ApplicationBackgroundDarkBursh}" materialDesign:BottomDashedLineAdorner.Brush="Transparent">-->
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <WrapPanel HorizontalAlignment="Center">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin=" 32 0 32 0">
+            <WrapPanel HorizontalAlignment="Left">
                 <ItemsControl ItemsSource="{Binding}" x:Name="listImage" >
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-
                             <WrapPanel />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>

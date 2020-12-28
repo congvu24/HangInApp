@@ -109,8 +109,12 @@ namespace DoAnLTTQ.Components
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
+                try
+                {
                 this.avatarControl.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             this.avatarLink = openFileDialog.FileName;
+                }
+                catch { }
         }
 
         private void LocaleCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

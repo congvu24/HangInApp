@@ -31,6 +31,8 @@ namespace DoAnLTTQ.Components
         public bool IsSaveComplete = false;
 
         public byte[] avatar1;
+       
+
         public GuestProfile specialGuest = new GuestProfile();
         private int _profileIndex; // index of profile in list profile to show on screen
         public int indexHomePicture = 0;

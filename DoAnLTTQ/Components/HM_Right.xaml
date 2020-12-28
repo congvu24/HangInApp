@@ -272,7 +272,7 @@
                         <Canvas>
                             <Border x:Name="border" Height="520" Width="383" CornerRadius="11" Canvas.Top="0" Canvas.Left="0">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="{Binding kavatar1}" x:Name="img"></ImageBrush>
+                                    <ImageBrush ImageSource="{Binding avatar1}" x:Name="img"></ImageBrush>
                                 </Border.Background>
 
                                 <Canvas  Style="{StaticResource infoParagraph}" Width="383" Height="auto" >
