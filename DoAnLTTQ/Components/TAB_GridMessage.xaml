@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignWidth="320">
     <UserControl.Resources>
-        
+
         <Style TargetType="TextBlock" x:Key="myMessageName">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
@@ -72,8 +72,14 @@
             <Setter Property="Height" Value="50"/>
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
+        <Storyboard x:Key="OnChatProfileSelect"/>
 
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource OnChatProfileSelect}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
 
     <Grid>
 
@@ -93,7 +99,7 @@
                             </Style>
                         </Button.Resources>-->
                         <Grid Width="320" Height="50">
-                            
+
                             <Grid.ColumnDefinitions>
                                 <!--Profile picture-->
                                 <ColumnDefinition Width="auto"/>
