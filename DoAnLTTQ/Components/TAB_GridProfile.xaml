@@ -142,7 +142,7 @@
 
     <Grid Background="{StaticResource AppicationBackgroundBursh}" MinHeight="400">
         <!--<materialDesign:Card Height="400" Width="290" UniformCornerRadius="4" Background="{StaticResource ApplicationBackgroundDarkBursh}" materialDesign:BottomDashedLineAdorner.Brush="Transparent">-->
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin=" 32 0 32 0">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin=" 32 0 0 0">
             <WrapPanel HorizontalAlignment="Left">
                 <ItemsControl ItemsSource="{Binding}" x:Name="listImage" >
                     <ItemsControl.ItemsPanel>
@@ -169,7 +169,7 @@
                             HorizontalContentAlignment="Center" 
                             Style="{StaticResource MaterialDesignRaisedAccentButton}"
                             Width="75"
-                            Margin="8"
+                            Margin="0 0 12 0 "
                             materialDesign:RippleAssist.IsDisabled="True"
                             Height="106"
                             VerticalContentAlignment="Center"
