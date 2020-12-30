@@ -18,6 +18,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.ComponentModel;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 
 namespace DoAnLTTQ.Components
 {
@@ -202,6 +203,23 @@ namespace DoAnLTTQ.Components
                 TextToSend.Document.Blocks.Clear();
                 TextToSend.Document.Blocks.Add(new Paragraph(new Run("" + "Type something")));
             }
+        }
+
+        private void SendImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "All Images Files (*.png;*.jpeg;*.gif;*.jpg;*.bmp;*.tiff;*.tif)|*.png;*.jpeg;*.gif;*.jpg;*.bmp;*.tiff;*.tif" +
+            "|PNG Portable Network Graphics (*.png)|*.png" +
+            "|JPEG File Interchange Format (*.jpg *.jpeg *jfif)|*.jpg;*.jpeg;*.jfif" +
+            "|BMP Windows Bitmap (*.bmp)|*.bmp" +
+            "|TIF Tagged Imaged File Format (*.tif *.tiff)|*.tif;*.tiff" +
+            "|GIF Graphics Interchange Format (*.gif)|*.gif";
+            if (openFileDialog.ShowDialog() == true)
+                try
+                {
+                  
+                }
+                catch { }
         }
     }
 
