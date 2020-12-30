@@ -210,15 +210,18 @@
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
 
+                    <materialDesign:PackIcon Kind="Image" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
+                    <Button Click="SendImage_Click" Background="Transparent" BorderBrush="Transparent"  Width="30" Height="30"/>
 
                     <!--Icon nam day ne-->
-                    <materialDesign:PackIcon Kind="StickerEmoji"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
+                    <materialDesign:PackIcon Kind="StickerEmoji"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
 
-                    <StackPanel Background ="Transparent">
+                    <StackPanel Background ="Transparent" Grid.Column="1">
                         <Popup x:Name="myPopup" StaysOpen="false" PopupAnimation="Slide" >
                             <Grid Background="Transparent">
                             <!--background-->
@@ -339,14 +342,14 @@
                     </StackPanel>
 
                     <!--Nhap tin nhan vao day ne-->
-                    <Border Grid.Column="1" Padding="2 0" Background="{StaticResource GlobalGrayBrush}" CornerRadius="8" BorderThickness="1">
+                    <Border Grid.Column="2" Padding="2 0" Background="{StaticResource GlobalGrayBrush}" CornerRadius="8" BorderThickness="1">
                         <emoji:RichTextBox x:Name="TextToSend" VerticalAlignment="Center" Foreground="Black" Style="{StaticResource TextToSendMessage }" Background="Transparent" PreviewKeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
                     </Border>
 
                     <!--Nut gui tin nhan day ne-->
                     <materialDesign:PackIcon 
                         x:Name="SendButton"
-                        Kind="Send" Margin="5 0 10 0" Grid.Column="2"
+                        Kind="Send" Margin="5 0 10 0" Grid.Column="3"
                    Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Width="26" Height="25"/>
                     <Button Click="SendButton_Click" Grid.Column="2" BorderThickness="0" Background="Transparent"/>
 
