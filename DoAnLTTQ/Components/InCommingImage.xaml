@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="DoAnLTTQ.Components.InCommingImage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DoAnLTTQ.Components"
+             mc:Ignorable="d"
+             
+>
+    <UserControl.Resources>
+
+    </UserControl.Resources>
+    <Border Padding="10" Background="LightBlue" BorderBrush="Transparent" BorderThickness="2" CornerRadius="10" Height="auto" MaxWidth="300" Margin="26,26,0,16" HorizontalAlignment="Left">
+        <Image x:Name="img" Source="" />
+    </Border>
+</UserControl>
+

@@ -89,6 +89,12 @@
     <Compile Include="Components\InComingMessage.xaml.cs">
       <DependentUpon>InComingMessage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\MyImage.xaml.cs">
+      <DependentUpon>MyImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\InCommingImage.xaml.cs">
+      <DependentUpon>InCommingImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\MessageAndDetails.xaml.cs">
       <DependentUpon>MessageAndDetails.xaml</DependentUpon>
     </Compile>
@@ -152,6 +158,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\InComingMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\MyImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\InCommingImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,9 +302,9 @@
     <AdditionalFiles Include="Resources\Images\Chartridge046_small.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>
-    <AdditionalFiles Include="Resources\Images\Contact.png">
+    <Content Include="Resources\Images\Contact.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AdditionalFiles>
+    </Content>
     <AdditionalFiles Include="Resources\Images\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>

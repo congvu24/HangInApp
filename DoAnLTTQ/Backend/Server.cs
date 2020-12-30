@@ -20,7 +20,7 @@ namespace DoAnLTTQ.Backend
 {
     public class Server
     {
-        public delegate void handleReceiveMessage(string ip, string content);
+        public delegate void handleReceiveMessage(string ip, int type,  byte[] content);
 
         public handleReceiveMessage myDelegate;
 
@@ -64,7 +64,6 @@ namespace DoAnLTTQ.Backend
         {
             try
             {
-               Console.WriteLine("send");
             User user = new User();
             GuestProfile u = new GuestProfile(user);
             var localIp = "";
@@ -145,42 +144,81 @@ namespace DoAnLTTQ.Backend
 
         public void ListenMessage()
         {
+            //var localIp = IPAddress.Any;
+            //var localPort = 1309;
+            //var localEndPoint = new IPEndPoint(localIp, localPort);
+            //MessageListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //MessageListener.Bind(localEndPoint);
+            //MessageListener.Listen(10);
+
+            //var size = 1024;
+            //var receiveBuffer = new byte[size];
+
+            //while (true)
+            //{
+            //    var socket = MessageListener.Accept();
+            //    var length = socket.Receive(receiveBuffer);
+            //    socket.Shutdown(SocketShutdown.Receive);
+            //    var ip = socket.RemoteEndPoint.ToString().Split(':')[0];
+            //    var text = Encoding.UTF8.GetString(receiveBuffer, 0, length);
+            //    this.myDelegate(ip,text);
+            //    socket.Close();
+            //    Array.Clear(receiveBuffer, 0, size); 
+            //}
+
            
-                var localIp = IPAddress.Any;
-                var localPort = 1309;
-                var localEndPoint = new IPEndPoint(localIp, localPort);
-                MessageListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                MessageListener.Bind(localEndPoint);
-                MessageListener.Listen(10);
 
-                var size = 1024;
-                var receiveBuffer = new byte[size];
+            var socket = new TcpListener(IPAddress.Any, 1309);
+            socket.Start(10);
+            while (true)
+            {
+                var client = socket.AcceptTcpClient();
+                var stream = client.GetStream();
+                var formatter = new BinaryFormatter();
+                var message = formatter.Deserialize(stream) as Message;
+                var ip = client.Client.RemoteEndPoint.ToString().Split(':')[0];
+                //MessageBox.Show(ip);
+                this.myDelegate(ip, message.type, message.data);
+                client.Close();
+            }
+        }
 
-                while (true)
-                {
-                    var socket = MessageListener.Accept();
-                    var length = socket.Receive(receiveBuffer);
-                    socket.Shutdown(SocketShutdown.Receive);
-                    var ip = socket.RemoteEndPoint.ToString().Split(':')[0];
-                    var text = Encoding.UTF8.GetString(receiveBuffer, 0, length);
-                    this.myDelegate(ip,text);
-                    socket.Close();
-                    Array.Clear(receiveBuffer, 0, size); 
-                }
-           
-
-    }
-    
         public void SendMessage(IPAddress ip, String content)
         {
             try
             {
-                var serverEndpoint = new IPEndPoint(ip, 1309);
-                var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
-                socket.Connect(serverEndpoint);
-                var sendBuffer = Encoding.UTF8.GetBytes(content);
-                socket.Send(sendBuffer);
-                socket.Shutdown(SocketShutdown.Send);
+                //var serverEndpoint = new IPEndPoint(ip, 1309);
+                //var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                //socket.Connect(serverEndpoint);
+                //var sendBuffer = Encoding.UTF8.GetBytes(content);
+                //socket.Send(sendBuffer);
+                //socket.Shutdown(SocketShutdown.Send);
+
+                var message = new Message() { type = 1, data = Encoding.UTF8.GetBytes(content) };
+
+                var client = new TcpClient();
+                client.Connect(ip, 1309);
+                var stream = client.GetStream();
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, message);
+                client.Close();
+        }
+            catch
+            {
+            }
+        }
+        public void SendImage(IPAddress ip, String path)
+        {
+            try
+            {
+                byte[] image = File.ReadAllBytes(path);
+                var message = new Message() { type = 2, data = image};
+                var client = new TcpClient();
+                client.Connect(ip, 1309);
+                var stream = client.GetStream();
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, message);
+                client.Close();
             }
             catch
             {

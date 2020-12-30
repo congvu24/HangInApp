@@ -19,6 +19,7 @@
     using System.Windows.Threading;
     using System.Timers;
     using MaterialDesignThemes.Wpf;
+    using System.Text;
 
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
@@ -122,7 +123,7 @@
                     ((MessageView_MessageDetails)this.ViewContext).Unmmount();
                     infoMain.indexHomePicture = 0;
                     sv.myDelegate = new Server.handleReceiveMessage(this.receiveMessage);
-                    listenMessage.Resume();
+                    //listenMessage.Resume();
 
                     Reload_Guest();
                 }
@@ -208,13 +209,16 @@
         {
             NavBarMain.gridProfile.HighlightButton(index);
         }
-        public void receiveMessage(string ip, string content)
+        public void receiveMessage(string ip, int type, byte[] content)
         {
             var guest = new GuestProfile();
             if(guest.isExist(ip) == true)
             {
-                ShowNotify(content);
+                if (type == 1)
+                    ShowNotify(Encoding.UTF8.GetString(content, 0, content.Length));
+                else ShowNotify("New image received");
             }
+
         }
 
     }

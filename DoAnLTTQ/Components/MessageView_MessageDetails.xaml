@@ -351,7 +351,7 @@
                         x:Name="SendButton"
                         Kind="Send" Margin="5 0 10 0" Grid.Column="3"
                    Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Width="26" Height="25"/>
-                    <Button Click="SendButton_Click" Grid.Column="2" BorderThickness="0" Background="Transparent"/>
+                    <Button Click="SendButton_Click" Grid.Column="3" BorderThickness="0" Background="Transparent"/>
 
                 </Grid>
 

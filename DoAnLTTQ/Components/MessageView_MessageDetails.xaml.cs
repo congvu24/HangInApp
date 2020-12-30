@@ -102,6 +102,37 @@ namespace DoAnLTTQ.Components
                         try
                         {
                             sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
+                    }
+                        catch
+                    {
+                        this.sendThread.Abort();
+                    }
+                }
+                );
+                    sendThread.IsBackground = true;
+                    sendThread.Start();
+                    messagePanel.Children.Add(new MyMessage(content));
+                }
+            }
+        }
+        public void sendImage(string path)
+        {
+            if (activeGuest == null)
+            {
+
+                MessageBox.Show("Select a friend to send this message!");
+                return;
+            }
+            if (txtName.Text.Length > 0)
+            //if ((txtName.Content as string).Length > 0)
+            {
+                if (TextToSend.Text.Length > 0)
+                {
+                    sendThread = new Thread(() =>
+                    {
+                        try
+                        {
+                            sv.SendImage(IPAddress.Parse(activeGuest.ip), path);
                         }
                         catch
                         {
@@ -111,20 +142,33 @@ namespace DoAnLTTQ.Components
                 );
                     sendThread.IsBackground = true;
                     sendThread.Start();
-                    messagePanel.Children.Add(new MyMessage(content));
+                    messagePanel.Children.Add(new MyImage(path));
                 }
             }
         }
-        public void receiveMessage(string ip, string content)
+        public void receiveMessage(string ip, int type, byte[] content)
         {
             var guest = new GuestProfile();
             if (guest.isExist(ip) == true && ip == activeGuest.ip)
             {
-                this.Dispatcher.Invoke(() =>
+                if(type == 1)
                 {
-                    messagePanel.Children.Add(new InComingMessage(content));
-                });
+                    
+                    var text = Encoding.UTF8.GetString(content, 0, content.Length);
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        messagePanel.Children.Add(new InComingMessage(text));
+                    });
+                }
+                else if(type == 2)
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        messagePanel.Children.Add(new InCommingImage(content));
+                    });
+                }
             }
+
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
@@ -217,7 +261,8 @@ namespace DoAnLTTQ.Components
             if (openFileDialog.ShowDialog() == true)
                 try
                 {
-                  
+                    var path = openFileDialog.FileName;
+                    sendImage(path);
                 }
                 catch { }
         }
