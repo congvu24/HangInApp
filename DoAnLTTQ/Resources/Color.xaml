@@ -32,4 +32,9 @@
     <Color x:Key="ImageSlotBorderStroke">#ffa5a5</Color>
     <SolidColorBrush x:Key="ImageSlotBorderStrokeBrush" Color="{StaticResource ImageSlotBorderStroke}"/>
 
+    <LinearGradientBrush x:Key="GradientBush" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#ff7854" Offset="0.0" />
+        <GradientStop Color="#fd267d" Offset="1.0" />
+    </LinearGradientBrush>
+    
 </ResourceDictionary>
