@@ -5,26 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DoAnLTTQ.Views"
              xmlns:component="clr-namespace:DoAnLTTQ.Components"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:DoAnLTTQ"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
-        <Grid>
+    <!--#region old code -->
+    <!--<Grid>
         <Grid.ColumnDefinitions>
-            <!--left-->
+            --><!--left--><!--
             <ColumnDefinition Width="3*"/>
-            <!--message-->
+            --><!--message--><!--
             <ColumnDefinition Width="6* "/>
-            <!--right-->
+            --><!--right--><!--
             <ColumnDefinition Width="3* "/>
-            <!-- main-->
+            --><!-- main--><!--
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            
-            <component:NavBarMain x:Name="TabMain" />
+
+            <component:NavBarMain />
         </Grid>
         <Grid Grid.Column="1">
-            
-            <component:MessageView_MessageDetails x:Name="MessageView_MessageDetails"/>
+
+            <component:MessageView_MessageDetails/>
         </Grid>
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
@@ -33,7 +34,69 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <component:details x:Name="info_main"/>
+            --><!--<component:details x:Name="info_main"/>--><!--
+        </Grid>
+    </Grid>-->
+    <!--#endregion-->
+
+
+    <!--background-->
+    <Grid>
+    <Grid x:Name="blurBack">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
+        </Grid.Background>
+
+    </Grid>
+
+    <local1:bbo x:Name="_object" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" Margin="12" BlurRadius="40" BorderBrush="Black" BlurOn="True">
+
+        <ContentControl x:Uid="contentWrapper" >
+            <!--inner content-->
+                <Grid>
+        <Grid.ColumnDefinitions>
+            
+                <!--left-->
+                
+            <ColumnDefinition Width="3*"/>
+            
+                <!--message-->
+                
+            <ColumnDefinition Width="6* "/>
+            
+                <!--right-->
+                
+            <ColumnDefinition Width="3* "/>
+            
+                 <!--main-->
+                
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+
+            <component:NavBarMain />
+        </Grid>
+        <Grid Grid.Column="1">
+
+            <component:MessageView_MessageDetails/>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+                <!--<component:details x:Name="info_main"/>-->
+                
         </Grid>
     </Grid>
+                <!--end inner content-->
+        </ContentControl>
+    </local1:bbo>
+    <!--end blur wrapper-->
+
+    </Grid>
+
+
 </UserControl>

@@ -86,6 +86,9 @@
     <Compile Include="Backend\Message.cs" />
     <Compile Include="Backend\User.cs" />
     <Compile Include="Backend\Server.cs" />
+    <Compile Include="Views\bbo.xaml.cs">
+      <DependentUpon>bbo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\InComingMessage.xaml.cs">
       <DependentUpon>InComingMessage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
     <Compile Include="Views\WellcomeScreen.xaml.cs">
       <DependentUpon>WellcomeScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\bbo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Components\BackButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -314,6 +321,12 @@
     <AdditionalFiles Include="Resources\Images\ProfilePic.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>
+    <Resource Include="Resources\Images\Background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\GradientBackground.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="Resources\Images\Logo.png">

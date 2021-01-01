@@ -198,7 +198,7 @@
         <Grid>
 
             <!--change height here-->
-            <Grid Background="{StaticResource AppicationBackgroundBursh}" VerticalAlignment="Bottom" Height="680">
+            <Grid VerticalAlignment="Bottom" Height="680">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="86"/>
                     <RowDefinition Height="82"/>

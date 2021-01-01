@@ -6,7 +6,7 @@
 
 
     <!--<Color x:Key="ApplicationBackground">#ffdada</Color>-->
-    <Color x:Key="ApplicationBackground">#f7f5f6</Color>
+    <Color x:Key="ApplicationBackground">transparent</Color>
     <SolidColorBrush x:Key="AppicationBackgroundBursh" Color="{StaticResource ApplicationBackground}"/>
 
 
@@ -36,5 +36,8 @@
         <GradientStop Color="#ff7854" Offset="0.0" />
         <GradientStop Color="#fd267d" Offset="1.0" />
     </LinearGradientBrush>
-    
+
+    <Color x:Key="ProfileBorder">#fa872f</Color>
+    <SolidColorBrush x:Key="ProfileBorderBrush" Color="{StaticResource ProfileBorder}"/>
+
 </ResourceDictionary>

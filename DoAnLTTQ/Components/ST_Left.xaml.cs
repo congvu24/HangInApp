@@ -58,6 +58,8 @@ namespace DoAnLTTQ.Components
             Age.GotFocus += RemoveText;
             Hobby.GotFocus += RemoveText;
 
+            if(sexSelect.SelectedItem == null) { sexSelect.Text = "Select"; }
+           
             Name.LostFocus += AddText;
             Age.LostFocus += AddText;
             Hobby.LostFocus += AddText;

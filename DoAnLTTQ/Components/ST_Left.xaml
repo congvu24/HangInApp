@@ -14,9 +14,9 @@
         </Style>
         <Style x:Key="backBtnIcon" TargetType="Button">
             <Setter Property="Width" Value="58"/>
-            <Setter Property="Height" Value="80"/>
+            <Setter Property="Height" Value="auto"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="0"/>
+
             <!--tat hover cua btn-->
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Template">
@@ -39,7 +39,7 @@
             <!--<Setter Property="Width" Value="237"/>
             <Setter Property="Height" Value="84"/>-->
             <!--<Setter Property="VerticalContentAlignment" Value="Center"/>-->
-           
+
             <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="Foreground" Value="Black"/>
         </Style>
@@ -100,7 +100,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontWeight" Value="Medium" />
-            
+
         </Style>
 
         <Style x:Key="ErrorAnouncement" TargetType="Label">
@@ -222,7 +222,8 @@
     <Border BorderBrush="Transparent" BorderThickness="0 0 1 0">
         <Grid x:Name="LayoutRoot">
             <!--change height here-->
-            <Grid Style="{StaticResource BackBtnWarper}" Background="{StaticResource AppicationBackgroundBursh}"  VerticalAlignment="Bottom" Height="680" >
+            <Grid Style="{StaticResource BackBtnWarper}" Margin="8" Background="{StaticResource AppicationBackgroundBursh}"  VerticalAlignment="Bottom" Height="662">
+                <!--hei=680-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="auto"/>
@@ -242,20 +243,24 @@
                                 <GradientStop Color="#fd267d" Offset="1.0" />
                             </LinearGradientBrush>
                         </Grid.Background>
-                        --><!--Style="{DynamicResource BackButtonShadow}"--><!--
+                        -->
+                    <!--Style="{DynamicResource BackButtonShadow}"-->
+                    <!--
                         <Button Name="backBtnIcon" Click="Button_Click"  Style="{DynamicResource aa}" Template="{DynamicResource BackButtonShadow}" Height="Auto" HorizontalAlignment="Left">
                             <materialDesign:PackIcon VerticalAlignment="Center" Width="auto" Height="auto" Kind="ChevronLeft"  Foreground="#ffff" FontSize="10" >
                             </materialDesign:PackIcon>
                         </Button>
                         <Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>
                     </Grid>-->
-                    <Button Click="Button_Click" Padding="0" Width="320" Height="86" Background="Transparent" BorderThickness="0" >
-                        <Grid Width="320" x:Name="profile" Height="86" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="240"/>
-                        </Grid.ColumnDefinitions>
-                        <Button
+                    <Border Padding="8">
+                    <Button Click="Button_Click" Padding="-10 12 0 12" MaxWidth="320" Height="auto" Background="Transparent" BorderThickness="0" Margin="0,0,-8,0">
+                        <Grid Width="304" x:Name="profile" Height="auto" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="240"/>
+                            </Grid.ColumnDefinitions>
+                            <!--Height="40"-->
+                            <Button
                                            
                                             materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                             materialDesign:ShadowAssist.ShadowEdges="All"
@@ -263,23 +268,24 @@
                                             BorderThickness="0"
                                             Width="40"
                                             Height="40"
+                                            Margin="0 4 0 4"
                                             ToolTip="Back to Home"
                                             Grid.Column="0"
                            >
-                        </Button>
-                        <materialDesign:PackIcon Kind="HomeOutline" HorizontalAlignment="Center" Width="30" Height="40" Foreground="Beige" Margin="20,23,20,0"/>
-                     
-                        <!--<Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>-->
-                            <Viewbox Grid.Column="1" MaxWidth="210"                                    StretchDirection="DownOnly" >
+                            </Button>
+                            <materialDesign:PackIcon Kind="HomeOutline" Width="30" Height="30" Foreground="Beige" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <!--<Label Style="{StaticResource backBtnTitle}"  Content="{Binding Path=myProfile.name}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,-62,0" Width="237"/>-->
+                            <Viewbox Grid.Column="1" MaxWidth="210"                                    StretchDirection="DownOnly" Margin="0,0,31,0" >
                                 <TextBlock MinWidth="35" Style="{StaticResource backBtnTitle}"  Text="{Binding Path=myProfile.name}" x:Name="ProfileHeaderName" Height="auto"/>
                             </Viewbox>
                         </Grid>
                     </Button>
-
+                    </Border>
 
                 </Border>
-                <Grid Grid.Row="1">
-                    <Label HorizontalAlignment="Center"  Margin="0,41,0,41">
+                <Grid Grid.Row="1" Margin="0 0 0 16">
+                    <Label HorizontalAlignment="Center"  Margin="0,8,0,28">
                         <Canvas Height="160" Width="160">
                             <Border Height="160" Width="160">
                                 <!--shadow effect here-->
@@ -308,7 +314,6 @@
                         </Canvas>
                     </Label>
                 </Grid>
-
                 <StackPanel Grid.Row="2">
 
                     <TextBox Style="{StaticResource textBox}" Tag="Name" Text="{Binding Path=myProfile.name}" x:Name="Name" />
@@ -316,7 +321,7 @@
                     <TextBox Style="{StaticResource textBox}" Tag="Age" Text="{Binding Path=myProfile.age}" x:Name="Age"  />
                     <!--<TextBox Style="{StaticResource placeHolder}" Tag="Sex"/>-->
                     <Label Style="{StaticResource ErrorAnouncement}" x:Name="ErrorAge" Content="Hello"/>
-                    <ComboBox IsEditable="True" IsReadOnly="True" Text="Select-"
+                    <ComboBox IsEditable="True" IsReadOnly="True"
                               
                               SelectedIndex="{Binding Path=myProfile.sex}"
                               x:Name="sexSelect"
@@ -344,14 +349,14 @@
                         <ComboBoxItem Foreground="Black">Female</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">I don't want to tell</ComboBoxItem>
                     </ComboBox>-->
-                  
+
 
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorSex"/>
                     <TextBox Style="{StaticResource textBox}" Tag="Hobby" Text="{Binding Path=myProfile.hobby}" Margin="0" x:Name="Hobby" />
                     <Label Style="{StaticResource ErrorAnouncement}" Content="Hello" x:Name="ErrorHobby" Margin="58, 0, 0, 0"/>
                 </StackPanel>
             </Grid>
-           
+
             <materialDesign:DialogHost CloseOnClickAway="True" Identifier="StLeftUpdate">
                 <materialDesign:DialogHost.DialogContent>
                     <StackPanel x:Name="UpdatePanel" Height="70" Width="100" Margin="20" Orientation="Vertical" >
@@ -363,7 +368,7 @@
                 <Button
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             Width="136" Height="44"
-                            Margin="0 25"
+                            Margin="0 21"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             FontSize="20" FontWeight="Medium" 
@@ -382,6 +387,6 @@
                 </Button>
             </materialDesign:DialogHost>
         </Grid>
-        
+
     </Border>
 </UserControl>

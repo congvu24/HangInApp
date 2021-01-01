@@ -12,6 +12,6 @@
     </UserControl.Resources>
     <Border Padding="10" Background="{StaticResource GlobalGrayBrush}" BorderBrush="Transparent" BorderThickness="2" CornerRadius="10" Height="auto" MaxWidth="300" Margin="26,26,0,16" HorizontalAlignment="Left">
         <Image x:Name="img" Source="" />
+        
     </Border>
 </UserControl>
-

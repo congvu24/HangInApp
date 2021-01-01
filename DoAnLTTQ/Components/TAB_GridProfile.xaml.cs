@@ -17,8 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DoAnLTTQ.Backend;
 using System.Drawing;
-
-
+using System.Windows.Media.Effects;
 
 namespace DoAnLTTQ.Components
 {
@@ -27,6 +26,7 @@ namespace DoAnLTTQ.Components
     /// </summary>
     public partial class GridProfile : UserControl, INotifyPropertyChanged
     {
+        Stack<Button> SelectedButtonList = new Stack<Button>();
         public event EventHandler<int> ProfileSelected;
 
         public ObservableCollection<BitmapImage> userPictureNearBy
@@ -124,6 +124,7 @@ namespace DoAnLTTQ.Components
             {
                 ProfileSelected(this, identify);
             }
+          
             HighlightButton(identify);
         }
 
@@ -134,11 +135,34 @@ namespace DoAnLTTQ.Components
             {
                 if (item.Uid == index.ToString())
                 {
-                    item.BorderBrush = System.Windows.Media.Brushes.Red;
+                    DropShadowEffect dropShadowEffect = new DropShadowEffect
+                    {
+                        Color = new System.Windows.Media.Color { R = 250, G = 135, B = 47 },
+                        Direction = 320,
+                        ShadowDepth = 1,
+                        Opacity = 1
+                    };
+                    //item.BorderBrush = System.Windows.Media.Brushes.Red;
+                    item.Effect = dropShadowEffect;
                 }
                 else
-                    item.BorderBrush = System.Windows.Media.Brushes.Transparent;
+                    //item.BorderBrush = System.Windows.Media.Brushes.Transparent;
+                    item.Effect = null;
             }
+
+            //Button lastSlect = SelectedButtonList.Pop();
+            //if (lastSlect != null)
+            //{
+            //    DropShadowEffect dropShadowEffect = new DropShadowEffect
+            //    {
+            //        Color = new System.Windows.Media.Color { R = 250, G = 135, B = 47 },
+            //        Direction = 320,
+            //        ShadowDepth = 1,
+            //        Opacity = 1
+            //    };
+            //    lastSlect.Effect = dropShadowEffect;
+            //}
+            //Button currentSelect = 
             //if (ProfileSelected != null)
             //{
             //    ProfileSelected(this, index);

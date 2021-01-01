@@ -19,49 +19,71 @@
         </Storyboard>
     </UserControl.Resources>
 
-    <Grid x:Name="grid" Background="{StaticResource AppicationBackgroundBursh}" Width="1280" Height="680">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="320"/>
-            <!-- nav bar -->
-            <ColumnDefinition Width="960* "/>
-            <!-- main-->
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="grid1" Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <component:NavBarSetting 
+
+
+
+
+    <Grid Loaded="Grid_Loaded">
+        <!--background-->
+        <Grid x:Name="blurBack">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
+            </Grid.Background>
+
+        </Grid>
+        <!--blur wrapper-->
+        <local:bbo x:Name="_object" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" Margin="12" BlurRadius="40" BorderBrush="Black" BlurOn="True">
+
+            <ContentControl x:Uid="contentWrapper" >
+                <!--inner content-->
+                <Grid Margin="0" Loaded="Grid_Loaded_1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"/>
+                        <ColumnDefinition Width="960* "/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid  Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.RowSpan="3" BorderThickness="0 0 1 0" BorderBrush="LightGray"/>
+                        <component:NavBarSetting 
                 Grid.Column="0" 
                 Grid.Row="0"  
-                x:Name="navbarsetting"
-                myProfile="{Binding profile}" Loaded="navbarsetting_Loaded_1"/>
-        </Grid>
+                x:Uid="navbarsetting"
+                 Loaded="navbarsetting_Loaded_1"
+                        myProfile="{Binding profile}"
+                            />
+                    </Grid>
 
-        <Grid x:Name="grid2" Grid.Column="1" Background="{StaticResource AppicationBackgroundBursh}" >
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="271*" />
-                <ColumnDefinition Width="207*"/>
-            </Grid.ColumnDefinitions>
-            <component:MainSetting  
-                x:Name="mainsetting"
+                    <Grid  Grid.Column="1" Background="{StaticResource AppicationBackgroundBursh}" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="271*" />
+                            <ColumnDefinition Width="207*"/>
+                        </Grid.ColumnDefinitions>
+                        <component:MainSetting 
+                x:Uid="mainsetting"
                 Grid.ColumnSpan="2"
-                picture="{Binding picture}" Loaded="mainsetting_Loaded"/>
-        </Grid>
-        <Grid Grid.ColumnSpan="2" x:Name="cover"  Focusable="False" Background="Red" Visibility="Hidden" Height="680" Width="1280">
-            <materialDesign:PackIcon Kind="AccountCircleOutline" Width="150" Height="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" ForceCursor="False"/>
-        </Grid>
+                 Loaded="mainsetting_Loaded"
+                        picture="{Binding picture}"
+                            />
+                    </Grid>
+                   
+                </Grid>
+                <!--end inner content-->
+            </ContentControl>
+        </local:bbo>
+        <!--end blur wrapper-->
 
-        <Grid Grid.ColumnSpan="2" x:Name="roundedCover" Focusable="False"  Visibility="Visible">
-            <Border x:Name="border" CornerRadius="320" Width="0" Height="0" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        </Grid>
-
+        
     </Grid>
+
+
+
 </UserControl>
-<!--auto (821) auo 680-->
-    

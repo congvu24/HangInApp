@@ -255,7 +255,7 @@
         </EventTrigger>
     </UserControl.Triggers>
     <Grid KeyboardNavigation.DirectionalNavigation="Once">
-        <Grid Background="{StaticResource MessageViewBackgroundBrush}" Margin="0" >
+        <Grid Background="{StaticResource AppicationBackgroundBursh}" Margin="0" >
             <Grid Height="680" Width="383">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="580"/>

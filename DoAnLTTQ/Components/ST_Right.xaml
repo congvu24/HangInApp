@@ -51,13 +51,13 @@
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
         <ControlTemplate x:Key="SlotImage" TargetType="{x:Type ButtonBase}">
-            <Border x:Name="border" BorderBrush="LightGray" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
+            <Border x:Name="border" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
             <ControlTemplate.Triggers>
-                <Trigger Property="Button.IsDefaulted" Value="True">
+                <!--<Trigger Property="Button.IsDefaulted" Value="True">
                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                </Trigger>
+                </Trigger>-->
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Effect">
                         <Setter.Value>
@@ -70,23 +70,26 @@
 
     </UserControl.Resources>
 
-    <Border BorderThickness="0.5" Width="500" Height="670" CornerRadius="10" Background="{DynamicResource ApplicationBackgroundDarkBursh}" Padding="3" Cursor="Hand" BorderBrush="#FF0E0D0D">
-        <Border.Effect>
-            <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
-        </Border.Effect>
+    <Grid>
+        <Border BorderThickness="0.5" MaxWidth="440" Height="auto" CornerRadius="10" Background="{DynamicResource ApplicationBackgroundDarkBursh}" Padding="4" Cursor="Hand" BorderBrush="#FF0E0D0D" Margin="0 12 0 12">
+            <Border.Effect>
+                <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
+            </Border.Effect>
 
-        <StackPanel x:Name="LayoutRoot" Background="#fcf9f7">
-            <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage" Margin="1">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate >
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="1" Width="118" Height="163" Margin="20" CornerRadius="16" Loaded="Border_Loaded"
-                                x:Name="border" Background="{StaticResource ImageSlotBrush}">
-                            <Border.BorderBrush>
+            <StackPanel x:Name="LayoutRoot" Background="#fcf9f7">
+                <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate >
+                            <WrapPanel HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!--button-->
+                           
+                            <Border BorderThickness="1" Width="118" Height="163" Margin="12" HorizontalAlignment="Center" CornerRadius="16" Loaded="Border_Loaded"
+                                x:Name="border" Background="{StaticResource ImageSlotBrush}" BorderBrush="#f0374d">
+                                <!--<Border.BorderBrush>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
                                         <Rectangle StrokeDashArray="4 2"
@@ -100,8 +103,8 @@
                                                   x:Name="rect"/>
                                     </VisualBrush.Visual>
                                 </VisualBrush>
-                            </Border.BorderBrush>
-                            <Button  
+                            </Border.BorderBrush>-->
+                                <Button  
                             Style="{DynamicResource myImageSlotContent}"
                             Template="{DynamicResource SlotImage}"
                             HorizontalContentAlignment="Center" 
@@ -111,50 +114,53 @@
                                 x:Name="avt"
                             
                                 >
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property ="CornerRadius" Value="16"/>
-                                    </Style>
-                                </Button.Resources>
-                                <Button.Background>
-                                    <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
-                                </Button.Background>
-                                <Button.Content>
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property ="CornerRadius" Value="16"/>
+                                        </Style>
+                                    </Button.Resources>
+                                    <Button.Background>
+                                        <ImageBrush x:Name="brush" ImageSource="{Binding Path=url}" Stretch="Fill" />
+                                    </Button.Background>
+                                    <Button.Content>
 
 
-                                    <Button x:Name="content"  Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Background="{StaticResource ImageSlotBorderStrokeBrush}" BorderBrush="Transparent"
+                                        <Button x:Name="content"  Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Background="{StaticResource ImageSlotBorderStrokeBrush}" BorderBrush="Transparent"
                                             materialDesign:ShadowAssist.ShadowDepth="Depth2">
-                                        <Button.Content>
-                                            <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
-                                        </Button.Content>
-                                    </Button>
+                                            <Button.Content>
+                                                <materialDesign:PackIcon Kind="Plus" Width="30" Height="30"/>
+                                            </Button.Content>
+                                        </Button>
 
-                                </Button.Content>
-                            </Button>
+                                    </Button.Content>
+                                </Button>
 
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            <Grid >
-                <Button
+                            </Border>
+                           
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Grid >
+                    <Button
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             Width="136" Height="44"
+                        Margin="0 12 0 12"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             FontSize="20" FontWeight="Medium" 
                             Content="Save"
                             materialDesign:ButtonAssist.CornerRadius="20"
                             Click="Save_Click">
-                    <Button.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                            <GradientStop Color="#ff7854" Offset="0.0" />
-                            <GradientStop Color="#fd267d" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-            </Grid>
-        </StackPanel>
-    </Border>
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#ff7854" Offset="0.0" />
+                                <GradientStop Color="#fd267d" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
 
 </UserControl>

@@ -62,6 +62,9 @@ namespace DoAnLTTQ.Components
                 //MessageBox.Show(((sender as Button).FindName("brush") as ImageBrush).ImageSource.ToString());
                 (sender as Button).Content = "";
             }
+            Button newbutton = sender as Button;
+            FrameworkElement t = newbutton.Parent as FrameworkElement;
+            (t as Border).BorderBrush = Brushes.Transparent;
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {

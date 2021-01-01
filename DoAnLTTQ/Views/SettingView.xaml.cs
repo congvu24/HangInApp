@@ -44,10 +44,26 @@ namespace DoAnLTTQ.Views
             user = new User();
             this.profile = user.myProfile;
             this.picture = user.myProfile.picture;
-            this.DataContext = this;
-            navbarsetting.UserUpdateProfile += new EventHandler<Profile>(Update_User);
-            mainsetting.UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
-            navbarsetting.OnClickBackButton += Navbarsetting_BackToHomeView;
+            //this.DataContext = this;
+            //MessageBox.Show(contentWrapper.GetType().ToString());
+            try
+            {
+                var contentWrapper = FindUid(_object, "contentWrapper");
+                var navbarsetting = FindUid(contentWrapper, "navbarsetting");
+                var mainsetting = FindUid(contentWrapper, "mainsetting");
+
+                ((navbarsetting as DoAnLTTQ.Components.NavBarSetting)).UserUpdateProfile += new EventHandler<Profile>(Update_User);
+                (mainsetting as DoAnLTTQ.Components.MainSetting).UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
+                (navbarsetting as DoAnLTTQ.Components.NavBarSetting).OnClickBackButton += Navbarsetting_BackToHomeView;
+            }
+            catch
+            {
+
+                
+            }
+           
+
+
         }
 
         private void Navbarsetting_BackToHomeView(ViewEnum viewEnum)
@@ -118,5 +134,50 @@ namespace DoAnLTTQ.Views
             this.DataContext = this;
         }
 
+        public static UIElement FindUid(DependencyObject parent, string uid)
+        {
+
+            var count = VisualTreeHelper.GetChildrenCount(parent);
+            if (count == 0) return null;
+
+            for (int i = 0; i < count; i++)
+            {
+                var el = VisualTreeHelper.GetChild(parent, i) as UIElement;
+                if (el == null) continue;
+
+                if (el.Uid == uid) return el;
+
+                el = FindUid(el, uid);
+                if (el != null) return el;
+            }
+            return null;
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
+
+
+        }
+
+        private void Grid_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            var contentWrapper = FindUid(_object, "contentWrapper");
+            var navbarsetting = FindUid(contentWrapper, "navbarsetting") as DoAnLTTQ.Components.NavBarSetting;
+            var mainsetting = FindUid(contentWrapper, "mainsetting") as DoAnLTTQ.Components.MainSetting;
+
+            navbarsetting.UserUpdateProfile += new EventHandler<Profile>(Update_User);
+            (mainsetting).UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
+            (navbarsetting).OnClickBackButton += Navbarsetting_BackToHomeView;
+
+
+
+            //Binding myBinding = new Binding();
+            //myBinding.Source = this ;
+            //myBinding.Path = new PropertyPath("profile");
+            //myBinding.Mode = BindingMode.TwoWay;
+            //myBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            //BindingOperations.SetBinding(txtText, TextBox.TextProperty, myBinding);
+        }
     }
 }
