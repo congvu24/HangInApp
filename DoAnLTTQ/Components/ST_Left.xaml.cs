@@ -77,17 +77,17 @@ namespace DoAnLTTQ.Components
         private void Update_Click(object sender, RoutedEventArgs e)
         {
 
-            DialogHost.Show(UpdatePanel, "StLeftUpdate");
-            if (isValidInputInformation())
-            {
-                ProfileHeaderName.Text = Name.Text;
-                UpdateNotification.Text = "Successful!";
-                OnUserControlButtonClick();
-            }
-            else
-            {
-                UpdateNotification.Text = "Update Failed!";
-            }
+            //DialogHost.Show(UpdatePanel, "StLeftUpdate");
+            //if (isValidInputInformation())
+            //{
+            //    ProfileHeaderName.Text = Name.Text;
+            //    UpdateNotification.Text = "Successful!";
+            //    OnUserControlButtonClick();
+            //}
+            //else
+            //{
+            //    UpdateNotification.Text = "Update Failed!";
+            //}
 
         }
         private void OnUserControlButtonClick()

@@ -61,6 +61,7 @@
         }
 
         public info_main infoMain = new info_main();
+        public NavBarMain navbarmain;
 
         public MainView()
         {
@@ -69,9 +70,9 @@
             StartingServer(ref sv);
             //Reload_Guest();
 
-            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
-            NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
-            NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
+            //NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
+            //NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
+            //NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
 
             infoMain.NotifyProfile += new EventHandler<int>(HighlightSelectedProfile);
             infoMain.indexHomePicture = 0;
@@ -148,6 +149,29 @@
         {
             Reload_Guest();
             infoMain.reloadArrayGuest();
+            //<StackPanel x:Name="stack" Height="70" Width="100" Margin="20" Orientation="Vertical" >
+            //                <materialDesign:PackIcon Kind="Check" Foreground="ForestGreen" Width="30" Height="30" Margin="10" HorizontalAlignment="Center"/>
+            //                <Label Content="Done" HorizontalAlignment="Center"/>
+            //            </StackPanel>
+            StackPanel stack = new StackPanel()
+            {
+                Width = 100,
+                Height = 70,
+                Margin = new Thickness(20),
+                Orientation = Orientation.Vertical,
+            };
+            PackIcon ic = new PackIcon()
+            {
+                Kind = PackIconKind.Check,
+                Foreground = Brushes.ForestGreen,
+                Width = 30,
+                Height = 30,
+                Margin = new Thickness(10),
+                HorizontalAlignment = HorizontalAlignment.Center,
+            };
+            Label lb = new Label() { Content = "Done", HorizontalAlignment = HorizontalAlignment.Center};
+            stack.Children.Add(ic);
+            stack.Children.Add(lb);
 
             // automatically close dialog after 700ms
             var result = await DialogHost.Show(stack, "MainViewReload", async delegate (object sender1, DialogOpenedEventArgs args)
@@ -155,8 +179,8 @@
                 await Task.Run(() => Thread.Sleep(500));
                 await Dispatcher.BeginInvoke(new Action(delegate
                {
-                   if(args.Session.IsEnded == false)
-                        args.Session.Close(false);
+                   if (args.Session.IsEnded == false)
+                       args.Session.Close(false);
 
                }), DispatcherPriority.Background);
             });
@@ -176,12 +200,14 @@
                 m_userPictureNearBy.Add(Common.LoadImage(g.listGuestProfile[i].avatar.buffer));
             }
             if (USER_AMOUNT >= 0)
-                HighlightSelectedProfile((new object() as Button),0);
+                HighlightSelectedProfile((new object() as Button), 0);
         }
 
         public void Reload_Profile()
         {
-            NavBarMain.Reload_myProfile();
+            var contentWrapper = FindUid(_object, "contentWrapper");
+            navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
+            navbarmain.Reload_myProfile();
         }
         public void GetSelectedProileIndex(object sender, int index)
         {
@@ -207,12 +233,23 @@
         }
         public void HighlightSelectedProfile(object sender, int index)
         {
-            NavBarMain.gridProfile.HighlightButton(index);
+            try
+            {
+
+            var contentWrapper = FindUid(_object, "contentWrapper");
+            navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
+            navbarmain.gridProfile.HighlightButton(index);
+            }
+            catch
+            {
+
+                //MessageBox.Show("Không thể kết nối, vui lòng khởi động lại ứng dụng");
+            }
         }
         public void receiveMessage(string ip, int type, byte[] content)
         {
             var guest = new GuestProfile();
-            if(guest.isExist(ip) == true)
+            if (guest.isExist(ip) == true)
             {
                 if (type == 1)
                     ShowNotify(Encoding.UTF8.GetString(content, 0, content.Length));
@@ -220,6 +257,34 @@
             }
 
         }
+        public static UIElement FindUid(DependencyObject parent, string uid)
+        {
+            
+            var count = VisualTreeHelper.GetChildrenCount(parent);
+            if (count == 0) return null;
 
+            for (int i = 0; i < count; i++)
+            {
+                var el = VisualTreeHelper.GetChild(parent, i) as UIElement;
+                if (el == null) continue;
+
+                if (el.Uid == uid) return el;
+
+                el = FindUid(el, uid);
+                if (el != null) return el;
+            }
+            return null;
+        }
+
+        private void container_Loaded(object sender, RoutedEventArgs e)
+        {
+            var contentWrapper = FindUid(_object, "contentWrapper");
+            navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
+
+            navbarmain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
+            navbarmain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
+            navbarmain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
+
+        }
     }
 }
