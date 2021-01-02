@@ -140,38 +140,44 @@
 
         </Grid>
 
-        <local1:bbo x:Name="_object" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" Margin="12" BlurRadius="40" BorderBrush="Black" BlurOn="True">
 
-            <ContentControl x:Uid="contentWrapper" >
-                <!--inner content-->
-                <Grid KeyDown="ContentControl_KeyDown" Loaded="container_Loaded">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="9* "/>
-                    </Grid.ColumnDefinitions>
+        <!--<local1:bbo x:Name="_object" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" Margin="12" BlurRadius="80" BorderBrush="Black" Background="Transparent" BlurOn="True" ClipToBounds="True">
 
-                    <Grid Grid.Column="0" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="576"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <component:NavBarMain Grid.RowSpan="2"
+            <ContentControl x:Uid="contentWrapper" >-->
+
+        <!--inner content-->
+        <Grid KeyDown="ContentControl_KeyDown" Loaded="container_Loaded">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3.5*"/>
+                <ColumnDefinition Width="9* "/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Margin="12" BorderThickness="0.5" BorderBrush="{StaticResource GlassBorderBrush}">
+                <!--blur wrapper-->
+                <local1:bbo x:Name="_object"  Grid.Column="0" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" BlurRadius="40" BlurOn="True">
+                    <ContentControl x:Uid="contentWrapper" >
+                            <Grid Grid.Column="0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="576"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <component:NavBarMain Grid.RowSpan="2"
                 x:Uid="NavBarMain"  />
 
 
-                        <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0" Margin="0 20">
-                            <materialDesign:DialogHost CloseOnClickAway="True" Margin="0,-623,0,-20" Identifier="MainViewReload">
-                                <materialDesign:DialogHost.DialogContent>
-                                    <StackPanel Height="70" Width="100" Margin="20" Orientation="Vertical" >
-                                        <materialDesign:PackIcon Kind="Check" Foreground="ForestGreen" Width="30" Height="30" Margin="10" HorizontalAlignment="Center"/>
-                                        <Label Content="Done" HorizontalAlignment="Center"/>
-                                    </StackPanel>
-                                </materialDesign:DialogHost.DialogContent>
+                                <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0" Margin="0 20">
+                                    <materialDesign:DialogHost CloseOnClickAway="True" Margin="0,-623,0,-20" Identifier="MainViewReload">
+                                        <materialDesign:DialogHost.DialogContent>
+                                            <StackPanel Height="70" Width="100" Margin="20" Orientation="Vertical" >
+                                                <materialDesign:PackIcon Kind="Check" Foreground="ForestGreen" Width="30" Height="30" Margin="10" HorizontalAlignment="Center"/>
+                                                <Label Content="Done" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </materialDesign:DialogHost.DialogContent>
 
-                                <Button
+                                        <Button
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             Width="136" Height="44"
                             Margin="0 0 0 25"
@@ -182,32 +188,40 @@
                             materialDesign:ButtonAssist.CornerRadius="20"
                             ToolTip="Renew profile list"
                             Click="Reload_Click">
-                                    <Button.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="#ff7854" Offset="0.0" />
-                                            <GradientStop Color="#fd267d" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </Button.Background>
-                                </Button>
-                            </materialDesign:DialogHost>
+                                            <Button.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#ff7854" Offset="0.0" />
+                                                    <GradientStop Color="#fd267d" Offset="1.0" />
+                                                </LinearGradientBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </materialDesign:DialogHost>
 
-                        </Border>
+                                </Border>
 
-                    </Grid>
-                    <Grid Grid.Column="1" Background="Transparent">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="271*" />
-                            <ColumnDefinition Width="207*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentControl  Grid.ColumnSpan="2" Content="{Binding ViewContext}"/>
-                    </Grid>
-                </Grid>
-                <!--end inner content-->
+                            </Grid>
+                            <!--end inner content-->
+
+                        </ContentControl>
+                </local1:bbo>
+            </Border>
+            <Grid Grid.Column="1" Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="271*" />
+                    <ColumnDefinition Width="207*"/>
+                </Grid.ColumnDefinitions>
+                <ContentControl  Grid.ColumnSpan="2" Content="{Binding ViewContext}"/>
+            </Grid>
+        </Grid>
+
+        <!--end inner content-->
+        <!--
             </ContentControl>
-        </local1:bbo>
+        </local1:bbo>-->
+
 
     </Grid>
 

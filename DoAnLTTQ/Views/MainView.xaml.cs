@@ -114,14 +114,19 @@
             {
                 IsHome = false;
                 this.ViewContext = new MessageView_MessageDetails();
-                sv.myDelegate = new Server.handleReceiveMessage(((this.ViewContext) as MessageView_MessageDetails).receiveMessage);
+                //this.ViewContext  = new MessageViewContainer();
+                //var context = this.ViewContext as MessageViewContainer;
+                sv.myDelegate = new Server.handleReceiveMessage((this.ViewContext as MessageView_MessageDetails).receiveMessage);
             }
             else if (viewEnum == ViewEnum.QuanhDayView)
             {
                 try
                 {
                     IsHome = true;
+                    var context = this.ViewContext as MessageViewContainer;
+
                     ((MessageView_MessageDetails)this.ViewContext).Unmmount();
+                    //((MessageView_MessageDetails)context.ViewContext).Unmmount();
                     infoMain.indexHomePicture = 0;
                     sv.myDelegate = new Server.handleReceiveMessage(this.receiveMessage);
                     //listenMessage.Resume();
@@ -230,6 +235,14 @@
         public void changeActiveProfile(object sender, string ip)
         {
             ((MessageView_MessageDetails)this.ViewContext).setActiveUser(ip);
+
+            //(((MessageViewContainer)this.ViewContext).ViewContext as MessageView_MessageDetails).setActiveUser(ip);
+
+
+            //var context = (this.ViewContext as MessageViewContainer);
+            //((MessageView_MessageDetails)context.ViewContext).setActiveUser(ip);
+
+
         }
         public void HighlightSelectedProfile(object sender, int index)
         {

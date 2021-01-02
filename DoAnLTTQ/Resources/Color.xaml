@@ -40,4 +40,10 @@
     <Color x:Key="ProfileBorder">#fa872f</Color>
     <SolidColorBrush x:Key="ProfileBorderBrush" Color="{StaticResource ProfileBorder}"/>
 
+
+    <Color x:Key="GlassBorder">#fffafa</Color>
+    <SolidColorBrush x:Key="GlassBorderBrush" Color="{StaticResource GlassBorder}"/>
+
+    
+
 </ResourceDictionary>

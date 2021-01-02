@@ -48,9 +48,11 @@ namespace DoAnLTTQ.Views
             //MessageBox.Show(contentWrapper.GetType().ToString());
             try
             {
-                var contentWrapper = FindUid(_object, "contentWrapper");
-                var navbarsetting = FindUid(contentWrapper, "navbarsetting");
-                var mainsetting = FindUid(contentWrapper, "mainsetting");
+                var contentWrapper1 = FindUid(_object1, "contentWrapper");
+                var navbarsetting = FindUid(contentWrapper1, "navbarsetting");
+
+                var contentWrapper2 = FindUid(_object2, "contentWrapper");
+                var mainsetting = FindUid(contentWrapper2, "mainsetting");
 
                 ((navbarsetting as DoAnLTTQ.Components.NavBarSetting)).UserUpdateProfile += new EventHandler<Profile>(Update_User);
                 (mainsetting as DoAnLTTQ.Components.MainSetting).UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);
@@ -162,9 +164,10 @@ namespace DoAnLTTQ.Views
 
         private void Grid_Loaded_1(object sender, RoutedEventArgs e)
         {
-            var contentWrapper = FindUid(_object, "contentWrapper");
-            var navbarsetting = FindUid(contentWrapper, "navbarsetting") as DoAnLTTQ.Components.NavBarSetting;
-            var mainsetting = FindUid(contentWrapper, "mainsetting") as DoAnLTTQ.Components.MainSetting;
+            var contentWrapper1 = FindUid(_object1, "contentWrapper");
+            var contentWrapper2 = FindUid(_object2, "contentWrapper");
+            var navbarsetting = FindUid(contentWrapper1, "navbarsetting") as DoAnLTTQ.Components.NavBarSetting;
+            var mainsetting = FindUid(contentWrapper2, "mainsetting") as DoAnLTTQ.Components.MainSetting;
 
             navbarsetting.UserUpdateProfile += new EventHandler<Profile>(Update_User);
             (mainsetting).UserUpdateProfile += new EventHandler<List<Picture>>(Save_User);

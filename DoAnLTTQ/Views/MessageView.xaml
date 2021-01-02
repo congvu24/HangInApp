@@ -44,7 +44,7 @@
     <Grid>
     <Grid x:Name="blurBack">
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
+                <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
         </Grid.Background>
 
     </Grid>

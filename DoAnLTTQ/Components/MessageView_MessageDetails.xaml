@@ -10,6 +10,7 @@
               xmlns:component="clr-namespace:DoAnLTTQ.Components"
              d:DesignHeight="720" d:DesignWidth="640" >
 
+    <!--#region Style -->
     <UserControl.Resources>
         <Style x:Key="myProfilePicture" TargetType="Image">
             <Setter Property="Margin" Value="15, 0, 10 ,0"/>
@@ -46,7 +47,7 @@
             <Setter Property="Stretch" Value="Fill"/>
         </Style>
 
-        <!--Style Scroll viewer bat dau tu day--> 
+        <!--Style Scroll viewer bat dau tu day-->
         <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="IsTabStop" Value="false"/>
@@ -146,9 +147,10 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <!--Het Scroll viewer--> 
-        
+        <!--Het Scroll viewer-->
+
     </UserControl.Resources>
+    <!--#endregion-->
 
     <Grid>
         <Grid.RowDefinitions>
@@ -205,7 +207,7 @@
 
 
                 <!--background-->
-                <Border Grid.ColumnSpan="3" Background="{StaticResource ApplicationBackgroundDarkBursh}" Opacity="0.5" CornerRadius="6"/>
+                <Border Grid.ColumnSpan="3" Background="{StaticResource AppicationBackgroundBursh}" Opacity="0.5" CornerRadius="6"/>
 
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>

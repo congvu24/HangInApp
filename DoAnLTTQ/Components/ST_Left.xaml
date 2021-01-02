@@ -357,7 +357,7 @@
                 </StackPanel>
             </Grid>
 
-            <!--<materialDesign:DialogHost CloseOnClickAway="True" Identifier="StLeftUpdate">
+            <materialDesign:DialogHost CloseOnClickAway="True" Identifier="StLeftUpdate">
                 <materialDesign:DialogHost.DialogContent>
                     <StackPanel x:Name="UpdatePanel" Height="70" Width="100" Margin="20" Orientation="Vertical" >
                         <TextBlock x:Name="UpdateNotification" Margin="0 12" HorizontalAlignment="Center"/>
@@ -385,7 +385,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-            </materialDesign:DialogHost>-->
+            </materialDesign:DialogHost>
         </Grid>
 
     </Border>

@@ -31,25 +31,26 @@
             </Grid.Background>
 
         </Grid>
-        <!--blur wrapper-->
-        <local:bbo x:Name="_object" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" Margin="12" BlurRadius="40" BorderBrush="Black" BlurOn="True">
+        <Grid Margin="0" Loaded="Grid_Loaded_1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3.5*"/>
+                <ColumnDefinition Width="9* "/>
+            </Grid.ColumnDefinitions>
 
-            <ContentControl x:Uid="contentWrapper" >
-                <!--inner content-->
-                <Grid Margin="0" Loaded="Grid_Loaded_1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="320"/>
-                        <ColumnDefinition Width="960* "/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Grid  Grid.Column="0">
+            <Border Grid.Column="0" Margin="12" BorderThickness="0.5" BorderBrush="{StaticResource GlassBorderBrush}">
+                <!--blur wrapper-->
+            <local:bbo x:Name="_object1"  Grid.Column="0" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" BlurRadius="40" BlurOn="True">
+
+                <ContentControl x:Uid="contentWrapper" >
+                    <!--inner content-->
+                    <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Border Grid.RowSpan="3" BorderThickness="0 0 1 0" BorderBrush="LightGray"/>
+                        <Border Grid.RowSpan="3" BorderThickness="0"/>
                         <component:NavBarSetting 
                 Grid.Column="0" 
                 Grid.Row="0"  
@@ -58,8 +59,19 @@
                         myProfile="{Binding profile}"
                             />
                     </Grid>
+                    <!--end inner content-->
+                </ContentControl>
+            </local:bbo>
+            <!--end blur wrapper-->
+            </Border>
 
-                    <Grid  Grid.Column="1" Background="{StaticResource AppicationBackgroundBursh}" >
+            <Border Grid.Column="1" Margin="200 12 200 12 " BorderThickness="0.5" BorderBrush="{StaticResource GlassBorderBrush}">
+            <!--blur wrapper-->
+                <local:bbo x:Name="_object2"   BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" BlurRadius="80"  BorderBrush="Black" BlurOn="True">
+
+                <ContentControl x:Uid="contentWrapper" >
+                    <!--inner content-->
+                    <Grid Background="{StaticResource AppicationBackgroundBursh}" >
                         <Grid.RowDefinitions>
                             <RowDefinition />
                         </Grid.RowDefinitions>
@@ -74,16 +86,15 @@
                         picture="{Binding picture}"
                             />
                     </Grid>
-                   
-                </Grid>
-                <!--end inner content-->
-            </ContentControl>
-        </local:bbo>
-        <!--end blur wrapper-->
 
-        
+
+                    <!--end inner content-->
+                </ContentControl>
+            </local:bbo>
+            <!--end blur wrapper-->
+            </Border>
+        </Grid>
+
     </Grid>
-
-
 
 </UserControl>
