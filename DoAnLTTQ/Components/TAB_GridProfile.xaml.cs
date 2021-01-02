@@ -60,9 +60,9 @@ namespace DoAnLTTQ.Components
 
             listImage.DataContext = source;
         }
-       
+
         // get all children of a dependency object
-        public static List<T> GetChildrenOfType<T>( DependencyObject depObj)
+        public static List<T> GetChildrenOfType<T>(DependencyObject depObj)
    where T : DependencyObject
         {
             var result = new List<T>();
@@ -124,7 +124,7 @@ namespace DoAnLTTQ.Components
             {
                 ProfileSelected(this, identify);
             }
-          
+
             HighlightButton(identify);
         }
 
@@ -137,17 +137,33 @@ namespace DoAnLTTQ.Components
                 {
                     DropShadowEffect dropShadowEffect = new DropShadowEffect
                     {
-                        Color = new System.Windows.Media.Color { R = 250, G = 135, B = 47 },
+                        Color = new System.Windows.Media.Color { R = 244, G = 238, B = 237 },
                         Direction = 320,
                         ShadowDepth = 1,
                         Opacity = 1
                     };
-                    //item.BorderBrush = System.Windows.Media.Brushes.Red;
+                    item.BorderBrush = System.Windows.Media.Brushes.Transparent;
                     item.Effect = dropShadowEffect;
+
+                    if (item.Width == 75 && item.Height == 106)
+                    {
+                        item.Width += 6;
+                        item.Height += 6;
+                    }
+
                 }
                 else
-                    //item.BorderBrush = System.Windows.Media.Brushes.Transparent;
+                //item.BorderBrush = System.Windows.Media.Brushes.Transparent;
+                {
+                    item.BorderBrush = FindResource("ProfileBorderBrush") as System.Windows.Media.Brush;
+
+                    if (item.Width > 75 && item.Height > 106)
+                    {
+                        item.Width -= 6;
+                        item.Height -= 6;
+                    }
                     item.Effect = null;
+                }
             }
 
             //Button lastSlect = SelectedButtonList.Pop();

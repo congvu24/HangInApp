@@ -154,8 +154,9 @@
 
             <Border Grid.Column="0" Margin="12" BorderThickness="0.5" BorderBrush="{StaticResource GlassBorderBrush}">
                 <!--blur wrapper-->
-                <local1:bbo x:Name="_object"  Grid.Column="0" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" BlurRadius="40" BlurOn="True">
-                    <ContentControl x:Uid="contentWrapper" >
+                <Grid>
+                <local1:bbo x:Name="_object"  Grid.Column="0" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" BlurRadius="40" BlurOn="True"/>
+                <!--<ContentControl x:Uid="contentWrapper" >-->
                             <Grid Grid.Column="0" >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="576"/>
@@ -165,7 +166,7 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <component:NavBarMain Grid.RowSpan="2"
-                x:Uid="NavBarMain"  />
+                x:Name="NavBarMain"  />
 
 
                                 <Border Grid.Row="2" BorderBrush="Transparent" BorderThickness="0 0 1 0" Margin="0 20">
@@ -187,6 +188,7 @@
                             Content="Reload"
                             materialDesign:ButtonAssist.CornerRadius="20"
                             ToolTip="Renew profile list"
+                                            x:Name="ReloadButton1"
                             Click="Reload_Click">
                                             <Button.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -202,8 +204,9 @@
                             </Grid>
                             <!--end inner content-->
 
-                        </ContentControl>
-                </local1:bbo>
+                        <!--</ContentControl>
+                </local1:bbo>-->
+                </Grid>
             </Border>
             <Grid Grid.Column="1" Background="Transparent">
                 <Grid.RowDefinitions>

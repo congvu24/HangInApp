@@ -37,9 +37,7 @@
         </Style>
         <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Height="Auto" Width="Auto" CornerRadius="13" Opacity="0.985" Margin="1.25,0,0,-10">
-                <Border.Effect>
-                    <DropShadowEffect x:Name="shadow" BlurRadius="2" Color="#FFDFD6D6" RenderingBias="Quality" ShadowDepth="6"/>
-                </Border.Effect>
+
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
             <ControlTemplate.Triggers>
@@ -105,35 +103,52 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Grid Margin="232.751,115,235,120" VerticalAlignment="Center" HorizontalAlignment="Center" Height="215" Width="332.249">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Height="55" TextWrapping="Wrap" Text="Hi there!" VerticalAlignment="Top" Width="141.996" FontSize="36" FontFamily="Tahoma"/>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Height="66.821"  TextWrapping="Wrap" Text="Let's get a few step to get you ready" VerticalAlignment="Top" Width="327.249" FontSize="20" FontFamily="Tahoma"/>
-            <Button Grid.Row="2" Click="next_Click"  HorizontalAlignment="Center" x:Name="button" Style="{DynamicResource updateBtn}" Template="{DynamicResource ButtonBaseControlTemplate1}" Width="142.5" Content="Next" >
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="20"/>
-                    </Style>
-                </Button.Resources>
-                <Button.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Button.RenderTransform>
-                <Button.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                        <GradientStop Color="#ff7854" Offset="0.0" />
-                        <GradientStop Color="#fd267d" Offset="1.0" />
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+
+        <Grid x:Name="blurBack">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
+            </Grid.Background>
         </Grid>
+        
+
+                    <Grid Margin="232.751,115,235,120" VerticalAlignment="Center" HorizontalAlignment="Center" Height="215" Width="332.249">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+            <Border Grid.RowSpan="3"  BorderThickness="0.5" BorderBrush="{StaticResource GlassBorderBrush}"/>
+            <!--blur wrapper-->
+            <local:bbo x:Name="_object1" Grid.RowSpan="3" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" BlurRadius="40" BlurOn="True" Margin="-15"/>
+
+
+            <!--inner content-->
+
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" Height="55" TextWrapping="Wrap" Text="Hi there!" VerticalAlignment="Top" Width="141.996" FontSize="36" FontFamily="Tahoma"/>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Center" Height="66.821"  TextWrapping="Wrap" Text="Let's get a few step to get you ready" VerticalAlignment="Top" Width="327.249" FontSize="20" FontFamily="Tahoma"/>
+                        <Button Grid.Row="2" Click="next_Click"  HorizontalAlignment="Center" x:Name="button" Style="{DynamicResource updateBtn}" Template="{DynamicResource ButtonBaseControlTemplate1}" Width="142.5" Content="Next" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="20"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#ff7854" Offset="0.0" />
+                                    <GradientStop Color="#fd267d" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                 
+            
     </Grid>
 </UserControl>

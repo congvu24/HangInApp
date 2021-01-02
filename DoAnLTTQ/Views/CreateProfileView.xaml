@@ -255,6 +255,13 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
+        <!--background-->
+        <Grid x:Name="blurBack">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
+            </Grid.Background>
+
+        </Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Height="86" TextWrapping="Wrap" Text="Let's create your profile" VerticalAlignment="Top" Width="406" FontSize="36" FontWeight="SemiBold" Margin="438,-111,436,0" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
@@ -286,7 +293,7 @@
                 <Grid Margin="0,0,40,30">
                     <TextBox x:Name="Name" Style="{StaticResource textBox}" Tag="--Your name--" TextWrapping="Wrap" Width="390" FontSize="16" HorizontalAlignment="Left" Margin="70,0,0,0">
                     </TextBox>
-                    <TextBlock  HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0"/>
+                    <TextBlock  HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0" FontWeight="Bold" FontSize="18"/>
                 </Grid>
                 <TextBlock Text="abvcdfasdasdasdasd:" Style="{StaticResource ErrorAnounce}" x:Name="errorNameInput"/>
             </Grid>
@@ -301,7 +308,7 @@
                         </TransformGroup>
                     </Grid.RenderTransform>
                     <TextBox x:Name="Age" Style="{StaticResource textBox}" Tag="--Age--" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  HorizontalAlignment="Left" Margin="70,0,0,0" Height="45"/>
-                    <TextBlock  HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Top" Width="70" Margin="0,5,0,0"/>
+                    <TextBlock  HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="Age:" FontWeight="Bold"  VerticalAlignment="Top" Width="70" Margin="0,5,0,0" FontSize="18"/>
                     <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorAgeInput"/>
                 </Grid>
             </Grid>
@@ -322,7 +329,7 @@
                         <ComboBoxItem Content="Female"  Foreground="Black"/>
                         <ComboBoxItem Content="I don't want to tell"  Foreground="Black"/>
                     </ComboBox>
-                    <TextBlock HorizontalAlignment="Left" Height="25.823" TextWrapping="Wrap" Text="Sex:" VerticalAlignment="Top" Width="70" Margin="0,6,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" Height="25.823" TextWrapping="Wrap" Text="Sex:" FontWeight="Bold"  VerticalAlignment="Top" Width="70" Margin="0,6,0,0" FontSize="18"/>
                     <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorGenderInput"/>
                 </Grid>
             </Grid>
@@ -338,7 +345,7 @@
                     </Grid.RenderTransform>
                     <TextBox x:Name="Hobby" Style="{StaticResource textBox}" Tag="--Your hobby--" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" FontSize="16"  HorizontalAlignment="Left" Margin="70,0,0,0">
                     </TextBox>
-                    <TextBlock HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Hobby:" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Hobby:" FontWeight="Bold" VerticalAlignment="Top" Width="70" Margin="0,5.823,0,0" FontSize="18"/>
                     <TextBlock Style="{StaticResource ErrorAnounce}" Text="askjdaskd" x:Name="errorHobbyInput"/>
                 </Grid>
             </Grid>

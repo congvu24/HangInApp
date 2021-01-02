@@ -27,6 +27,6 @@
 
     <Grid x:Name="grid">
         <ContentControl  Grid.Column="1" Content="{Binding ViewContext}"/>
-        <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="3"/>
+        <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="3" Background="#999999" Foreground="White"/>
     </Grid>
 </Window>

@@ -10,8 +10,8 @@
     <UserControl.Resources>
 
     </UserControl.Resources>
-    <Border Padding="10" Background="{StaticResource GradientBush}" BorderBrush="Transparent" BorderThickness="2" CornerRadius="10" Height="auto" MaxWidth="300" Margin="26,26,0,16" HorizontalAlignment="Right">
-        <Image x:Name="img" Source="" />
+    <Border Padding="4" Background="{StaticResource GradientBush}" BorderBrush="Transparent" BorderThickness="1" CornerRadius="10" Height="auto" MaxWidth="300" Margin="0,0,26,16" HorizontalAlignment="Right">
+        <Image x:Name="img" />
     </Border>
 </UserControl>
 

@@ -98,7 +98,7 @@ namespace DoAnLTTQ
         private void SettingView_OnSwitchViewToMainView()
         {
             this.ViewContext = myMainView;
-            ((MainView)this.ViewContext).navbarmain.Reload_myProfile();
+            ((MainView)this.ViewContext).NavBarMain.Reload_myProfile();
 
         }
 

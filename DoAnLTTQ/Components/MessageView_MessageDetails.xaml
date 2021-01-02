@@ -179,7 +179,7 @@
                         </Image.Clip>
                     </Image>
                 </Border>-->
-                <materialDesign:Chip IconBackground="{x:Null}" MinHeight="40" MinWidth="60" >
+                <materialDesign:Chip IconBackground="{x:Null}" MinHeight="40" MinWidth="60" Cursor="Arrow" >
                     <TextBlock Text="{Binding name}" x:Name="txtName" FontSize="16" FontWeight="Bold"/>
                     <materialDesign:Chip.Icon>
                         <Image Source="{Binding avatar.buffer}"/>

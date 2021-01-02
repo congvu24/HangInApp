@@ -165,20 +165,22 @@
                             <!--Style="{StaticResource myImageSlotContent}"-->
                             <!--
                         </Button>-->
+                            
                             <Button  
                             HorizontalContentAlignment="Center" 
                             Style="{StaticResource MaterialDesignRaisedAccentButton}"
                             Width="75"
-                            Margin="0 0 12 12 "
+                            Margin="0 0 12 12"
                             materialDesign:RippleAssist.IsDisabled="True"
                             Height="106"
                             VerticalContentAlignment="Center"
                             BorderBrush="{StaticResource ProfileBorderBrush}"
                             BorderThickness="1"
-                                materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0"
                             Click="select_Click"
                             materialDesign:ButtonAssist.CornerRadius="5"
                             Uid="{Binding name}"
+                            Padding="4"
                             >
 
                                 <Button.Background>
@@ -187,6 +189,7 @@
                                 <!--x:Name="background"-->
                             </Button>
                             <!--</Border>-->
+                           
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

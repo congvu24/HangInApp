@@ -38,7 +38,7 @@
                     <Grid Visibility="Hidden"/>
 
                     <materialDesign:TransitionerSlide
-    ClipToBounds="True">
+    ClipToBounds="True" >
                         <materialDesign:TransitionerSlide.OpeningEffects>
                             <materialDesign:TransitionEffect
         Kind="SlideInFromLeft"
@@ -48,18 +48,18 @@
         Duration="0:0:0.4"
         OffsetTime="0:0:0.15" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical" Height="209.975">
-                            <Viewbox Width="214.238" Height="90.236">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical" Height="297">
+                            <Viewbox Width="214.238" Height="120">
                                 <Image Source="/Resources/icon/Logo.png" Stretch="Fill" Width="111.849"/>
                             </Viewbox>
-                            <TextBlock Text="HangInApp - connect with your lover." FontSize="18" FontFamily="tahoma" Foreground="#F7A072" Loaded="TextBlock_Loaded"/>
+                            <TextBlock Margin="0 20" Text="HangInApp - connect with your lover." FontSize="24" FontFamily="tahoma" Foreground="#F7A072" Loaded="TextBlock_Loaded"/>
                         </StackPanel>
 
                     </materialDesign:TransitionerSlide>
                 </materialDesign:Transitioner>
             </StackPanel>
-            
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Height="57.5" Margin="361.02,0,365,0" Width="73.98">
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="57" Margin="360,265,366,40" Width="74" Grid.RowSpan="2">
                 <Grid x:Name="grid1" Height="74" Width="74" Visibility="Hidden">
                     <ProgressBar
                         Style="{StaticResource MaterialDesignCircularProgressBar}"

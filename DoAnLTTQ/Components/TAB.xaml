@@ -173,7 +173,7 @@
         </Storyboard>
         <Storyboard x:Key="floatRight">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="156.001"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="169.001"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
@@ -279,11 +279,14 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}">
+                            <Border Grid.Column="0" Style="{StaticResource UnderLineButtonStyle}" Margin="30,35,30,20">
+                               
+                                                           
                                 <Button x:Name="buttonQuanhDay"  Click="buttonQuanhDay_Click" Template="{DynamicResource boderSelect}" Style="{DynamicResource changingbutton}" Content="Quanh đây"/>
+
                             </Border>
 
-                            <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}">
+                            <Border Grid.Column="1"  Style="{StaticResource UnderLineButtonStyle}" Margin="30,35,29,20">
                                 <Button x:Name="buttonTinNhan" Click="buttonTinNhan_Click" Template="{DynamicResource boderSelect}" Style="{DynamicResource changingbutton}" Content="Tin nhắn"/>
                             </Border>
                         </Grid>

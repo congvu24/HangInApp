@@ -85,6 +85,16 @@ namespace DoAnLTTQ.Components
 
         private void buttonQuanhDay_Click(object sender, RoutedEventArgs e)
         {
+            // go to parent to find reload button and enable it
+            FrameworkElement u = this.Parent as FrameworkElement;
+            for (int i = 5; i > 0; i--)
+            {
+                u = u.Parent as FrameworkElement;
+            }
+            (u.FindName("ReloadButton1") as Button).Visibility = Visibility.Visible;
+
+            (sender as Button).IsEnabled = false;
+            buttonTinNhan.IsEnabled = true;
             gridProfile.Visibility = Visibility.Visible;
             gridMessage.Visibility = Visibility.Collapsed;
             if (ButtonSwitchViewOnClick != null)
@@ -109,6 +119,16 @@ namespace DoAnLTTQ.Components
 
         private void buttonTinNhan_Click(object sender, RoutedEventArgs e)
         {
+            // go to parent to find reload button and disable it
+            FrameworkElement u = this.Parent as FrameworkElement;
+            for (int i = 5; i > 0; i--)
+            {
+                u = u.Parent as FrameworkElement;
+            }
+            (u.FindName("ReloadButton1") as Button).Visibility = Visibility.Collapsed;
+
+            (sender as Button).IsEnabled = false;
+            buttonQuanhDay.IsEnabled = true;
 
             gridProfile.Visibility = Visibility.Collapsed;
             gridMessage.Visibility = Visibility.Visible;

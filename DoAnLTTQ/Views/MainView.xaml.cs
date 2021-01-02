@@ -61,7 +61,7 @@
         }
 
         public info_main infoMain = new info_main();
-        public NavBarMain navbarmain;
+        
 
         public MainView()
         {
@@ -70,9 +70,9 @@
             StartingServer(ref sv);
             //Reload_Guest();
 
-            //NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
-            //NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
-            //NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
+            NavBarMain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
+            NavBarMain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
+            NavBarMain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
 
             infoMain.NotifyProfile += new EventHandler<int>(HighlightSelectedProfile);
             infoMain.indexHomePicture = 0;
@@ -210,9 +210,9 @@
 
         public void Reload_Profile()
         {
-            var contentWrapper = FindUid(_object, "contentWrapper");
-            navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
-            navbarmain.Reload_myProfile();
+            //var contentWrapper = FindUid(_object, "contentWrapper");
+            //navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
+            NavBarMain.Reload_myProfile();
         }
         public void GetSelectedProileIndex(object sender, int index)
         {
@@ -246,18 +246,12 @@
         }
         public void HighlightSelectedProfile(object sender, int index)
         {
-            try
-            {
+          
 
-            var contentWrapper = FindUid(_object, "contentWrapper");
-            navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
-            navbarmain.gridProfile.HighlightButton(index);
-            }
-            catch
-            {
-
-                //MessageBox.Show("Không thể kết nối, vui lòng khởi động lại ứng dụng");
-            }
+            //var contentWrapper = FindUid(_object, "contentWrapper");
+            //navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
+            NavBarMain.gridProfile.HighlightButton(index);
+           
         }
         public void receiveMessage(string ip, int type, byte[] content)
         {
@@ -291,13 +285,13 @@
 
         private void container_Loaded(object sender, RoutedEventArgs e)
         {
-            var contentWrapper = FindUid(_object, "contentWrapper");
-            navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
+            //var contentWrapper = FindUid(_object, "contentWrapper");
+            //navbarmain = FindUid(contentWrapper, "NavBarMain") as NavBarMain;
 
-            navbarmain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
-            navbarmain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
-            navbarmain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
 
+            //navbarmain.gridProfile.ProfileSelected += new EventHandler<int>(GetSelectedProileIndex);
+            //navbarmain.gridMessage.ProfileSelected += new EventHandler<string>(changeActiveProfile);
+            //navbarmain.ButtonSwitchViewOnClick += NavbarMain_ButtonSwitchViewOnClick;
         }
     }
 }
