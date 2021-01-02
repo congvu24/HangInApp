@@ -65,7 +65,7 @@
             <!--end blur wrapper-->
             </Border>
 
-            <Border Grid.Column="1" Margin="200 12 200 12 " BorderThickness="0.5" BorderBrush="{StaticResource GlassBorderBrush}">
+            <Border Grid.Column="1" Margin="150 12 150 12 " BorderThickness="0.5" BorderBrush="{StaticResource GlassBorderBrush}">
             <!--blur wrapper-->
                 <local:bbo x:Name="_object2"   BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" BlurRadius="80"  BorderBrush="Black" BlurOn="True">
 

@@ -266,6 +266,17 @@ namespace DoAnLTTQ.Components
                 }
                 catch { }
         }
+
+        private void Border_LostFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as Border).Background = Brushes.LightGray;
+        }
+
+        private void Border_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as Border).Background = (Brush)(new BrushConverter().ConvertFrom("#E8E8E8"));
+
+        }
     }
 
 }

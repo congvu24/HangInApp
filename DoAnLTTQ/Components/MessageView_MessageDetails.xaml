@@ -159,7 +159,7 @@
             <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.RowSpan="3" Background="{StaticResource MessageViewBackgroundBrush}">
+        <Grid Grid.RowSpan="3" Background="{StaticResource AppicationBackgroundBursh}">
             <!--<Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#fd267d" Offset="0.0" />
@@ -344,7 +344,7 @@
                     </StackPanel>
 
                     <!--Nhap tin nhan vao day ne-->
-                    <Border Grid.Column="2" Padding="2 0" Background="{StaticResource GlobalGrayBrush}" CornerRadius="8" BorderThickness="1">
+                    <Border Grid.Column="2" Padding="2 0" Background="LightGray" CornerRadius="8" BorderThickness="1" LostFocus="Border_LostFocus" GotFocus="Border_GotFocus">
                         <emoji:RichTextBox x:Name="TextToSend" VerticalAlignment="Center" Foreground="Black" Style="{StaticResource TextToSendMessage }" Background="Transparent" PreviewKeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
                     </Border>
 

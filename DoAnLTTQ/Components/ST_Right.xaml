@@ -71,12 +71,12 @@
     </UserControl.Resources>
 
     <Grid>
-        <Border BorderThickness="0.5" MaxWidth="440" Height="auto" CornerRadius="10" Background="{DynamicResource ApplicationBackgroundDarkBursh}" Padding="4" Cursor="Hand" BorderBrush="#FF0E0D0D" Margin="0 12 0 12">
+        <Border BorderThickness="0.5" MaxWidth="440" Height="auto" CornerRadius="10" Background="{StaticResource AppicationBackgroundBursh}" Padding="4" Cursor="Hand" BorderBrush="Transparent" Margin="0 12 0 12">
             <Border.Effect>
                 <DropShadowEffect Color="#00000038" BlurRadius="6" Direction="45" Opacity="0.2" ShadowDepth="0" />
             </Border.Effect>
 
-            <StackPanel x:Name="LayoutRoot" Background="#fcf9f7">
+            <StackPanel x:Name="LayoutRoot" Background="{StaticResource AppicationBackgroundBursh}">
                 <ItemsControl ItemsSource="{Binding picture}" x:Name="listImage">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate >
