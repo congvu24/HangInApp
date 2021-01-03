@@ -213,6 +213,7 @@ namespace DoAnLTTQ.Components
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             myPopup.IsOpen = true;
+            TextToSend.Document.Blocks.Clear();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -275,6 +276,55 @@ namespace DoAnLTTQ.Components
         private void Border_GotFocus(object sender, RoutedEventArgs e)
         {
             (sender as Border).Background = (Brush)(new BrushConverter().ConvertFrom("#E8E8E8"));
+
+        }
+
+        private void SendButton_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            (sender as PackIcon).Foreground = Brushes.Red;
+            MessageBox.Show("aa");
+        }
+
+        private void packIcon1_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var color = (sender as PackIcon).Foreground;
+            if (color == Brushes.White)
+                color = Brushes.Red;
+            else
+                color = Brushes.White;
+
+        }
+
+        
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            packIcon1.Foreground = Brushes.Red;
+        }
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            packIcon1.Foreground = Brushes.White;
+
+        }
+
+        private void Button_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            packIcon2.Foreground = Brushes.Red;
+        }
+
+        private void Button_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            packIcon2.Foreground = Brushes.White;
+
+        }
+        private void Button_MouseEnter_2(object sender, MouseEventArgs e)
+        {
+            packIcon3.Foreground = Brushes.Red;
+        }
+
+        private void Button_MouseLeave_2(object sender, MouseEventArgs e)
+        {
+            packIcon3.Foreground = Brushes.White;
 
         }
     }

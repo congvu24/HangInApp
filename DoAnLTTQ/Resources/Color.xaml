@@ -44,7 +44,7 @@
     <Color x:Key="GlassBorder">#fffafa</Color>
     <SolidColorBrush x:Key="GlassBorderBrush" Color="{StaticResource GlassBorder}"/>
 
-    <Color x:Key="ButtonInMessage">blue</Color>
+    <Color x:Key="ButtonInMessage">white</Color>
     <SolidColorBrush x:Key="ButtonInMessageBrush" Color="{StaticResource ButtonInMessage}"/>
 
 </ResourceDictionary>
