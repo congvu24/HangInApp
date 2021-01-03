@@ -67,7 +67,7 @@
                                 SnapsToDevicePixels="True"
                                 Background="#FFEE5151"
                                 CornerRadius="3"
-                                Opacity="0.2"
+                                Opacity="0"
                                 Height="{TemplateBinding Height}"
                                 Width="{TemplateBinding Width}"/>
                         <ControlTemplate.Triggers>
@@ -81,10 +81,11 @@
                             <EventTrigger RoutedEvent="MouseLeave">
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation To="0.2" Duration="0:0:0.3" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="Opacity" />
+                                        <DoubleAnimation To="0" Duration="0:0:0.3" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="Opacity" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
+                            
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

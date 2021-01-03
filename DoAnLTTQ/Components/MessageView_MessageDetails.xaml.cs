@@ -276,7 +276,7 @@ namespace DoAnLTTQ.Components
         private void Border_GotFocus(object sender, RoutedEventArgs e)
         {
             (sender as Border).Background = (Brush)(new BrushConverter().ConvertFrom("#E8E8E8"));
-
+            
         }
 
         private void SendButton_GotMouseCapture(object sender, MouseEventArgs e)
