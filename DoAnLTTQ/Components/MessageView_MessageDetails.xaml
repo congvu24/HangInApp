@@ -217,11 +217,12 @@
                         <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
 
-                    <materialDesign:PackIcon Kind="Image" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
+                    <materialDesign:PackIcon Kind="Image" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="{StaticResource ButtonInMessageBrush}" Margin="4,0"/>
                     <Button Click="SendImage_Click" Background="Transparent" BorderBrush="Transparent"  Width="30" Height="30"/>
 
                     <!--Icon nam day ne-->
-                    <materialDesign:PackIcon Kind="StickerEmoji"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" Foreground="#FFD94E4E" Margin="4,0"/>
+                    <materialDesign:PackIcon Kind="StickerEmoji"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30"  Foreground="{StaticResource ButtonInMessageBrush}"  Margin="4,0"/>
+                    <!--Foreground="#FFD94E4E"-->
 
                     <StackPanel Background ="Transparent" Grid.Column="1">
                         <Popup x:Name="myPopup" StaysOpen="false" PopupAnimation="Slide" >
@@ -352,7 +353,7 @@
                     <materialDesign:PackIcon 
                         x:Name="SendButton"
                         Kind="Send" Margin="5 0 10 0" Grid.Column="3"
-                   Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Width="26" Height="25"/>
+                  Foreground="{StaticResource ButtonInMessageBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="26" Height="25"/>
                     <Button Click="SendButton_Click" Grid.Column="3" BorderThickness="0" Background="Transparent"/>
 
                 </Grid>

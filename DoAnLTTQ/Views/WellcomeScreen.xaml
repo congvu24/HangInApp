@@ -38,7 +38,7 @@
                     <Grid Visibility="Hidden"/>
 
                     <materialDesign:TransitionerSlide
-    ClipToBounds="True" >
+    ClipToBounds="True" Margin="0,0,0,-49" >
                         <materialDesign:TransitionerSlide.OpeningEffects>
                             <materialDesign:TransitionEffect
         Kind="SlideInFromLeft"
@@ -49,10 +49,10 @@
         OffsetTime="0:0:0.15" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical" Height="297">
-                            <Viewbox Width="214.238" Height="120">
+                            <Viewbox Width="214.238" Height="80">
                                 <Image Source="/Resources/icon/Logo.png" Stretch="Fill" Width="111.849"/>
                             </Viewbox>
-                            <TextBlock Margin="0 20" Text="HangInApp - connect with your lover." FontSize="24" FontFamily="tahoma" Foreground="#F7A072" Loaded="TextBlock_Loaded"/>
+                            <TextBlock Margin="0 20" Text="HangInApp - connect with your lover." FontSize="16" FontFamily="tahoma" Foreground="#F7A072" Loaded="TextBlock_Loaded"/>
                         </StackPanel>
 
                     </materialDesign:TransitionerSlide>
