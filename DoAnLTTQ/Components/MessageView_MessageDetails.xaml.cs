@@ -1,21 +1,14 @@
 ﻿using DoAnLTTQ.Backend;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Net;
-using System.Net.Sockets;
 using System.ComponentModel;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
@@ -253,12 +246,21 @@ namespace DoAnLTTQ.Components
         private void SendImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All Images Files (*.png;*.jpeg;*.gif;*.jpg;*.bmp;*.tiff;*.tif)|*.png;*.jpeg;*.gif;*.jpg;*.bmp;*.tiff;*.tif" +
-            "|PNG Portable Network Graphics (*.png)|*.png" +
-            "|JPEG File Interchange Format (*.jpg *.jpeg *jfif)|*.jpg;*.jpeg;*.jfif" +
-            "|BMP Windows Bitmap (*.bmp)|*.bmp" +
-            "|TIF Tagged Imaged File Format (*.tif *.tiff)|*.tif;*.tiff" +
-            "|GIF Graphics Interchange Format (*.gif)|*.gif";
+            openFileDialog.Filter = "";
+
+            System.Drawing.Imaging.ImageCodecInfo[] codecs = System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders();
+            string sep = string.Empty;
+
+            foreach (var c in codecs)
+            {
+                string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
+                openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, codecName, c.FilenameExtension);
+                sep = "|";
+            }
+
+            openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, "All Files", "*.*");
+
+            openFileDialog.DefaultExt = ".png"; // Default file extension 
             if (openFileDialog.ShowDialog() == true)
                 try
                 {

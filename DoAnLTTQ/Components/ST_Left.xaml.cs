@@ -1,25 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DoAnLTTQ.Backend;
 using DoAnLTTQ.Views;
 using Microsoft.Win32;
-using System.IO;
 using System.ComponentModel;
-using System.Security.Policy;
 using MaterialDesignThemes.Wpf;
-using System.Collections.ObjectModel;
+using System.Drawing.Imaging;
 
 namespace DoAnLTTQ.Components
 {
@@ -110,6 +99,22 @@ namespace DoAnLTTQ.Components
         private void Avatar_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "";
+
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+            string sep = string.Empty;
+
+            foreach (var c in codecs)
+            {
+                string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
+                openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, codecName, c.FilenameExtension);
+                sep = "|";
+            }
+
+            openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, "All Files", "*.*");
+
+            openFileDialog.DefaultExt = ".png"; // Default file extension 
+
             if (openFileDialog.ShowDialog() == true)
                 try
                 {

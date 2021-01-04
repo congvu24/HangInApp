@@ -1,26 +1,21 @@
-﻿namespace DoAnLTTQ.Views
-{
-    using DoAnLTTQ.Backend;
-    using DoAnLTTQ.Components;
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Sockets;
-    using System.Runtime.Serialization.Formatters.Binary;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Threading;
-    using System.Timers;
-    using MaterialDesignThemes.Wpf;
-    using System.Text;
+﻿using DoAnLTTQ.Backend;
+using DoAnLTTQ.Components;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using MaterialDesignThemes.Wpf;
+using System.Text;
 
+namespace DoAnLTTQ.Views
+{
     public partial class MainView : UserControl, INotifyPropertyChanged
     {
         public event SwitchViewHandler OnSwitchView;

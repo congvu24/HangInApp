@@ -1,24 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DoAnLTTQ.Backend;
 using Microsoft.Win32;
-using System.IO;
 using System.ComponentModel;
-using System.Security.Policy;
 using System.Collections;
-using System.Globalization;
 
 namespace DoAnLTTQ.Components
 {
@@ -35,11 +24,11 @@ namespace DoAnLTTQ.Components
         }
         public static readonly DependencyProperty vclProperty =
              DependencyProperty.Register("picture", typeof(IEnumerable),
-               typeof(MainSetting), new PropertyMetadata(""));    
+               typeof(MainSetting), new PropertyMetadata(""));
         public MainSetting()
         {
             InitializeComponent();
-           
+
             LayoutRoot.DataContext = this;
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -53,25 +42,45 @@ namespace DoAnLTTQ.Components
         private void Slot_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "";
+
+            System.Drawing.Imaging.ImageCodecInfo[] codecs = System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders();
+            string sep = string.Empty;
+
+            foreach (var c in codecs)
+            {
+                string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
+                openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, codecName, c.FilenameExtension);
+                sep = "|";
+            }
+
+            openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, "All Files", "*.*");
+
+            openFileDialog.DefaultExt = ".png"; // Default file extension 
+
+            var brush = new ImageBrush();
             if (openFileDialog.ShowDialog() == true)
             {
-                var brush = new ImageBrush();
                 brush.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
                 BitmapImage image = new BitmapImage(new Uri(openFileDialog.FileName));
                 ((sender as Button).FindName("brush") as ImageBrush).ImageSource = image;
                 //MessageBox.Show(((sender as Button).FindName("brush") as ImageBrush).ImageSource.ToString());
                 (sender as Button).Content = "";
             }
+            if(brush.ImageSource != null)
+            {
             Button newbutton = sender as Button;
             FrameworkElement t = newbutton.Parent as FrameworkElement;
             (t as Border).BorderBrush = Brushes.Transparent;
+            }
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             List<Picture> newList = new List<Picture>();
             //
             var result = new List<Button>();
-            if (listImage == null) result =  null;
+            if (listImage == null) result = null;
             var queue = new Queue<DependencyObject>();
             queue.Enqueue(listImage);
             while (queue.Count > 0)
@@ -87,13 +96,13 @@ namespace DoAnLTTQ.Components
                 }
             }
             //
-             foreach(Button item in result)
+            foreach (Button item in result)
             {
-                    ImageSource data = (item.FindName("brush") as ImageBrush).ImageSource;
-                    if(data != null)
-                    {
+                ImageSource data = (item.FindName("brush") as ImageBrush).ImageSource;
+                if (data != null)
+                {
                     newList.Add(new Picture() { name = "hinh", url = data.ToString() });
-                    }
+                }
             }
             OnUserControlButtonClick(newList);
         }
@@ -126,6 +135,6 @@ namespace DoAnLTTQ.Components
                 (sender as Border).BorderBrush = null;
         }
     }
-   
+
 
 }

@@ -233,10 +233,10 @@
                             <SolidColorBrush Color="{StaticResource ButtonInMessage}"/>
                         </materialDesign:PackIcon.Foreground>
                     </materialDesign:PackIcon>
-                    <Button Click="SendImage_Click" Background="Transparent" BorderBrush="Transparent"  Width="30" Height="30"/>
+                    <Button Click="SendImage_Click" Background="Transparent" BorderBrush="Transparent"  Width="30" Height="30" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
 
                     <!--Icon nam day ne-->
-                    <materialDesign:PackIcon x:Name="packIcon" Kind="StickerEmoji"  Grid.Column="1" Style="{StaticResource IconHover}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30"  Foreground="{StaticResource ButtonInMessageBrush}"  Margin="4,0"/>
+                    <materialDesign:PackIcon x:Name="packIcon2" Kind="StickerEmoji"  Grid.Column="1" Style="{StaticResource IconHover}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30"  Foreground="{StaticResource ButtonInMessageBrush}"  Margin="4,0"/>
                     <!--Foreground="#FFD94E4E"-->
 
                     <StackPanel Background ="Transparent" Grid.Column="1">
@@ -356,7 +356,7 @@
                                 </WrapPanel>
                             </Grid>
                         </Popup>
-                        <Button Background="Transparent" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="6"  HorizontalAlignment="Center" Height="46" Width="40" Click="Button_Click"/>
+                        <Button Background="Transparent"  MouseEnter="Button_MouseEnter_1" MouseLeave="Button_MouseLeave_1" BorderThickness="0" materialDesign:ButtonAssist.CornerRadius="6"  HorizontalAlignment="Center" Height="46" Width="40" Click="Button_Click"/>
                     </StackPanel>
 
                     <!--Nhap tin nhan vao day ne-->
@@ -366,10 +366,10 @@
 
                     <!--Nut gui tin nhan day ne-->
                     <materialDesign:PackIcon 
-                        x:Name="SendButton"
+                       x:Name="packIcon3"
                         Kind="Send" Margin="5 0 10 0" Grid.Column="3" Style="{StaticResource IconHover}"
                   Foreground="{StaticResource ButtonInMessageBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="26" Height="25"/>
-                    <Button Click="SendButton_Click" Grid.Column="3" BorderThickness="0" Background="Transparent"/>
+                    <Button Click="SendButton_Click" Grid.Column="3" MouseEnter="Button_MouseEnter_2" MouseLeave="Button_MouseLeave_2" BorderThickness="0" Background="Transparent"/>
 
                 </Grid>
 
