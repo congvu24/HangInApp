@@ -12,7 +12,7 @@
 
     <!--#region Style -->
     <UserControl.Resources>
-        <Style x:Key="IconHover" TargetType="materialDesign:PackIcon">
+        <Style x:Key="IconHover"  TargetType="materialDesign:PackIcon">
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Foreground" Value="Red"/>
@@ -67,7 +67,7 @@
                                 SnapsToDevicePixels="True"
                                 Background="#FFEE5151"
                                 CornerRadius="3"
-                                Opacity="0"
+                                Opacity="0.2"
                                 Height="{TemplateBinding Height}"
                                 Width="{TemplateBinding Width}"/>
                         <ControlTemplate.Triggers>
@@ -81,7 +81,7 @@
                             <EventTrigger RoutedEvent="MouseLeave">
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation To="0" Duration="0:0:0.3" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="Opacity" />
+                                        <DoubleAnimation To="0.2" Duration="0:0:0.3" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="Opacity" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>

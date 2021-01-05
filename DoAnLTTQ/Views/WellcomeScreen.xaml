@@ -67,6 +67,7 @@
                 Margin="16.99,0,16.99,19.95"
                 />
                     <TextBlock Text="Initializing.." HorizontalAlignment="Center" Margin="0,40,0,0"/>
+                    <TextBlock Text="Initializing.." HorizontalAlignment="Center" Margin="0,40,0,0"/>
                 </Grid>
             </StackPanel>
         </Grid>
