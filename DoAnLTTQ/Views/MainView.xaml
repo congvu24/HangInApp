@@ -6,6 +6,7 @@
              
              xmlns:local="clr-namespace:DoAnLTTQ.Views" xmlns:component="clr-namespace:DoAnLTTQ.Components" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:DoAnLTTQ"
              mc:Ignorable="d">
+    <!--#region style -->
     <UserControl.Resources>
 
 
@@ -52,13 +53,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Resources>
-
-    <!--<UserControl.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.RequestBringIntoView">
-            <BeginStoryboard Storyboard="{StaticResource OnReloadWindow}"/>
-        </EventTrigger>
-    </UserControl.Triggers>-->
-
+    <!--#endregion-->
 
     <!--#region oldCode -->
     <!--<Grid KeyDown="ContentControl_KeyDown" x:Name="container" Loaded="container_Loaded">
@@ -133,10 +128,10 @@
 
     <Grid>
         <!--background-->
-        <Grid x:Name="blurBack">
-            <Grid.Background>
+        <Grid x:Name="blurBack" Background="{StaticResource AppicationBackgroundBursh}">
+            <!--<Grid.Background>
                 <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
-            </Grid.Background>
+            </Grid.Background>-->
 
         </Grid>
 

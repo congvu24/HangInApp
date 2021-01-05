@@ -25,10 +25,10 @@
 
     <Grid Loaded="Grid_Loaded">
         <!--background-->
-        <Grid x:Name="blurBack">
-            <Grid.Background>
+        <Grid x:Name="blurBack" Background="{StaticResource AppicationBackgroundBursh}">
+            <!--<Grid.Background>
                 <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
-            </Grid.Background>
+            </Grid.Background>-->
 
         </Grid>
         <Grid Margin="0" Loaded="Grid_Loaded_1">

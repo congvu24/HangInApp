@@ -39,15 +39,14 @@
     </Grid>-->
     <!--#endregion-->
 
-
-    <!--background-->
     <Grid>
-    <Grid x:Name="blurBack">
-        <Grid.Background>
+        <!--background-->
+        <Grid x:Name="blurBack" Background="{StaticResource AppicationBackgroundBursh}">
+            <!--<Grid.Background>
                 <ImageBrush ImageSource="/Resources/Images/GradientBackground.jpg" Stretch="Fill"/>
-        </Grid.Background>
+            </Grid.Background>-->
 
-    </Grid>
+        </Grid>
 
     <local1:bbo x:Name="_object" BlurObj="{Binding ElementName=blurBack, Mode=OneWay}" Margin="12" BlurRadius="40" BorderBrush="Black" BlurOn="True">
 

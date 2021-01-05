@@ -4,9 +4,9 @@
     
     <Color x:Key="ButtonColor">#31326f</Color>
 
-
-    <!--<Color x:Key="ApplicationBackground">#ffdada</Color>-->
-    <Color x:Key="ApplicationBackground">transparent</Color>
+    <!--<BitmapImage x:Key="ApplicationBackground" UriSource="/Resources/Images/GradientBackground.jpg" />-->
+    <Color x:Key="ApplicationBackground">#ffdada</Color>
+    <!--<Color x:Key="ApplicationBackground">transparent</Color>-->
     <SolidColorBrush x:Key="AppicationBackgroundBursh" Color="{StaticResource ApplicationBackground}"/>
 
 

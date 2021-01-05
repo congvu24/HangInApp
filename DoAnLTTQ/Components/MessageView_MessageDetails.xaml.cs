@@ -329,6 +329,53 @@ namespace DoAnLTTQ.Components
             packIcon3.Foreground = Brushes.White;
 
         }
+
+        private void IconButtonOnHover(object sender, MouseEventArgs e)
+        {
+
+
+            var b= (Brush)(new BrushConverter().ConvertFrom("#F2F1EF"));
+            (sender as Button).Background = b;
+        }
+
+        private void IconButtonLostHover(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = Brushes.Transparent;
+
+        }
+
+        private void emojiPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Button> childs = GetChildrenOfType<Button>(emojiPanel);
+
+            foreach (var child in childs)
+            {
+                child.MouseEnter += IconButtonOnHover;
+                child.MouseLeave += IconButtonLostHover;
+            }
+        }
+        public static List<T> GetChildrenOfType<T>(DependencyObject depObj)
+  where T : DependencyObject
+        {
+            var result = new List<T>();
+            if (depObj == null) return null;
+            var queue = new Queue<DependencyObject>();
+            queue.Enqueue(depObj);
+            while (queue.Count > 0)
+            {
+                var currentElement = queue.Dequeue();
+                var childrenCount = VisualTreeHelper.GetChildrenCount(currentElement);
+                for (var i = 0; i < childrenCount; i++)
+                {
+                    var child = VisualTreeHelper.GetChild(currentElement, i);
+                    if (child is T)
+                        result.Add(child as T);
+                    queue.Enqueue(child);
+                }
+            }
+
+            return result;
+        }
     }
 
 }
