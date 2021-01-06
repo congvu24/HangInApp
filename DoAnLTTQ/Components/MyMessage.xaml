@@ -42,7 +42,7 @@
             </LinearGradientBrush>
         </Border.Background>
     </Border>-->
-    <Grid Height="auto" MinWidth="36" Margin="0,0,26,16" x:Name="grid" Opacity="0">
+    <Grid Height="auto" MinWidth="36" Margin="0,0,26,16" x:Name="grid" Opacity="0" >
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -59,3 +59,4 @@
         </Border>
     </Grid>
 </UserControl>
+    

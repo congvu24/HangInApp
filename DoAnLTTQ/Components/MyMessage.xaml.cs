@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace DoAnLTTQ.Components
@@ -13,5 +14,7 @@ namespace DoAnLTTQ.Components
             InitializeComponent();
             MyMessageContent.Text = content;
         }
+
+       
     }
 }

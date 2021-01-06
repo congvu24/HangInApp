@@ -172,10 +172,11 @@ namespace DoAnLTTQ.Components
                 MessageBox.Show("You can't send blank message");
                 return;
             }
-            TextToSend.Document.Blocks.Clear();
-            MessageBox.Show(content);
             sendMessage(content);
-            TextToSend.Document.Blocks.Add(new Paragraph(new Run("Type something")));
+            TextToSend.Document.Blocks.Clear();
+
+            //MessageBox.Show(content);
+            //TextToSend.Document.Blocks.Add(new Paragraph(new Run("Type something")));
 
             //var content = TextToSend.Text;
             //TextToSend.Document.Blocks.Clear();
@@ -336,6 +337,14 @@ namespace DoAnLTTQ.Components
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
           
+        }
+
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FrameworkElement p = sender as FrameworkElement;
+            p = p.Parent as FrameworkElement;
+            p = p.Parent as FrameworkElement;
+            MessageBox.Show(p.GetType().ToString());
         }
     }
 
