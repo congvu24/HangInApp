@@ -20,9 +20,19 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Foreground" Value="Black"/>
         </Style>
+        <Storyboard x:Key="loaded">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
 
     </UserControl.Resources>
-    <Grid Height="auto" MinWidth="70" Margin="26,0,0,16" HorizontalAlignment="Left">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="grid">
+            <BeginStoryboard Storyboard="{StaticResource loaded}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid x:Name="grid" Height="auto" MinWidth="70" Margin="26,0,0,16" HorizontalAlignment="Left" Opacity="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>

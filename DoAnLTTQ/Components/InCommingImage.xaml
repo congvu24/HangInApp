@@ -9,8 +9,19 @@
 >
     <UserControl.Resources>
 
+        <Storyboard x:Key="loaded">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
     </UserControl.Resources>
-    <Border Padding="4" Background="{StaticResource GlobalGrayBrush}" BorderBrush="Transparent" BorderThickness="1" CornerRadius="12" Height="auto" MaxWidth="300" Margin="26,26,0,16" HorizontalAlignment="Left">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="border">
+            <BeginStoryboard Storyboard="{StaticResource loaded}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Border x:Name="border" Padding="4" Opacity="0" Background="{StaticResource GlobalGrayBrush}" BorderBrush="Transparent" BorderThickness="1" CornerRadius="12" Height="auto" MaxWidth="300" Margin="26,26,0,16" HorizontalAlignment="Left">
         <Image x:Name="img" Source="/Resources/Images/hinh-anh-heo-cute-va-de-thuong_030601765.jpg" Stretch="Fill">
         </Image>
     </Border>

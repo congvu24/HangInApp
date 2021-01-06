@@ -86,7 +86,7 @@ namespace DoAnLTTQ.Components
                 return;
             }
             if (txtName.Text.Length > 0)
-                //if ((txtName.Content as string).Length > 0)
+            //if ((txtName.Content as string).Length > 0)
             {
                 if (TextToSend.Text.Length > 0)
                 {
@@ -95,12 +95,12 @@ namespace DoAnLTTQ.Components
                         try
                         {
                             sv.SendMessage(IPAddress.Parse(activeGuest.ip), content);
-                    }
+                        }
                         catch
-                    {
-                        this.sendThread.Abort();
+                        {
+                            this.sendThread.Abort();
+                        }
                     }
-                }
                 );
                     sendThread.IsBackground = true;
                     sendThread.Start();
@@ -144,16 +144,16 @@ namespace DoAnLTTQ.Components
             var guest = new GuestProfile();
             if (guest.isExist(ip) == true && ip == activeGuest.ip)
             {
-                if(type == 1)
+                if (type == 1)
                 {
-                    
+
                     var text = Encoding.UTF8.GetString(content, 0, content.Length);
                     this.Dispatcher.Invoke(() =>
                     {
                         messagePanel.Children.Add(new InComingMessage(text));
                     });
                 }
-                else if(type == 2)
+                else if (type == 2)
                 {
                     this.Dispatcher.Invoke(() =>
                     {
@@ -167,8 +167,20 @@ namespace DoAnLTTQ.Components
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             var content = TextToSend.Text;
-            sendMessage(content);
+            if (String.IsNullOrWhiteSpace(content) || content == "Type something")
+            {
+                MessageBox.Show("You can't send blank message");
+                return;
+            }
             TextToSend.Document.Blocks.Clear();
+            MessageBox.Show(content);
+            sendMessage(content);
+            TextToSend.Document.Blocks.Add(new Paragraph(new Run("Type something")));
+
+            //var content = TextToSend.Text;
+            //TextToSend.Document.Blocks.Clear();
+            //sendMessage(content);
+
         }
 
         private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
@@ -248,19 +260,20 @@ namespace DoAnLTTQ.Components
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "";
 
-            System.Drawing.Imaging.ImageCodecInfo[] codecs = System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders();
-            string sep = string.Empty;
+            //System.Drawing.Imaging.ImageCodecInfo[] codecs = System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders();
+            //string sep = string.Empty;
 
-            foreach (var c in codecs)
-            {
-                string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
-                openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, codecName, c.FilenameExtension);
-                sep = "|";
-            }
+            //foreach (var c in codecs)
+            //{
+            //    string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
+            //    openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, codecName, c.FilenameExtension);
+            //    sep = "|";
+            //}
 
-            openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, "All Files", "*.*");
+            //openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep, "All Files", "*.*");
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;...";
 
-            openFileDialog.DefaultExt = ".png"; // Default file extension 
+          
             if (openFileDialog.ShowDialog() == true)
                 try
                 {
@@ -277,8 +290,10 @@ namespace DoAnLTTQ.Components
 
         private void Border_GotFocus(object sender, RoutedEventArgs e)
         {
-            (sender as Border).Background = (Brush)(new BrushConverter().ConvertFrom("#E8E8E8"));
-            
+            //(sender as Border).Background = (Brush)(new BrushConverter().ConvertFrom("#E8E8E8"));
+
+            (sender as Border).Background = Brushes.White;
+
         }
 
         private void SendButton_GotMouseCapture(object sender, MouseEventArgs e)
@@ -286,18 +301,6 @@ namespace DoAnLTTQ.Components
             (sender as PackIcon).Foreground = Brushes.Red;
             MessageBox.Show("aa");
         }
-
-        private void packIcon1_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            var color = (sender as PackIcon).Foreground;
-            if (color == Brushes.White)
-                color = Brushes.Red;
-            else
-                color = Brushes.White;
-
-        }
-
-        
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -328,6 +331,11 @@ namespace DoAnLTTQ.Components
         {
             packIcon3.Foreground = Brushes.White;
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+          
         }
     }
 

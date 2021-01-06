@@ -136,9 +136,19 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Storyboard x:Key="buttonLoaded">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="listImage">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
         <!--Het Scroll viewer-->
 
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="listImage">
+            <BeginStoryboard Storyboard="{StaticResource buttonLoaded}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
 
     <Grid Background="{StaticResource AppicationBackgroundBursh}" MinHeight="400">
         <!--<materialDesign:Card Height="400" Width="290" UniformCornerRadius="4" Background="{StaticResource ApplicationBackgroundDarkBursh}" materialDesign:BottomDashedLineAdorner.Brush="Transparent">-->
@@ -165,7 +175,7 @@
                             <!--Style="{StaticResource myImageSlotContent}"-->
                             <!--
                         </Button>-->
-                            
+
                             <Button  
                             HorizontalContentAlignment="Center" 
                             Style="{StaticResource MaterialDesignRaisedAccentButton}"
@@ -181,6 +191,7 @@
                             materialDesign:ButtonAssist.CornerRadius="5"
                             Uid="{Binding name}"
                             Padding="4"
+                            
                             >
 
                                 <Button.Background>
@@ -189,7 +200,7 @@
                                 <!--x:Name="background"-->
                             </Button>
                             <!--</Border>-->
-                           
+
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

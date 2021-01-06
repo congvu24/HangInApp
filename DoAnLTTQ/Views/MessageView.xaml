@@ -76,7 +76,6 @@
             <component:NavBarMain />
         </Grid>
         <Grid Grid.Column="1">
-
             <component:MessageView_MessageDetails/>
         </Grid>
         <Grid Grid.Column="2">

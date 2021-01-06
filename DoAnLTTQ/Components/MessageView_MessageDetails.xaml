@@ -20,7 +20,7 @@
             </Style.Triggers>
         </Style>
 
-        
+
         <Style x:Key="myProfilePicture" TargetType="Image">
             <Setter Property="Margin" Value="15, 0, 10 ,0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -85,7 +85,7 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
-                            
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -157,9 +157,19 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Storyboard x:Key="selectButton">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ChatField">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
         <!--Het Scroll viewer-->
 
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource selectButton}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
     <!--#endregion-->
 
     <Grid>
@@ -178,7 +188,7 @@
             </Grid.Background>-->
         </Grid>
         <!--Avatar va ten partnerday-->
-        <Grid Grid.Row="0" Background="Transparent">
+        <Grid Grid.Row="0" Background="Transparent" x:Name="ChatField" Opacity="0" >
             <Border CornerRadius="6" Background="{StaticResource ApplicationBackgroundDarkBursh}" Opacity="0.5" Margin="24,16" BorderThickness="2" BorderBrush="{StaticResource ApplicationBackgroundDarkBursh}" />
             <WrapPanel VerticalAlignment="Center"  Margin="28,16" HorizontalAlignment="Center">
 
@@ -189,7 +199,7 @@
                         </Image.Clip>
                     </Image>
                 </Border>-->
-                <materialDesign:Chip IconBackground="{x:Null}" MinHeight="40" MinWidth="60" Cursor="Arrow" >
+                <materialDesign:Chip x:Name="chip" IconBackground="{x:Null}" MinHeight="40" MinWidth="60" Cursor="Arrow" >
                     <TextBlock Text="{Binding name}" x:Name="txtName" FontSize="16" FontWeight="Bold"/>
                     <materialDesign:Chip.Icon>
                         <Image Source="{Binding avatar.buffer}"/>
@@ -360,9 +370,11 @@
                     </StackPanel>
 
                     <!--Nhap tin nhan vao day ne-->
-                    <Border Grid.Column="2" Padding="2 0" Background="LightGray" CornerRadius="8" BorderThickness="1" LostFocus="Border_LostFocus" GotFocus="Border_GotFocus">
+                   
+                        <Border Grid.Column="2" Padding="2 0" Background="LightGray" CornerRadius="8" BorderThickness="1" LostFocus="Border_LostFocus" GotFocus="Border_GotFocus" Height="42.644">
                         <emoji:RichTextBox x:Name="TextToSend" VerticalAlignment="Center" Foreground="Black" Style="{StaticResource TextToSendMessage }" Background="Transparent" PreviewKeyDown="TextToSend_KeyDown" Grid.ColumnSpan="2" Margin="15 2"/>
-                    </Border>
+                        </Border>
+                  
 
                     <!--Nut gui tin nhan day ne-->
                     <materialDesign:PackIcon 

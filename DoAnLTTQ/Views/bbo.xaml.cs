@@ -96,7 +96,7 @@ namespace DoAnLTTQ
             BlurOn = true;
             BlurRadius = newRadius;
 
-            blurR.Fill = new VisualBrush(BlurObj) //создаём новую кисть для блюра
+            blurR.Fill = new VisualBrush(BlurObj) 
             {
                 AlignmentX = AlignmentX.Left,
                 AlignmentY = AlignmentY.Top,
@@ -108,12 +108,12 @@ namespace DoAnLTTQ
         public void OffBlur()
         {
             BlurOn = false;
-            blurR.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); //убираем кисть для блюра
+            blurR.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); 
         }
 
         public void UpdateBlur()
         {
-            if (BlurOn == false || BlurObj == null) //проверяем включен ли блюр
+            if (BlurOn == false || BlurObj == null) 
             {
                 return;
             }
@@ -131,10 +131,10 @@ namespace DoAnLTTQ
                     return;
                 }
 
-                Point offset = this.TransformToVisual(_parentVisual).Transform(new Point()); //получаем отступ. Можно променять this на blurR и тогда нам не надо считать Margin
-                b.Viewbox = new Rect(offset.X + gridBlur.Margin.Left + 2, offset.Y + gridBlur.Margin.Top + 2, 1, 1); //число 2 это размер окантовки 
+                Point offset = this.TransformToVisual(_parentVisual).Transform(new Point()); 
+                b.Viewbox = new Rect(offset.X + gridBlur.Margin.Left + 2, offset.Y + gridBlur.Margin.Top + 2, 1, 1);  
             }
-            catch (InvalidOperationException) { } //уберает ошибку в редакторе форм
+            catch (InvalidOperationException) { } 
 
 
         }
@@ -143,7 +143,7 @@ namespace DoAnLTTQ
         {
             if (BlurOn) UpdateBlur();
 
-            if (BlurOn != _blurOn) //нужно чтобы если функция по изминеннию BlurOn не сработала, то блюр всёравно приминился
+            if (BlurOn != _blurOn) 
             {
                 if (BlurOn)
                 {

@@ -8,9 +8,18 @@
              
 >
     <UserControl.Resources>
-
+        <Storyboard x:Key="loaded">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </UserControl.Resources>
-    <Border Padding="4" Background="{StaticResource GradientBush}" BorderBrush="Transparent" BorderThickness="1" CornerRadius="10" Height="auto" MaxWidth="300" Margin="0,0,26,16" HorizontalAlignment="Right">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="border">
+            <BeginStoryboard Storyboard="{StaticResource loaded}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Border x:Name="border" Opacity="0" Padding="4" Background="{StaticResource GradientBush}" BorderBrush="Transparent" BorderThickness="1" CornerRadius="10" Height="auto" MaxWidth="300" Margin="0,0,26,16" HorizontalAlignment="Right">
         <Image x:Name="img" />
     </Border>
 </UserControl>

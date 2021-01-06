@@ -215,12 +215,17 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        <Storyboard x:Key="loaded">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRoot">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
 
     </UserControl.Resources>
 
     <!--main content-->
     <Border BorderBrush="Transparent" BorderThickness="0 0 1 0">
-        <Grid x:Name="LayoutRoot">
+        <Grid x:Name="LayoutRoot" >
             <!--change height here-->
             <Grid Style="{StaticResource BackBtnWarper}" Background="{StaticResource AppicationBackgroundBursh}">
                 <!--hei=680-->
